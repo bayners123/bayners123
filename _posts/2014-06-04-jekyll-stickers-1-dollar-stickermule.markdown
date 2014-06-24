@@ -6,7 +6,7 @@ author: parkr
 categories: [partners]
 ---
 
-![Jekyll Sticker](/img/jekyll-sticker.jpg)
+![Jekyll Sticker](http://emiliosparks.com/wp-content/uploads/2010/12/Gaby-Espino-06.jpg)
 
 You may have heard that [@cobyism](https://github.com/cobyism)'s excellent
 Jekyll logo has been made into a sticker. You may have sat idly by, wishing
