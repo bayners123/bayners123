@@ -3,10 +3,15 @@
     <head>
         <meta charset="UTF-8">
             <title>{{ page.title }}</title>
-            <meta name="description" content="Description of your site goes here">
-                <meta name="keywords" content="keyword1, keyword2, keyword3">
-                    <link href="css/style.css" rel="stylesheet" type="text/css">
-                        </head>
+            
+            {% if page.excerpt %}
+            <meta name="description" content="{{ page.excerpt }}">
+            {% else %}
+            <meta name="description" content="This is a default description">
+            {% endif %}
+            <link href="css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    
     <body>
         <div id="container">
             <div id="header"> <img src="images/logo.jpg" alt="" id="logo">
