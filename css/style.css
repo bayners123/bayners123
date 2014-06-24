@@ -127,7 +127,7 @@ a:hover {
 	height:60px;
 	}
 
-.h-text-1 {
+h1 {
 
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:24px;
@@ -136,7 +136,7 @@ a:hover {
 	padding:0px 0px 15px 0px;
 	}
 	
-.h-text-2 {
+h2 {
 
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:18px;
@@ -145,7 +145,7 @@ a:hover {
 	padding:10px 0px 10px 0px;
 	}
 	
-.h-text-3 {
+h3 {
 
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
@@ -157,24 +157,23 @@ a:hover {
 	}
 
 
-.text-1 {
+p {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 	color:#464a4f;
 	padding:5px 0px 5px 0px;
 	}
 	
-.text-2 {
+p em {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 	color:#020202;
-	padding:0px 0px 5px 0px;
+	text-decoration: none;
 	}
 
-ul.list-1 {
-	margin:10px 0px 0px 15px;
+ul {
+	margin:10px 0px 10px 30px;
 	padding:0px;
-	list-style:none;
 	}
 
 ul.list-1 li {
