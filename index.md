@@ -14,6 +14,12 @@ Here’s the first bit of text though, and I don’t think that *this* will work
 * There are many variations of passages
 
 
+1. There are many variations of passages
+2. Contrary to popular belief, Lorem Ipsum is not
+1. Many desktop publishing packages and web page
+1. There are many variations of passages
+
+
 Lorem Ipsum is simply dummy text of the printing and
 typesetting industry. Lorem Ipsum has been the industry's standard
 dummy text ever since the 1500s, when an unknown printer took a galley

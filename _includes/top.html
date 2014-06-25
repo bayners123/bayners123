@@ -9,23 +9,14 @@
             {% else %}
             <meta name="description" content="This is a default description">
             {% endif %}
-            <link href="css/style.css" rel="stylesheet" type="text/css">
+            <link href="{{ site.url }}/css/style.css" rel="stylesheet" type="text/css">
     </head>
     
     <body>
         <div id="container">
-            <div id="header"> <img src="images/logo.jpg" alt="" id="logo">
-                <h1 id="logo-text">Your Company</h1>
+            <div id="header"> <img src="{{ site.url }}/images/logo.jpg" alt="" id="logo">
+                <h1 id="logo-text">{{ site.CompanyName }}</h1>
                 </div>
-            <div id="nav">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About&nbsp;us</a></li>
-                    <li><a href="#">Recent&nbsp;articles</a></li>
-                    <li><a href="#">Email</a></li>
-                    <li><a href="#">Resources</a></li>
-                    <li style="border-right: medium none;"><a href="#">Links</a></li>
-                </ul>
-            </div>
+            {% include nav.html %}
             <div id="site-content">
                 <div id="col-left">
