@@ -12,7 +12,7 @@ More information on current research projects, published work, current and forme
   
 <a href="javascript:;" onclick="scrolltoggle('content_welcome_address');" title="Click here to show contact information">Display contact information</a>
 
-{::options parse_block_html="true" /}
+
 
 <div id="content_welcome_address">
 	
