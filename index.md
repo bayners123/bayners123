@@ -10,5 +10,24 @@ Research in the Goicoechea Group is focused on the chemistry of highly reductive
 More information on current research projects, published work, current and former group members and opportunities within the group can be found by following the links above.
 
   
+<a href="javascript:;" onclick="scrolltoggle('content_welcome_address');" title="Click here to show contact information">Display contact information</a>
 
+
+
+<div id="content_welcome_address">
+	
+Dr. Jose Goicoechea  
+
+Department of Chemistry,  
+Chemistry Research Laboratory,  
+University of Oxford,  
+Mansfield Road,  
+Oxford, OX1 3TA  
+
+Office Telephone: +44 (0)1865 (2)75961  
+Lab Telephone: +44 (0)1865 (2)75711
+
+E-mail Address: <jose.goicoechea@chem.ox.ac.uk>
+
+</div>
    
