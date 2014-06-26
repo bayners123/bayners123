@@ -1,0 +1,554 @@
+/* The page has two distinct elements:
+1) The top navigational bar: dark blue, yellow helvetica text and links and logo
+2) The Content area: pale yellow background with black helvetica text */
+
+body {
+   overflow: auto;
+   margin: 0px auto;
+   padding: 0px;
+   font-family:"Trebuchet MS", Helvetica, sans-serif; 
+   font-size: 18px;
+ 
+   color: #002147;
+   background-color: #fffffa;
+
+   border-top: solid 1em #002147;
+   border-left: solid 60px #002147;
+   border-right: solid 60px #002147;
+
+   max-width: 800px;
+   min-width: 800px;
+   width: 800px;
+}
+
+em {font-style:italic;}
+strong {font-weight:bold;}
+sup, sub { vertical-align: 0;
+           position: relative; }
+sup { bottom: 0.8ex; }
+sub { top: 0.8ex; }
+body { line-height: 1.3; }
+li {margin-bottom: 1em}
+
+#header_menu h1 {font-size: 36px;}
+#header_menu h5 {font-size: 14px;}
+#header_menu h6 {font-size: 12px;}
+#header_menu a:link {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #fffffa; text-decoration: none;}
+#header_menu a:visited {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #fffffa; text-decoration: none;}
+#header_menu a:hover {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #fffffa; text-decoration: underline;}
+#header_menu a:active {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #fffffa; text-decoration: none;}
+#header_menu {
+   color: #fffffa;
+   background-color: #002147;
+   width: 800px;
+   height: 6.5em;
+   margin: 0px;
+   padding: 0px;
+}
+
+#group_name {
+   float: left;
+   width: 20.85em;
+   text-align: right;
+}
+
+#oxfordlogo {
+   float: right;
+   width: 239px;
+}
+
+#page_links {
+   float: left;
+   clear: left;
+   width: 800px;
+   text-align: center;
+}
+
+#contentarea a:link {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #000000; text-decoration: underline;}
+#contentarea a:visited {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #000000; text-decoration: underline;}
+#contentarea a:hover {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #86373C; text-decoration: underline;}
+#contentarea a:active {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #86373C; text-decoration: none;}
+#below_content_area a:link {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #fffffa; text-decoration: none;}
+#below_content_area a:visited {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #fffffa; text-decoration: none;}
+#below_content_area a:hover {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #fffffa; text-decoration: none;}
+#below_content_area a:active {font-family: "Trebuchet MS", Helvetica, sans-serif; color: #fffffa; text-decoration: none;}
+#contentarea {
+   padding-top: 20px;
+   padding-left: 20px;
+   padding-right: 20px;
+   background-color: #fffffa;
+   color: black;
+}
+
+h1 {font-size: 24px; }
+#contentarea h1 {margin-bottom: 0.75em;}
+#contentarea p {margin-bottom: 1em;}
+
+.content_spacer {
+   height: 20px;
+}
+
+#content_spacer_right {
+   height: 20px;
+   float: right;
+}
+
+.content_vspacer {
+   width: 20px;
+}
+
+#content_welcome_container {
+   height: 1000px;
+}
+
+#content_welcome_right_column {
+   float: right;
+   height: 520px;
+}
+
+#content_welcome_left_column {
+   min-height:500px;
+   height: auto !important;
+   height: 500px;
+
+   width: 380px;
+   padding-bottom: 20px;
+}
+
+#content_welcome_address {
+   display: none;
+}
+
+#content_welcome_image_area {
+   width: 340px;
+   height: 520px;
+}
+
+#content_welcome_image_top {
+   width: 340px;
+   height: 160px;
+   padding-bottom: 20px;
+}
+
+#content_welcome_image_bottom_left {
+   width: 160px;
+   height: 340px;
+   float: left;
+}
+
+#content_welcome_image_bottom_right {
+   width: 160px;
+   height: 340px;
+   float: right;
+}
+
+#content_research_fig1 {
+   width: 390px;
+   float: right;
+}
+
+#content_research_image1 {
+   width: 370px;
+   height: 237px;
+   float: right;
+   background-image: url(images/research1.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_research_fig2 {
+   width: 220px;
+   float: left;
+}
+
+#content_research_image2 {
+   width: 220px;
+   height: 202px;
+   float: left;
+   background-image: url(images/research2.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_research_fig3 {
+   width: 760px;
+   height: 255px;
+}
+
+#content_research_image3 {
+   width: 760px;
+   height: 215px;
+   background-image: url(images/research3.jpg);
+   background-repeat: no-repeat;
+}
+
+.content_research_caption {
+   font-size: 12px;
+   line-height: 1.5em; 
+   
+}
+
+.content_research_caption_padding {
+   font-size: 12px;
+   line-height: 1.5em;
+   padding-left: 20px; 
+}
+
+#content_research_holder {
+   float: right;
+   width: 370px;
+}
+
+#content_research_reference_section {
+}
+
+#content_research_references {font-size: 16px;}
+#content_research_references em {font-style: italic}
+#content_research_references strong {font-weight: bold}
+#content_research_references {
+   padding-left: 25px;
+   list-style-type: decimal;
+   list-style-position: outside;
+   line-height: 1.5em; 
+}
+
+#content_publications_image {
+   width: 760px;
+   height: 272px;
+   background-image: url(images/writeuparea.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_publications_references {font-size: 16px;}
+#content_publications_references em {font-style: italic}
+#content_publications_references strong {font-weight: bold}
+#content_publications_references {
+   padding-left: 25px;
+   list-style-type: decimal;
+   list-style-position: outside;
+}
+
+.content_publications_title {
+   font-style: italic;
+   display: inline;
+   padding-left: 0.25em;
+}
+
+.content_publications_authors {
+   display: inline;
+   padding-left: 0.25em;
+
+}
+
+.content_publications_journal {
+   font-style: italic;
+   display: inline;
+   padding-left: 0.25em;
+
+}
+
+.content_publications_year {
+   font-weight: bold;
+   display: inline;
+   padding-left: 0.25em;
+}
+
+.content_publications_volume {
+   font-style: italic;
+   display: inline;
+   padding-left: 0.25em;
+}
+
+.content_publications_pages {
+   display: inline;
+   padding-left: 0.25em;
+}
+
+#content_publications_footer h6 {font-size: 10px;}
+
+#content_groupmembers_photo {
+   width: 760px;
+   height: 297px;
+   background-image: url(images/groupphoto.jpg);
+   background-repeat: no-repeat;
+   padding-bottom: 20px;
+}
+
+
+#content_groupmembers_photo_2012 {
+   width: 760px;
+   height: 336px;
+   background-image: url(images/groupphoto2012.jpg);
+   background-repeat: no-repeat;
+   padding-bottom: 20px;
+}
+
+
+#content_groupmembers_photo_2011 {
+   width: 760px;
+   height: 260px;
+   background-image: url(images/groupphoto2011.jpg);
+   background-repeat: no-repeat;
+   padding-bottom: 20px;
+}
+
+
+#content_groupmembers_photo_2010 {
+   width: 760px;
+   height: 313px;
+   background-image: url(images/groupphoto2010.jpg);
+   background-repeat: no-repeat;
+   padding-bottom: 20px;
+}
+
+
+#content_groupmembers_photo_2009 {
+   width: 760px;
+   height: 313px;
+   background-image: url(images/groupphoto2009.jpg);
+   background-repeat: no-repeat;
+   padding-bottom: 20px;
+}
+
+
+#content_groupmembers_photo_2008 {
+   width: 760px;
+   height: 442px;
+   background-image: url(images/groupphoto2008.jpg);
+   background-repeat: no-repeat;
+   padding-bottom: 20px;
+}
+
+
+.content_groupmembers_positions h6 {font-size: 14px;}
+
+.content_groupmembers_table {
+}
+
+.content_groupmembers_table_name {
+   width: 200px;
+   vertical-align: top;
+}
+
+.content_facilities_text {
+}
+
+#content_facilities_labphoto {
+   width: 760px;
+   height: 358px;
+   background-image: url(images/labphoto.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_facilities_columns1 {
+}
+
+#content_facilities_columns1_left {
+width: 370px;
+}
+
+#content_facilities_columns1_left_img1 {
+   width: 370px;
+   height: 278px;
+   background-image: url(images/vacline.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_facilities_columns1_left_text2 {
+}
+
+#content_facilities_columns1_left_img3 {
+   width: 370px;
+   height: 270px;
+   background-image: url(images/arcweld.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_facilities_columns1_right {
+   width: 370px;
+   float: right;
+}
+
+#content_facilities_columns1_right_text1 {
+}
+
+#content_facilities_columns1_right_img2 { 
+   width: 370px;
+   height: 278px;
+   background-image: url(images/glovebox.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_facilities_columns2 {
+}
+
+#content_facilities_columns2_left {
+/*width: 370px;*/
+}
+
+#content_facilities_columns2_right_container {
+   width: 390px;
+   float: right;
+}
+
+#content_facilities_columns2_right_img {
+   float: right;
+   width: 370px;
+   height: 255px;
+   background-image: url(images/sps800.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_facilities_singlecrystal {
+   width: 760px;
+   height: 316px;
+   background-image: url(images/singlecrystalxray.jpg);
+   background-repeat: no-repeat;
+}
+
+
+#content_facilities_columns3 {
+}
+
+#content_facilities_columns3_right {
+   float: right;
+   width: 380px;
+}
+
+#content_facilities_columns3_right_text1 {
+   float: right;
+   width: 370px;
+}
+
+#content_facilities_columns3_right_img2 {
+   float: right;
+   width: 370px;
+   height: 278px;
+   background-image: url(images/massspec.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_facilities_columns3_right_text3 {
+   float: right;
+   width: 370px;
+}
+
+
+#content_facilities_columns3_left {
+   width: 370px;
+}
+
+#content_facilities_columns3_left_img1 {
+   width: 370px;
+   height: 278px;
+   background-image: url(images/nmr.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_facilities_columns3_left_text2 {
+}
+
+#content_facilities_columns3_left_img3 {
+   width: 370px;
+   height: 309px;
+   background-image: url(images/pxrd.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_facilities_end_text {
+}
+
+#content_teaching_text {
+}
+
+#content_teaching_image {
+   width: 760px;
+   height: 373px;
+   background-image: url(images/teaching.jpg);
+   background-repeat: no-repeat;
+}
+
+#content_teaching_outerlist li {
+   list-style-type: disc;
+   margin-left: 1em;
+}
+
+.content_teaching_innerlist li {
+   list-style-type: circle;
+   margin-left: 2em;
+}
+
+#content_groupevents_table {
+width: 760px;
+
+}
+#content_groupevents_table img {
+border-width: 2px;
+border-style: solid;
+border-color: #002147;
+}
+
+.content_groupevents_thumbnail_left {
+   width: 380px;
+   height: 296px;
+   text-align: left;
+   vertical-align: top;
+}
+
+
+.content_groupevents_thumbnail_right {
+   width: 380px;
+   height: 296px;
+   vertical-align: top;
+   text-align: right;
+}
+
+
+
+#content_groupphotos_photo1 {
+   width: 760px;
+   height: 313px;
+   background-image: url(images/groupphoto.jpg);
+   background-repeat: no-repeat;
+   padding-bottom: 20px;
+}
+
+
+#content_groupphotos_title {
+   display: inline;
+   padding-left: 0.25em;
+}
+
+
+#below_content_area {
+   font-size: 14px;
+   text-align: center;
+   color: #fffffa;
+   background-color: #002147;
+}
+
+#content_jointhegroup_image {
+   width: 760px;
+   height: 327px;
+   background-image: url(images/jointhegroup.jpg);
+   background-repeat: no-repeat;
+}
+
+#countbox {
+   font-size: 38px;
+   color: #ff0000;
+   text-align: center;
+}
+
+#timeinhours {
+   color: #ff0000;
+   text-align: center;
+}
+
+#timeinminutes {
+   color: #ff0000;
+   text-align: center;
+}
+
+#timeinseconds {
+   color: #ff0000;
+   text-align: center;
+}
