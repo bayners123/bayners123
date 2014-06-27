@@ -11,6 +11,13 @@ $(window).load(function() {
 });
 
 
+// init slideshow
+$(document).ready( function() {
+		
+	$('.bxSlider').bxSlider();
+	
+});
+
 /*********************************
  * Code to allow active features *
  *********************************/

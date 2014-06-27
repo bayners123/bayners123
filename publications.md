@@ -2,7 +2,10 @@
 layout: default
 ---
 
-![The lab writeup area](/images/writeuparea.jpg)
+<ul class="bxslider">
+	<li><img title="The lab writeup area" src="/images/writeuparea.jpg"/></li>
+	<li><img title="Research stuff" src="/images/research1.jpg" /></li>
+</ul>
 
 <div class="unit whole">
 	

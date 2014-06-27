@@ -13,6 +13,10 @@
 
 {% include css/captionjs.css %}
 
+/* SLIDER */
+
+{% include css/jquery.bxslider.css %}
+
 /* MAIN */
 
 {% include css/main.css %}

@@ -24,7 +24,6 @@ Among the exploratory synthetic experiments we are currently investigating are r
 
 Large molecular clusters of nanometric proportions pose many fundamental questions on the nature of chemical bonding. Interstitial metal atoms are known to stabilise otherwise unstable geometries from within, yet valence electron counts for such species often fail to obey established rules for bonding in molecules. New theories analyzing these differences need to be developed particularly as cluster size increases and deviations away from spherical geometries are encountered. One of the great advantages of developing a ‘bottom-up’ approach to nanoparticles and extended solids is that the insights gained in the study of molecular systems, which have a well-established chemical composition, may be extrapolated to larger nanoparticle-like systems where the exact chemical composition of the species being studied may not necessarily be known.
 
-<br>
 
 Reactivity studies of Au<sup>−</sup>, and Ag<sup>−</sup> and Pt<sup>2−</sup> solutions
 ------------
