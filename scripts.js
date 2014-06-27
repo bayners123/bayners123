@@ -1,3 +1,16 @@
+// Init captioner
+
+$(window).load(function() {
+    $('.captionme img, img.captionme').captionjs({
+        'class_name'      : 'captionjs', // Class name assigned to each <figure>
+        'schema'          : true,        // Use schema.org markup (i.e., itemtype, itemprop)
+        'mode'            : 'animated',   // default | stacked | animated | hide
+        'debug_mode'      : true,       // Output debug info to the JS console
+        'force_dimensions': false        // Force the dimensions in case they can't be detected (e.g., image is not yet painted to viewport)
+    });
+});
+
+
 /*********************************
  * Code to allow active features *
  *********************************/

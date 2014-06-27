@@ -2,6 +2,8 @@
 layout: default
 ---
 
+<div class="unit w-1-2">
+
 # Welcome to the Goicoechea Group website!
 
 
@@ -29,3 +31,17 @@ E-mail Address: <jose.goicoechea@chem.ox.ac.uk>
 
 </div>
    
+</div>
+
+<div class="unit w-1-2">
+<div id="content_welcome_image_area">
+<div id="content_welcome_image_top">
+
+</div>
+<div id="content_welcome_image_bottom_left">
+</div>
+<div id="content_welcome_image_bottom_right">
+</div>
+
+</div>
+</div>

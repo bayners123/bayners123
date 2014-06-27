@@ -9,6 +9,10 @@
 
 {% include css/gridism.css %}
 
+/* CAPTIONS */
+
+{% include css/captionjs.css %}
+
 /* MAIN */
 
 {% include css/main.css %}
