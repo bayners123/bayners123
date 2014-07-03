@@ -63,6 +63,4 @@ and (max-device-width : 570px) {
 
 #slider {
     width: 100%;
-    height: 368px; /* TEMPORARY! THIS WILL BE SET BY SLIDER ULTIMATLY */
-    background: #888;
 }
