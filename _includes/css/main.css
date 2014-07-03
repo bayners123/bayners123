@@ -1,8 +1,8 @@
 
 body {
    font: normal 100% "Geneva", Helvetica, sans-serif;
-/*   font-size: 16px; */
    color: #FFF;
+   min-width: 750px;
 }
 
 .mobileOnly { display: none; }
@@ -19,10 +19,12 @@ p { margin-bottom: 0.625em; }
 
 #menubar {
     position: fixed;
+	z-index: 20;
     top: 0;
     padding-top: 1em;
     height: 35px;
     width: 100%;
+	min-width: 750px;
     display: block;
     background: #FFF;
     text-align: center;

@@ -9,9 +9,12 @@ and (max-device-width : 480px) {
 @media only screen
 and (max-device-width : 799px) {
 
+body, #menubar { min-width: 0; }
+		
 #mobileBar {
 	display: block;
 	position: fixed;
+	z-index: 20;
 	top: 0;
 	width: 100%;
 	padding: 0.4em 0 0.2em;
