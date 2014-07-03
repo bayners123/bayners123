@@ -1,7 +1,7 @@
 
 body {
-   font-family:"Geneva", Helvetica, sans-serif;
-   font-size: 12pt;
+   font: normal 100% "Geneva", Helvetica, sans-serif;
+/*   font-size: 14px; */
    color: #FFF;
 }
 
@@ -29,7 +29,7 @@ p { margin-bottom: 10px; }
 #menubar a {
     text-decoration: none;
     color: #002147;
-    font-size: 14px;
+    font-size: 0.875em;
     padding: 0 10px;
 }
 
@@ -44,9 +44,19 @@ p { margin-bottom: 10px; }
 
 #headerarea img {
     float: right;
-} 
+}
 
-#headerarea h1 { font-size: 35px; }
+#oxlogomob { display: none; }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (max-device-width : 570px) {
+	#oxlogo { display: none; }
+	#oxlogomob { display: inline; }
+}
+
+#headerarea h1 { font-size: 2.188em; } /*~ 35px*/
+
 #headerarea h2 { font-size: 22px; text-align: right;}
 
 #slider {
