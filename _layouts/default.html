@@ -3,8 +3,125 @@
 
 {% include top.html %}
 
-{% include header.html %}
 
-   {{ content }}
+<body>
+	
+    <nav id="menubar">
+        <a href="#">menu1</a>
+        <a href="#">menu2</a>
+        <a href="#">menu3</a>
+    </nav>
+    
+    <div id="container">
+        
+        <div id="headerarea">
+            
+            <img id="oxLogo" alt="Oxford logo" src="{{ site.url }}/images/rectlogo2.jpg" />
+            
+            <h1>The Goicoechea Group<h1>
+            
+            <h2>Department of Chemistry</h2>
+            
+        </div>
+        
+        <div id="slider">Here is the slider</div>
+        
+        <section id="welcome" class="wrap">
+            
+            <h2>Welcome</h2>
+            
+            <img src="{{ site.url }}/images/jose.png" alt="Jose the benevolent" id="jose" />
+            
+            <div class="box grid">
+                <div class="unit whole">
+                {{ content }}
+                </div>
+            </div>
 
-{% include bottom.html %}
+        </section>
+        
+        <section id="research">
+            
+            <img src="{{ site.url }}/images/flask.png" alt="Conical flask" id="flask" />
+            
+            <h2>Research Interests</h2>
+            
+            <nav id="researchBubbles">
+                
+                <div id="research1" class="researchBubble">
+                    <img src="{{ site.url }}/images/research1.png" alt="main-group and transition-metal cluster chemistry" />
+                    <h3>Main-group and transition-metal cluster chemistry</h3>
+                </div>
+                
+                <div id="research2" class="researchBubble">
+                    <img src="{{ site.url }}/images/research2.png" alt="main-group and transition-metal cluster chemistry" />
+                    <h3>Main-group and transition-metal cluster chemistry</h3>
+                </div>
+                
+                <div id="research3" class="researchBubble">
+                    <img src="{{ site.url }}/images/research3.png" alt="main-group and transition-metal cluster chemistry" />
+                    <h3>Main-group and transition-metal cluster chemistry</h3>
+                </div>
+                
+            </nav>
+            
+        </section>
+        
+        <section id="publications">
+            
+            <h2>Highlighted Publications</h2>
+            
+            <!-- This will be done in a clever, Jekylly way later on -->
+            
+            <ul>
+                <li>
+                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
+                    <span class="pubtitle">The publication title</span>
+                    <span class="pubdate">The publication date</span>
+                </li>
+            </ul>
+            
+            <ul>
+                <li>
+                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
+                    <span class="pubtitle">The publication title</span>
+                    <span class="pubdate">The publication date</span>
+                </li>
+            </ul>
+            
+            <ul>
+                <li>
+                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
+                    <span class="pubtitle">The publication title</span>
+                    <span class="pubdate">The publication date</span>
+                </li>
+            </ul>
+            
+            <ul>
+                <li>
+                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
+                    <span class="pubtitle">The publication title</span>
+                    <span class="pubdate">The publication date</span>
+                </li>
+            </ul>
+            
+            <!-- end clever Jekylly bit -->
+            
+            <a class="expandSection" href="#">
+                Show all
+            </a>
+            
+        </section>
+        
+    </div>
+    
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/jquery.caption.js" type="text/javascript"></script>
+<!-- bxSlider Javascript file -->
+<script src="/jquery.bxslider.min.js"></script>
+
+<script src="/scripts.js" type="text/javascript"></script>
+
+</body>
+
+</html>
