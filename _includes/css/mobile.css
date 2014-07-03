@@ -1,10 +1,29 @@
-.mobileOnly { display: inline; }
+@media only screen
+and (max-device-width : 480px) {
+
+/*Nothing here yet*/
+
+}
+
+
+@media only screen
+and (max-device-width : 799px) {
 
 #mobileBar {
-	
-	color: black;
-	
+	display: block;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	padding: 0.4em 0 0.2em;
+	background: white;
+	text-align: center;
 }
+
+#container { padding-top: 2.46em; }
+
+#mobileBar img { display: inline; }
+
+#menubar { display: none; }
 
 #menubar { 
 	margin-top: 1.5em;
@@ -19,6 +38,6 @@
 	padding: 0;
 }
 
-#container { padding-top: 0; }
-
 #menubar a:nth-child(odd) { border-right: 1px solid black; }
+
+}
