@@ -5,6 +5,8 @@ body {
    color: #FFF;
 }
 
+img { max-width: 100%; }
+
 h1 { text-weight: bold; font-size: 20pt; margin-bottom: 10px; }
 h2 { font-size: 18pt; margin-bottom: 10px; }
 h3 { font-size: 16pt; margin-bottom: 10px; }
@@ -37,7 +39,7 @@ p { margin-bottom: 10px; }
 }
 
 #headerarea {
-    padding: 70px;
+    padding: 7.1%;
 }
 
 #headerarea img {
