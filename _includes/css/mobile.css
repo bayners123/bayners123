@@ -21,7 +21,10 @@ and (max-device-width : 799px) {
 
 #container { padding-top: 2.46em; }
 
-#mobileBar img { display: inline; }
+#mobileBar a {
+	display: inline;
+	margin: 0 0.8em;
+}
 
 #menubar { display: none; }
 
