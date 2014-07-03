@@ -1,0 +1,24 @@
+.mobileOnly { display: inline; }
+
+#mobileBar {
+	
+	color: black;
+	
+}
+
+#menubar { 
+	margin-top: 1.5em;
+	height: auto;
+    padding: 1em 0;
+}
+
+#menubar a { 
+	display: block;
+	float: left;
+	width: 49%;
+	padding: 0;
+}
+
+#container { padding-top: 0; }
+
+#menubar a:nth-child(odd) { border-right: 1px solid black; }

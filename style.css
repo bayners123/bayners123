@@ -20,3 +20,14 @@
 /* MAIN */
 
 {% include css/main.css %}
+
+/* MOBILE*/
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+
+{% include css/mobile.css %}
+
+}
+

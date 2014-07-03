@@ -1,9 +1,11 @@
 
 body {
    font: normal 100% "Geneva", Helvetica, sans-serif;
-/*   font-size: 14px; */
+/*   font-size: 16px; */
    color: #FFF;
 }
+
+.mobileOnly { display: none; }
 
 img { max-width: 100%; }
 
@@ -11,14 +13,14 @@ h1 { text-weight: bold; font-size: 20pt; margin-bottom: 10px; }
 h2 { font-size: 18pt; margin-bottom: 10px; }
 h3 { font-size: 16pt; margin-bottom: 10px; }
 h4 { font-size: 14pt; margin-bottom: 10px; }
-p { margin-bottom: 10px; }
+p { margin-bottom: 0.625em; }
 
 .box { color: #002147; }
 
 #menubar {
     position: fixed;
     top: 0;
-    padding-top: 15px;
+    padding-top: 1em;
     height: 35px;
     width: 100%;
     display: block;
