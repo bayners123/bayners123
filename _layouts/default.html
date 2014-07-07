@@ -25,13 +25,14 @@
 			
         </div>
         
-        <div id="slider">
+        <div id="slider" style="">
+			<div><img src="http://lorempixel.com/800/800"><span class="caption alpha60bg" style="position: absolute; bottom: 0; right: 0; z-index: 15; padding: 30px;">There's stuff in here</span></div>
+			<img src="http://placehold.it/800x200" style="">
+			<img src="http://placehold.it/1000x1000" style="">
+			<img src="http://lorempixel.com/400/400">
 			<img src="http://lorempixel.com/800/300">
-			<img src="http://lorempixel.com/800/300">
-			<img src="http://lorempixel.com/800/300">
-			<img src="http://lorempixel.com/800/300">
-			<img src="http://lorempixel.com/800/300">
-		  </div>
+			<img src="http://lorempixel.com/800/800">
+		</div>
   
         <section id="welcome" class="wrap">
             
@@ -123,13 +124,14 @@
     </div>
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="jquery.slides.js"></script>
+    <script src="/jquery.slides.js"></script>
 
  	<script>
      $(function(){
        $("#slider").slidesjs({
          width: 800,
- 		height: 500
+ 		height: 300,
+		zoom: true
        });
      });
  	</script>
