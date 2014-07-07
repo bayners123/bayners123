@@ -9,6 +9,10 @@
 
 {% include css/gridism.css %}
 
+/* SLIDEJS */
+
+{% include css/slides.css %}
+
 /* MAIN */
 
 {% include css/main.css %}
