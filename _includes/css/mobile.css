@@ -18,11 +18,11 @@ body, #menubar { min-width: 0; }
 	top: 0;
 	width: 100%;
 	padding: 0.4em 0 0.2em;
-	background: white;
+/*	background: white;*/
 	text-align: center;
 }
 
-#container { padding-top: 2.46em; }
+#skrollr-body { padding-top: 2.46em; }
 
 #mobileBar a {
 	display: inline;
