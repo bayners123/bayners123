@@ -83,6 +83,14 @@ and (max-device-width : 570px) {
 	z-index: 15
 }
 
+#slider .caption {
+	position: absolute;
+	bottom: 0;
+	right: 0; 
+	z-index: 15;
+	padding: 30px;
+}
+
 .alpha60bgBlack {
     /* Fallback for web browsers that doesn't support RGBa */
     background: rgb(0, 0, 0) transparent;

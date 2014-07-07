@@ -46,4 +46,12 @@ body, #menubar { min-width: 0; }
 
 #menubar a:nth-child(odd) { border-right: 1px solid black; }
 
+#slider .slideNavBox { display: none; }
+
+#slider .caption {
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
 }
