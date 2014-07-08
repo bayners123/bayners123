@@ -30,28 +30,59 @@
 }
 
 @-skrollr-keyframes menuFlick {
-    0 {font-size: 1.2em; top: 100%; margin-top: -3.1875em; background-color:rgba(255,255,255, 1);}
-    20 {margin-top: 0em; top: 100%;}
-    21 {font-size: 0.875em; top: 0%; margin-top: -3.1875em;}
-    200 {background-color:rgba(255,255,255, 0.9); margin-top: 0;}
+    0 {
+        font-size: 1.2em;
+        top: 100%;
+        margin-top: -3.1875em;
+        background-color: rgba(255,255,255, 1);
+    }
+    20 {
+        margin-top: 0em;
+        top: 100%;
+    }
+    21 {
+        font-size: 0.875em;
+        top: 0%;
+        margin-top: -3.1875em;
+    }
+    200 {
+        background-color: rgba(255,255,255, 0.9);
+        margin-top: 0;
+    }
 }
 
 @-skrollr-keyframes sliderParallax {
-    bottom-top {transform: translateY(-20%);}
-    top-bottom {transform: translateY(20%);}
+    bottom-top {
+        transform: translateY(-20%);
+    }
+    top-bottom {
+        transform: translateY(20%);
+    }
 }
 
 @-skrollr-keyframes boxAppear {
-    -5p-bottom-top { opacity: 0 }
-    -40p-bottom-top { opacity: 1 }
+    -5p-bottom-top {
+        opacity: 0;
+    }
+    -40p-bottom-top {
+        opacity: 1
+    }
 }
 
 @-skrollr-keyframes leftAppear {
-    bottom-center { transform: translate(-25%,0px); }
-    center { transform:translate(0%,0px); }
+    bottom-center {
+        transform: translateX(-25%);
+    }
+    center {
+        transform: translateX(0%);
+    }
 }
 
 @-skrollr-keyframes rightAppear {
-    bottom-center { transform:translate(25%,0px); }
-    center { transform:translate(0%,0px); }
+    bottom-center {
+        transform: translateX(25%);
+    }
+    center {
+        transform: translateX(0%);
+    }
 }
