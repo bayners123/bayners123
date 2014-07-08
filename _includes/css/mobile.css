@@ -56,10 +56,12 @@ h2 { font-size: 1.5em }
 	right: 0;
 }
 
-.content > h2 { left: 0.5em; }
-.content > img, .content > i { right: 0.5em; }
-.contentL > h2 { right: 0.5em; }
-.contentL > img, .contentL > i { left: 0.5em; }
+.content > .left { left: 0.5em; }
+.content > .right { right: 0.5em; }
+
+/* This is since the font-size of the i elements is 160px, 10x the default */
+.content > i.left { left: 0.05em; }
+.content > i.right { right: 0.05em; }
 
 #research2 {
     padding-top: 0;

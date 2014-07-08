@@ -102,22 +102,22 @@ p { margin-bottom: 0.625em; }
     text-shadow: 0.04em 0.05em #000;
 }
 
-.content > h2, .content > img, .content > i, .contentL > h2, .contentL > img, .contentL > i {
+.content > .right, .content > .left {
 	position: absolute;
     display: block;
 }
 
-.content > i, .contentL > i {
+.content > i {
     font-size: 160px;
 }
 
-.content > img, .content > i { top: -196px; right: 0; }
-.content > h2 { top: -108px; }
+.content > .right, .content > .left { top: -196px; }
+.content > h2.left, .content > h2.right { top: -108px; }
 
-.contentL > img, .contentL > i { top: -196px; left: 0; }
-.contentL > h2 { top: -108px; right: 0; }
+.content > .right { right: 0; }
+.content > .left { left: 0; }
 
-.content, .contentL {
+.content {
     position: relative;
     margin-top: 250px !important;
 }
