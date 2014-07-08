@@ -1,5 +1,5 @@
 @media only screen
-and (max-device-width : 480px) {
+and (max-width : 480px) {
 
 	.mobileOnly { display: block; }
 
@@ -45,6 +45,9 @@ h2 { font-size: 1.5em }
 
 #menubar a:nth-child(odd) { border-right: 1px solid black; }
 
+#oxLogo { display: none; }
+#oxLogoMob { display: inline; }
+
 #slider .slideNavBox { display: none; }
 
 #slider .caption {
@@ -53,8 +56,10 @@ h2 { font-size: 1.5em }
 	right: 0;
 }
 
-.content > h2 { left: 1em; }
-.contentL > h2 { right: 1em; }
+.content > h2 { left: 0.5em; }
+.content > img, .content > i { right: 0.5em; }
+.contentL > h2 { right: 0.5em; }
+.contentL > img, .contentL > i { left: 0.5em; }
 
 #research2 {
     padding-top: 0;

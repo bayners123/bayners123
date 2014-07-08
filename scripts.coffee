@@ -7,10 +7,11 @@
 Modernizr.load
     test: Modernizr.touch,
     nope: 'skrollr.min.js'
-    # If we're loading Skrollr, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
-    complete: ->
-        menubar = document.getElementById('menubar')
-        menubar.style.top = "100%"
+    # If we loaded Skrollr, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
+    callback: (url, result, key) ->
+        if (!result) 
+            menubar = document.getElementById('menubar')
+            menubar.style.top = "100%"
 
 
 # # If we're on an ancient browser that doesn't support CSS media queries, add support
@@ -24,6 +25,8 @@ Modernizr.load
         complete: ->
             if !window.jQuery
                 Modernizr.load 'jquery.min.js'
+                
+            $('#skrollr-body').prepend("Screen width, height is (" + screen.availWidth + ", " + screen.availHeight + ")")
 
     # ... then run code that depends on jQuery & slidesjs
 
@@ -32,17 +35,20 @@ Modernizr.load
                 event.preventDefault()
 
                 $menubar = $('#menubar')
-                $morebutton = $('#mobileBar #morebutton i')
+                $moreButton = $('#mobileBar #moreButton i')
+                
+                console.log $menubar
+                console.log $moreButton
 
                 if $menubar.is(':visible')
                     $menubar.slideUp()
-                    $morebutton
+                    $moreButton
                         .removeClass("fa-angle-double-up")
                         .addClass("fa-angle-double-down")
                 else
                     $menubar
                         .slideDown()
-                    $morebutton
+                    $moreButton
                         .removeClass("fa-angle-double-down")
                         .addClass("fa-angle-double-up")
 
