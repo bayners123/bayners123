@@ -124,6 +124,16 @@ and (max-device-width : 570px) {
     margin-top: 250px !important;
 }
 
+.researchBubble img, .researchBubble h3 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#research2 {
+    padding-top: 3em;
+}
 
 .alpha60bgBlack {
     /* Fallback for web browsers that doesn't support RGBa */
