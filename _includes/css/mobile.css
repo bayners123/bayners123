@@ -18,23 +18,20 @@ body, #menubar { min-width: 0; }
 	top: 0;
 	width: 100%;
 	padding: 0.4em 0 0.2em;
-/*	background: white;*/
 	text-align: center;
+	font-size: 1.5em;
 }
 
-#skrollr-body { padding-top: 2.46em; }
+#mobileBar a { color: #999; }
 
-#mobileBar a {
-	display: inline;
-	margin: 0 0.8em;
-}
+#skrollr-body { padding-top: 3.875em; }
 
 #menubar { display: none; }
 
 #menubar { 
-	margin-top: 1.5em;
+	background: white !important;
 	height: auto;
-    padding: 1em 0;
+    padding: 3.75em 0 1em;
 }
 
 #menubar a { 
@@ -53,5 +50,7 @@ body, #menubar { min-width: 0; }
 	left: 0;
 	right: 0;
 }
+
+#welcome > .box > h2 { left: 1em; }
 
 }
