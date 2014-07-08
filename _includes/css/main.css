@@ -6,6 +6,8 @@ body {
    -webkit-font-smoothing: antialiased;
 }
 
+section { color: #002147; }
+
 #skrollalert {color: black;}
 .skrollr #skrollalert { display: none; }
 
@@ -102,10 +104,13 @@ and (max-device-width : 570px) {
 	padding: 30px;
 }
 
+#welcome > .content > h2 { 
+    color: #FFF;
+    text-shadow: 0.04em 0.05em #000;
+}
+
 .content > h2, .content > img, .contentL > h2, .contentL > img {
 	position: absolute;
-    color: white;
-    text-shadow: 0.04em 0.05em #000;
 }
 
 .content > img { top: -196px; right: 0; }
