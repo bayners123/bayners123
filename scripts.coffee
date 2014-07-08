@@ -3,7 +3,7 @@
 
 # Load scripts depending on browser capabilities
 
-if typeof IElt7 == 'undefined'
+if typeof IElt9 == 'undefined'
     alert "Phew"
 else
     alert "Oh no!"
