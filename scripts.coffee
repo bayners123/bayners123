@@ -20,11 +20,6 @@ Modernizr.load
             menubar = document.getElementById('menubar')
             menubar.style.top = "100%"
 
-# # If we're on an ancient browser that doesn't support CSS media queries, add support
-# Modernizr.load
-#     test: Modernizr.mq,
-#     nope: 'css3.mediaqueries.js'
-
 Modernizr.load
     # Load jquery with a local fallback 
         load: ['//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js','jquery.slides.js']
