@@ -6,13 +6,14 @@
 # Load skrollr if we're not on a mobile, but don't initialise it yet
 Modernizr.load
     test: Modernizr.touch,
-    nope: 'skrollr.min.js'
-    # If we loaded Skrollr, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
+    nope: ['skrollr.min.js', 'skrollr-stylesheets.js'],
+
     callback: (url, result, key) ->
-        if (!result) 
+    # If we loaded Skrollr, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
+    # We only want to do this once, so check that it was skrollr that was loaded and not skrollr-stylesheets        
+        if (url=="skrollr.min.js" && !result) 
             menubar = document.getElementById('menubar')
             menubar.style.top = "100%"
-
 
 # # If we're on an ancient browser that doesn't support CSS media queries, add support
 # Modernizr.load
