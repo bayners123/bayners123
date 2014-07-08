@@ -9,6 +9,10 @@
 
 {% include css/gridism.css %}
 
+/* FONT AWESOME*/
+
+{% include css/font-awesome.min.css %}
+
 /* SLIDEJS */
 
 {% include css/slides.css %}
