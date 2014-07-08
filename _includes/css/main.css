@@ -49,6 +49,7 @@ p { margin-bottom: 0.625em; }
 #skrollr-body {
     padding-bottom: 5em;
     background: #002147 repeat-x url('/images/bg.png');
+    overflow: hidden;
 }
 
 #headerarea {
