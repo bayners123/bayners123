@@ -56,4 +56,8 @@ h2 { font-size: 1.5em }
 .content > h2 { left: 1em; }
 .contentL > h2 { right: 1em; }
 
+#research2 {
+    padding-top: 0;
+}
+
 }

@@ -47,7 +47,7 @@ p { margin-bottom: 0.625em; }
 }
 
 #skrollr-body {
-/*    padding-top: 50px;*/
+    padding-bottom: 5em;
     background: #002147 repeat-x url('/images/bg.png');
 }
 
@@ -109,14 +109,19 @@ and (max-device-width : 570px) {
     text-shadow: 0.04em 0.05em #000;
 }
 
-.content > h2, .content > img, .contentL > h2, .contentL > img {
+.content > h2, .content > img, .content > i, .contentL > h2, .contentL > img, .contentL > i {
 	position: absolute;
+    display: block;
 }
 
-.content > img { top: -196px; right: 0; }
+.content > i, .contentL > i {
+    font-size: 160px;
+}
+
+.content > img, .content > i { top: -196px; right: 0; }
 .content > h2 { top: -108px; }
 
-.contentL > img { top: -196px; left: 0; }
+.contentL > img, .contentL > i { top: -196px; left: 0; }
 .contentL > h2 { top: -108px; right: 0; }
 
 .content, .contentL {
@@ -146,7 +151,7 @@ and (max-device-width : 570px) {
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000, endColorstr=#E5000000)";
 }
 
-.alpha90bgWhite {
+.alpha90bgWhite, .box {
     /* Fallback for web browsers that doesn't support RGBa */
     background: rgb(255, 255, 255) transparent;
     /* RGBa with 0.6 opacity */
