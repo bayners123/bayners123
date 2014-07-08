@@ -63,26 +63,28 @@
 @-skrollr-keyframes boxAppear {
     -5p-bottom-top {
         opacity: 0;
+        transform: translateY(150px);
     }
     -40p-bottom-top {
-        opacity: 1
+        opacity: 1;
+        transform: translateY(0px);
     }
 }
 
 @-skrollr-keyframes leftAppear {
-    bottom-center {
-        transform: translateX(-25%);
+    -5p-bottom {
+        transform: translate(-25%, -150px);
     }
-    center {
-        transform: translateX(0%);
+    -40p-bottom {
+        transform: translate(0%, 0px);
     }
 }
 
 @-skrollr-keyframes rightAppear {
-    bottom-center {
-        transform: translateX(25%);
+    -5p-bottom {
+        transform: translate(25%, -150px);
     }
-    center {
-        transform: translateX(0%);
+    -40p-bottom {
+        transform: translate(0%, 0px);
     }
 }
