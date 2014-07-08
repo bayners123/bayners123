@@ -13,8 +13,8 @@ body {
 
 img { max-width: 100%; }
 
-h1 { text-weight: bold; font-size: 20pt; margin-bottom: 10px; }
-h2 { font-size: 18pt; margin-bottom: 10px; }
+h1 { text-weight: bold; font-size: 24pt; margin-bottom: 10px; }
+h2 { font-size: 2.5em; margin-bottom: 10px; }
 h3 { font-size: 16pt; margin-bottom: 10px; }
 h4 { font-size: 14pt; margin-bottom: 10px; }
 p { margin-bottom: 0.625em; }
@@ -29,7 +29,7 @@ p { margin-bottom: 0.625em; }
 	z-index: 20;
     top: 0;
     padding-top: 1em;
-    height: 35px;
+    height: 2.1875em;
     width: 100%;
 	min-width: 750px;
     display: block;
@@ -45,7 +45,7 @@ p { margin-bottom: 0.625em; }
 }
 
 #skrollr-body {
-    padding-top: 50px;
+/*    padding-top: 50px;*/
     background: #002147 repeat-x url('/images/bg.png');
 }
 
@@ -102,19 +102,22 @@ and (max-device-width : 570px) {
 	padding: 30px;
 }
 
-#jose, #welcome > .box > h2 {
+.content > h2, .content > img {
 	position: absolute;
     color: white;
-    top: -100px;
 }
 
-#jose { top: -196px; right: 0; }
-#welcome > .box > h2 { top: -108px; }
+.content > img { top: -196px; right: 0; }
+.content > h2 { top: -108px; }
 
-#welcome > .box {
+.contentL > img { top: -196px; left: 0; }
+.contentL > h2 { top: -108px; right: 0; }
+
+section > .content {
     position: relative;
-    margin-top: 220px;
+    margin-top: 220px !important;
 }
+
 
 .alpha60bgBlack {
     /* Fallback for web browsers that doesn't support RGBa */

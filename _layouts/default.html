@@ -29,11 +29,8 @@
 		<!-- Aspect ratio is width / height -->
         <div id="slider" data-aspectratio=2.6667 data-aspectratiomobile=1.3333>
 			<div><span class="caption alpha60bgBlack">There's lots and lost and lots and lots and lots of stuff in here</span><img data-bottom-top="transform: translateY(-20%);" data-top-bottom="transform: translateY(20%);" data-anchor-target="#slider" src="http://lorempixel.com/800/800"></div>
-			<img src="http://placehold.it/800x200" style="">
-			<img src="http://placehold.it/1000x1000" style="">
 			<img src="http://lorempixel.com/400/400">
 			<img src="http://lorempixel.com/800/300">
-			<img src="http://lorempixel.com/800/800?dif=true">
 			<div class="slidesjs-navigation slideNavBox alpha60bgBlack">
 				<a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left fa-2x"></i></a>
 			    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="fa fa-chevron-right fa-2x"></i></a>
@@ -42,48 +39,50 @@
   
         <section id="welcome" class="wrap">
 			
-            <div class="box grid alpha90bgWhite" data-bottom-top="opacity: 0" data--25p-bottom-top="opacity: 1">
+            <div class="box grid alpha90bgWhite content" data-bottom-top="opacity: 0" data--25p-bottom-top="opacity: 1">
 				
-				<img data-bottom-center="transform:translate(-10%,0px); opacity: 0;" data-center="transform:translate(0%,0px); opacity: 1;" src="{{ site.url }}/images/jose.png" alt="Jose the benevolent" id="jose" />
+				<img data-bottom-center="transform:translate(-25%,0px); opacity: 0;" data-center="transform:translate(0%,0px); opacity: 1;" src="{{ site.url }}/images/jose.png" alt="Jose the benevolent" id="jose" />
 				
-	            <h2 data-bottom-center="transform:translate(10%,0px); opacity: 0;" data-center="transform:translate(0%,0px); opacity: 1;">Welcome</h2>
+	            <h2 data-bottom-center="transform:translate(25%,0px); opacity: 0;" data-center="transform:translate(0%,0px); opacity: 1;">Welcome</h2>
 			
-				
                 <div class="unit whole">
-				
-					<p>Here's a nice <i class="fa fa-camera-retro"></i> test. </p>
 							
                 	{{ content }}
+					
                 </div>
             </div>
 
         </section>
         
         <section id="research">
+			
+			<div class="grid content contentL">
             
-            <img src="{{ site.url }}/images/flask.png" alt="Conical flask" id="flask" />
+	            <img src="{{ site.url }}/images/flask.png" alt="Conical flask" id="flask" />
             
-            <h2>Research Interests</h2>
+	            <h2>Research Interests</h2>
             
-            <nav id="researchBubbles">
+	            <nav id="researchBubbles" class="unit whole">
                 
-                <div id="research1" class="researchBubble">
-                    <img src="{{ site.url }}/images/research1.png" alt="main-group and transition-metal cluster chemistry" />
-                    <h3>Main-group and transition-metal cluster chemistry</h3>
-                </div>
+	                <div id="research1" class="researchBubble">
+	                    <img src="{{ site.url }}/images/research1.png" alt="main-group and transition-metal cluster chemistry" />
+	                    <h3>Main-group and transition-metal cluster chemistry</h3>
+	                </div>
                 
-                <div id="research2" class="researchBubble">
-                    <img src="{{ site.url }}/images/research2.png" alt="main-group and transition-metal cluster chemistry" />
-                    <h3>Main-group and transition-metal cluster chemistry</h3>
-                </div>
+	                <div id="research2" class="researchBubble">
+	                    <img src="{{ site.url }}/images/research2.png" alt="main-group and transition-metal cluster chemistry" />
+	                    <h3>Main-group and transition-metal cluster chemistry</h3>
+	                </div>
                 
-                <div id="research3" class="researchBubble">
-                    <img src="{{ site.url }}/images/research3.png" alt="main-group and transition-metal cluster chemistry" />
-                    <h3>Main-group and transition-metal cluster chemistry</h3>
-                </div>
+	                <div id="research3" class="researchBubble">
+	                    <img src="{{ site.url }}/images/research3.png" alt="main-group and transition-metal cluster chemistry" />
+	                    <h3>Main-group and transition-metal cluster chemistry</h3>
+	                </div>
                 
-            </nav>
+	            </nav>
             
+			</div>
+			
         </section>
         
         <section id="publications">
@@ -92,50 +91,51 @@
             
             <!-- This will be done in a clever, Jekylly way later on -->
             
-            <ul>
-                <li>
-                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
-                    <span class="pubtitle">The publication title</span>
-                    <span class="pubdate">The publication date</span>
-                </li>
-            </ul>
+			<div class="content grid">
+	            <ul>
+	                <li>
+	                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
+	                    <span class="pubtitle">The publication title</span>
+	                    <span class="pubdate">The publication date</span>
+	                </li>
+	            </ul>
             
-            <ul>
-                <li>
-                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
-                    <span class="pubtitle">The publication title</span>
-                    <span class="pubdate">The publication date</span>
-                </li>
-            </ul>
+	            <ul>
+	                <li>
+	                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
+	                    <span class="pubtitle">The publication title</span>
+	                    <span class="pubdate">The publication date</span>
+	                </li>
+	            </ul>
             
-            <ul>
-                <li>
-                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
-                    <span class="pubtitle">The publication title</span>
-                    <span class="pubdate">The publication date</span>
-                </li>
-            </ul>
+	            <ul>
+	                <li>
+	                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
+	                    <span class="pubtitle">The publication title</span>
+	                    <span class="pubdate">The publication date</span>
+	                </li>
+	            </ul>
             
-            <ul>
-                <li>
-                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
-                    <span class="pubtitle">The publication title</span>
-                    <span class="pubdate">The publication date</span>
-                </li>
-            </ul>
+	            <ul>
+	                <li>
+	                    <img src="{{ site.url }}/images/pub1.png" alt="pub1" />
+	                    <span class="pubtitle">The publication title</span>
+	                    <span class="pubdate">The publication date</span>
+	                </li>
+	            </ul>
+
             
-            <!-- end clever Jekylly bit -->
+	            <!-- end clever Jekylly bit -->
             
-            <a class="expandSection" href="#">
-                Show all
-            </a>
+	            <a class="expandSection" href="#">
+	                Show all
+	            </a>
+				
+			</div>
             
         </section>
         
     </div>
-	
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/jquery.slides.js"></script>
 	
 	<script src="/scripts.js"></script>
 		

@@ -10,6 +10,8 @@ and (max-device-width : 480px) {
 and (max-device-width : 799px) {
 
 body, #menubar { min-width: 0; }
+
+h2 { font-size: 1.5em }
 		
 #mobileBar {
 	display: block;
