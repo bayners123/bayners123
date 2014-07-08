@@ -3,6 +3,11 @@
 
 # Load scripts depending on browser capabilities
 
+if typeof IElt7 == 'undefined'
+    alert "Phew"
+else
+    alert "Oh no!"
+
 # Load skrollr if we're not on a mobile, but don't initialise it yet
 Modernizr.load
     test: Modernizr.touch,
@@ -69,7 +74,8 @@ Modernizr.load
                 # Init skrollr if we're not on a mobile (after slider)
                 if !Modernizr.touch
                     skrollr.init
-                        smoothScrolling: false
+                        smoothScrolling: false,
+                        forceHeight: false
 
 
             # Resize slider aspect ratio if the screen gets smaller (bind to window.resize event)
