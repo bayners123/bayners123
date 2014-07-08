@@ -25,8 +25,6 @@ Modernizr.load
         complete: ->
             if !window.jQuery
                 Modernizr.load 'jquery.min.js'
-                
-            $('#skrollr-body').prepend("Screen width, height is (" + screen.availWidth + ", " + screen.availHeight + ")")
 
     # ... then run code that depends on jQuery & slidesjs
 
