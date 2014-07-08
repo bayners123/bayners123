@@ -102,9 +102,10 @@ and (max-device-width : 570px) {
 	padding: 30px;
 }
 
-.content > h2, .content > img {
+.content > h2, .content > img, .contentL > h2, .contentL > img {
 	position: absolute;
     color: white;
+    text-shadow: 0.04em 0.05em #000;
 }
 
 .content > img { top: -196px; right: 0; }
@@ -113,9 +114,9 @@ and (max-device-width : 570px) {
 .contentL > img { top: -196px; left: 0; }
 .contentL > h2 { top: -108px; right: 0; }
 
-section > .content {
+.content, .contentL {
     position: relative;
-    margin-top: 220px !important;
+    margin-top: 250px !important;
 }
 
 

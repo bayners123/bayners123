@@ -1,7 +1,7 @@
 @media only screen
 and (max-device-width : 480px) {
 
-/*Nothing here yet*/
+	.mobileOnly { display: block; }
 
 }
 
@@ -53,6 +53,7 @@ h2 { font-size: 1.5em }
 	right: 0;
 }
 
-#welcome > .box > h2 { left: 1em; }
+.content > h2 { left: 1em; }
+.contentL > h2 { right: 1em; }
 
 }
