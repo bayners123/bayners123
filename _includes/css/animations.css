@@ -52,6 +52,6 @@
 }
 
 @-skrollr-keyframes rightAppear {
-    bottom-center { transform:translate(25%,0px); opacity: 0; }
-    center { transform:translate(0%,0px); opacity: 1; }
+    bottom-center { transform:translate(25%,0px); }
+    center { transform:translate(0%,0px); }
 }
