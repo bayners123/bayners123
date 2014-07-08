@@ -1,0 +1,57 @@
+#headerarea {
+    -skrollr-animation-name: header;
+}
+#menubar {
+    -skrollr-animation-name: menuFlick;
+}
+#slider > img, #slider > div > img {
+    -skrollr-anchor-target: '#slider';
+    -skrollr-animation-name: sliderParallax;
+}
+.content {
+    -skrollr-animation-name: boxAppear;
+}
+.content > .left {
+    -skrollr-animation-name: leftAppear;
+}
+.content > .right {
+    -skrollr-animation-name: rightAppear;
+}
+
+@-skrollr-keyframes header {
+    top {
+        padding-top: 7.1%;
+        padding-bottom: 4.1%;
+    }
+    50-top-center {
+        padding-top: 1%;
+        padding-bottom: 10.2%;
+    }
+}
+
+@-skrollr-keyframes menuFlick {
+    0 {font-size: 1.2em; top: 100%; margin-top: -3.1875em; background-color:rgba(255,255,255, 1);}
+    20 {margin-top: 0em; top: 100%;}
+    21 {font-size: 0.875em; top: 0%; margin-top: -3.1875em;}
+    200 {background-color:rgba(255,255,255, 0.9); margin-top: 0;}
+}
+
+@-skrollr-keyframes sliderParallax {
+    bottom-top {transform: translateY(-20%);}
+    top-bottom {transform: translateY(20%);}
+}
+
+@-skrollr-keyframes boxAppear {
+    -5p-bottom-top { opacity: 0 }
+    -40p-bottom-top { opacity: 1 }
+}
+
+@-skrollr-keyframes leftAppear {
+    bottom-center { transform: translate(-25%,0px); }
+    center { transform:translate(0%,0px); }
+}
+
+@-skrollr-keyframes rightAppear {
+    bottom-center { transform:translate(25%,0px); opacity: 0; }
+    center { transform:translate(0%,0px); opacity: 1; }
+}
