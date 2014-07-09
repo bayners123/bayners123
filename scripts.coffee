@@ -3,11 +3,6 @@
 
 # Load scripts depending on browser capabilities
 
-if typeof IElt9 == 'undefined'
-    alert "Phew"
-else
-    alert "Oh no!"
-
 # Load skrollr if we're not on a mobile, but don't initialise it yet
 Modernizr.load
     test: Modernizr.touch,
