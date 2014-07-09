@@ -1,7 +1,7 @@
 #headerarea {
     -skrollr-animation-name: header;
 }
-#menubar {
+#menuBar {
     -skrollr-animation-name: menuFlick;
 }
 #slider > img, #slider > div > img {

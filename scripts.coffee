@@ -6,14 +6,14 @@
 # Load skrollr if we're not on a mobile, but don't initialise it yet
 Modernizr.load
     test: Modernizr.touch,
-    nope: ['skrollr.min.js', 'skrollr-stylesheets.js'],
+    nope: ['skrollr.min.js', 'skrollr-stylesheets.js', 'skrollr-menu.min.js'],
 
     callback: (url, result, key) ->
-    # If we loaded Skrollr, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
+    # If we loaded Skrollr, immediately move the menuBar off the page since it will otherwise bounce around when skrollr loads
     # We only want to do this once, so check that it was skrollr that was loaded and not skrollr-stylesheets        
         if (url=="skrollr.min.js" && !result) 
-            menubar = document.getElementById('menubar')
-            menubar.style.top = "100%"
+            menuBar = document.getElementById('menuBar')
+            menuBar.style.top = "100%"
             
             # Are we running IE 8 or less? Well bugger, but let's try to patch some holes
             if typeof IElt9 != 'undefined'
@@ -28,27 +28,28 @@ Modernizr.load
 
     # ... then run code that depends on jQuery & slidesjs
 
-        # Register the click event for the mobile menu
-            $('#mobileBar #moreButton').click (event) ->
-                event.preventDefault()
-
-                $menubar = $('#menubar')
-                $moreButton = $('#mobileBar #moreButton i')
-                
-                console.log $menubar
-                console.log $moreButton
-
-                if $menubar.is(':visible')
-                    $menubar.slideUp()
+            # function to toggle menuBar visibility
+            toggleMenu = ($menuBar, $moreButton) ->
+                if $menuBar.is(':visible')
+                    $menuBar.slideUp()
                     $moreButton
                         .removeClass("fa-angle-double-up")
                         .addClass("fa-angle-double-down")
                 else
-                    $menubar
+                    $menuBar
                         .slideDown()
                     $moreButton
                         .removeClass("fa-angle-double-down")
                         .addClass("fa-angle-double-up")
+            
+            # Register the click event for the mobile menu
+            $('#mobileBar #moreButton').click (event) ->
+                event.preventDefault()
+
+                $menuBar = $('#menuBar')
+                $moreButton = $('#mobileBar #moreButton i')
+
+                toggleMenu $menuBar, $moreButton
 
             # Load constants for the slider
             slideWidth = $("#slider").data("aspectratio")
@@ -70,6 +71,8 @@ Modernizr.load
                     skrollr.init
                         smoothScrolling: false,
                         forceHeight: false
+                    # Init skrollr menus
+                    skrollr.menu.init skrollr.get()
 
 
             # Resize slider aspect ratio if the screen gets smaller (bind to window.resize event)

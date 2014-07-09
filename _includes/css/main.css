@@ -26,7 +26,7 @@ p { margin-bottom: 0.625em; }
 	box-shadow: 0 0 20px #000;
 }
 
-#menubar {
+#menuBar {
     position: fixed;
 	z-index: 20;
     top: 0;
@@ -39,7 +39,7 @@ p { margin-bottom: 0.625em; }
     text-align: center;
 }
 
-#menubar a {
+#menuBar a {
     text-decoration: none;
     color: #002147;
     font-size: 0.875em;
