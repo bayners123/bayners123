@@ -26,6 +26,7 @@ em { font-style: italic; }
 .box {
 	color: #002147;
 	box-shadow: 0 0 20px #000;
+    border: 3px solid #002147;
 }
 
 #menuBar {
@@ -136,6 +137,31 @@ em { font-style: italic; }
 
 #research2 {
     padding-top: 3em;
+}
+
+#publications > div > div > div img {
+    margin: 0 auto 1em;
+    display: block;
+}
+
+#publications > div > div > div p {
+    font-style: italic;
+    font-size: 0.75em;
+    margin: 0;
+}
+
+#publications > div > div > div a {
+    color: #002147;
+    text-decoration: none;
+}
+    
+#publications > div > div > div .pubtitle {
+    font-weight: bold;
+    text-align: justify;
+}
+
+#publications > div > div > div .pubdate {
+    float: right;
 }
 
 .alpha60bgBlack {
