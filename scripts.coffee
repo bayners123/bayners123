@@ -19,6 +19,10 @@ Modernizr.load
         if (url=="skrollr.min.js" && !result) 
             menubar = document.getElementById('menubar')
             menubar.style.top = "100%"
+            
+            # Are we running IE 8 or less? Well bugger, but let's try to patch some holes
+            if typeof IElt9 != 'undefined'
+                Modernizr.load 'skrollr.ie.min.js'   
 
 Modernizr.load
     # Load jquery with a local fallback 
