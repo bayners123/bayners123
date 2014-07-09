@@ -88,8 +88,8 @@ Modernizr.load
                 else if $(@).width() < mobileThreshold  && !mobileMode
                     $("#slider").data("plugin_slidesjs").resize slideWidth, slideHeightMobile
             
-            # Cause research bubbles to pulse on mouseover using the Animate.css library
-            $('.researchBubble').hover ->
+            # Animate .hoverPulse elements when hovered using 'Animate.css'
+            $('.hoverPulse').addClass('animated').hover ->
                     $(this).toggleClass('pulse')
                     
     
