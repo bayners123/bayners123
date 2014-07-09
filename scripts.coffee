@@ -19,7 +19,7 @@ Modernizr.load
             if typeof IElt9 != 'undefined'
                 Modernizr.load 'skrollr.ie.min.js'   
 
-Modernizr.load [
+Modernizr.load 
     # Load jquery with a local fallback 
         load: ['//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js','jquery.slides.js']
         complete: ->
@@ -87,9 +87,9 @@ Modernizr.load [
                 # Else if it's currently in normal and we changed to mobile:
                 else if $(@).width() < mobileThreshold  && !mobileMode
                     $("#slider").data("plugin_slidesjs").resize slideWidth, slideHeightMobile
+            
+            # Cause research bubbles to pulse on mouseover using the Animate.css library
+            $('.researchBubble').hover ->
+                    $(this).toggleClass('pulse')
                     
-    ,
-    # load animation library after jQuery if we're not on a mobile
-        test: Modernizr.mobile,
-        nope: 'jquery.transit.min.js'
-    ]
+    

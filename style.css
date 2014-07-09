@@ -21,5 +21,10 @@
 
 {% include css/mobile.css %}
 
+/* ANIMATE LIBRARY */
+
+{% include css/animate.css %}
+
 /* ANIMATIONS */
+
 {% include css/animations.css %}
