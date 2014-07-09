@@ -20,6 +20,8 @@ h2 { font-size: 2.5em; margin-bottom: 10px; }
 h3 { font-size: 16pt; margin-bottom: 10px; }
 h4 { font-size: 14pt; margin-bottom: 10px; }
 p { margin-bottom: 0.625em; }
+strong { font-weight: bold; }
+em { font-style: italic; }
 
 .box {
 	color: #002147;
@@ -129,6 +131,8 @@ p { margin-bottom: 0.625em; }
     margin-right: auto;
     text-align: center;
 }
+
+#researchBubbles a { text-decoration: none; color: #002147; }
 
 #research2 {
     padding-top: 3em;

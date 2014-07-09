@@ -1,9 +1,6 @@
 #headerarea {
     -skrollr-animation-name: header;
-}
-#menuBar {
-    -skrollr-animation-name: menuFlick;
-}
+    }
 #slider > img, #slider > div > img {
     -skrollr-anchor-target: '#slider';
     -skrollr-animation-name: sliderParallax;
@@ -17,6 +14,7 @@
 .content > .right {
     -skrollr-animation-name: rightAppear;
 }
+#mobileBar { -skrollr-animation-name: mobilebar; }
 
 @-skrollr-keyframes header {
     top {
@@ -26,28 +24,6 @@
     50-top-center {
         padding-top: 1%;
         padding-bottom: 10.2%;
-    }
-}
-
-@-skrollr-keyframes menuFlick {
-    0 {
-        font-size: 1.2em;
-        top: 100%;
-        margin-top: -3.1875em;
-        background-color: rgba(255,255,255, 1);
-    }
-    20 {
-        margin-top: 0em;
-        top: 100%;
-    }
-    21 {
-        font-size: 0.875em;
-        top: 0%;
-        margin-top: -3.1875em;
-    }
-    200 {
-        background-color: rgba(255,255,255, 0.9);
-        margin-top: 0;
     }
 }
 
@@ -87,4 +63,9 @@
     -40p-bottom {
         transform: translate(0%, 0px);
     }
+}
+
+@-skrollr-keyframes mobilebar {
+    0 {background-color:rgba(255,255,255, 1); font-size: 2em;}
+    100 {background-color:rgba(255,255,255, 0.9); font-size: 1.5em;}
 }

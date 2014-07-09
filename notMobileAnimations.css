@@ -1,0 +1,24 @@
+
+#menuBar { -skrollr-animation-name: menuFlick; }
+
+@-skrollr-keyframes menuFlick {
+    0 {
+        font-size: 1.2em;
+        top: 100%;
+        margin-top: -3.1875em;
+        background-color: rgba(255,255,255, 1);
+    }
+    20 {
+        margin-top: 0em;
+        top: 100%;
+    }
+    21 {
+        font-size: 0.875em;
+        top: 0%;
+        margin-top: -3.1875em;
+    }
+    200 {
+        background-color: rgba(255,255,255, 0.9);
+        margin-top: 0em;
+    }
+}
