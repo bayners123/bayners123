@@ -78,11 +78,17 @@ Modernizr.load
                         navigation: false,
                         play:
                             active: true,
+                            effect: "fade"
                             interval: 4000,
                             auto: true,
                             swap: true,
                             pauseOnHover: true,
                             generate: false
+                        effect:
+                            fade: 
+                                speed: 600
+                                crossfade: true
+                            
                 
                 # Init skrollr if we're not on a mobile (after slider)
                 if !Modernizr.touch
