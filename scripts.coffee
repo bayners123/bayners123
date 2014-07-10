@@ -70,7 +70,8 @@ Modernizr.load
                             interval: 4000,
                             auto: true,
                             swap: true,
-                            pauseOnHover: true
+                            pauseOnHover: true,
+                            generate: false
                 
                 # Init skrollr if we're not on a mobile (after slider)
                 if !Modernizr.touch
