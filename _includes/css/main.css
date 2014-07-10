@@ -164,6 +164,11 @@ em { font-style: italic; }
     float: right;
 }
 
+a.expandSection {
+    display: block;
+    
+}
+
 .alpha60bgBlack {
     /* Fallback for web browsers that doesn't support RGBa */
     background: rgb(0, 0, 0) transparent;
