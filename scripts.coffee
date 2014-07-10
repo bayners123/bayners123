@@ -9,11 +9,12 @@ Modernizr.load
     nope: ['skrollr.min.js', 'skrollr-stylesheets.js', 'skrollr-menu.min.js'],
 
     callback: (url, result, key) ->
-    # If we loaded Skrollr, immediately move the menuBar off the page since it will otherwise bounce around when skrollr loads
+    # If we loaded Skrollr & aren't on a small screen, immediately move the menuBar off the page since it will otherwise bounce around when skrollr loads
     # We only want to do this once, so check that it was skrollr that was loaded and not skrollr-stylesheets        
         if (url=="skrollr.min.js" && !result) 
-            menuBar = document.getElementById('menuBar')
-            menuBar.style.top = "100%"
+            if screen.width > 799
+                menuBar = document.getElementById('menuBar')
+                menuBar.style.top = "100%"
             
             # Are we running IE 8 or less? Well bugger, but let's try to patch some holes
             if typeof IElt9 != 'undefined'
@@ -28,28 +29,38 @@ Modernizr.load
 
     # ... then run code that depends on jQuery & slidesjs
 
-            # function to toggle menuBar visibility
-            toggleMenu = ($menuBar, $moreButton) ->
-                if $menuBar.is(':visible')
-                    $menuBar.slideUp()
-                    $moreButton
+            # function to toggle menuBar visibility & change mobilebar morebutton icon
+            toggleMenu = (menuBar, moreButtonI) ->
+                if menuBar.is(':visible')
+                    menuBar.slideUp()
+                    moreButtonI
                         .removeClass("fa-angle-double-up")
                         .addClass("fa-angle-double-down")
                 else
-                    $menuBar
+                    menuBar
                         .slideDown()
-                    $moreButton
+                    moreButtonI
                         .removeClass("fa-angle-double-down")
                         .addClass("fa-angle-double-up")
+                        
+            $menuBar = $('#menuBar')
+            $mobileBar= $('#mobileBar')
+            $moreButtonA = $('#mobileBar #moreButton')
+            $moreButtonI = $('#mobileBar #moreButton i')
             
             # Register the click event for the mobile menu
-            $('#mobileBar #moreButton').click (event) ->
+            $($moreButtonA).click (event) ->
                 event.preventDefault()
 
-                $menuBar = $('#menuBar')
-                $moreButton = $('#mobileBar #moreButton i')
-
-                toggleMenu $menuBar, $moreButton
+                toggleMenu $menuBar, $moreButtonI
+                
+            # Hide the menubar if we click it on a mobile (since the mobileBar is also present)
+            # N.B. we do not preventDefault so the click will still cause navigation
+            $($menuBar).click ->
+                # If we're in mobile mode:
+                if $mobileBar.is(':visible')
+                # then hide the menubar
+                    toggleMenu $menuBar, $moreButtonI
 
             # Load constants for the slider
             slideWidth = $("#slider").data("aspectratio")
