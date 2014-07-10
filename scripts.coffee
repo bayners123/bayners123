@@ -64,7 +64,13 @@ Modernizr.load
                         width: slideWidth,
                         height: if (screen.width < mobileThreshold ) then slideHeightMobile else slideHeight,
                         zoom: true,
-                        navigation: false
+                        navigation: false,
+                        play:
+                            active: true,
+                            interval: 4000,
+                            auto: true,
+                            swap: true,
+                            pauseOnHover: true
                 
                 # Init skrollr if we're not on a mobile (after slider)
                 if !Modernizr.touch
