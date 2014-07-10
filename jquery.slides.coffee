@@ -35,6 +35,8 @@
       # Set the default height of the slideshow.
     start: 1
       # Set the first slide in the slideshow.
+    zoom: false
+        # [boolean] Resize the images to fill the slider without distorting them
     navigation:
       # Next and previous button settings.
       active: true
@@ -57,7 +59,7 @@
       active: false
         # [boolean] Enable hands-free playing of slideshow.
       generate: true
-        # [boolean] Create play and stop button. 
+        # [boolean] Create play and stop button.
         # You can set to false and use your own play/stop buttons.
         # User defined play/stop buttons must have the following:
         # play: class="slidesjs-play slidesjs-navigation"
@@ -91,8 +93,6 @@
         # [function] Called when animation has started
       complete: () ->
         # [function] Called when animation is complete
-    zoom: false
-        # [boolean] Resize the images to fill the slider without distorting them
 
   class Plugin
     constructor: (@element, options) ->
@@ -217,28 +217,30 @@
       @previous(@options.navigation.effect)
 
     if @options.play.active
+    # If slideshow active
       
       if @options.play.generate
-          
+      # Generate play / stop button
           playButton = $("<a>",
             class: "slidesjs-play slidesjs-navigation"
             href: "#"
             title: "Play"
             text: "Play"
           ).appendTo($element)
-
+      
           stopButton = $("<a>",
             class: "slidesjs-stop slidesjs-navigation"
             href: "#"
             title: "Stop"
             text: "Stop"
           ).appendTo($element)
-          
+      
       else
+      # Search for user's play/stop buttons
           playButton = $(".slidesjs-play .slidesjs-navigation")
-
           stopButton = $(".slidesjs-stop .slidesjs-navigation")
-          
+      
+
       playButton.click (e) =>
         e.preventDefault()
         @play(true)
