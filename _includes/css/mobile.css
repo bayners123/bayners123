@@ -1,7 +1,7 @@
 @media only screen
 and (max-width : 480px) {
 
-	.mobileOnly { display: block; }
+	.mobileOnly { display: initial; }
 
 }
 
@@ -64,6 +64,17 @@ h2 { font-size: 1.5em }
 
 #research2 {
     padding-top: 0;
+}
+
+.gotoTop {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding-top: 0.31em;
+    padding-right: 0.31em;
+    margin-top: 0.31em;
+    border-top: #444 solid 1px;
+    color: #666;
 }
 
 }

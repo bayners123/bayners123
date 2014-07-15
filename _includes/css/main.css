@@ -190,15 +190,8 @@ a.expandSection {
     position: relative;
 }
 
-.tabholder > * { display: none; }
-.tabholder .active { display: block; }
-
-/*.box {
-    color: #002147;
-    box-shadow: 0 0 20px #000;
-    border: 3px solid #002147;
-    background: #EEE;
-}*/
+.tabs > .tab { display: none; }
+.tabs > .tab.active { display: block; }
 
 .alpha60bgBlack {
     /* Fallback for web browsers that doesn't support RGBa */
