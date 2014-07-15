@@ -4,9 +4,19 @@ body {
    color: #FFF;
    min-width: 750px;
    -webkit-font-smoothing: antialiased;
+   background: url('/images/bgtile.png');
+}
+
+#skrollr-body {
+    padding-bottom: 5em;
+    background: transparent repeat-x url('/images/bg.png');
+    overflow: hidden;
 }
 
 section { color: #002147; }
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
 
 #skrollalert {color: black;}
 .skrollr #skrollalert { display: none; }
@@ -27,6 +37,7 @@ em { font-style: italic; }
 	color: #002147;
 	box-shadow: 0 0 20px #000;
     border: 3px solid #002147;
+    background: #EEE;
 }
 
 #menuBar {
@@ -47,12 +58,6 @@ em { font-style: italic; }
     color: #002147;
     font-size: 0.875em;
     padding: 0 10px;
-}
-
-#skrollr-body {
-    padding-bottom: 5em;
-    background: #002147 repeat-x url('/images/bg.png');
-    overflow: hidden;
 }
 
 #headerarea {
@@ -168,12 +173,32 @@ a.expandSection {
     display: block;
 }
 
-#temp { 
-    background: #99F;
-    padding: 3.13em;
-    height: 100%;
-    position: absolute;
+.tabmenu > li > a {
+    display: block;
+    padding: 10px;
+    color: #002147;
 }
+
+.tabmenu > li > a.active {
+    border: 3px solid #002147;
+    border-right: none;
+    margin-right: -3px;
+    border-radius: 8px 0 0 8px;
+    background: #EEE;
+    box-shadow: -10px 0 6px #444;
+    z-index: 10;
+    position: relative;
+}
+
+.tabholder > * { display: none; }
+.tabholder .active { display: block; }
+
+/*.box {
+    color: #002147;
+    box-shadow: 0 0 20px #000;
+    border: 3px solid #002147;
+    background: #EEE;
+}*/
 
 .alpha60bgBlack {
     /* Fallback for web browsers that doesn't support RGBa */
@@ -186,7 +211,7 @@ a.expandSection {
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000, endColorstr=#E5000000)";
 }
 
-.alpha90bgWhite, .box {
+.alpha90bgWhite {
     /* Fallback for web browsers that doesn't support RGBa */
     background: rgb(255, 255, 255) transparent;
     /* RGBa with 0.6 opacity */
