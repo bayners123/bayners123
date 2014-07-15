@@ -166,7 +166,13 @@ em { font-style: italic; }
 
 a.expandSection {
     display: block;
-    
+}
+
+#temp { 
+    background: #99F;
+    padding: 3.13em;
+    height: 100%;
+    position: absolute;
 }
 
 .alpha60bgBlack {

@@ -83,7 +83,8 @@ Modernizr.load
                             auto: true,
                             swap: true,
                             pauseOnHover: true,
-                            generate: false
+                            generate: false,
+                            restartDelay: 1000
                         effect:
                             fade: 
                                 speed: 600
