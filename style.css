@@ -5,10 +5,6 @@
 
 {% include css/reset.css %}
 
-/* BOOTSTRAP */
-
-{% include css/bootstrap.min.css %}
-
 /* GRIDISM */
 
 {% include css/gridism.css %}
