@@ -154,9 +154,14 @@ Modernizr.load
 
                 # END TAB MENU GENERIC STUFF
                     
+                # Set research tabs to hidden on load (so they're visible if Java is disabled)
+                $ ->
+                    $('#researchDetails').hide()
+                
                 # Bind research bubbles to the appropriate sections of the tabs & make them cause the tabs to appear
                 $('.researchBubble').click ->
-                    $('#researchDetails').slideDown()
+                    # $('#researchDetails').removeClass("hidden")
+                    $('#researchDetails').show().addClass("animated zoomIn")
                 
                 $('#research1').click ->
                     $('#researchLink1').click()

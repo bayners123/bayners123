@@ -155,6 +155,7 @@ em { font-style: italic; }
 
 #publications > div > div > div img {
     margin: 0 auto 1em;
+    border: 1px solid black;
     display: block;
 }
 
@@ -202,8 +203,10 @@ a.expandSection {
 .tabs > .tab { display: none; }
 .tabs > .tab.active { display: block; }
 
-#researchDetails {
-    display: none;
+
+#researchDetails.hidden {
+    height: 0;
+    overflow: hidden;
 }
 
 .alpha60bgBlack {
