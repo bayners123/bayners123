@@ -193,6 +193,10 @@ a.expandSection {
 .tabs > .tab { display: none; }
 .tabs > .tab.active { display: block; }
 
+#researchDetails {
+    display: none;
+}
+
 .alpha60bgBlack {
     /* Fallback for web browsers that doesn't support RGBa */
     background: rgb(0, 0, 0) transparent;

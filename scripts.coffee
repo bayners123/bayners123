@@ -92,6 +92,8 @@ Modernizr.load
                                 speed: 600
                                 crossfade: true
                             
+
+                # TAB MENU GENERIC STUFF: 
                 
                 # Initiation of .tabgroups
                 $(".tabgroup").each ->
@@ -149,7 +151,19 @@ Modernizr.load
                         
                         # Increment    
                         i++
+
+                # END TAB MENU GENERIC STUFF
                     
+                # Bind research bubbles to the appropriate sections of the tabs & make them cause the tabs to appear
+                $('.researchBubble').click ->
+                    $('#researchDetails').slideDown()
+                
+                $('#research1').click ->
+                    $('#researchLink1').click()
+                $('#research2').click ->
+                    $('#researchLink2').click()
+                $('#research3').click ->
+                    $('#researchLink3').click()
                 
                 # Init skrollr if we're not on a mobile (after slider)
                 if !Modernizr.touch
@@ -162,7 +176,7 @@ Modernizr.load
 
             # Resize slider aspect ratio if the screen gets smaller (bind to window.resize event)
             $(window).resize ->
-                
+                            
                 # Are we already in mobile mode? Check by looking at the slider's current dimentions
                 mobileMode = $("#slider").data("plugin_slidesjs").options.width / $("#slider").data("plugin_slidesjs").options.height == slideWidth / slideHeightMobile
 
