@@ -1,7 +1,38 @@
-@media only screen
-and (max-width : 480px) {
+
+@media screen and (max-width: 568px) {
+
+    /* Gridism will stack units in this range */
 
 	.mobileOnly { display: initial; }
+    
+    .tabmenu {
+        background: #CCC;
+    	box-shadow: 0 0 20px #000;
+        border-top: 2px solid #002147;
+    }
+
+    .tabmenu > li > a {
+        color: #002147;
+    }
+
+    .tabmenu > li > a.active {
+        border: 2px solid #002147;
+        border-radius: 8px;
+        background: #EEE;
+        z-index: 10;
+        position: relative;
+    }
+
+    .gotoTop {
+        display: block;
+        width: 100%;
+        text-align: right;
+        padding-top: 0.31em;
+        padding-right: 0.31em;
+        margin-top: 0.31em;
+        border-top: #444 solid 1px;
+        color: #666;
+    }
 
 }
 
@@ -64,35 +95,6 @@ h2 { font-size: 1.5em }
 
 #research2 {
     padding-top: 0;
-}
-
-.tabmenu {
-    background: #CCC;
-	box-shadow: 0 0 20px #000;
-    border-top: 2px solid #002147;
-}
-
-.tabmenu > li > a {
-    color: #002147;
-}
-
-.tabmenu > li > a.active {
-    border: 2px solid #002147;
-    border-radius: 8px;
-    background: #EEE;
-    z-index: 10;
-    position: relative;
-}
-
-.gotoTop {
-    display: block;
-    width: 100%;
-    text-align: right;
-    padding-top: 0.31em;
-    padding-right: 0.31em;
-    margin-top: 0.31em;
-    border-top: #444 solid 1px;
-    color: #666;
 }
 
 }
