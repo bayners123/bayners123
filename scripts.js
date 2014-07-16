@@ -107,8 +107,11 @@
           }
           return _results;
         });
+        $(function() {
+          return $('#researchDetails').hide();
+        });
         $('.researchBubble').click(function() {
-          return $('#researchDetails').slideDown();
+          return $('#researchDetails').show().addClass("animated appearZoom");
         });
         $('#research1').click(function() {
           return $('#researchLink1').click();
