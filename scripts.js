@@ -19,7 +19,7 @@
   Modernizr.load({
     load: ['//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', 'jquery.slides.js'],
     complete: function() {
-      var $menubar, $mobilebar, $moreButtonA, $moreButtonI, mobileThreshold, slideHeight, slideHeightMobile, slideWidth, toggleMenu;
+      var $menubar, $mobilebar, $moreButtonA, $moreButtonI, delta, mobileThreshold, scrollIntercept, slideHeight, slideHeightMobile, slideWidth, toggleMenu;
       if (!window.jQuery) {
         Modernizr.load('jquery.min.js');
       }
@@ -107,6 +107,18 @@
           }
           return _results;
         });
+        $('.researchBubble').click(function() {
+          return $('#researchDetails').slideDown();
+        });
+        $('#research1').click(function() {
+          return $('#researchLink1').click();
+        });
+        $('#research2').click(function() {
+          return $('#researchLink2').click();
+        });
+        $('#research3').click(function() {
+          return $('#researchLink3').click();
+        });
         if (!Modernizr.touch) {
           skrollr.init({
             smoothScrolling: false,
@@ -119,14 +131,37 @@
         var mobileMode;
         mobileMode = $("#slider").data("plugin_slidesjs").options.width / $("#slider").data("plugin_slidesjs").options.height === slideWidth / slideHeightMobile;
         if (mobileMode && $(this).width() > mobileThreshold) {
-          return $("#slider").data("plugin_slidesjs").resize(slideWidth, slideHeight);
+          $("#slider").data("plugin_slidesjs").resize(slideWidth, slideHeight);
+          return skrollr.get().refresh();
         } else if ($(this).width() < mobileThreshold && !mobileMode) {
-          return $("#slider").data("plugin_slidesjs").resize(slideWidth, slideHeightMobile);
+          $("#slider").data("plugin_slidesjs").resize(slideWidth, slideHeightMobile);
+          return skrollr.get().refresh();
         }
       });
-      return $('.hoverPulse').addClass('animated').hover(function() {
+      $('.hoverPulse').addClass('animated').hover(function() {
         return $(this).toggleClass('pulse');
       });
+      delta = 0;
+      scrollIntercept = function(e) {
+        var appearanceThreshold;
+        appearanceThreshold = 5;
+        if (e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0) {
+          delta--;
+        } else {
+          delta++;
+        }
+        if (delta > 0) {
+          delta = 0;
+        } else if (delta < -appearanceThreshold) {
+          delta = -appearanceThreshold;
+        }
+        if (delta === 0) {
+          return $('#menubar').addClass("hidden");
+        } else if (delta === -appearanceThreshold) {
+          return $('#menubar').removeClass("hidden");
+        }
+      };
+      return $(window).on('DOMMouseScroll.menuscrolling mousewheel.menuscrolling', scrollIntercept);
     }
   });
 
