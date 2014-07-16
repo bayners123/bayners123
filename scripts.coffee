@@ -198,4 +198,26 @@ Modernizr.load
             $('.hoverPulse').addClass('animated').hover ->
                     $(this).toggleClass('pulse')
                     
-    
+            # Hide menubar when scrolling downwards
+            delta = 0
+            scrollIntercept = (e) ->
+                appearanceThreshold = 5
+                
+                if e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0
+                    delta--
+                else
+                    delta++
+                    
+                if delta > 0
+                    delta = 0
+                else if delta < -appearanceThreshold 
+                    delta = -appearanceThreshold
+                    
+                if delta == 0
+                    $('#menuBar').addClass("hidden")
+                    # $('#mobileBar').addClass("hidden")
+                else if delta == -appearanceThreshold
+                    $('#menuBar').removeClass("hidden")
+                    # $('#mobileBar').removeClass("hidden")
+                
+            $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling', scrollIntercept

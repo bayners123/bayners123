@@ -49,8 +49,17 @@ em { font-style: italic; }
     width: 100%;
 	min-width: 750px;
     display: block;
-/*    background: #FFF;*/
     text-align: center;
+    
+    /* To hide the bar when scrolling down */
+    -webkit-transition: margin-top 0.25s ease-in-out;
+    -moz-transition: margin-top 0.25s ease-in-out;
+    -o-transition: margin-top 0.25s ease-in-out;
+    transition: margin-top 0.25s ease-in-out;
+}
+
+#menuBar.hidden {
+    margin-top: -3.1875em !important;
 }
 
 #menuBar a {
