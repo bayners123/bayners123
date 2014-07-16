@@ -162,17 +162,24 @@ Modernizr.load
 
             # Resize slider aspect ratio if the screen gets smaller (bind to window.resize event)
             $(window).resize ->
-
+                
+                # Are we already in mobile mode? Check by looking at the slider's current dimentions
                 mobileMode = $("#slider").data("plugin_slidesjs").options.width / $("#slider").data("plugin_slidesjs").options.height == slideWidth / slideHeightMobile
 
                 # If it's currently in mobile mode & we changed to normal mode:
                 if mobileMode && $(@).width() > mobileThreshold
                     $("#slider").data("plugin_slidesjs").resize slideWidth, slideHeight
+                    
+                    # Refresh skrollr
+                    skrollr.get().refresh()
 
                 # Else if it's currently in normal and we changed to mobile:
                 else if $(@).width() < mobileThreshold  && !mobileMode
                     $("#slider").data("plugin_slidesjs").resize slideWidth, slideHeightMobile
-            
+                    
+                    # Refresh skrollr
+                    skrollr.get().refresh()
+
             # Animate .hoverPulse elements when hovered using 'Animate.css'
             $('.hoverPulse').addClass('animated').hover ->
                     $(this).toggleClass('pulse')
