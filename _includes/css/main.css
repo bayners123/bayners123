@@ -40,7 +40,7 @@ em { font-style: italic; }
     background: #EEE;
 }
 
-#menuBar {
+#menubar {
     position: fixed;
 	z-index: 20;
     top: 0;
@@ -58,11 +58,11 @@ em { font-style: italic; }
     transition: margin-top 0.25s ease-in-out;
 }
 
-#menuBar.hidden {
+#menubar.hidden {
     margin-top: -3.1875em !important;
 }
 
-#menuBar a {
+#menubar a {
     text-decoration: none;
     color: #002147;
     font-size: 0.875em;

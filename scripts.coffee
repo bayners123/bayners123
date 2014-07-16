@@ -9,12 +9,12 @@ Modernizr.load
     nope: ['skrollr.min.js', 'skrollr-stylesheets.js', 'skrollr-menu.min.js'],
 
     callback: (url, result, key) ->
-    # If we loaded Skrollr & aren't on a small screen, immediately move the menuBar off the page since it will otherwise bounce around when skrollr loads
+    # If we loaded Skrollr & aren't on a small screen, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
     # We only want to do this once, so check that it was skrollr that was loaded and not skrollr-stylesheets        
         if (url=="skrollr.min.js" && !result) 
             if screen.width > 799
-                menuBar = document.getElementById('menuBar')
-                menuBar.style.top = "100%"
+                menubar = document.getElementById('menubar')
+                menubar.style.top = "100%"
             
             # Are we running IE 8 or less? Well bugger, but let's try to patch some holes
             if typeof IElt9 != 'undefined'
@@ -29,38 +29,38 @@ Modernizr.load
 
     # ... then run code that depends on jQuery & slidesjs
 
-            # function to toggle menuBar visibility & change mobilebar morebutton icon
-            toggleMenu = (menuBar, moreButtonI) ->
-                if menuBar.is(':visible')
-                    menuBar.slideUp()
+            # function to toggle menubar visibility & change mobilebar morebutton icon
+            toggleMenu = (menubar, moreButtonI) ->
+                if menubar.is(':visible')
+                    menubar.slideUp()
                     moreButtonI
                         .removeClass("fa-angle-double-up")
                         .addClass("fa-angle-double-down")
                 else
-                    menuBar
+                    menubar
                         .slideDown()
                     moreButtonI
                         .removeClass("fa-angle-double-down")
                         .addClass("fa-angle-double-up")
                         
-            $menuBar = $('#menuBar')
-            $mobileBar= $('#mobileBar')
-            $moreButtonA = $('#mobileBar #moreButton')
-            $moreButtonI = $('#mobileBar #moreButton i')
+            $menubar = $('#menubar')
+            $mobilebar= $('#mobilebar')
+            $moreButtonA = $('#mobilebar #moreButton')
+            $moreButtonI = $('#mobilebar #moreButton i')
             
             # Register the click event for the mobile menu
             $($moreButtonA).click (event) ->
                 event.preventDefault()
 
-                toggleMenu $menuBar, $moreButtonI
+                toggleMenu $menubar, $moreButtonI
                 
-            # Hide the menubar if we click it on a mobile (since the mobileBar is also present)
+            # Hide the menubar if we click it on a mobile (since the mobilebar is also present)
             # N.B. we do not preventDefault so the click will still cause navigation
-            $($menuBar).click ->
+            $($menubar).click ->
                 # If we're in mobile mode:
-                if $mobileBar.is(':visible')
+                if $mobilebar.is(':visible')
                 # then hide the menubar
-                    toggleMenu $menuBar, $moreButtonI
+                    toggleMenu $menubar, $moreButtonI
 
             # Load constants for the slider
             slideWidth = $("#slider").data("aspectratio")
@@ -214,10 +214,10 @@ Modernizr.load
                     delta = -appearanceThreshold
                     
                 if delta == 0
-                    $('#menuBar').addClass("hidden")
-                    # $('#mobileBar').addClass("hidden")
+                    $('#menubar').addClass("hidden")
+                    # $('#mobilebar').addClass("hidden")
                 else if delta == -appearanceThreshold
-                    $('#menuBar').removeClass("hidden")
-                    # $('#mobileBar').removeClass("hidden")
+                    $('#menubar').removeClass("hidden")
+                    # $('#mobilebar').removeClass("hidden")
                 
             $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling', scrollIntercept

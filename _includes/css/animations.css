@@ -14,7 +14,7 @@
 .content > .right {
     -skrollr-animation-name: rightAppear;
 }
-#mobileBar { -skrollr-animation-name: mobilebar; }
+#mobilebar { -skrollr-animation-name: mobilebar; }
 
 @-skrollr-keyframes header {
     top {

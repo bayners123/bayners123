@@ -3,11 +3,11 @@
     test: Modernizr.touch,
     nope: ['skrollr.min.js', 'skrollr-stylesheets.js', 'skrollr-menu.min.js'],
     callback: function(url, result, key) {
-      var menuBar;
+      var menubar;
       if (url === "skrollr.min.js" && !result) {
         if (screen.width > 799) {
-          menuBar = document.getElementById('menuBar');
-          menuBar.style.top = "100%";
+          menubar = document.getElementById('menubar');
+          menubar.style.top = "100%";
         }
         if (typeof IElt9 !== 'undefined') {
           return Modernizr.load('skrollr.ie.min.js');
@@ -19,30 +19,30 @@
   Modernizr.load({
     load: ['//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', 'jquery.slides.js'],
     complete: function() {
-      var $menuBar, $mobileBar, $moreButtonA, $moreButtonI, mobileThreshold, slideHeight, slideHeightMobile, slideWidth, toggleMenu;
+      var $menubar, $mobilebar, $moreButtonA, $moreButtonI, mobileThreshold, slideHeight, slideHeightMobile, slideWidth, toggleMenu;
       if (!window.jQuery) {
         Modernizr.load('jquery.min.js');
       }
-      toggleMenu = function(menuBar, moreButtonI) {
-        if (menuBar.is(':visible')) {
-          menuBar.slideUp();
+      toggleMenu = function(menubar, moreButtonI) {
+        if (menubar.is(':visible')) {
+          menubar.slideUp();
           return moreButtonI.removeClass("fa-angle-double-up").addClass("fa-angle-double-down");
         } else {
-          menuBar.slideDown();
+          menubar.slideDown();
           return moreButtonI.removeClass("fa-angle-double-down").addClass("fa-angle-double-up");
         }
       };
-      $menuBar = $('#menuBar');
-      $mobileBar = $('#mobileBar');
-      $moreButtonA = $('#mobileBar #moreButton');
-      $moreButtonI = $('#mobileBar #moreButton i');
+      $menubar = $('#menubar');
+      $mobilebar = $('#mobilebar');
+      $moreButtonA = $('#mobilebar #moreButton');
+      $moreButtonI = $('#mobilebar #moreButton i');
       $($moreButtonA).click(function(event) {
         event.preventDefault();
-        return toggleMenu($menuBar, $moreButtonI);
+        return toggleMenu($menubar, $moreButtonI);
       });
-      $($menuBar).click(function() {
-        if ($mobileBar.is(':visible')) {
-          return toggleMenu($menuBar, $moreButtonI);
+      $($menubar).click(function() {
+        if ($mobilebar.is(':visible')) {
+          return toggleMenu($menubar, $moreButtonI);
         }
       });
       slideWidth = $("#slider").data("aspectratio");

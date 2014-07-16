@@ -39,11 +39,11 @@
 @media only screen
 and (max-device-width : 799px) {
 
-body, #menuBar { min-width: 0; }
+body, #menubar { min-width: 0; }
 
 h2 { font-size: 1.5em }
 		
-#mobileBar {
+#mobilebar {
 	display: block;
 	position: fixed;
 	z-index: 20;
@@ -54,26 +54,26 @@ h2 { font-size: 1.5em }
 	font-size: 1.5em;
 }
 
-#mobileBar a { color: #999; }
+#mobilebar a { color: #999; }
 
 #skrollr-body { padding-top: 3.875em; }
 
-#menuBar { display: none; }
+#menubar { display: none; }
 
-#menuBar { 
+#menubar { 
 	background: white !important;
 	height: auto;
     padding: 3.75em 0 1em;
 }
 
-#menuBar a { 
+#menubar a { 
 	display: block;
 	float: left;
 	width: 49%;
 	padding: 0;
 }
 
-#menuBar a:nth-child(odd) { border-right: 1px solid black; }
+#menubar a:nth-child(odd) { border-right: 1px solid black; }
 
 #oxLogo { display: none; }
 #oxLogoMob { display: inline; }

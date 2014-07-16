@@ -1,5 +1,5 @@
 
-#menuBar { -skrollr-animation-name: menuFlick; }
+#menubar { -skrollr-animation-name: menuFlick; }
 
 @-skrollr-keyframes menuFlick {
     0 {
