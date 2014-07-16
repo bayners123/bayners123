@@ -11,3 +11,5 @@ Design by Charles Baynham of [Baynham Design](http://www.baynhamdesign.co.uk/)
 * Bigger slider buttons
 * More news
 * __Shuffle order of mobile tabs so that it's like a slider? Woah....__
+* Make menubar only appear when you're sliding up
+* Animate appearance of tabs
