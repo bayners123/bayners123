@@ -6,7 +6,7 @@
     -skrollr-animation-name: sliderParallax;
 }
 .content {
-    -skrollr-animation-name: boxAppearZoom;
+    -skrollr-animation-name: boxAppear;
 }
 .content > .left {
     -skrollr-animation-name: leftAppear;
@@ -44,22 +44,6 @@
     -40p-bottom-top {
         opacity: 1;
         transform: translateY(0px);
-    }
-}
-
-@-skrollr-keyframes boxAppearZoom {
-    -5p-bottom-top {
-      opacity: 0;
-      -webkit-transform: translate3d(0, -10%, 0);
-      -ms-transform: translate3d(0, -10%, 0);
-      transform: translate3d(0, -10%, 0);
-    }
-
-    -40p-bottom-top {
-      opacity: 1;
-      -webkit-transform: none;
-      -ms-transform: none;
-      transform: none;
     }
 }
 

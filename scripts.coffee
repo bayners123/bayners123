@@ -161,7 +161,7 @@ Modernizr.load
                 # Bind research bubbles to the appropriate sections of the tabs & make them cause the tabs to appear
                 $('.researchBubble').click ->
                     # $('#researchDetails').removeClass("hidden")
-                    $('#researchDetails').show().addClass("animated zoomIn")
+                    $('#researchDetails').show().addClass("animated appearZoom")
                 
                 $('#research1').click ->
                     $('#researchLink1').click()
