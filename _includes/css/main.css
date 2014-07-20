@@ -180,7 +180,15 @@ em { font-style: italic; }
 }
 
 a.expandSection {
-    display: block;
+	text-align: center;
+	position: relative;
+	background: white;
+	height: 4em;
+	vertical-align: middle;
+}
+a.expandSection i {
+	position: absolute;
+	left: 1em;
 }
 
 .tabmenu > li > a {
