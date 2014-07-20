@@ -41,7 +41,7 @@
         opacity: 0;
         transform: translateY(150px);
     }
-    -40p-bottom-top {
+    -30p-bottom-top {
         opacity: 1;
         transform: translateY(0px);
     }
@@ -51,7 +51,7 @@
     -5p-bottom {
         transform: translate(-25%, -150px);
     }
-    -40p-bottom {
+    -30p-bottom {
         transform: translate(0%, 0px);
     }
 }
@@ -60,7 +60,7 @@
     -5p-bottom {
         transform: translate(25%, -150px);
     }
-    -40p-bottom {
+    -30p-bottom {
         transform: translate(0%, 0px);
     }
 }
