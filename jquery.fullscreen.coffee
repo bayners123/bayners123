@@ -25,8 +25,7 @@
     
     pluginName = "fullscreen"
     defaults = 
-        activeClass: "fullscreenActive"
-        # inactiveClass: null
+        activeClass: "jqueryfullscreen_active"
     
     class Plugin
       constructor: (@element, options) ->
@@ -39,18 +38,21 @@
         
         # Bind the checker to window resize
         $(window).resize =>
-            @_check()
+            @check()
             
         # Check once at document.ready
         $ =>
-            @_check()
+            @check()
         
     # Check if the element has the active class and, if it does, resize it
-    Plugin::_check = ->
+    #  If it doesn't, go back to default stylesheet size
+    Plugin::check = ->
         $element = $(@element)
         
         if $element.hasClass @options.activeClass
             @_resizeToFull()
+        else
+            @_removeStyles()    
     
     # Resize the element fully    
     Plugin::_resizeToFull = ->
@@ -62,6 +64,31 @@
         $element.css
               height: height
               width: width
+              
+    Plugin::setActive = ->
+        $(@element).addClass @options.activeClass
+        @check()
+    
+    Plugin::setInactive = ->
+        $(@element).removeClass @options.activeClass
+        @check()
+        
+    Plugin::toggleActive = ->
+        $element = $(@element)
+        
+        if $element.hasClass @options.activeClass
+            @_setInactive()
+        else
+            @_setActive()
+        
+    
+    # Remove any inline sizes
+    Plugin::_removeStyles = ->
+        $element = $(@element)
+        
+        $element.css
+              height: ""
+              width: ""
         
     # Plugin constructor
     $.fn[pluginName] = (options) ->
