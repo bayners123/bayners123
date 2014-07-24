@@ -33,11 +33,16 @@ p { margin-bottom: 0.625em; }
 strong { font-weight: bold; }
 em { font-style: italic; }
 
-.box {
+.box, .expandSection {
 	color: #002147;
 	box-shadow: 0 0 20px #000;
     border: 3px solid #002147;
     background: #EEE;
+}
+
+.expandSection {
+    z-index: -1;
+    border-top: none;
 }
 
 #menubar {
@@ -182,8 +187,7 @@ em { font-style: italic; }
 a.expandSection {
 	text-align: center;
 	position: relative;
-	background: white;
-	height: 4em;
+	height: 3em;
 	vertical-align: middle;
 }
 a.expandSection i {

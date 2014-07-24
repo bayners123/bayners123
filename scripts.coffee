@@ -197,8 +197,10 @@ Modernizr.load
                     if $expandControl.length != 0
                         
                         # Look for the two divs containing the shrunk and the expanded display
+                        # Also find the arrow if present
                         $shortSection = $(this).children('.shrunk')
                         $longSection = $(this).children('.expanded')
+                        $arrow = $expandControl.children('.fa.fa-arrow-down')
                         
                         $longSection
                             .addClass 'hidden'
@@ -208,6 +210,7 @@ Modernizr.load
                         $expandControl.data
                             "shortSection": $shortSection
                             "longSection": $longSection
+                            "arrow": $arrow
                         
                         # Register a click handler to toggle their visibility
                         $expandControl.on "click.expansion", (e) ->
@@ -218,19 +221,30 @@ Modernizr.load
                             # Get the sections which it controls (set earlier in the initialisation)
                             short = clickedLink.data("shortSection")
                             long = clickedLink.data("longSection")
+                            arrow = clickedLink.data("arrow")
                             
                             # Toggle their visibilities
                             if long.hasClass("hidden")
+                                # Mark it as hidden for this script
                                 short.addClass 'hidden'
                                 long.removeClass 'hidden'
+                                
+                                # Hide / show them
                                 short.slideUp()
                                 long.slideDown()
+                                
+                                # Change the arrow
+                                arrow
+                                    .addClass "fa-arrow-up"
+                                    .removeClass "fa-arrow-down"
                             else
                                 short.removeClass 'hidden'
                                 long.addClass 'hidden'
                                 short.slideDown()
                                 long.slideUp()
-                                
+                                arrow
+                                    .addClass "fa-arrow-down"
+                                    .removeClass "fa-arrow-up"
                                 
                             if skrollr
                                 skrollr.get().refresh()
