@@ -207,7 +207,7 @@ Modernizr.load
                             .data "expandControl": $expandControl
                             .click (e) ->
                                 $(e.target).data("expandControl").click()
-                                return false
+                                e.preventDefault()
                         
                         $longSection
                             .addClass 'hidden'
