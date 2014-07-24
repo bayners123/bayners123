@@ -119,46 +119,52 @@
                 
                 <i class="fa fa-file-text-o right"></i>
             
-                <!-- This will be done in a clever, Jekylly way later on -->
-            
                 <!-- White box -->
-    			<div class="unit whole box">
+    			<div class="unit whole box expandable">
+                    <!-- The expandable class will cause the children ".shrunk" and ".expanded"
+                        to toggle visibility when the sibling or child ".expandSection" is clicked.
+                         Child ".expandSection"s take priority, then siblings are searched for -->
                     
-                    <!-- Row one -->
-    	            <div class="grid">
-    	                <a href="#" class="unit half hoverPulse">
-    	                    <img src="{{ site.url }}/images/TOC.png" alt="pub1" />
-    	                    <p class="pubtitle">Synthesis and Characterization of [Ru@Ge12]3–: An Endohedral 3-Connected Cluster</p>
-    	                    <p><span class="pubjournal">Nature Photonics</span><span class="pubdate">30th December, 2013</span></p>
-    	                </a>
+                    <div class="shrunk">
+                        
+                        <!-- This will be done in a clever, Jekylly way later on -->
+                        
+                        <!-- Row one -->
+        	            <div class="grid">
+        	                <a href="#" class="unit half hoverPulse">
+        	                    <img src="{{ site.url }}/images/TOC.png" alt="pub1" />
+        	                    <p class="pubtitle">Synthesis and Characterization of [Ru@Ge12]3–: An Endohedral 3-Connected Cluster</p>
+        	                    <p><span class="pubjournal">Nature Photonics</span><span class="pubdate">30th December, 2013</span></p>
+        	                </a>
     	            
-    	                <a href="#" class="unit half hoverPulse">
-    	                    <img src="{{ site.url }}/images/TOC.png" alt="pub1" />
-    	                    <p class="pubtitle">Synthesis and Characterization of [Ru@Ge12]3–: An Endohedral 3-Connected Cluster</p>
-    	                    <p><span class="pubjournal">Nature Photonics</span><span class="pubdate">30th December, 2013</span></p>
-    	                </a>
-    	            </div>
+        	                <a href="#" class="unit half hoverPulse">
+        	                    <img src="{{ site.url }}/images/TOC.png" alt="pub1" />
+        	                    <p class="pubtitle">Synthesis and Characterization of [Ru@Ge12]3–: An Endohedral 3-Connected Cluster</p>
+        	                    <p><span class="pubjournal">Nature Photonics</span><span class="pubdate">30th December, 2013</span></p>
+        	                </a>
+        	            </div>
                     
-                    <!-- Row two -->
-                    <div class="grid">
-    	                <a href="#" class="unit half hoverPulse">
-    	                    <img src="{{ site.url }}/images/TOC.png" alt="pub1" />
-    	                    <p class="pubtitle">Synthesis and Characterization of [Ru@Ge12]3–: An Endohedral 3-Connected Cluster</p>
-    	                    <p><span class="pubjournal">Nature Photonics</span><span class="pubdate">30th December, 2013</span></p>
-    	                </a>
+                        <!-- Row two -->
+                        <div class="grid">
+        	                <a href="#" class="unit half hoverPulse">
+        	                    <img src="{{ site.url }}/images/TOC.png" alt="pub1" />
+        	                    <p class="pubtitle">Synthesis and Characterization of [Ru@Ge12]3–: An Endohedral 3-Connected Cluster</p>
+        	                    <p><span class="pubjournal">Nature Photonics</span><span class="pubdate">30th December, 2013</span></p>
+        	                </a>
     	            
-    	                <a href="#" class="unit half hoverPulse">
-    	                    <img src="{{ site.url }}/images/TOC.png" alt="pub1" />
-    	                    <p class="pubtitle">Synthesis and Characterization of [Ru@Ge12]3–: An Endohedral 3-Connected Cluster</p>
-    	                    <p><span class="pubjournal">Nature Photonics</span><span class="pubdate">30th December, 2013</span></p>
-    	                </a>
-    	            </div>
-
-            
-    	            <!-- end clever Jekylly bit -->
-                
+        	                <a href="#" class="unit half hoverPulse">
+        	                    <img src="{{ site.url }}/images/TOC.png" alt="pub1" />
+        	                    <p class="pubtitle">Synthesis and Characterization of [Ru@Ge12]3–: An Endohedral 3-Connected Cluster</p>
+        	                    <p><span class="pubjournal">Nature Photonics</span><span class="pubdate">30th December, 2013</span></p>
+        	                </a>
+        	            </div>
+        	            <!-- end clever Jekylly bit -->
+                    </div>
+                    
+                    <div id="testID" class="expanded">Here's the expanded version</div>
+                    
                 </div>
-				
+                
 	            <a class="expandSection unit no-gutters" href="#">
 	                <i class="fa fa-arrow-down fa-3x"></i>
 					Show all
