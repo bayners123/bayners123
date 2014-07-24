@@ -202,6 +202,13 @@ Modernizr.load
                         $longSection = $(this).children('.expanded')
                         $arrow = $expandControl.children('.fa.fa-arrow-down')
                         
+                        # Make clicking the arrow or the text (or other children) just trigger the parent
+                        $expandControl.find("*")
+                            .data "expandControl": $expandControl
+                            .click (e) ->
+                                $(e.target).data("expandControl").click()
+                                return false
+                        
                         $longSection
                             .addClass 'hidden'
                             .hide()

@@ -185,10 +185,16 @@ em { font-style: italic; }
 }
 
 a.expandSection {
+    display: table;
+    overflow: hidden;
+    
 	text-align: center;
 	position: relative;
-	height: 3em;
-	vertical-align: middle;
+	height: 4em;
+}
+a.expandSection span {
+    display: table-cell;
+    vertical-align: middle;
 }
 a.expandSection i {
 	position: absolute;
