@@ -4,7 +4,7 @@
 # Load scripts depending on browser capabilities
 
 # Load skrollr if we're not on a mobile, but don't initialise it yet
-Modernizr.load
+Modernizr.load [
     test: Modernizr.touch,
     nope: ['/skrollr.min.js', '/skrollr-stylesheets.js', '/skrollr-menu.min.js'],
 
@@ -19,15 +19,16 @@ Modernizr.load
             # Are we running IE 8 or less? Well bugger, but let's try to patch some holes
             if typeof IElt9 != 'undefined'
                 Modernizr.load '/skrollr.ie.min.js'   
-
-Modernizr.load 
+    ,
     # Load jquery with a local fallback 
-        load: '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
+        load: 'timeout=2000!//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
         complete: ->
             if !window.jQuery
-                Modernizr.load '/jquery.min.js'
-
-            Modernizr.load '/jquery.slides.js'
+                Modernizr.load
+                    load: '/jquery.min.js'
+    ,
+        load: '/jquery.slides.js'
+        complete: ->
 
     # ... then run code that depends on jQuery & slidesjs
 
@@ -308,3 +309,4 @@ Modernizr.load
                     # $('#mobilebar').removeClass("hidden")
                 
             $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling', scrollIntercept
+    ]
