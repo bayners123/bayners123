@@ -300,19 +300,12 @@ Modernizr.load [
                 
             $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling', scrollIntercept
             
+    ,
+        load: 'jquery.fullscreen.js',
+        complete: ->
+            
             # Fullscreen test for group members section
             
-            # Function to resize an element to fullscreen size if it has the "fullscreenActive" class
-            resizeMe = (e) ->
-                if e.data.theElement.hasClass "fullscreenActive"
-                    e.data.theElement.css
-                        height: window.innerHeight
-                        width: window.innerWidth                
-                        # console.log "Setting height: " + window.innerHeight+ ", width: " + window.innerWidth
+            $('#groupmembers').fullscreen activeClass : "foo"
             
-            $(window).resize theElement: $('#groupmembers'), resizeMe
-            
-            
-            # Trigger an initial window resize
-            $ -> $(window).resize()
     ]
