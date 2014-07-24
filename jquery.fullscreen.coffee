@@ -77,9 +77,9 @@
         $element = $(@element)
         
         if $element.hasClass @options.activeClass
-            @_setInactive()
+            @setInactive()
         else
-            @_setActive()
+            @setActive()
         
     
     # Remove any inline sizes
