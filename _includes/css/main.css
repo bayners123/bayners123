@@ -226,6 +226,10 @@ a.expandSection i {
     overflow: hidden;
 }
 
+#groupmembers, #groupmembers > .box {
+    height: 100%;
+}
+
 .alpha60bgBlack {
     /* Fallback for web browsers that doesn't support RGBa */
     background: rgb(0, 0, 0) transparent;

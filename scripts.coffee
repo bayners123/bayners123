@@ -299,4 +299,20 @@ Modernizr.load [
                     # $('#mobilebar').removeClass("hidden")
                 
             $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling', scrollIntercept
+            
+            # Fullscreen test for group members section
+            
+            # Function to resize an element to fullscreen size if it has the "fullscreenActive" class
+            resizeMe = (e) ->
+                if e.data.theElement.hasClass "fullscreenActive"
+                    e.data.theElement.css
+                        height: window.innerHeight
+                        width: window.innerWidth                
+                        # console.log "Setting height: " + window.innerHeight+ ", width: " + window.innerWidth
+            
+            $(window).resize theElement: $('#groupmembers'), resizeMe
+            
+            
+            # Trigger an initial window resize
+            $ -> $(window).resize()
     ]
