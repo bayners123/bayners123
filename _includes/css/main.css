@@ -211,15 +211,7 @@ a.expandSection i {
 .tabs > .tab { display: none; }
 .tabs > .tab.active { display: block; }
 
-.expandable > * {
-    /* To show/hide the expandable sections */
-    -webkit-transition: height 0.25s ease-in-out;
-    -moz-transition: height 0.25s ease-in-out;
-    -o-transition: height 0.25s ease-in-out;
-    transition: height 0.25s ease-in-out;
-}
-
-#researchDetails.hidden, .expandable .hidden {
+#researchDetails.hidden {
     height: 0px;
     overflow: hidden;
 }

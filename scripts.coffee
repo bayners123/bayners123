@@ -200,7 +200,9 @@ Modernizr.load
                         $shortSection = $(this).children('.shrunk')
                         $longSection = $(this).children('.expanded')
                         
-                        $longSection.addClass 'hidden'
+                        $longSection
+                            .addClass 'hidden'
+                            .hide()
                         
                         # Save the jQuery objects for these with the link
                         $expandControl.data
@@ -221,10 +223,15 @@ Modernizr.load
                             if long.hasClass("hidden")
                                 short.addClass 'hidden'
                                 long.removeClass 'hidden'
+                                short.slideUp()
+                                long.slideDown()
                             else
                                 short.removeClass 'hidden'
                                 long.addClass 'hidden'
-                            
+                                short.slideDown()
+                                long.slideUp()
+                                
+                                
                             if skrollr
                                 skrollr.get().refresh()
                                 
