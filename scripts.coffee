@@ -6,26 +6,26 @@
 # Load skrollr if we're not on a mobile, but don't initialise it yet
 Modernizr.load
     test: Modernizr.touch,
-    nope: ['skrollr.min.js', 'skrollr-stylesheets.js', 'skrollr-menu.min.js'],
+    nope: ['/skrollr.min.js', '/skrollr-stylesheets.js', '/skrollr-menu.min.js'],
 
     callback: (url, result, key) ->
     # If we loaded Skrollr & aren't on a small screen, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
-    # We only want to do this once, so check that it was skrollr that was loaded and not skrollr-stylesheets        
-        if (url=="skrollr.min.js" && !result) 
+    # We only want to do this once, so check that it was skrollr that was loaded and not skrollr-stylesheets
+        if (url=="skrollr.min.js" && !result)
             if screen.width > 799
                 menubar = document.getElementById('menubar')
                 menubar.style.top = "100%"
-            
+
             # Are we running IE 8 or less? Well bugger, but let's try to patch some holes
             if typeof IElt9 != 'undefined'
-                Modernizr.load 'skrollr.ie.min.js'   
+                Modernizr.load '/skrollr.ie.min.js'   
 
 Modernizr.load 
     # Load jquery with a local fallback 
         load: ['//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js','jquery.slides.js']
         complete: ->
             if !window.jQuery
-                Modernizr.load 'jquery.min.js'
+                Modernizr.load '/jquery.min.js'
 
     # ... then run code that depends on jQuery & slidesjs
 
@@ -178,7 +178,59 @@ Modernizr.load
                     # Init skrollr menus
                     skrollr.menu.init skrollr.get()
 
+                
+                # EXPANDABLE SECTIONS
+                
+                # Find all .expandable sections
+                $expandableSections = $('.expandable')
+                
+                # For each of them, initialise the controlling link to show / hide appropriately
+                $expandableSections.each ->
+                    
+                    # Find the controlling link. Look first for a child of the .expandable section
+                    # If not found, look at the siblings
+                    $expandControl = $(this).children('.expandSection')
+                    if $expandControl.length == 0
+                        $expandControl = $(this).siblings('.expandSection')
+                    
+                    # If we found a controlling link...
+                    if $expandControl.length != 0
+                        
+                        # Look for the two divs containing the shrunk and the expanded display
+                        $shortSection = $(this).children('.shrunk')
+                        $longSection = $(this).children('.expanded')
+                        
+                        $longSection.addClass 'hidden'
+                        
+                        # Save the jQuery objects for these with the link
+                        $expandControl.data
+                            "shortSection": $shortSection
+                            "longSection": $longSection
+                        
+                        # Register a click handler to toggle their visibility
+                        $expandControl.on "click.expansion", (e) ->
+                        
+                            # Get this link that was clicked
+                            clickedLink = $(e.target)
 
+                            # Get the sections which it controls (set earlier in the initialisation)
+                            short = clickedLink.data("shortSection")
+                            long = clickedLink.data("longSection")
+                            
+                            # Toggle their visibilities
+                            if long.hasClass("hidden")
+                                short.addClass 'hidden'
+                                long.removeClass 'hidden'
+                            else
+                                short.removeClass 'hidden'
+                                long.addClass 'hidden'
+                            
+                            if skrollr
+                                skrollr.get().refresh()
+                                
+                            # Prevent default link action 
+                            e.preventDefault()
+                        
             # Resize slider aspect ratio if the screen gets smaller (bind to window.resize event)
             $(window).resize ->
                             
