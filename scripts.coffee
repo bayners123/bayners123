@@ -205,33 +205,23 @@ Modernizr.load [
                         $longSection = $(this).children('.expanded')
                         $arrow = $expandControl.children('.fa.fa-arrow-down')
                         
-                        # Make clicking the arrow or the text (or other children) just trigger the parent
-                        $expandControl.find("*")
-                            .data "expandControl": $expandControl
-                            .click (e) ->
-                                $(e.target).data("expandControl").click()
-                                e.preventDefault()
-                        
                         $longSection
                             .addClass 'hidden'
                             .hide()
                         
                         # Save the jQuery objects for these with the link
-                        $expandControl.data
+                        eventData = 
                             "shortSection": $shortSection
                             "longSection": $longSection
                             "arrow": $arrow
                         
                         # Register a click handler to toggle their visibility
-                        $expandControl.on "click.expansion", (e) ->
-                        
-                            # Get this link that was clicked
-                            clickedLink = $(e.target)
+                        $expandControl.on "click.expansion", eventData, (e) ->
 
                             # Get the sections which it controls (set earlier in the initialisation)
-                            short = clickedLink.data("shortSection")
-                            long = clickedLink.data("longSection")
-                            arrow = clickedLink.data("arrow")
+                            short = e.data.shortSection
+                            long = e.data.longSection
+                            arrow = e.data.arrow
                             
                             # Toggle their visibilities
                             if long.hasClass("hidden")
