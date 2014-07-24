@@ -26,6 +26,8 @@
     pluginName = "fullscreen"
     defaults = 
         activeClass: "jqueryfullscreen_active"
+        scrollCapture: true
+        scrollCaptureRange: 100
     
     class Plugin
       constructor: (@element, options) ->
@@ -43,6 +45,14 @@
         # Check once at document.ready
         $ =>
             @check()
+            
+        # If we're capturing scrolling, register the handler
+        if @options.scrollCapture
+            $(window).scroll =>
+                clearTimeout $.data(window, 'scrollTimer')
+                $.data window, 'scrollTimer', setTimeout( =>
+                    @_checkScroll()
+                , 250)
         
     # Check if the element has the active class and, if it does, resize it
     #  If it doesn't, go back to default stylesheet size
@@ -80,7 +90,6 @@
             @setInactive()
         else
             @setActive()
-        
     
     # Remove any inline sizes
     Plugin::_removeStyles = ->
@@ -89,6 +98,19 @@
         $element.css
               height: ""
               width: ""
+        
+    # Check the scrollbar position and, if we're close to the element, scroll the screen exactly to it
+    Plugin::_checkScroll = ->
+        elementPos = @element.offsetTop
+        scrollPos = $(window).scrollTop()
+        
+        if $(@element).hasClass(@options.activeClass) && elementPos - @options.scrollCaptureRange < scrollPos && scrollPos < elementPos + @options.scrollCaptureRange
+            @_scrollTo()
+            
+    # Scroll to the element
+    Plugin::_scrollTo = ->
+        elementPos = @element.offsetTop
+        $('html, body').animate scrollTop: elementPos, 500
         
     # Plugin constructor
     $.fn[pluginName] = (options) ->

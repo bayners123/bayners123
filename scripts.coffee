@@ -307,5 +307,15 @@ Modernizr.load [
             # Fullscreen test for group members section
             
             $('#groupmembers').fullscreen activeClass : "foo"
+            $('#groupmembers a').click "parent": $('#groupmembers'), (e) ->
+                $(e.data.parent).data("plugin_fullscreen").toggleActive()
+                return false
+
+            
+            # $(window).scroll ->
+            #     clearTimeout $.data(this, 'scrollTimer')
+            #     $.data this, 'scrollTimer', setTimeout( ->
+            #         console.log $(window).scrollTop()
+            #     , 250)
             
     ]
