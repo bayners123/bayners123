@@ -22,10 +22,12 @@ Modernizr.load
 
 Modernizr.load 
     # Load jquery with a local fallback 
-        load: ['//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js','jquery.slides.js']
+        load: '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
         complete: ->
             if !window.jQuery
                 Modernizr.load '/jquery.min.js'
+
+            Modernizr.load '/jquery.slides.js'
 
     # ... then run code that depends on jQuery & slidesjs
 
