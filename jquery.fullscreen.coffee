@@ -34,6 +34,8 @@
     
     data = 
         vendorPrefix : null
+        originalHeight : null
+        originalWidth : null
     
     class Plugin
       constructor: (@element, options) ->
@@ -82,13 +84,31 @@
     Plugin::_resizeToFull = ->
         $element = $(@element)
         
+        # Get target height & widths
         height = $(@options.parentElement).get(0).innerHeight
         width = $(@options.parentElement).get(0).innerWidth
         
+        console.log $element.height()
+        
+        # We can't animate from auto CSS values, so we'll animate max-height instead
+        # Let's first set it to the current height
+        $element.css("max-height", $element.height() )
+        
+        # Set up the transition
+        @element.style[@data.vendorPrefix + "Transition"] = "max-height 0.25s ease-in-out"
+        
+        # Set the new values
         $element.css
-              height: height
-              width: width
-    
+            height: height
+            width: width
+            "max-height": height
+        
+        # Once the transition has happened, remove the animation & the max-height
+        $element.on "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
+            $element.css
+                "max-height": ""
+            @element.style[@data.vendorPrefix + "Transition"] = ""
+            
         @
               
     Plugin::setActive = ->
