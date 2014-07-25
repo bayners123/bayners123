@@ -120,10 +120,7 @@
         
             # Set up the transition
             @element.style[@data.vendorPrefix + "Transition"] = "max-height " + @options.animationDuration + " ease-in-out"
-        
-            # console.log "some rubbish " + $element.css("color")
-            # console.log "2? " + $element.css("max-height")
-        
+            
             # Add timeout to let DOM update
             setTimeout =>
             
@@ -132,23 +129,15 @@
                     height: height
                     width: width
                     "max-height": height
-        
-            # console.log "3? " + $element.css("max-height")
-        
-            # Once the transition has finished, remove the animation & the max-height and update the flag
-            $element.on "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
+
+            # Once the transition has finished, remove the animation & the max-height, update the flag and then unbind this handler (.one jquery option)
+            $element.one "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
                 $element = $(@element)
         
-                # console.log "4? " + $element.css("max-height")
                 $element.css
                     "max-height": ""
                 @element.style[@data.vendorPrefix + "Transition"] = ""
                 @data.animating = false
-                # console.log "5? " + $element.css("max-height")
-                # console.log @data.originalHeight
-        
-                # Unbind transition callback to prevent build up
-                $element.unbind("transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd")
             
         @
               
