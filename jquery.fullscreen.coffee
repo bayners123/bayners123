@@ -26,10 +26,11 @@
     pluginName = "fullscreen"
     defaults = 
         activeClass: "jqueryfullscreen_active"
-        scrollCapture: true
-        scrollCaptureRange: 100
-        scrollOffset: 0
+        scrollCapture: true # Enable locking the window to the element when close
+        scrollCaptureRange: 100 # Distance from element within which the window will lock to it
+        scrollOffset: 0 # Offset to use when scrolling to the element
         scrollCallback: $.noop # Function (theElement)
+        parentElement: window # Parent element to be resized to match
     
     class Plugin
       constructor: (@element, options) ->
@@ -40,8 +41,8 @@
 
     Plugin::init = ->
         
-        # Bind the checker to window resize
-        $(window).resize =>
+        # Bind the checker to parent resize
+        $(@options.parentElement).resize =>
             @check()
             
         # Check once at document.ready
@@ -50,7 +51,7 @@
             
         # If we're capturing scrolling, register the handler
         if @options.scrollCapture
-            $(window).scroll =>
+            $(@options.parentElement).scroll =>
                 clearTimeout $.data(window, 'scrollTimer')
                 $.data window, 'scrollTimer', setTimeout( =>
                     @_checkScroll()
@@ -74,8 +75,8 @@
     Plugin::_resizeToFull = ->
         $element = $(@element)
         
-        height = window.innerHeight
-        width = window.innerWidth
+        height = $(@options.parentElement).get(0).innerHeight
+        width = $(@options.parentElement).get(0).innerWidth
         
         $element.css
               height: height
@@ -114,7 +115,7 @@
     # Check the scrollbar position and, if we're close to the element, scroll the screen exactly to it
     Plugin::_checkScroll = ->
         elementPos = @element.offsetTop
-        scrollPos = $(window).scrollTop()
+        scrollPos = $(@options.parentElement).scrollTop()
         
         if $(@element).hasClass(@options.activeClass) && elementPos + @options.scrollOffset - @options.scrollCaptureRange < scrollPos && scrollPos < elementPos + @options.scrollOffset + @options.scrollCaptureRange
             @_scrollTo()
@@ -126,7 +127,11 @@
         
         # Scroll the window to the element's top (+ offset) in 300ms
         elementPos = @element.offsetTop
-        $('html, body').animate scrollTop: elementPos + @options.scrollOffset, 300
+        
+        if $(@options.parentElement).get(0) == window
+            $('html, body').animate scrollTop: elementPos + @options.scrollOffset, 300
+        else
+            $(@options.parentElement).animate scrollTop: elementPos + @options.scrollOffset, 300
         
         # Trigger callback
         @options.scrollCallback @element
