@@ -34,6 +34,7 @@
         scrollCallback: $.noop # Function (theElement)
         lostFocusCallback: $.noop # Function (theElement)
         lostFocusRange: 200 # Distance at which to trigger the lostFocusCallback
+        shrinkOnLostFocus: false # Collapse the element if it's expanded and the user scrolls out of the lostFocus range
         parentElement: window # Parent element to be resized to match
         resizeCallback: $.noop # Function (theElement)
     
@@ -76,8 +77,8 @@
                     @_checkScroll()
                 , 500)
         
-        # If there's a lost-focus callback, set it up
-        if @options.lostFocusCallback != $.noop
+        # If there's a lost-focus callback or we're resizing, set it up
+        if @options.lostFocusCallback != $.noop || @options.shrinkOnLostFocus
             $(@options.parentElement).scroll =>
                 
                 # Are we animating?
@@ -87,8 +88,9 @@
                     scrollPos = $(@options.parentElement).scrollTop()
                 
                     # Check if we're out of the range (elementPosition + offset) ± captureRange
-                    # If so, trigger the callback
+                    # If so, trigger the callback & maybe the shrinking element
                     if elementPos + @options.offset - @options.lostFocusRange > scrollPos || scrollPos > elementPos + @options.offset + @options.lostFocusRange
+                        @setInactive() if @options.shrinkOnLostFocus
                         @options.lostFocusCallback(@element)
         @
         
@@ -195,8 +197,9 @@
             
                 @element.style[@data.vendorPrefix + "Transition"] = ""
                 @data.animating = false
-        
-        @options.resizeCallback(@element)
+                
+                # Trigger the resize callback
+                @options.resizeCallback(@element)
             
         @
         
@@ -241,7 +244,8 @@
                 @element.style[@data.vendorPrefix + "Transition"] = ""
                 @data.animating = false
                 
-        @options.resizeCallback(@element)
+                # Trigger the resize callback
+                @options.resizeCallback(@element)
               
         @
         
