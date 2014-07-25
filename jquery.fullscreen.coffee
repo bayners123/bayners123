@@ -93,7 +93,47 @@
         
         @data.originalHeight = $element.height()
         @data.originalWidth = $element.width()
+              
+    Plugin::setActive = ->
+        $(@element).addClass @options.activeClass
+        @check()
+        @_scrollTo()
+        
+        @
     
+    Plugin::setInactive = ->
+        $(@element).removeClass @options.activeClass
+        @check()
+        
+        @
+        
+    Plugin::toggleActive = ->
+        $element = $(@element)
+        
+        if $element.hasClass @options.activeClass
+            @setInactive()
+        else
+            @setActive()
+            
+        @
+        
+    # @_getVendorPrefix()
+    # Check if the browser supports CSS3 Transitions
+    # Thanks to Nathan Searles http://nathansearles.com of slidesjs
+    Plugin::_getVendorPrefix = () ->
+        body = document.body or document.documentElement
+        style = body.style
+
+        vendor = ["Moz", "Webkit", "Khtml", "O", "ms"]
+
+        i = 0
+
+        while i < vendor.length
+            return vendor[i] if typeof style[vendor[i] + "Transition"] is "string"
+            i++
+            
+        false
+
     # Resize the element fully    
     Plugin::_resizeToFull = ->
         $element = $(@element)
@@ -139,49 +179,8 @@
                 @data.animating = false
             
         @
-              
-    Plugin::setActive = ->
-        $(@element).addClass @options.activeClass
-        @check()
-        @_scrollTo()
         
-        @
-    
-    Plugin::setInactive = ->
-        $(@element).removeClass @options.activeClass
-        @check()
-        
-        @
-        
-    Plugin::toggleActive = ->
-        $element = $(@element)
-        
-        if $element.hasClass @options.activeClass
-            @setInactive()
-        else
-            @setActive()
-            
-        @
-        
-    # @_getVendorPrefix()
-    # Check if the browser supports CSS3 Transitions
-    # Thanks to Nathan Searles http://nathansearles.com of slidesjs
-    Plugin::_getVendorPrefix = () ->
-        body = document.body or document.documentElement
-        style = body.style
-
-        vendor = ["Moz", "Webkit", "Khtml", "O", "ms"]
-
-        i = 0
-
-        while i < vendor.length
-            return vendor[i] if typeof style[vendor[i] + "Transition"] is "string"
-            i++
-            
-        false
-
-    
-    # Remove any inline sizes
+    # Remove any inline height/width styles
     Plugin::_removeStyles = ->
         $element = $(@element)
         
