@@ -68,11 +68,14 @@
     };
     Plugin.prototype.setActive = function() {
       $(this.element).addClass(this.options.activeClass);
-      return this.check();
+      this.check();
+      this._scrollTo();
+      return this;
     };
     Plugin.prototype.setInactive = function() {
       $(this.element).removeClass(this.options.activeClass);
-      return this.check();
+      this.check();
+      return this;
     };
     Plugin.prototype.toggleActive = function() {
       var $element;
