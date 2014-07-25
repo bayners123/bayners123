@@ -29,6 +29,7 @@
         scrollCapture: true
         scrollCaptureRange: 100
         scrollOffset: 0
+        scrollCallback: $.noop # Function (theElement)
     
     class Plugin
       constructor: (@element, options) ->
@@ -53,7 +54,9 @@
                 clearTimeout $.data(window, 'scrollTimer')
                 $.data window, 'scrollTimer', setTimeout( =>
                     @_checkScroll()
-                , 250)
+                , 500)
+        
+        @
         
     # Check if the element has the active class and, if it does, resize it
     #  If it doesn't, go back to default stylesheet size
@@ -63,7 +66,9 @@
         if $element.hasClass @options.activeClass
             @_resizeToFull()
         else
-            @_removeStyles()    
+            @_removeStyles()
+            
+        @ 
     
     # Resize the element fully    
     Plugin::_resizeToFull = ->
@@ -75,6 +80,8 @@
         $element.css
               height: height
               width: width
+    
+        @
               
     Plugin::setActive = ->
         $(@element).addClass @options.activeClass
@@ -91,6 +98,8 @@
             @setInactive()
         else
             @setActive()
+            
+        @
     
     # Remove any inline sizes
     Plugin::_removeStyles = ->
@@ -99,6 +108,8 @@
         $element.css
               height: ""
               width: ""
+              
+        @
         
     # Check the scrollbar position and, if we're close to the element, scroll the screen exactly to it
     Plugin::_checkScroll = ->
@@ -108,10 +119,19 @@
         if $(@element).hasClass(@options.activeClass) && elementPos + @options.scrollOffset - @options.scrollCaptureRange < scrollPos && scrollPos < elementPos + @options.scrollOffset + @options.scrollCaptureRange
             @_scrollTo()
             
+        @
+            
     # Scroll to the element
     Plugin::_scrollTo = ->
+        
+        # Scroll the window to the element's top (+ offset) in 300ms
         elementPos = @element.offsetTop
-        $('html, body').animate scrollTop: elementPos + @options.scrollOffset, 500
+        $('html, body').animate scrollTop: elementPos + @options.scrollOffset, 300
+        
+        # Trigger callback
+        @options.scrollCallback @element
+        
+        @
         
     # Plugin constructor
     $.fn[pluginName] = (options) ->
