@@ -310,6 +310,10 @@ Modernizr.load [
                 activeClass : "foo"
                 scrollCallback: ->
                     $('#menubar').addClass("hidden")
+                lostFocusCallback: (element) ->
+                    $(element).data("plugin_fullscreen").setInactive()
+                # animation: false
+                # animationDuration: "1s"
                 # parentElement: $('#skrollr-body')
                 # scrollOffset: -100
             $('#groupmembers a').click "parent": $('#groupmembers'), (e) ->
