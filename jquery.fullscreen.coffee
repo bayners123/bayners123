@@ -30,10 +30,12 @@
         animationDuration: "0.25s"
         scrollCapture: true # Enable locking the window to the element when close
         scrollCaptureRange: 100 # Distance from element within which the window will lock to it
-        scrollOffset: 0 # Offset to use when scrolling to the element
+        offset: 0 # Consider the top of the element to be offset by this much
         scrollCallback: $.noop # Function (theElement)
         lostFocusCallback: $.noop # Function (theElement)
+        lostFocusRange: 200 # Distance at which to trigger the lostFocusCallback
         parentElement: window # Parent element to be resized to match
+        resizeCallback: $.noop # Function (theElement)
     
     data = 
         vendorPrefix : null
@@ -68,11 +70,26 @@
         # If we're capturing scrolling, register the handler
         if @options.scrollCapture
             $(@options.parentElement).scroll =>
+                # Launch @_checkScroll after 500ms stationary
                 clearTimeout $.data(window, 'scrollTimer')
                 $.data window, 'scrollTimer', setTimeout( =>
                     @_checkScroll()
                 , 500)
         
+        # If there's a lost-focus callback, set it up
+        if @options.lostFocusCallback != $.noop
+            $(@options.parentElement).scroll =>
+                
+                # Are we animating?
+                if not @data.animating
+                    # If we leave the capture zone, trigger the callback
+                    elementPos = @element.offsetTop
+                    scrollPos = $(@options.parentElement).scrollTop()
+                
+                    # Check if we're out of the range (elementPosition + offset) ± captureRange
+                    # If so, trigger the callback
+                    if elementPos + @options.offset - @options.lostFocusRange > scrollPos || scrollPos > elementPos + @options.offset + @options.lostFocusRange
+                        @options.lostFocusCallback(@element)
         @
         
     # Check if the element has the active class and, if it does, resize it
@@ -178,6 +195,8 @@
             
                 @element.style[@data.vendorPrefix + "Transition"] = ""
                 @data.animating = false
+        
+        @options.resizeCallback(@element)
             
         @
         
@@ -221,11 +240,13 @@
                     
                 @element.style[@data.vendorPrefix + "Transition"] = ""
                 @data.animating = false
+                
+        @options.resizeCallback(@element)
               
         @
         
     # Check the scrollbar position and, if we're close to the element, scroll the screen exactly to it
-    Plugin::_checkScroll = ->
+    Plugin::_checkScroll = (elementPos, scrollPos) ->
         elementPos = @element.offsetTop
         scrollPos = $(@options.parentElement).scrollTop()
         
@@ -233,11 +254,8 @@
         if $(@element).hasClass(@options.activeClass)
             # Check if we're in the range (elementPosition + offset) ± captureRange
             # If so, scroll exactly to it
-            if elementPos + @options.scrollOffset - @options.scrollCaptureRange < scrollPos && scrollPos < elementPos + @options.scrollOffset + @options.scrollCaptureRange
+            if elementPos + @options.offset - @options.scrollCaptureRange < scrollPos && scrollPos < elementPos + @options.offset + @options.scrollCaptureRange
                 @_scrollTo()
-            # Else, trigger the "lostFocus" callback
-            else
-                @options.lostFocusCallback(@element)
         
         @
             
@@ -248,9 +266,9 @@
         elementPos = @element.offsetTop
         
         if $(@options.parentElement).get(0) == window
-            $('html, body').animate scrollTop: elementPos + @options.scrollOffset, 300
+            $('html, body').animate scrollTop: elementPos + @options.offset, 300
         else
-            $(@options.parentElement).animate scrollTop: elementPos + @options.scrollOffset, 300
+            $(@options.parentElement).animate scrollTop: elementPos + @options.offset, 300
         
         # Trigger callback
         @options.scrollCallback @element
