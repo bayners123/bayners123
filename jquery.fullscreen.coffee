@@ -87,10 +87,15 @@
     Plugin::setActive = ->
         $(@element).addClass @options.activeClass
         @check()
+        @_scrollTo()
+        
+        @
     
     Plugin::setInactive = ->
         $(@element).removeClass @options.activeClass
         @check()
+        
+        @
         
     Plugin::toggleActive = ->
         $element = $(@element)
