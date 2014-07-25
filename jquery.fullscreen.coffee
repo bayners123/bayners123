@@ -36,6 +36,7 @@
         vendorPrefix : null
         originalHeight : null
         originalWidth : null
+        animating : false
     
     class Plugin
       constructor: (@element, options) ->
@@ -49,6 +50,9 @@
         
         # Save the vendor prefix
         @data.vendorPrefix = @_getVendorPrefix()
+        
+        # Save the original height and width
+        @_getDims()
         
         # Bind the checker to parent resize
         $(@options.parentElement).resize =>
@@ -77,8 +81,16 @@
             @_resizeToFull()
         else
             @_removeStyles()
-            
+            # If it's not expanded & not mid-animation, update the dimentions
+            @_getDims() if not @data.animating
         @ 
+    
+    # Store the height and width of the un-fullscreened element
+    Plugin::_getDims = ->
+        $element = $(@element)
+        
+        @data.originalHeight = $element.height()
+        @data.originalWidth = $element.width()
     
     # Resize the element fully    
     Plugin::_resizeToFull = ->
@@ -88,14 +100,19 @@
         height = $(@options.parentElement).get(0).innerHeight
         width = $(@options.parentElement).get(0).innerWidth
         
-        console.log $element.height()
+        # Flag start of animation
+        @data.animating = true
+        
+        console.log "1? " + $element.css("max-height")
         
         # We can't animate from auto CSS values, so we'll animate max-height instead
         # Let's first set it to the current height
         $element.css("max-height", $element.height() )
         
+        console.log "2? " + $element.css("max-height")
+        
         # Set up the transition
-        @element.style[@data.vendorPrefix + "Transition"] = "max-height 0.25s ease-in-out"
+        @element.style[@data.vendorPrefix + "Transition"] = "max-height 2s ease-in-out"
         
         # Set the new values
         $element.css
@@ -103,12 +120,17 @@
             width: width
             "max-height": height
         
-        # Once the transition has happened, remove the animation & the max-height
+        console.log "3? " + $element.css("max-height")
+        
+        # Once the transition has finished, remove the animation & the max-height and update the flag
         $element.on "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
+            console.log "4? " + $element.css("max-height")
             $element.css
                 "max-height": ""
             @element.style[@data.vendorPrefix + "Transition"] = ""
-            
+            @data.animating = false
+            console.log "5? " + $element.css("max-height")
+            console.log @data.originalHeight
         @
               
     Plugin::setActive = ->
