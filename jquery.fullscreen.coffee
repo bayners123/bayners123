@@ -114,24 +114,27 @@
             # Flag start of animation
             @data.animating = true
             
-            # We can't animate from auto CSS values, so we'll set height absolutly first
+            # We can't animate from auto CSS values, so we'll set height absolutely first
             $element.css("height", $element.height() )
             
-            # Set up the transition
-            @element.style[@data.vendorPrefix + "Transition"] = "height " + @options.animationDuration + " ease-in-out"
-            
-            # Add timeout to let DOM update
+            # Timeout
             setTimeout =>
             
-                # Set the new values
-                $element.css
-                    height: targetHeight
-                    width: targetWidth
+                # Set up the transition
+                @element.style[@data.vendorPrefix + "Transition"] = "height " + @options.animationDuration + " ease-in-out"
+            
+                # Add another timeout to let DOM update
+                setTimeout =>
+            
+                    # Set the new values
+                    $element.css
+                        height: targetHeight
+                        width: targetWidth
 
             # Once the transition has finished, remove the animation, update the flag and then unbind this handler (.one jquery option)
             $element.one "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
                 $element = $(@element)
-                
+            
                 @element.style[@data.vendorPrefix + "Transition"] = ""
                 @data.animating = false
             
