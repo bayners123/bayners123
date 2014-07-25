@@ -114,15 +114,21 @@
             # Flag start of animation
             @data.animating = true
             
+            console.log "Height 1 : " + $element.height()
+            
             # We can't animate from auto CSS values, so we'll set height absolutly first
             $element.css("height", $element.height() )
+            
+            console.log "Height 2 : " + $element.height()
             
             # Set up the transition
             @element.style[@data.vendorPrefix + "Transition"] = "height " + @options.animationDuration + " ease-in-out"
             
             # Add timeout to let DOM update
             setTimeout =>
-            
+
+                console.log "Height 3 : " + $element.height()
+                
                 # Set the new values
                 $element.css
                     height: targetHeight
@@ -132,8 +138,12 @@
             $element.one "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
                 $element = $(@element)
                 
+                console.log "Height 4 : " + $element.height()
+                
                 @element.style[@data.vendorPrefix + "Transition"] = ""
                 @data.animating = false
+                
+                console.log "Height 5 : " + $element.height()
             
         @
               
