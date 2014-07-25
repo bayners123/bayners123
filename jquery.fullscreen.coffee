@@ -32,14 +32,21 @@
         scrollCallback: $.noop # Function (theElement)
         parentElement: window # Parent element to be resized to match
     
+    data = 
+        vendorPrefix : null
+    
     class Plugin
       constructor: (@element, options) ->
         @options = $.extend true, {}, defaults, options
         @_defaults = defaults
         @_name = pluginName
+        @data = data
         @init()
 
     Plugin::init = ->
+        
+        # Save the vendor prefix
+        @data.vendorPrefix = @_getVendorPrefix()
         
         # Bind the checker to parent resize
         $(@options.parentElement).resize =>
@@ -106,6 +113,24 @@
             @setActive()
             
         @
+        
+    # @_getVendorPrefix()
+    # Check if the browser supports CSS3 Transitions
+    # Thanks to Nathan Searles http://nathansearles.com of slidesjs
+    Plugin::_getVendorPrefix = () ->
+        body = document.body or document.documentElement
+        style = body.style
+
+        vendor = ["Moz", "Webkit", "Khtml", "O", "ms"]
+
+        i = 0
+
+        while i < vendor.length
+            return vendor[i] if typeof style[vendor[i] + "Transition"] is "string"
+            i++
+            
+        false
+
     
     # Remove any inline sizes
     Plugin::_removeStyles = ->

@@ -316,7 +316,6 @@ Modernizr.load [
                 $(e.data.parent).data("plugin_fullscreen").toggleActive()
                 return false
 
-            
             # $(window).scroll ->
             #     clearTimeout $.data(this, 'scrollTimer')
             #     $.data this, 'scrollTimer', setTimeout( ->
