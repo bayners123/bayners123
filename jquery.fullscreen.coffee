@@ -26,6 +26,8 @@
     pluginName = "fullscreen"
     defaults = 
         activeClass: "jqueryfullscreen_active"
+        animation: true
+        animationDuration: "0.25s"
         scrollCapture: true # Enable locking the window to the element when close
         scrollCaptureRange: 100 # Distance from element within which the window will lock to it
         scrollOffset: 0 # Offset to use when scrolling to the element
@@ -100,37 +102,54 @@
         height = $(@options.parentElement).get(0).innerHeight
         width = $(@options.parentElement).get(0).innerWidth
         
-        # Flag start of animation
-        @data.animating = true
-        
-        console.log "1? " + $element.css("max-height")
-        
-        # We can't animate from auto CSS values, so we'll animate max-height instead
-        # Let's first set it to the current height
-        $element.css("max-height", $element.height() )
-        
-        console.log "2? " + $element.css("max-height")
-        
-        # Set up the transition
-        @element.style[@data.vendorPrefix + "Transition"] = "max-height 2s ease-in-out"
-        
-        # Set the new values
-        $element.css
-            height: height
-            width: width
-            "max-height": height
-        
-        console.log "3? " + $element.css("max-height")
-        
-        # Once the transition has finished, remove the animation & the max-height and update the flag
-        $element.on "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
-            console.log "4? " + $element.css("max-height")
+        # Is animation enabled?
+        if not @options.animation
+            
+            # Set the new values
             $element.css
-                "max-height": ""
-            @element.style[@data.vendorPrefix + "Transition"] = ""
-            @data.animating = false
-            console.log "5? " + $element.css("max-height")
-            console.log @data.originalHeight
+                height: height
+                width: width
+        
+        else
+            # Flag start of animation
+            @data.animating = true
+            
+            # We can't animate from auto CSS values, so we'll animate max-height instead
+            # Let's first set it to the current height
+            $element.css("max-height", $element.height() )
+        
+            # Set up the transition
+            @element.style[@data.vendorPrefix + "Transition"] = "max-height " + @options.animationDuration + " ease-in-out"
+        
+            # console.log "some rubbish " + $element.css("color")
+            # console.log "2? " + $element.css("max-height")
+        
+            # Add timeout to let DOM update
+            setTimeout =>
+            
+                # Set the new values
+                $element.css
+                    height: height
+                    width: width
+                    "max-height": height
+        
+            # console.log "3? " + $element.css("max-height")
+        
+            # Once the transition has finished, remove the animation & the max-height and update the flag
+            $element.on "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
+                $element = $(@element)
+        
+                # console.log "4? " + $element.css("max-height")
+                $element.css
+                    "max-height": ""
+                @element.style[@data.vendorPrefix + "Transition"] = ""
+                @data.animating = false
+                # console.log "5? " + $element.css("max-height")
+                # console.log @data.originalHeight
+        
+                # Unbind transition callback to prevent build up
+                $element.unbind("transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd")
+            
         @
               
     Plugin::setActive = ->
