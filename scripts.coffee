@@ -306,7 +306,12 @@ Modernizr.load [
             
             # Fullscreen test for group members section
             
-            $('#groupmembers').fullscreen activeClass : "foo"
+            $('#groupmembers').fullscreen
+                activeClass : "foo"
+                scrollCallback: ->
+                    $('#menubar').addClass("hidden")
+                # parentElement: $('#skrollr-body')
+                # scrollOffset: -100
             $('#groupmembers a').click "parent": $('#groupmembers'), (e) ->
                 $(e.data.parent).data("plugin_fullscreen").toggleActive()
                 return false
