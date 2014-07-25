@@ -32,6 +32,7 @@
         scrollCaptureRange: 100 # Distance from element within which the window will lock to it
         scrollOffset: 0 # Offset to use when scrolling to the element
         scrollCallback: $.noop # Function (theElement)
+        lostFocusCallback: $.noop # Function (theElement)
         parentElement: window # Parent element to be resized to match
     
     data = 
@@ -228,9 +229,16 @@
         elementPos = @element.offsetTop
         scrollPos = $(@options.parentElement).scrollTop()
         
-        if $(@element).hasClass(@options.activeClass) && elementPos + @options.scrollOffset - @options.scrollCaptureRange < scrollPos && scrollPos < elementPos + @options.scrollOffset + @options.scrollCaptureRange
-            @_scrollTo()
-            
+        # Is the element active?
+        if $(@element).hasClass(@options.activeClass)
+            # Check if we're in the range (elementPosition + offset) ± captureRange
+            # If so, scroll exactly to it
+            if elementPos + @options.scrollOffset - @options.scrollCaptureRange < scrollPos && scrollPos < elementPos + @options.scrollOffset + @options.scrollCaptureRange
+                @_scrollTo()
+            # Else, trigger the "lostFocus" callback
+            else
+                @options.lostFocusCallback(@element)
+        
         @
             
     # Scroll to the element
