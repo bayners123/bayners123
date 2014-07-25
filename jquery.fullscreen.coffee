@@ -80,9 +80,10 @@
         # If there's a lost-focus callback or we're resizing, set it up
         if @options.lostFocusCallback != $.noop || @options.shrinkOnLostFocus
             $(@options.parentElement).scroll =>
+                $element = $(@element)
                 
-                # Are we animating?
-                if not @data.animating
+                # Are we active & not animating?
+                if $element.hasClass(@options.activeClass) and not @data.animating
                     # If we leave the capture zone, trigger the callback
                     elementPos = @element.offsetTop
                     scrollPos = $(@options.parentElement).scrollTop()
@@ -90,7 +91,12 @@
                     # Check if we're out of the range (elementPosition + offset) ± captureRange
                     # If so, trigger the callback & maybe the shrinking element
                     if elementPos + @options.offset - @options.lostFocusRange > scrollPos || scrollPos > elementPos + @options.offset + @options.lostFocusRange
-                        @setInactive() if @options.shrinkOnLostFocus
+                        if @options.shrinkOnLostFocus
+                            # If we scrolled downwards, flag this to the shrinking function
+                            # It will compensate for our scroll so that the user isn't thrown all over the place by elements resizing
+                            @data.autoShrinking = true if scrollPos > elementPos + @options.offset + @options.lostFocusRange
+                            @setInactive()
+                            
                         @options.lostFocusCallback(@element)
         @
         
@@ -233,6 +239,19 @@
                 $element.css
                     height: targetHeight
                     width: targetWidth
+                    
+                # If this function was triggered by moving out of the focal zone, scroll to the bottom of the element
+                if @data.autoShrinking
+                    # Scroll the window to the element's bottom in 300ms
+                    elementBottom = @element.offsetTop + @data.originalHeight
+        
+                    if $(@options.parentElement).get(0) == window
+                        $('html, body').animate scrollTop: elementBottom, 300
+                    else
+                        $(@options.parentElement).animate scrollTop: elementBottom, 300
+                        
+                    # Remove the flag
+                    @data.autoShrinking = false
 
             # Once the transition has finished, remove the animation & the styled height (hopefully this step should make no visible difference), update the flag and then unbind this handler (.one jquery option)
             $element.one "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
