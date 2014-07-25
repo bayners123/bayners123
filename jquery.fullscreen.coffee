@@ -28,6 +28,7 @@
         activeClass: "jqueryfullscreen_active"
         scrollCapture: true
         scrollCaptureRange: 100
+        scrollOffset: 0
     
     class Plugin
       constructor: (@element, options) ->
@@ -104,13 +105,13 @@
         elementPos = @element.offsetTop
         scrollPos = $(window).scrollTop()
         
-        if $(@element).hasClass(@options.activeClass) && elementPos - @options.scrollCaptureRange < scrollPos && scrollPos < elementPos + @options.scrollCaptureRange
+        if $(@element).hasClass(@options.activeClass) && elementPos + @options.scrollOffset - @options.scrollCaptureRange < scrollPos && scrollPos < elementPos + @options.scrollOffset + @options.scrollCaptureRange
             @_scrollTo()
             
     # Scroll to the element
     Plugin::_scrollTo = ->
         elementPos = @element.offsetTop
-        $('html, body').animate scrollTop: elementPos, 500
+        $('html, body').animate scrollTop: elementPos + @options.scrollOffset, 500
         
     # Plugin constructor
     $.fn[pluginName] = (options) ->
