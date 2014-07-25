@@ -315,7 +315,9 @@ Modernizr.load [
                 # animation: false
                 # animationDuration: "1s"
                 # parentElement: $('#skrollr-body')
-                # scrollOffset: -100
+                # offset: -50
+                resizeCallback: ->
+                    skrollr.get().refresh()
             $('#groupmembers a').click "parent": $('#groupmembers'), (e) ->
                 $(e.data.parent).data("plugin_fullscreen").toggleActive()
                 return false
