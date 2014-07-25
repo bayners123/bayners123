@@ -99,43 +99,39 @@
         $element = $(@element)
         
         # Get target height & widths
-        height = $(@options.parentElement).get(0).innerHeight
-        width = $(@options.parentElement).get(0).innerWidth
+        targetHeight = $(@options.parentElement).get(0).innerHeight
+        targetWidth = $(@options.parentElement).get(0).innerWidth
         
         # Is animation enabled?
         if not @options.animation
             
             # Set the new values
             $element.css
-                height: height
-                width: width
+                height: targetHeight 
+                width: targetWidth 
         
         else
             # Flag start of animation
             @data.animating = true
             
-            # We can't animate from auto CSS values, so we'll animate max-height instead
-            # Let's first set it to the current height
-            $element.css("max-height", $element.height() )
-        
+            # We can't animate from auto CSS values, so we'll set height absolutly first
+            $element.css("height", $element.height() )
+            
             # Set up the transition
-            @element.style[@data.vendorPrefix + "Transition"] = "max-height " + @options.animationDuration + " ease-in-out"
+            @element.style[@data.vendorPrefix + "Transition"] = "height " + @options.animationDuration + " ease-in-out"
             
             # Add timeout to let DOM update
             setTimeout =>
             
                 # Set the new values
                 $element.css
-                    height: height
-                    width: width
-                    "max-height": height
+                    height: targetHeight
+                    width: targetWidth
 
-            # Once the transition has finished, remove the animation & the max-height, update the flag and then unbind this handler (.one jquery option)
+            # Once the transition has finished, remove the animation, update the flag and then unbind this handler (.one jquery option)
             $element.one "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
                 $element = $(@element)
-        
-                $element.css
-                    "max-height": ""
+                
                 @element.style[@data.vendorPrefix + "Transition"] = ""
                 @data.animating = false
             
@@ -186,9 +182,42 @@
     Plugin::_removeStyles = ->
         $element = $(@element)
         
-        $element.css
-              height: ""
-              width: ""
+        # Is animation enabled?
+        if not @options.animation
+            
+            # Remove the styling
+            $element.css
+                height: ""
+                width: ""
+        
+        else
+            # Flag start of animation
+            @data.animating = true
+            
+            # Get target height & widths
+            targetHeight = @data.originalHeight
+            targetWidth = @data.originalWidth
+            
+            # Set up the transition
+            @element.style[@data.vendorPrefix + "Transition"] = "height " + @options.animationDuration + " ease-in-out"
+            
+            # Add timeout to let DOM update
+            setTimeout =>
+            
+                # Set the new values
+                $element.css
+                    height: targetHeight
+                    width: targetWidth
+
+            # Once the transition has finished, remove the animation & the styled height (hopefully this step should make no visible difference), update the flag and then unbind this handler (.one jquery option)
+            $element.one "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
+                $element = $(@element)
+        
+                $element.css
+                    height: ""
+                    
+                @element.style[@data.vendorPrefix + "Transition"] = ""
+                @data.animating = false
               
         @
         
