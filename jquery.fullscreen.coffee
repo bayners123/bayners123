@@ -253,12 +253,13 @@
                     # Remove the flag
                     @data.autoShrinking = false
 
-            # Once the transition has finished, remove the animation & the styled height (hopefully this step should make no visible difference), update the flag and then unbind this handler (.one jquery option)
+            # Once the transition has finished, remove the animation & the styled height & width (hopefully this step should make no visible difference), update the flag and then unbind this handler (.one jquery option)
             $element.one "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
                 $element = $(@element)
         
                 $element.css
                     height: ""
+                    width: ""
                     
                 @element.style[@data.vendorPrefix + "Transition"] = ""
                 @data.animating = false
