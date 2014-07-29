@@ -110,7 +110,7 @@
             $slides.hide()
         
             # Show the correct one
-            $slides.find("eq:(#{slide})")
+            $slides.eq(slide).show()
             
             # Update the current slide
             @data.currentSlide = slide

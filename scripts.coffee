@@ -334,5 +334,10 @@ Modernizr.load [
                 resizeCallback: ->
                     if skrollr.get()
                         skrollr.get().refresh()
+    ,
+        load: 'jquery.groupMembers.js'
+        complete: ->
+            $('#groupmembers .fullHolder').groupScroller
+                first: 1
 
     ]
