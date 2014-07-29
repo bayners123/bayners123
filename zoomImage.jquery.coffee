@@ -79,17 +79,17 @@
             "max-height": "none"
         
         # Register the function to zoom the image (or whatever) as soon as it's loaded
-        $(this).one "load", =>
+        $element.one "load", =>
             $element = $(@element)
                 
             # Get the image's dimentions. 
             #   This only needs to happen once and can only happen once,
             #   since this plugin will change these values but we want the originals
-            @data.imgWidth = this.width
-            @data.imgHeight = this.height
+            @data.imgWidth = @element.width
+            @data.imgHeight = @element.height
     
             # The aspect ratio of this image
-            @data.imgRatio = imgWidth / imgHeight
+            @data.imgRatio = @data.imgWidth / @data.imgHeight
             
             # Get the parent's info
             @refresh()
@@ -99,8 +99,8 @@
             
             
         # If the image was already loaded by the time this code runs, trigger the "load" handler now
-        if this.complete || this.naturalWidth != 0
-            $(this).trigger "load"
+        if @element.complete || @element.naturalWidth != 0
+            $element.trigger "load"
     
     # Refresh the values stored in @data for the parent's dimentions
     Plugin::refresh = ->
