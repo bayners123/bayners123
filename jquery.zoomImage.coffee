@@ -60,17 +60,8 @@
 	    
         # Get the parent of the element, or use the one given in options
         if @options.parent # -> we were given something in the options
-
-            # In case we got a selector:
-            if typeof @options.parent == "string"
-                @options.parent = $(@options.parent)
-            
-            # In case we got a DOM element, produce a jQuery one:
-            #   (N.B. this has no effect if it's already a jQuery object)
-            @options.parent = $(@options.parent)
-            
             # Save it in this.data
-            @data.parent = @options.parent
+            @data.parent = $(@options.parent)
         else
             # Else, just get the parent
             @data.parent = $element.parent()
