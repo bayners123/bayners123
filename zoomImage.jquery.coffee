@@ -100,20 +100,19 @@
             # Do the resizing    
             @resize()
             
-            
         # If the image was already loaded by the time this code runs, trigger the "load" handler now
         if @element.complete || @element.naturalWidth != 0
             $element.trigger "load"
             
-        # Bind a rethink for when the parent is resized
-        @data.parent.on "resize.#{pluginName}", =>
-            
+        # Bind a rethink for when the window is resized
+        $(window).on "resize.#{@_name}", =>
+
             # Refresh parent dims
             @refresh()
-            
+
             # Resize element
             @resize()
-    
+
     # Refresh the values stored in @data for the parent's dimentions
     Plugin::refresh = ->
         $element = $(@element)
