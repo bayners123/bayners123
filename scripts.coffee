@@ -329,5 +329,8 @@ Modernizr.load [
             #     $.data this, 'scrollTimer', setTimeout( ->
             #         console.log $(window).scrollTop()
             #     , 250)
-            
+    ,
+        load: 'zoomImage.jquery.js'
+        complete: ->
+            $('.hoverPulse img').zoomImage()
     ]
