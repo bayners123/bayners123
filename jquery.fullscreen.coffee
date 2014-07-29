@@ -65,6 +65,10 @@
         $(window).resize =>
             @check()
             
+            # if it had focus, retain focus
+            if @data.hasFocus
+                @_scrollTo()
+            
         # Check once at document.ready
         $ =>
             @check()
@@ -78,27 +82,31 @@
                     @_checkScroll()
                 , 500)
         
-        # If there's a lost-focus callback or we're resizing, set it up
-        if @options.lostFocusCallback != $.noop || @options.shrinkOnLostFocus
-            $(@options.parentElement).scroll =>
-                $element = $(@element)
+        # Detect moving out of focus range
+        $(@options.parentElement).scroll =>
+            $element = $(@element)
+            
+            # Are we active and not animating?
+            if $element.hasClass(@options.activeClass) and not @data.animating
                 
-                # Are we active & not animating?
-                if $element.hasClass(@options.activeClass) and not @data.animating
-                    # If we leave the capture zone, trigger the callback
-                    elementPos = @element.offsetTop
-                    scrollPos = $(@options.parentElement).scrollTop()
-                
-                    # Check if we're out of the range (elementPosition + offset) ± captureRange
-                    # If so, trigger the callback & maybe the shrinking element
-                    if elementPos + @options.offset - @options.lostFocusRange > scrollPos || scrollPos > elementPos + @options.offset + @options.lostFocusRange
-                        if @options.shrinkOnLostFocus
-                            # If we scrolled downwards, flag this to the shrinking function
-                            # It will compensate for our scroll so that the user isn't thrown all over the place by elements resizing
-                            @data.autoShrinking = true if scrollPos > elementPos + @options.offset + @options.lostFocusRange
-                            @setInactive()
-                            
-                        @options.lostFocusCallback(@element)
+                # If we leave the capture zone, trigger the callback and set the flag
+                elementPos = @element.offsetTop
+                scrollPos = $(@options.parentElement).scrollTop()
+        
+                # Check if we're out of the range (elementPosition + offset) ± captureRange
+                # If so, trigger the callback & maybe the shrinking element
+                if elementPos + @options.offset - @options.lostFocusRange > scrollPos || scrollPos > elementPos + @options.offset + @options.lostFocusRange
+                    
+                    if @options.shrinkOnLostFocus
+                        # If we scrolled downwards, flag this to the shrinking function
+                        # It will compensate for our scroll so that the user isn't thrown all over the place by elements resizing
+                        @data.autoShrinking = true if scrollPos > elementPos + @options.offset + @options.lostFocusRange
+                        @setInactive()
+                    
+                    # Set flag
+                    @data.hasFocus = false
+                    
+                    @options.lostFocusCallback(@element)
         @
         
     # Check if the element has the active class and, if it does, resize it
