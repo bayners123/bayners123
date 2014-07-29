@@ -241,6 +241,7 @@ a.expandSection i {
 .groupDesc {
     color: white;
     width: 100%;
+    height: 30%;
     position: absolute;
     bottom: 0;
     padding: 5% 0;
@@ -248,14 +249,21 @@ a.expandSection i {
 
 .groupDesc a { color: white; }
 
-.groupDesc i {
+.groupDesc .arrow {
     float: left;
     height: 100%;
     width: 10%;
     text-align: center;
+    position: relative;
 }
 
-.groupDesc div {
+.groupDesc .arrow i {
+    position: absolute;
+    top: -50%;
+    margin-top: 50%;
+}
+
+.groupDesc .desc {
     float: left;
     width: 80%;
 }
