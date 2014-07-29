@@ -86,6 +86,14 @@
         # Goto first slide
         @_goto(@options.first)
         
+        # Register left and right arrows
+        @data.leftArrow.on "click.groupMembers", =>
+            @_prev()
+            false
+        
+        @data.rightArrow.on "click.groupMembers", =>
+            @_next()
+            false
         
     Plugin::_next = ->
         

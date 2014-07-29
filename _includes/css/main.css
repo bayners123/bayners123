@@ -250,6 +250,7 @@ a.expandSection i {
 
 .groupDesc .arrow {
     position: absolute;
+    display: block;
     font-size: 2em;
 }
 
