@@ -5,9 +5,6 @@
     -skrollr-anchor-target: '#slider';
     -skrollr-animation-name: sliderParallax;
 }
-.content {
-    -skrollr-animation-name: boxAppear;
-}
 .content > .left {
     -skrollr-animation-name: leftAppear;
 }
@@ -49,18 +46,22 @@
 
 @-skrollr-keyframes leftAppear {
     -5p-bottom {
+        opacity: 0;
         transform: translate(-25%, -150px);
     }
     -30p-bottom {
+        opacity: 1;
         transform: translate(0%, 0px);
     }
 }
 
 @-skrollr-keyframes rightAppear {
     -5p-bottom {
+        opacity: 0;
         transform: translate(25%, -150px);
     }
     -30p-bottom {
+        opacity: 1;
         transform: translate(0%, 0px);
     }
 }
