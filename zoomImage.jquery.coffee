@@ -133,10 +133,6 @@
         @data.targetRatio = @data.parentWidth  / @data.parentHeight
         
         @
-        
-    Plugin::debug = ->
-        console.log "#{@_name}:  Width: #{@data.parentWidth}, Height: #{@data.parentHeight}, Ratio: #{@data.targetRatio}"
-        
     
     # Using the values saved in @data, resize the image/element
     Plugin::resize = ->
@@ -164,11 +160,32 @@
                 margin: "-" + overflow + "% 0 0 0"
                 
         @
+        
+    Plugin::update = ->
+        
+        @refresh()
+        
+        @resize()
+    
+    #  --- global functions ---
+    
+    # Trigger resize updates for all elements that are zoomed
+    $["#{pluginName}_updateAll"] = ->
+        
+        $globalList = $(window).data "#{pluginName}_zoomedElements" if $(window).data "#{pluginName}_zoomedElements"
+        
+        $globalList.each ->
+            $(this)["#{pluginName}.update"]()
                 
     # Plugin constructor
     $.fn[pluginName] = (options) ->
-      @each ->
-        if !$.data(@, "plugin_#{pluginName}")
-          $.data(@, "plugin_#{pluginName}", new Plugin(@, options))
+        @each ->
+            if !$.data(@, "plugin_#{pluginName}")
+                $.data(@, "plugin_#{pluginName}", new Plugin(@, options))
+    
+    $.fn["#{pluginName}.update"] = ->
+        @each ->
+            if $.data(@, "plugin_#{pluginName}")
+                $.data(@, "plugin_#{pluginName}").update()
 
 )(jQuery, window, document)
