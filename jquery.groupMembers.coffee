@@ -88,13 +88,33 @@
         
         
     Plugin::_next = ->
-        true
+        
+        # Call @_goto
+        if @data.currentSlide != 0
+            @_goto(@data.currentSlide - 1)
         
     Plugin::_prev = ->
-        true
+        
+        # Call @_goto
+        if @data.currentSlide != @data.noSlides
+            @_goto(@data.currentSlide + 1)
         
     Plugin::_goto = (slide) ->
-        true        
+        
+        # Check the argument is valid
+        if slide < @data.noSlides
+            # Get all the list items (the slides)
+            $slides = @data.descUL.children("li")
+        
+            # Hide all slides
+            $slides.hide()
+        
+            # Show the correct one
+            $slides.find("eq:(#{slide})")
+            
+            # Update the current slide
+            @data.currentSlide = slide
+        
         
     # Plugin constructor
     $.fn[pluginName] = (options) ->
