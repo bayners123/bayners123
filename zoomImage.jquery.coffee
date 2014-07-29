@@ -177,7 +177,7 @@
         updateAll: ->
             $globalList = $(window).data "#{pluginName}_zoomedElements" if $(window).data "#{pluginName}_zoomedElements"
         
-            $globalList.each ->
+            if $globalList then $globalList.each ->
                 $(this)["#{pluginName}.update"]()
                 
     # Plugin constructor
