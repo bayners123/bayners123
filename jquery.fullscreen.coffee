@@ -61,7 +61,7 @@
         @_getDims()
         
         # Bind the checker to parent resize
-        $(@options.parentElement).resize =>
+        $(window).resize =>
             @check()
             
         # Check once at document.ready
