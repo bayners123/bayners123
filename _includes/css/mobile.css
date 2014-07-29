@@ -33,6 +33,16 @@
         border-top: #444 solid 1px;
         color: #666;
     }
+    
+    .groupDesc {
+        padding: 0.5em 0 3%;
+    }
+    .groupDesc .arrow { font-size: 1.5em; }
+    .groupDesc h3 { font-size: 1em; }
+    .groupDesc .desc {
+        font-size: 0.75em;
+        padding: 0 !important;
+    }
 
 }
 

@@ -328,7 +328,7 @@ Modernizr.load [
     ,
         load: 'jquery.zoomImage.js'
         complete: ->
-            $('#testImg').zoomImage
+            $('#groupmembers .groupImg').zoomImage
                 resizeCallback: ->
                     if skrollr.get()
                         skrollr.get().refresh()

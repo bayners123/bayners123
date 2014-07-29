@@ -243,14 +243,14 @@ a.expandSection i {
     width: 100%;
     position: absolute;
     bottom: 0;
-    padding: 5% 0;
+    padding: 1em 0 1.8em;
 }
 
 .groupDesc a { color: white; }
 
 .groupDesc .arrow {
     position: absolute;
-    top: 10%;
+    font-size: 2em;
 }
 
 .groupDesc .arrow.left {
@@ -259,6 +259,17 @@ a.expandSection i {
 
 .groupDesc .arrow.right {
     right: 2%;
+}
+
+.groupDesc h3 {
+    display: block;
+    text-align: center;
+    margin: 0;
+}
+
+.groupDesc .groupList {
+    margin-top: 0.5em;
+    text-align: center;
 }
 
 .alpha60bgBlack {
