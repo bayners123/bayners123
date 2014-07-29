@@ -47,7 +47,7 @@
 @-skrollr-keyframes leftAppear {
     -5p-bottom {
         opacity: 0;
-        transform: translate(-25%, -150px);
+        transform: translate(-25%, 0px);
     }
     -30p-bottom {
         opacity: 1;
@@ -58,7 +58,7 @@
 @-skrollr-keyframes rightAppear {
     -5p-bottom {
         opacity: 0;
-        transform: translate(25%, -150px);
+        transform: translate(25%, 0px);
     }
     -30p-bottom {
         opacity: 1;

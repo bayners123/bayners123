@@ -324,13 +324,4 @@ Modernizr.load [
             $('#groupmembers a').click "parent": $('#groupmembers'), (e) ->
                 $(e.data.parent).data("plugin_fullscreen").toggleActive()
                 return false
-
-    ,
-        load: 'zoomImage.jquery.js'
-        complete: ->
-            $('#testImg').zoomImage
-                resizeCallback: ->
-                    if skrollr.get()
-                        skrollr.get().refresh()
-
     ]

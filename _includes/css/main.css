@@ -226,8 +226,19 @@ a.expandSection i {
     overflow: hidden;
 }
 
-#groupmembers, #groupmembers > .box {
+#groupmembers > .box {
     height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#groupmembers > .box > div {
+    position: relative;
+}
+
+#testImg {
+    position: absolute;
+    width: 100%;
 }
 
 .alpha60bgBlack {
