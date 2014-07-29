@@ -18,7 +18,7 @@ Modernizr.load [
 
             # Are we running IE 8 or less? Well bugger, but let's try to patch some holes
             if typeof IElt9 != 'undefined'
-                Modernizr.load '/skrollr.ie.min.js'   
+                Modernizr.load '/skrollr.ie.min.js'
     ,
     # Load jquery with a local fallback 
         load: 'timeout=2000!//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
@@ -158,8 +158,7 @@ Modernizr.load [
                 # END TAB MENU GENERIC STUFF
                     
                 # Set research tabs to hidden on load (so they're visible if Java is disabled)
-                $ ->
-                    $('#researchDetails').hide()
+                $('#researchDetails').hide()
                 
                 # Bind research bubbles to the appropriate sections of the tabs & make them cause the tabs to appear
                 $('.researchBubble').click ->
@@ -172,15 +171,6 @@ Modernizr.load [
                     $('#researchLink2').click()
                 $('#research3').click ->
                     $('#researchLink3').click()
-                
-                # Init skrollr if we're not on a mobile (after slider)
-                if !Modernizr.touch
-                    skrollr.init
-                        smoothScrolling: false,
-                        forceHeight: false
-                    # Init skrollr menus
-                    skrollr.menu.init skrollr.get()
-
                 
                 # EXPANDABLE SECTIONS
                 
@@ -251,6 +241,16 @@ Modernizr.load [
                                 
                             # Prevent default link action 
                             e.preventDefault()
+                            
+                # Init skrollr if we're not on a mobile (after slider)
+                if !Modernizr.touch
+                    skrollr.init
+                        smoothScrolling: false,
+                        forceHeight: false
+                    # Init skrollr menus
+                    skrollr.menu.init skrollr.get()
+                    
+                # END DOC READY
                         
             # Resize slider aspect ratio if the screen gets smaller (bind to window.resize event)
             $(window).resize ->
@@ -303,13 +303,13 @@ Modernizr.load [
     ,
         load: 'jquery.fullscreen.js',
         complete: ->
-            
+
             # Fullscreen test for group members section
-            
+
             $('#groupmembers').fullscreen
                 activeClass : "foo"
                 scrollCallback: ->
-                    $('#menubar').addClass("hidden")
+                    $('#menubar, #mobilebar').addClass("hidden")
                 shrinkOnLostFocus: true
                 # lostFocusCallback: (element) ->
                 #     $(element).data("plugin_fullscreen").setInactive()
@@ -319,18 +319,18 @@ Modernizr.load [
                 # offset: -50
                 resizeCallback: ->
                     skrollr.get().refresh()
-                    
+                    $.zoomImage.updateAll()
+
             $('#groupmembers a').click "parent": $('#groupmembers'), (e) ->
                 $(e.data.parent).data("plugin_fullscreen").toggleActive()
                 return false
 
-            # $(window).scroll ->
-            #     clearTimeout $.data(this, 'scrollTimer')
-            #     $.data this, 'scrollTimer', setTimeout( ->
-            #         console.log $(window).scrollTop()
-            #     , 250)
     ,
         load: 'zoomImage.jquery.js'
         complete: ->
-            $('.hoverPulse img').zoomImage()
+            $('#testImg').zoomImage
+                resizeCallback: ->
+                    if skrollr.get()
+                        skrollr.get().refresh()
+
     ]
