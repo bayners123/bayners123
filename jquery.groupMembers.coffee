@@ -5,6 +5,8 @@
 # Not for release ever
 # Created by Charles Baynham
 
+# To be called on the .fullHolder element
+
 # Data: 29 Jul 2014
 
 # (c) 2014 by Charles Baynham
@@ -25,10 +27,21 @@
     
     pluginName = "groupScroller"
     defaults = 
-        foo: null
+        leftArrow: null
+        rightArrow: null
+        personHeading: null
+        slideImg: null
+        descUL: null
+        first: 0
     
     data = 
-        bar: null
+        leftArrow: null
+        rightArrow: null
+        personHeading: null
+        slideImg: null
+        descUL: null
+        currentSlide: null
+        noSlides: null
     
     class Plugin
       constructor: (@element, options) ->
@@ -39,9 +52,49 @@
         @init()
 
     Plugin::init = ->
+        $element = $(@element)
+        
+        # Get various elements if not provided
+        if @options.leftArrow
+            @data.leftArrow = $(@options.leftArrow)
+        else
+            @data.leftArrow = $element.find(".arrow.left")
+            
+        if @options.rightArrow
+            @data.rightArrow = $(@options.rightArrow)
+        else
+            @data.rightArrow = $element.find(".arrow.right")
+            
+        if @options.personHeading
+            @data.personHeading = $(@options.personHeading)
+        else
+            @data.personHeading = $element.find(".person")
+            
+        if @options.slideImg
+            @data.slideImg= $(@options.slideImg)
+        else
+            @data.slideImg= $element.find(".slideImg")
+        
+        if @options.descUL
+            @data.descUL= $(@options.descUL)
+        else
+            @data.descUL= $element.find(".desc")
+            
+        # Number of slides:
+        @data.noSlides = @data.descUL.children("li").length
+        
+        # Goto first slide
+        @_goto(@options.first)
         
         
+    Plugin::_next = ->
+        true
         
+    Plugin::_prev = ->
+        true
+        
+    Plugin::_goto = (slide) ->
+        true        
         
     # Plugin constructor
     $.fn[pluginName] = (options) ->
