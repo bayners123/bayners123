@@ -108,7 +108,6 @@
         if $element.hasClass @options.activeClass
             @_resizeToFull()
         else
-            @_removeStyles()
             # If it's not expanded & not mid-animation, update the dimentions
             @_getDims() if not @data.animating
         @ 
@@ -122,14 +121,14 @@
               
     Plugin::setActive = ->
         $(@element).addClass @options.activeClass
-        @check()
+        @_resizeToFull()
         @_scrollTo()
         
         @
     
     Plugin::setInactive = ->
         $(@element).removeClass @options.activeClass
-        @check()
+        @_removeStyles()
         
         @
         
@@ -256,7 +255,7 @@
             # Once the transition has finished, remove the animation & the styled height & width (hopefully this step should make no visible difference), update the flag and then unbind this handler (.one jquery option)
             $element.one "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
                 $element = $(@element)
-        
+                
                 $element.css
                     height: ""
                     width: ""
