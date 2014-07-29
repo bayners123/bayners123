@@ -170,12 +170,12 @@
     #  --- global functions ---
     
     # Trigger resize updates for all elements that are zoomed
-    $["#{pluginName}_updateAll"] = ->
+    $[pluginName] = 
+        updateAll: ->
+            $globalList = $(window).data "#{pluginName}_zoomedElements" if $(window).data "#{pluginName}_zoomedElements"
         
-        $globalList = $(window).data "#{pluginName}_zoomedElements" if $(window).data "#{pluginName}_zoomedElements"
-        
-        $globalList.each ->
-            $(this)["#{pluginName}.update"]()
+            $globalList.each ->
+                $(this)["#{pluginName}.update"]()
                 
     # Plugin constructor
     $.fn[pluginName] = (options) ->
