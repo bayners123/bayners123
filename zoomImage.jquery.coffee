@@ -26,6 +26,7 @@
     pluginName = "zoomImage"
     defaults =
         parent: null
+        resizeCallback: $.noop
         
     data =
         parent: null
@@ -158,6 +159,8 @@
                 height: "auto",
                 width: "100%",
                 margin: "-" + overflow + "% 0 0 0"
+            
+        @options.resizeCallback(@element)
                 
         @
         
