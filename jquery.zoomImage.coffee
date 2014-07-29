@@ -27,8 +27,8 @@
     defaults =
         parent: null
         resizeCallback: $.noop
-        xOverride: 0 # These will override the x or y margins when the image is centered
-        yOverride: 0 # I.e. if it's taller than it is wide then the y margin is set to 
+        xOverride: null # These will override the x or y margins when the image is centered
+        yOverride: null # I.e. if it's taller than it is wide then the y margin is set to 
                      #  yOverride instead of calculated and the value in xOverride is ignored
                      # N.B. these are percentages of the container's WIDTH
         
@@ -138,7 +138,7 @@
         # Also set the margins so that the image is centered
         if @data.imgRatio > @data.targetRatio
             
-            if @options.xOverride
+            if typeof @options.xOverride == "number"
                 # Either use the override...
                 overflow = @options.xOverride
             else
@@ -153,7 +153,7 @@
         
         # Vice versa for the other case (taller than container)        
         else
-            if @options.yOverride
+            if typeof @options.yOverride == "number"
                 # Either use the override...
                 overflow = @options.yOverride
             else
