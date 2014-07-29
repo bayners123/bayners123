@@ -48,6 +48,14 @@
         
         $element = $(@element)
         @data = $.data this
+        
+        # Add this element to the list of all zoomImaged elements / create this list
+        if not $(window).data "#{@_name}_zoomedElements"
+            # Init the global variable to an empty jQuery object
+            $(window).data "#{@_name}_zoomedElements", $([])
+        
+        # Add our element to the global object
+        $(window).data "#{@_name}_zoomedElements", $(window).data("#{@_name}_zoomedElements").add($element)
 	    
         # Get the parent of the element, or use the one given in options
         if @options.parent # -> we were given something in the options
@@ -82,7 +90,7 @@
             "max-height": "none"
         
         # Register the function to zoom the image (or whatever) as soon as it's loaded
-        $element.one "load.#{pluginName}", =>
+        $element.one "load.#{@_name}", =>
             $element = $(@element)
                 
             # Get the image's dimentions. 
@@ -124,6 +132,11 @@
         # The aspect ratio of the parent container
         @data.targetRatio = @data.parentWidth  / @data.parentHeight
         
+        @
+        
+    Plugin::debug = ->
+        console.log "#{@_name}:  Width: #{@data.parentWidth}, Height: #{@data.parentHeight}, Ratio: #{@data.targetRatio}"
+        
     
     # Using the values saved in @data, resize the image/element
     Plugin::resize = ->
@@ -150,10 +163,11 @@
                 width: "100%",
                 margin: "-" + overflow + "% 0 0 0"
                 
+        @
+                
     # Plugin constructor
     $.fn[pluginName] = (options) ->
       @each ->
-        console.log "launched"
         if !$.data(@, "plugin_#{pluginName}")
           $.data(@, "plugin_#{pluginName}", new Plugin(@, options))
 
