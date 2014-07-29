@@ -27,6 +27,10 @@
     defaults =
         parent: null
         resizeCallback: $.noop
+        xOverride: 0 # These will override the x or y margins when the image is centered
+        yOverride: 0 # I.e. if it's taller than it is wide then the y margin is set to 
+                     #  yOverride instead of calculated and the value in xOverride is ignored
+                     # N.B. these are percentages of the container's WIDTH
         
     data =
         parent: null
@@ -133,8 +137,14 @@
         # If the image is wider than the container, set it to fill the container's height and overflow by width
         # Also set the margins so that the image is centered
         if @data.imgRatio > @data.targetRatio
-            # Calculate half the amount by which the image is wider than the container as a percentage OF THE CONTAINER'S width
-            overflow = (@data.imgRatio / @data.targetRatio - 1) * 100 / 2
+            
+            if @options.xOverride
+                # Either use the override...
+                overflow = @options.xOverride
+            else
+                # ...or calculate half the amount by which the image is wider than the container as a percentage OF THE CONTAINER'S width
+                overflow = (@data.imgRatio / @data.targetRatio - 1) * 100 / 2
+            
     
             $element.css
                 height: "100%",
@@ -143,8 +153,12 @@
         
         # Vice versa for the other case (taller than container)        
         else
-            # Calculate half the amount by which the image is taller than the container as a percentage OF THE CONTAINER'S WIDTH
-            overflow = (1 / @data.imgRatio - 1 / @data.targetRatio) * 100 / 2
+            if @options.yOverride
+                # Either use the override...
+                overflow = @options.yOverride
+            else
+                # Calculate half the amount by which the image is taller than the container as a percentage OF THE CONTAINER'S WIDTH
+                overflow = (1 / @data.imgRatio - 1 / @data.targetRatio) * 100 / 2
     
             $element.css
                 height: "auto",
@@ -154,6 +168,22 @@
         @options.resizeCallback(@element)
                 
         @
+    
+    Plugin::yOverride = (yOverride) ->
+        
+        # Save the new override
+        @options.yOverride = yOverride
+        
+        # Resize the image
+        @resize()
+    
+    Plugin::xOverride = (xOverride) ->
+        
+        # Save the new override
+        @options.xOverride = xOverride
+        
+        # Resize the image
+        @resize()
         
     Plugin::update = ->
         
