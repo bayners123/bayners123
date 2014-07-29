@@ -82,7 +82,7 @@
             "max-height": "none"
         
         # Register the function to zoom the image (or whatever) as soon as it's loaded
-        $element.one "load", =>
+        $element.one "load.#{pluginName}", =>
             $element = $(@element)
                 
             # Get the image's dimentions. 
@@ -104,6 +104,15 @@
         # If the image was already loaded by the time this code runs, trigger the "load" handler now
         if @element.complete || @element.naturalWidth != 0
             $element.trigger "load"
+            
+        # Bind a rethink for when the parent is resized
+        @data.parent.on "resize.#{pluginName}", =>
+            
+            # Refresh parent dims
+            @refresh()
+            
+            # Resize element
+            @resize()
     
     # Refresh the values stored in @data for the parent's dimentions
     Plugin::refresh = ->
