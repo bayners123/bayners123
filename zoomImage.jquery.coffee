@@ -70,6 +70,9 @@
         if @data.parent.css("position") == "static"
             @data.parent.css("position", 'relative')
             
+        # Set the parent's overflow to hidden
+        @data.parent.css("overflow", "hidden")
+            
         # Set the img (or whatever) to absolute positioning
         $element.css("position", "absolute")
         
