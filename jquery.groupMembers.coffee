@@ -93,6 +93,13 @@
         @data.rightArrow.on "click.groupMembers", =>
             @_next()
             false
+            
+        # Set image to zoom to fill the area
+        @data.slideImg.zoomImage
+            # Whenever the image gets resized, update skrollr
+            resizeCallback: ->
+                if skrollr.get()
+                    skrollr.get().refresh()
         
     Plugin::_prev = ->
         
@@ -103,7 +110,7 @@
     Plugin::_next = ->
         
         # Call @_goto
-        if @data.currentSlide != @data.noSlides
+        if @data.currentSlide < @data.noSlides - 1
             @_goto(@data.currentSlide + 1)
         
     Plugin::_goto = (slide) ->
@@ -125,7 +132,26 @@
             
             # Update the current slide
             @data.currentSlide = slide
-        
+            
+            # Calculate the left margin value required for the image. 
+            # Remember, this is a percentage of the parent's width
+            # This should cause the image to go evenly between the far left and the far right when in horizontal mode
+            
+            # The far left value = 0
+            # The far right value = - (imgWidth - parentWidth) / parentWidth * 100
+            #                     = - (imgWidth/parentWidth - 1) * 100
+            
+            imgWidth = @data.slideImg.width()
+            parentWidth = $(@element).width()
+            # =>
+            farRight = - (imgWidth / parentWidth - 1) * 100
+            
+            # We want to go somewhere between max and min, depending on which slide we're on:
+            xMargin = 0 + farRight * slide / (@data.noSlides - 1)
+            
+            # Set this as the image's offset in the zoomImage plugin
+            @data.slideImg.data("plugin_zoomImage").xOverride(xMargin)
+            
         
     # Plugin constructor
     $.fn[pluginName] = (options) ->
