@@ -326,7 +326,7 @@ Modernizr.load [
                 return false
 
     ,
-        load: 'zoomImage.jquery.js'
+        load: 'jquery.zoomImage.js'
         complete: ->
             $('#testImg').zoomImage
                 resizeCallback: ->
