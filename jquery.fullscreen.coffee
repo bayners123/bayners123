@@ -43,6 +43,7 @@
         originalHeight : null
         originalWidth : null
         animating : false
+        hasFocus: false
     
     class Plugin
       constructor: (@element, options) ->
@@ -212,6 +213,8 @@
     Plugin::_removeStyles = ->
         $element = $(@element)
         
+        @data.hasFocus = false
+        
         # Is animation enabled?
         if not @options.animation
             
@@ -292,6 +295,9 @@
             $('html, body').animate scrollTop: elementPos + @options.offset, 300
         else
             $(@options.parentElement).animate scrollTop: elementPos + @options.offset, 300
+        
+        # set flag
+        @data.hasFocus = true
         
         # Trigger callback
         @options.scrollCallback @element
