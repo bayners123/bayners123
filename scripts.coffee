@@ -317,11 +317,13 @@ Modernizr.load [
                 # animationDuration: "1s"
                 # parentElement: $('#skrollr-body')
                 # offset: -50
+                scrollCaptureRange: 150 # Distance from element within which the window will lock to it
+                lostFocusRange: 151 # Distance at which to trigger the lostFocusCallback
                 resizeCallback: ->
                     skrollr.get().refresh()
                     $.zoomImage.updateAll()
 
-            $('#groupmembers a').click "parent": $('#groupmembers'), (e) ->
+            $('#tempSectionToggle').click "parent": $('#groupmembers'), (e) ->
                 $(e.data.parent).data("plugin_fullscreen").toggleActive()
                 return false
 

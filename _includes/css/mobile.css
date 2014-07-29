@@ -43,6 +43,9 @@
         font-size: 0.75em;
         padding: 0 !important;
     }
+    .groupDesc .groupList {
+        font-size: 0.5em;
+    }
 
 }
 

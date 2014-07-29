@@ -268,8 +268,14 @@ a.expandSection i {
 }
 
 .groupDesc .groupList {
-    margin-top: 0.5em;
     text-align: center;
+    font-size: 0.75em;
+}
+.groupDesc .groupList a {
+    color: #AAA;
+}
+.groupDesc .groupList a {
+    padding: 0 0.5em;
 }
 
 .alpha60bgBlack {
