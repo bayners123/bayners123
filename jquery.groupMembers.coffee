@@ -105,12 +105,16 @@
         if slide < @data.noSlides
             # Get all the list items (the slides)
             $slides = @data.descUL.children("li")
+            $thisSlide = $slides.eq(slide)
         
             # Hide all slides
             $slides.hide()
         
             # Show the correct one
-            $slides.eq(slide).show()
+            $thisSlide.show()
+            
+            # Set the person's name
+            @data.personHeading.html $thisSlide.data("person")
             
             # Update the current slide
             @data.currentSlide = slide
