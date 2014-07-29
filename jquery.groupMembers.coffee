@@ -90,18 +90,17 @@
         @data.leftArrow.on "click.groupMembers", =>
             @_prev()
             false
-        
         @data.rightArrow.on "click.groupMembers", =>
             @_next()
             false
         
-    Plugin::_next = ->
+    Plugin::_prev = ->
         
         # Call @_goto
         if @data.currentSlide != 0
             @_goto(@data.currentSlide - 1)
         
-    Plugin::_prev = ->
+    Plugin::_next = ->
         
         # Call @_goto
         if @data.currentSlide != @data.noSlides
