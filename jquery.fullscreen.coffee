@@ -67,7 +67,7 @@
             
             # if it had focus, retain focus
             if @data.hasFocus
-                @_scrollTo()
+                @_scrollTo(false)
             
         # Check once at document.ready
         $ =>
@@ -131,7 +131,7 @@
     Plugin::setActive = ->
         $(@element).addClass @options.activeClass
         @_resizeToFull()
-        @_scrollTo()
+        @_scrollTo(true)
         
         @
     
@@ -176,8 +176,8 @@
         targetHeight = $(@options.parentElement).get(0).innerHeight
         targetWidth = $(@options.parentElement).get(0).innerWidth
         
-        # Is animation enabled?
-        if not @options.animation
+        # Is animation enabled / are we already locked?
+        if not @options.animation or @data.hasFocus
             
             # Set the new values
             $element.css
@@ -289,21 +289,29 @@
             # Check if we're in the range (elementPosition + offset) ± captureRange
             # If so, scroll exactly to it
             if elementPos + @options.offset - @options.scrollCaptureRange < scrollPos && scrollPos < elementPos + @options.offset + @options.scrollCaptureRange
-                @_scrollTo()
+                @_scrollTo(true)
         
         @
             
     # Scroll to the element
-    Plugin::_scrollTo = ->
+    Plugin::_scrollTo = (animate) ->
         
         # Scroll the window to the element's top (+ offset) in 300ms
         elementPos = @element.offsetTop
         
-        if $(@options.parentElement).get(0) == window
-            $('html, body').animate scrollTop: elementPos + @options.offset, 300
+        # If animation is enabled and called for, animate this
+        if @options.animation and animate
+            if $(@options.parentElement).get(0) == window
+                $('html, body').animate scrollTop: elementPos + @options.offset, 300
+            else
+                $(@options.parentElement).animate scrollTop: elementPos + @options.offset, 300
         else
-            $(@options.parentElement).animate scrollTop: elementPos + @options.offset, 300
+            if $(@options.parentElement).get(0) == window
+                $('html, body').scrollTop(elementPos + @options.offset)
+            else
+                $(@options.parentElement).scrollTop(elementPos + @options.offset)
         
+            
         # set flag
         @data.hasFocus = true
         
