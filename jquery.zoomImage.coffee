@@ -143,13 +143,13 @@
                 overflow = @options.xOverride
             else
                 # ...or calculate half the amount by which the image is wider than the container as a percentage OF THE CONTAINER'S width
-                overflow = (@data.imgRatio / @data.targetRatio - 1) * 100 / 2
+                overflow = - (@data.imgRatio / @data.targetRatio - 1) * 100 / 2
             
     
             $element.css
                 height: "100%",
                 width: "auto",
-                margin: "0 0 0 -" + overflow + "%"
+                margin: "0 0 0 " + overflow + "%"
         
         # Vice versa for the other case (taller than container)        
         else
@@ -158,12 +158,12 @@
                 overflow = @options.yOverride
             else
                 # Calculate half the amount by which the image is taller than the container as a percentage OF THE CONTAINER'S WIDTH
-                overflow = (1 / @data.imgRatio - 1 / @data.targetRatio) * 100 / 2
+                overflow = - (1 / @data.imgRatio - 1 / @data.targetRatio) * 100 / 2
     
             $element.css
                 height: "auto",
                 width: "100%",
-                margin: "-" + overflow + "% 0 0 0"
+                margin: overflow + "% 0 0 0"
             
         @options.resizeCallback(@element)
                 
