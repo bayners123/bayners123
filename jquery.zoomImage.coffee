@@ -26,7 +26,12 @@
     pluginName = "zoomImage"
     defaults =
         parent: null
-        resizeCallback: $.noop
+        useMarginFunctions: false
+        getXOverride: ->
+            return null
+        getYOverride: ->
+            return null
+        resizeCallbackAfter: $.noop
         xOverride: null # These will override the x or y margins when the image is centered
         yOverride: null # I.e. if it's taller than it is wide then the y margin is set to 
                      #  yOverride instead of calculated and the value in xOverride is ignored
@@ -134,6 +139,10 @@
     Plugin::resize = ->
         $element = $(@element)
         
+        if @options.useMarginFunctions
+            @options.xOverride = @options.getXOverride()
+            @options.yOverride = @options.getYOverride()
+        
         # If the image is wider than the container, set it to fill the container's height and overflow by width
         # Also set the margins so that the image is centered
         if @data.imgRatio > @data.targetRatio
@@ -165,7 +174,7 @@
                 width: "100%",
                 margin: overflow + "% 0 0 0"
             
-        @options.resizeCallback(@element)
+        @options.resizeCallbackAfter(@element)
                 
         @
     

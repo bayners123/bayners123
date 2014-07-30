@@ -321,21 +321,15 @@ Modernizr.load [
                 lostFocusRange: 151 # Distance at which to trigger the lostFocusCallback
                 resizeCallback: ->
                     skrollr.get().refresh()
-                    $.zoomImage.updateAll()
+                    $.zoomImage.updateAll() # Run twice since otherwise the image scrolling won't work when
+                    $.zoomImage.updateAll() #  you open the fullscreen bit. Hacky hacky hack
 
             $('#tempSectionToggle').click "parent": $('#groupmembers'), (e) ->
                 $(e.data.parent).data("plugin_fullscreen").toggleActive()
                 return false
 
     ,
-        load: 'jquery.zoomImage.js'
-        complete: ->
-            $('#groupmembers .slideImg').zoomImage
-                resizeCallback: ->
-                    if skrollr.get()
-                        skrollr.get().refresh()
-    ,
-        load: 'jquery.groupMembers.js'
+        load: ['jquery.zoomImage.js','jquery.groupMembers.js']
         complete: ->
             $('#groupmembers .fullHolder').groupScroller
                 first: 1

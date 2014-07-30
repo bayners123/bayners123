@@ -83,9 +83,6 @@
         # Number of slides:
         @data.noSlides = @data.descUL.children("li").length
         
-        # Goto first slide
-        @_goto(@options.first)
-        
         # Register left and right arrows
         @data.leftArrow.on "click.groupMembers", =>
             @_prev()
@@ -94,12 +91,21 @@
             @_next()
             false
             
-        # Set image to zoom to fill the area
-        @data.slideImg.zoomImage
-            # Whenever the image gets resized, update skrollr
-            resizeCallback: ->
-                if skrollr.get()
-                    skrollr.get().refresh()
+        # Zoom the image and goto the first slide on load
+        $ =>
+            # Set image to zoom to fill the area using the zoomImage plugin
+            @data.slideImg.zoomImage
+                # Whenever the image gets resized, update skrollr
+                resizeCallbackAfter: ->
+                    if skrollr.get()
+                        skrollr.get().refresh()
+                # Before the image gets resized, recalculate the xMargin
+                useMarginFunctions: true
+                getXOverride: =>
+                    @getXMargin(@data.currentSlide)
+                    
+            # Goto first slide
+            @_goto(@options.first)
         
     Plugin::_prev = ->
         
@@ -113,7 +119,7 @@
         if @data.currentSlide < @data.noSlides - 1
             @_goto(@data.currentSlide + 1)
         
-    Plugin::_goto = (slide) ->
+    Plugin::_goto = (slide, animation) ->
         
         # Check the argument is valid
         if slide < @data.noSlides
@@ -133,25 +139,30 @@
             # Update the current slide
             @data.currentSlide = slide
             
-            # Calculate the left margin value required for the image. 
-            # Remember, this is a percentage of the parent's width
-            # This should cause the image to go evenly between the far left and the far right when in horizontal mode
+            # Resize the image. This will cause zoomImage to call getXMargin to determine the correct offset
+            @data.slideImg.data("plugin_zoomImage").resize()
             
-            # The far left value = 0
-            # The far right value = - (imgWidth - parentWidth) / parentWidth * 100
-            #                     = - (imgWidth/parentWidth - 1) * 100
             
-            imgWidth = @data.slideImg.width()
-            parentWidth = $(@element).width()
-            # =>
-            farRight = - (imgWidth / parentWidth - 1) * 100
-            
-            # We want to go somewhere between max and min, depending on which slide we're on:
-            xMargin = 0 + farRight * slide / (@data.noSlides - 1)
-            
-            # Set this as the image's offset in the zoomImage plugin
-            @data.slideImg.data("plugin_zoomImage").xOverride(xMargin)
-            
+    Plugin::getXMargin = (slide) ->
+        
+        # Calculate the left margin value required for the image. 
+        # Remember, this is a percentage of the parent's width
+        # This should cause the image to go evenly between the far left and the far right when in horizontal mode
+        
+        # The far left value = 0
+        # The far right value = - (imgWidth - parentWidth) / parentWidth * 100
+        #                     = - (imgWidth/parentWidth - 1) * 100
+        
+        imgWidth = @data.slideImg.width()
+        parentWidth = $(@element).width()
+        # =>
+        farRight = - (imgWidth / parentWidth - 1) * 100
+        
+        # We want to go somewhere between max and min, depending on which slide we're on:
+        xMargin = 0 + farRight * slide / (@data.noSlides - 1)
+        
+        return xMargin
+        
         
     # Plugin constructor
     $.fn[pluginName] = (options) ->
