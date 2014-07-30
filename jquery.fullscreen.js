@@ -1,14 +1,27 @@
 (function() {
   (function($, window, document) {
-    var Plugin, defaults, pluginName;
+    var Plugin, data, defaults, pluginName;
     pluginName = "fullscreen";
     defaults = {
       activeClass: "jqueryfullscreen_active",
+      animation: true,
+      animationDuration: "0.25s",
       scrollCapture: true,
       scrollCaptureRange: 100,
-      scrollOffset: 0,
+      offset: 0,
       scrollCallback: $.noop,
-      parentElement: window
+      lostFocusCallback: $.noop,
+      lostFocusRange: 200,
+      shrinkOnLostFocus: false,
+      parentElement: window,
+      resizeCallback: $.noop
+    };
+    data = {
+      vendorPrefix: null,
+      originalHeight: null,
+      originalWidth: null,
+      animating: false,
+      hasFocus: false
     };
     Plugin = (function() {
       function Plugin(element, options) {
@@ -16,6 +29,7 @@
         this.options = $.extend(true, {}, defaults, options);
         this._defaults = defaults;
         this._name = pluginName;
+        this.data = data;
         this.init();
       }
 
@@ -23,9 +37,14 @@
 
     })();
     Plugin.prototype.init = function() {
-      $(this.options.parentElement).resize((function(_this) {
+      this.data.vendorPrefix = this._getVendorPrefix();
+      this._getDims();
+      $(window).resize((function(_this) {
         return function() {
-          return _this.check();
+          _this.check();
+          if (_this.data.hasFocus) {
+            return _this._scrollTo(false);
+          }
         };
       })(this));
       $((function(_this) {
@@ -43,6 +62,26 @@
           };
         })(this));
       }
+      $(this.options.parentElement).scroll((function(_this) {
+        return function() {
+          var $element, elementPos, scrollPos;
+          $element = $(_this.element);
+          if ($element.hasClass(_this.options.activeClass) && !_this.data.animating) {
+            elementPos = _this.element.offsetTop;
+            scrollPos = $(_this.options.parentElement).scrollTop();
+            if (elementPos + _this.options.offset - _this.options.lostFocusRange > scrollPos || scrollPos > elementPos + _this.options.offset + _this.options.lostFocusRange) {
+              if (_this.options.shrinkOnLostFocus) {
+                if (scrollPos > elementPos + _this.options.offset + _this.options.lostFocusRange) {
+                  _this.data.autoShrinking = true;
+                }
+                _this.setInactive();
+              }
+              _this.data.hasFocus = false;
+              return _this.options.lostFocusCallback(_this.element);
+            }
+          }
+        };
+      })(this));
       return this;
     };
     Plugin.prototype.check = function() {
@@ -51,30 +90,27 @@
       if ($element.hasClass(this.options.activeClass)) {
         this._resizeToFull();
       } else {
-        this._removeStyles();
+        if (!this.data.animating) {
+          this._getDims();
+        }
       }
       return this;
     };
-    Plugin.prototype._resizeToFull = function() {
-      var $element, height, width;
+    Plugin.prototype._getDims = function() {
+      var $element;
       $element = $(this.element);
-      height = $(this.options.parentElement).get(0).innerHeight;
-      width = $(this.options.parentElement).get(0).innerWidth;
-      $element.css({
-        height: height,
-        width: width
-      });
-      return this;
+      this.data.originalHeight = $element.height();
+      return this.data.originalWidth = $element.width();
     };
     Plugin.prototype.setActive = function() {
       $(this.element).addClass(this.options.activeClass);
-      this.check();
-      this._scrollTo();
+      this._resizeToFull();
+      this._scrollTo(true);
       return this;
     };
     Plugin.prototype.setInactive = function() {
       $(this.element).removeClass(this.options.activeClass);
-      this.check();
+      this._removeStyles();
       return this;
     };
     Plugin.prototype.toggleActive = function() {
@@ -87,36 +123,137 @@
       }
       return this;
     };
-    Plugin.prototype._removeStyles = function() {
-      var $element;
+    Plugin.prototype._getVendorPrefix = function() {
+      var body, i, style, vendor;
+      body = document.body || document.documentElement;
+      style = body.style;
+      vendor = ["Moz", "Webkit", "Khtml", "O", "ms"];
+      i = 0;
+      while (i < vendor.length) {
+        if (typeof style[vendor[i] + "Transition"] === "string") {
+          return vendor[i];
+        }
+        i++;
+      }
+      return false;
+    };
+    Plugin.prototype._resizeToFull = function() {
+      var $element, targetHeight, targetWidth;
       $element = $(this.element);
-      $element.css({
-        height: "",
-        width: ""
-      });
+      targetHeight = $(this.options.parentElement).get(0).innerHeight;
+      targetWidth = $(this.options.parentElement).get(0).innerWidth;
+      if (!this.options.animation || this.data.hasFocus) {
+        $element.css({
+          height: targetHeight,
+          width: targetWidth
+        });
+      } else {
+        this.data.animating = true;
+        $element.css("height", $element.height());
+        setTimeout((function(_this) {
+          return function() {
+            _this.element.style[_this.data.vendorPrefix + "Transition"] = "height " + _this.options.animationDuration + " ease-in-out";
+            return setTimeout(function() {
+              return $element.css({
+                height: targetHeight,
+                width: targetWidth
+              });
+            });
+          };
+        })(this));
+        $element.one("transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", (function(_this) {
+          return function() {
+            $element = $(_this.element);
+            _this.element.style[_this.data.vendorPrefix + "Transition"] = "";
+            _this.data.animating = false;
+            return _this.options.resizeCallback(_this.element);
+          };
+        })(this));
+      }
       return this;
     };
-    Plugin.prototype._checkScroll = function() {
-      var elementPos, scrollPos;
+    Plugin.prototype._removeStyles = function() {
+      var $element, targetHeight, targetWidth;
+      $element = $(this.element);
+      this.data.hasFocus = false;
+      if (!this.options.animation) {
+        $element.css({
+          height: "",
+          width: ""
+        });
+      } else {
+        this.data.animating = true;
+        targetHeight = this.data.originalHeight;
+        targetWidth = this.data.originalWidth;
+        this.element.style[this.data.vendorPrefix + "Transition"] = "height " + this.options.animationDuration + " ease-in-out";
+        setTimeout((function(_this) {
+          return function() {
+            var elementBottom;
+            $element.css({
+              height: targetHeight,
+              width: targetWidth
+            });
+            if (_this.data.autoShrinking) {
+              elementBottom = _this.element.offsetTop + _this.data.originalHeight;
+              if ($(_this.options.parentElement).get(0) === window) {
+                $('html, body').animate({
+                  scrollTop: elementBottom
+                }, 300);
+              } else {
+                $(_this.options.parentElement).animate({
+                  scrollTop: elementBottom
+                }, 300);
+              }
+              return _this.data.autoShrinking = false;
+            }
+          };
+        })(this));
+        $element.one("transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", (function(_this) {
+          return function() {
+            $element = $(_this.element);
+            $element.css({
+              height: "",
+              width: ""
+            });
+            _this.element.style[_this.data.vendorPrefix + "Transition"] = "";
+            _this.data.animating = false;
+            return _this.options.resizeCallback(_this.element);
+          };
+        })(this));
+      }
+      return this;
+    };
+    Plugin.prototype._checkScroll = function(elementPos, scrollPos) {
       elementPos = this.element.offsetTop;
       scrollPos = $(this.options.parentElement).scrollTop();
-      if ($(this.element).hasClass(this.options.activeClass) && elementPos + this.options.scrollOffset - this.options.scrollCaptureRange < scrollPos && scrollPos < elementPos + this.options.scrollOffset + this.options.scrollCaptureRange) {
-        this._scrollTo();
+      if ($(this.element).hasClass(this.options.activeClass)) {
+        if (elementPos + this.options.offset - this.options.scrollCaptureRange < scrollPos && scrollPos < elementPos + this.options.offset + this.options.scrollCaptureRange) {
+          this._scrollTo(true);
+        }
       }
       return this;
     };
-    Plugin.prototype._scrollTo = function() {
+    Plugin.prototype._scrollTo = function(animate) {
       var elementPos;
       elementPos = this.element.offsetTop;
-      if ($(this.options.parentElement).get(0) === window) {
-        $('html, body').animate({
-          scrollTop: elementPos + this.options.scrollOffset
-        }, 300);
+      if (this.options.animation && animate) {
+        if ($(this.options.parentElement).get(0) === window) {
+          $('html, body').animate({
+            scrollTop: elementPos + this.options.offset
+          }, 300);
+        } else {
+          $(this.options.parentElement).animate({
+            scrollTop: elementPos + this.options.offset
+          }, 300);
+        }
       } else {
-        $(this.options.parentElement).animate({
-          scrollTop: elementPos + this.options.scrollOffset
-        }, 300);
+        if ($(this.options.parentElement).get(0) === window) {
+          $('html, body').scrollTop(elementPos + this.options.offset);
+        } else {
+          $(this.options.parentElement).scrollTop(elementPos + this.options.offset);
+        }
       }
+      this.data.hasFocus = true;
       this.options.scrollCallback(this.element);
       return this;
     };

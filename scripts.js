@@ -113,9 +113,7 @@
             }
             return _results;
           });
-          $(function() {
-            return $('#researchDetails').hide();
-          });
+          $('#researchDetails').hide();
           $('.researchBubble').click(function() {
             return $('#researchDetails').show().addClass("animated appearZoom");
           });
@@ -128,15 +126,8 @@
           $('#research3').click(function() {
             return $('#researchLink3').click();
           });
-          if (!Modernizr.touch) {
-            skrollr.init({
-              smoothScrolling: false,
-              forceHeight: false
-            });
-            skrollr.menu.init(skrollr.get());
-          }
           $expandableSections = $('.expandable');
-          return $expandableSections.each(function() {
+          $expandableSections.each(function() {
             var $arrow, $expandControl, $longSection, $shortSection, eventData;
             $expandControl = $(this).children('.expandSection');
             if ($expandControl.length === 0) {
@@ -177,6 +168,13 @@
               });
             }
           });
+          if (!Modernizr.touch) {
+            skrollr.init({
+              smoothScrolling: false,
+              forceHeight: false
+            });
+            return skrollr.menu.init(skrollr.get());
+          }
         });
         $(window).resize(function() {
           var mobileMode;
@@ -220,14 +218,29 @@
         $('#groupmembers').fullscreen({
           activeClass: "foo",
           scrollCallback: function() {
-            return $('#menubar').addClass("hidden");
+            return $('#menubar, #mobilebar').addClass("hidden");
+          },
+          shrinkOnLostFocus: true,
+          scrollCaptureRange: 150,
+          lostFocusRange: 151,
+          resizeCallback: function() {
+            skrollr.get().refresh();
+            $.zoomImage.updateAll();
+            return $.zoomImage.updateAll();
           }
         });
-        return $('#groupmembers a').click({
+        return $('#tempSectionToggle').click({
           "parent": $('#groupmembers')
         }, function(e) {
           $(e.data.parent).data("plugin_fullscreen").toggleActive();
           return false;
+        });
+      }
+    }, {
+      load: ['jquery.zoomImage.js', 'jquery.groupMembers.js'],
+      complete: function() {
+        return $('#groupmembers .fullHolder').groupScroller({
+          first: 1
         });
       }
     }
