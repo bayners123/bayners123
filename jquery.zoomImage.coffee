@@ -36,6 +36,7 @@
         yOverride: null # I.e. if it's taller than it is wide then the y margin is set to 
                      #  yOverride instead of calculated and the value in xOverride is ignored
                      # N.B. these are percentages of the container's WIDTH
+        animation: true
         
     data =
         parent: null
@@ -107,7 +108,7 @@
             @refresh()
                 
             # Do the resizing    
-            @resize()
+            @resize(false)
             
         # If the image was already loaded by the time this code runs, trigger the "load" handler now
         if @element.complete || @element.naturalWidth != 0
@@ -120,7 +121,7 @@
             @refresh()
 
             # Resize element
-            @resize()
+            @resize(false)
 
     # Refresh the values stored in @data for the parent's dimentions
     Plugin::refresh = ->
@@ -136,13 +137,19 @@
         @
     
     # Using the values saved in @data, resize the image/element
-    Plugin::resize = ->
+    Plugin::resize = (animation) ->
         $element = $(@element)
+        
+        console.log "Resize with animation? #{animation}"
         
         if @options.useMarginFunctions
             @options.xOverride = @options.getXOverride()
             @options.yOverride = @options.getYOverride()
         
+        # Animate if requested & enabled
+        if animation and @options.animation
+            @_transitions "add"
+            
         # If the image is wider than the container, set it to fill the container's height and overflow by width
         # Also set the margins so that the image is centered
         if @data.imgRatio > @data.targetRatio
@@ -154,12 +161,12 @@
                 # ...or calculate half the amount by which the image is wider than the container as a percentage OF THE CONTAINER'S width
                 overflow = - (@data.imgRatio / @data.targetRatio - 1) * 100 / 2
             
-    
+            # Do the resizing      
             $element.css
                 height: "100%",
                 width: "auto",
                 margin: "0 0 0 " + overflow + "%"
-        
+                    
         # Vice versa for the other case (taller than container)        
         else
             if typeof @options.yOverride == "number"
@@ -168,15 +175,44 @@
             else
                 # Calculate half the amount by which the image is taller than the container as a percentage OF THE CONTAINER'S WIDTH
                 overflow = - (1 / @data.imgRatio - 1 / @data.targetRatio) * 100 / 2
-    
+                
             $element.css
                 height: "auto",
                 width: "100%",
                 margin: overflow + "% 0 0 0"
-            
-        @options.resizeCallbackAfter(@element)
+                
+        # Remove the animations afterwards & call the callback
+        if animation and @options.animation
+            $element.one "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
+                @_transitions "remove"
+                
+                @options.resizeCallbackAfter(@element)
+        else    
+            @options.resizeCallbackAfter(@element)
                 
         @
+    
+    Plugin::_transitions = (option) ->
+        $element = $(@element)
+        
+        console.log "Animations! #{option}"
+        
+        if option == "add"
+            $element.css
+                "-webkit-transition": "margin 0.25s ease-in-out"
+                "-moz-transition": "margin 0.25s ease-in-out"
+                "-o-transition": "margin 0.25s ease-in-out"
+                "transition": "margin 0.25s ease-in-out"
+        else if option = "remove"
+            $element.css
+                "-webkit-transition": ""
+                "-moz-transition": ""
+                "-o-transition": ""
+                "transition": ""
+        
+        # Pause for DOM update        
+        setTimeout ->
+            @
     
     Plugin::yOverride = (yOverride) ->
         
@@ -184,7 +220,7 @@
         @options.yOverride = yOverride
         
         # Resize the image
-        @resize()
+        @resize(true)
     
     Plugin::xOverride = (xOverride) ->
         
@@ -192,13 +228,13 @@
         @options.xOverride = xOverride
         
         # Resize the image
-        @resize()
+        @resize(true)
         
     Plugin::update = ->
         
         @refresh()
         
-        @resize()
+        @resize(false)
     
     #  --- global functions ---
     

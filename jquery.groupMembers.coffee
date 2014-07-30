@@ -104,20 +104,20 @@
                 getXOverride: =>
                     @getXMargin(@data.currentSlide)
                     
-            # Goto first slide
-            @_goto(@options.first)
+            # Goto first slide with no animation
+            @_goto(@options.first, false)
         
     Plugin::_prev = ->
         
-        # Call @_goto
+        # Call @_goto with animation
         if @data.currentSlide != 0
-            @_goto(@data.currentSlide - 1)
+            @_goto(@data.currentSlide - 1, true)
         
     Plugin::_next = ->
         
-        # Call @_goto
+        # Call @_goto with animation
         if @data.currentSlide < @data.noSlides - 1
-            @_goto(@data.currentSlide + 1)
+            @_goto(@data.currentSlide + 1, true)
         
     Plugin::_goto = (slide, animation) ->
         
@@ -139,8 +139,8 @@
             # Update the current slide
             @data.currentSlide = slide
             
-            # Resize the image. This will cause zoomImage to call getXMargin to determine the correct offset
-            @data.slideImg.data("plugin_zoomImage").resize()
+            # Resize the image (using animation). This will cause zoomImage to call getXMargin to determine the correct offset
+            @data.slideImg.data("plugin_zoomImage").resize(animation)
             
             
     Plugin::getXMargin = (slide) ->
