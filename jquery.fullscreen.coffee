@@ -250,15 +250,19 @@
                     height: targetHeight
                     width: targetWidth
                     
-                # If this function was triggered by moving out of the focal zone, scroll to the bottom of the element
+                # If this function was triggered by moving out of the focal zone, compensate for the shrinking by scrolling the screen
                 if @data.autoShrinking
-                    # Scroll the window to the element's bottom in 300ms
-                    elementBottom = @element.offsetTop + @data.originalHeight
+                    # Scroll the window upwards by the element's expanded height - shrunk height
+                    # elementBottom = @element.offsetTop + @data.originalHeight
+                    elementDelta = $element.height() - @data.originalHeight
+                    currentScroll = @options.parentElement.scrollTop()
         
                     if $(@options.parentElement).get(0) == window
-                        $('html, body').animate scrollTop: elementBottom, 300
+                        # $('html, body').animate scrollTop: elementBottom, 300
+                        $('html, body').scrollTop currentScroll - elementDelta
                     else
-                        $(@options.parentElement).animate scrollTop: elementBottom, 300
+                        # $(@options.parentElement).animate scrollTop: elementBottom, 300
+                        $(@options.parentElement).scrollTop currentScroll - elementDelta
                         
                     # Remove the flag
                     @data.autoShrinking = false
