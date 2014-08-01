@@ -97,7 +97,8 @@
             @data.slideImg.zoomImage
                 # Whenever the image gets resized, update skrollr
                 resizeCallbackAfter: ->
-                    if skrollr.get()
+                    if not typeof skrollr == "undefined"
+                      if skrollr.get()
                         skrollr.get().refresh()
                 # Before the image gets resized, recalculate the xMargin
                 useMarginFunctions: true

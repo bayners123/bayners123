@@ -236,8 +236,9 @@ Modernizr.load [
                                     .addClass "fa-arrow-down"
                                     .removeClass "fa-arrow-up"
                                 
-                            if skrollr
-                                skrollr.get().refresh()
+                            if not typeof skrollr == "undefined"
+                                if skrollr.get()
+                                    skrollr.get().refresh()
                                 
                             # Prevent default link action 
                             e.preventDefault()
@@ -262,16 +263,18 @@ Modernizr.load [
                 if mobileMode && $(@).width() > mobileThreshold
                     $("#slider").data("plugin_slidesjs").resize slideWidth, slideHeight
                     
-                    # Refresh skrollr
-                    skrollr.get().refresh()
+                    # Refresh skrollr if present
+                    if not typeof skrollr == "undefined"
+                        skrollr.get().refresh()
 
                 # Else if it's currently in normal and we changed to mobile:
                 else if $(@).width() < mobileThreshold  && !mobileMode
                     $("#slider").data("plugin_slidesjs").resize slideWidth, slideHeightMobile
                     
-                    # Refresh skrollr
-                    skrollr.get().refresh()
-
+                    # Refresh skrollr if present
+                    if not typeof skrollr == "undefined"
+                        skrollr.get().refresh()
+                        
             # Animate .hoverPulse elements when hovered using 'Animate.css'
             $('.hoverPulse').addClass('animated').hover ->
                     $(this).toggleClass('pulse')
@@ -320,7 +323,9 @@ Modernizr.load [
                 scrollCaptureRange: 150 # Distance from element within which the window will lock to it
                 lostFocusRange: 151 # Distance at which to trigger the lostFocusCallback
                 resizeCallback: ->
-                    skrollr.get().refresh()
+                    # Refresh skrollr if present
+                    if not typeof skrollr == "undefined"
+                        skrollr.get().refresh()
                     $.zoomImage.updateAll() # Run twice since otherwise the image scrolling won't work when
                     $.zoomImage.updateAll() #  you open the fullscreen bit. Hacky hacky hack
 
