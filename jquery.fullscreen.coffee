@@ -255,7 +255,7 @@
                     # Scroll the window upwards by the element's expanded height - shrunk height
                     # elementBottom = @element.offsetTop + @data.originalHeight
                     elementDelta = $element.height() - @data.originalHeight
-                    currentScroll = @options.parentElement.scrollTop()
+                    currentScroll = $(@options.parentElement).scrollTop()
         
                     if $(@options.parentElement).get(0) == window
                         # $('html, body').animate scrollTop: elementBottom, 300

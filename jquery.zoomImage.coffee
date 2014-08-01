@@ -140,8 +140,6 @@
     Plugin::resize = (animation) ->
         $element = $(@element)
         
-        console.log "Resize with animation? #{animation}"
-        
         if @options.useMarginFunctions
             @options.xOverride = @options.getXOverride()
             @options.yOverride = @options.getYOverride()
