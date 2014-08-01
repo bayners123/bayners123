@@ -27,6 +27,12 @@
 
 @media only screen
 and (max-device-width : 799px) {
+    
+body{
+/*    Nerf the iPhone's text resizing  */
+-webkit-text-size-adjust: none;
+}
+
 
 body, #menubar { min-width: 0; }
 
@@ -97,7 +103,7 @@ h2 { font-size: 1.5em }
     padding: 0.5em 0 3%;
 }
 .groupDesc .arrow { font-size: 1.0em; }
-.groupDesc h3 { font-size: 1em; display: none; }
+.groupDesc h3 { font-size: 1em; }
 .groupDesc .desc {
     font-size: 0.75em;
     padding: 0 !important;
