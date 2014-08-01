@@ -23,30 +23,6 @@
         position: relative;
     }
 
-    .gotoTop {
-        display: block;
-        width: 100%;
-        text-align: right;
-        padding-top: 0.31em;
-        padding-right: 0.31em;
-        margin-top: 0.31em;
-        border-top: #444 solid 1px;
-        color: #666;
-    }
-    
-    .groupDesc {
-        padding: 0.5em 0 3%;
-    }
-    .groupDesc .arrow { font-size: 1.5em; }
-    .groupDesc h3 { font-size: 1em; }
-    .groupDesc .desc {
-        font-size: 0.75em;
-        padding: 0 !important;
-    }
-    .groupDesc .groupList {
-        font-size: 0.5em;
-    }
-
 }
 
 @media only screen
@@ -105,6 +81,30 @@ h2 { font-size: 1.5em }
 /* This is since the font-size of the i elements is 160px, 10x the default */
 .content > i.left { left: 0.05em; }
 .content > i.right { right: 0.05em; }
+
+.gotoTop {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding-top: 0.31em;
+    padding-right: 0.31em;
+    margin-top: 0.31em;
+    border-top: #444 solid 1px;
+    color: #666;
+}
+
+.groupDesc {
+    padding: 0.5em 0 3%;
+}
+.groupDesc .arrow { font-size: 1.0em; }
+.groupDesc h3 { font-size: 1em; display: none; }
+.groupDesc .desc {
+    font-size: 0.75em;
+    padding: 0 !important;
+}
+.groupDesc .groupList {
+    font-size: 0.5em;
+}
 
 #research2 {
     padding-top: 0;
