@@ -44,7 +44,8 @@
         originalWidth : null
         animating : false
         hasFocus: false
-    
+        justResized : false
+        
     class Plugin
       constructor: (@element, options) ->
         @options = $.extend true, {}, defaults, options
@@ -64,7 +65,7 @@
         # Bind the checker to parent resize
         $(window).resize =>
             @check()
-            
+            @data.justResized = true
             # if it had focus, retain focus
             if @data.hasFocus
                 @_scrollTo(false)
