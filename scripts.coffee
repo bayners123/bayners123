@@ -236,7 +236,7 @@ Modernizr.load [
                                     .addClass "fa-arrow-down"
                                     .removeClass "fa-arrow-up"
                                 
-                            if not typeof skrollr == "undefined"
+                            if skrollr?
                                 if skrollr.get()
                                     skrollr.get().refresh()
                                 
@@ -264,7 +264,7 @@ Modernizr.load [
                     $("#slider").data("plugin_slidesjs").resize slideWidth, slideHeight
                     
                     # Refresh skrollr if present
-                    if not typeof skrollr == "undefined"
+                    if skrollr?
                         skrollr.get().refresh()
 
                 # Else if it's currently in normal and we changed to mobile:
@@ -272,7 +272,7 @@ Modernizr.load [
                     $("#slider").data("plugin_slidesjs").resize slideWidth, slideHeightMobile
                     
                     # Refresh skrollr if present
-                    if not typeof skrollr == "undefined"
+                    if skrollr?
                         skrollr.get().refresh()
                         
             # Animate .hoverPulse elements when hovered using 'Animate.css'
@@ -324,7 +324,7 @@ Modernizr.load [
                 lostFocusRange: 151 # Distance at which to trigger the lostFocusCallback
                 resizeCallback: ->
                     # Refresh skrollr if present
-                    if not typeof skrollr == "undefined"
+                    if skrollr?
                         skrollr.get().refresh()
                     $.zoomImage.updateAll() # Run twice since otherwise the image scrolling won't work when
                     $.zoomImage.updateAll() #  you open the fullscreen bit. Hacky hacky hack
