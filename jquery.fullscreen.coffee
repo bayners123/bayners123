@@ -45,6 +45,7 @@
         animating : false
         hasFocus: false
         justResized : false
+        resizeTimeout : null
         
     class Plugin
       constructor: (@element, options) ->
@@ -185,6 +186,19 @@
                 height: targetHeight 
                 width: targetWidth 
         
+            # Finish focussed on the element if we were previously focussed:
+            
+            # To allow the DOM time to update, set a timeout
+            # But, to prevent multiple firing, disable any previously active timeouts
+            #  before registering a new one:
+            clearTimeout(@data.resizeTimeout) if @data.resizeTimeout
+            
+            # Register new timeout if the element was previously focussed
+            if @data.hasFocus
+                @data.resizeTimeout = setTimeout =>
+                    @_scrollTo(false)
+                    @data.resizeTimeout = null
+                
         else
             # Flag start of animation
             @data.animating = true
