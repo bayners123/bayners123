@@ -97,6 +97,20 @@
             @_next()
             false
             
+        # Bind the .groupList nav to the slides
+        # We expect that the .groupList contains the same number of a elements as there are group members
+        @data.groupListLinks.click (e) =>
+            
+            # Get the clicked link
+            clickedLink = e.target
+            
+            # Disable the hyperlink
+            e.preventDefault()
+            
+            # Goto the appropriate slide, with animation
+            @_goto @data.groupListLinks.index(clickedLink), true
+            
+            
         # Zoom the image and goto the first slide on load
         $ =>
             # Set image to zoom to fill the area using the zoomImage plugin
