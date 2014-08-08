@@ -42,7 +42,7 @@
         descUL: null
         currentSlide: null
         noSlides: null
-        groupList: null
+        groupListLinks: null
     
     class Plugin
       constructor: (@element, options) ->
@@ -81,10 +81,10 @@
         else
             @data.descUL= $element.find(".desc")
             
-        if @options.groupList
-            @data.groupList= $(@options.groupList)
+        if @options.groupListLinks
+            @data.groupListLinks= $(@options.groupListLinks)
         else
-            @data.groupList= $element.find(".groupList")
+            @data.groupListLinks= $element.find(".groupList a")
             
         # Number of slides:
         @data.noSlides = @data.descUL.children("li").length
