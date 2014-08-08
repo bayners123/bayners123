@@ -193,8 +193,6 @@
     Plugin::_transitions = (option) ->
         $element = $(@element)
         
-        console.log "Animations! #{option}"
-        
         if option == "add"
             $element.css
                 "-webkit-transition": "margin 0.25s ease-in-out"
