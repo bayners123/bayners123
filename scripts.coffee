@@ -326,8 +326,9 @@ Modernizr.load [
                     # Refresh skrollr if present
                     if skrollr?
                         skrollr.get().refresh()
-                    $.zoomImage.updateAll() # Run twice since otherwise the image scrolling won't work when
-                    $.zoomImage.updateAll() #  you open the fullscreen bit. Hacky hacky hack
+                    if $.zoomImage?
+                        $.zoomImage.updateAll() # Run twice since otherwise the image scrolling won't work when
+                        $.zoomImage.updateAll() #  you open the fullscreen bit. Hacky hacky hack
 
             $('#tempSectionToggle').click "parent": $('#groupmembers'), (e) ->
                 $(e.data.parent).data("plugin_fullscreen").toggleActive()
