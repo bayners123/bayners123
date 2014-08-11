@@ -243,6 +243,9 @@
             $element.css
                 height: ""
                 width: ""
+                
+            # Trigger the resize callback passed as an option to this plugin
+            @options.resizeCallback(@element)
         
         else
             # Flag start of animation
