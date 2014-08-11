@@ -286,7 +286,7 @@
         @options.yOverride = yOverride
         
         # Resize the image
-        @resize(true)
+        @resize(true) if @data.active
     
     Plugin::xOverride = (xOverride) ->
         
@@ -294,13 +294,13 @@
         @options.xOverride = xOverride
         
         # Resize the image
-        @resize(true)
+        @resize(true) if @data.active
         
     Plugin::update = ->
         
         @refresh()
         
-        @resize(false)
+        @resize(false) if @data.active
     
     #  --- global functions ---
     
