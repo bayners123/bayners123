@@ -335,8 +335,14 @@ Modernizr.load [
                 "parent": $('#groupmembers')
                 "img": $('#groupmembers .slideImg')
             , (e) ->
-                $(e.data.parent).data("plugin_fullscreen").toggleActive()
-                $(e.data.img).data("plugin_zoomImage").toggleActive()
+                
+                if $(e.data.parent).hasClass("foo")
+                    $(e.data.parent).data("plugin_fullscreen").toggleActive =>
+                        $(e.data.img).data("plugin_zoomImage").toggleActive()
+                else
+                    $(e.data.parent).data("plugin_fullscreen").toggleActive =>
+                        $(e.data.img).data("plugin_zoomImage").toggleActive()
+                    
                 return false
 
     ,
