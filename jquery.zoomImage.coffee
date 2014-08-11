@@ -25,6 +25,7 @@
     
     pluginName = "zoomImage"
     defaults =
+        active: true # Initial state. Is the plugin active for this element?
         parent: null
         useMarginFunctions: false
         getXOverride: ->
@@ -39,6 +40,7 @@
         animation: true
         
     data =
+        active: null
         parent: null
         parentWidth: null
         parentHeight: null
@@ -76,22 +78,16 @@
             # Else, just get the parent
             @data.parent = $element.parent()
         
-        # Set parent to relative positioning if it's currently static so that the element's positioning works
-        if @data.parent.css("position") == "static"
-            @data.parent.css("position", 'relative')
-            
-        # Set the parent's overflow to hidden
-        @data.parent.css("overflow", "hidden")
-            
-        # Set the img (or whatever) to absolute positioning
-        $element.css("position", "absolute")
         
-        # A max width / height will cause manual resizing to fail, so we remove it if present. 
-        $element.css
-            "max-width": "none"
-            "max-height": "none"
+        # Get whether the plugin is active
+        @data.active = @options.active
         
-        # Register the function to zoom the image (or whatever) as soon as it's loaded
+        # If so, set up the image for resizing
+        if @data.active
+            
+            @_setupStyles()
+        
+        # Register the function to zoom the image (or whatever) as soon as it's loaded if active
         $element.one "load.#{@_name}", =>
             $element = $(@element)
                 
@@ -108,7 +104,7 @@
             @refresh()
                 
             # Do the resizing    
-            @resize(false)
+            @resize(false) if @data.active
             
         # If the image was already loaded by the time this code runs, trigger the "load" handler now
         if @element.complete || @element.naturalWidth != 0
@@ -121,8 +117,74 @@
             @refresh()
 
             # Resize element
-            @resize(false)
+            @resize(false) if @data.active
+    
+    # Start zooming this element
+    Plugin::setActive = ->
+        
+        # Set flag
+        @data.active = true
+        
+        # Setup styles
+        @_setupStyles()
+        
+        # Refresh parent dims
+        @refresh()
 
+        # Resize element with animation
+        @resize(true)
+        
+    # Stop zooming this element
+    Plugin::setInactive = ->
+        $element = $(@element)
+        
+        # Set flag
+        @data.active = false
+                
+        # Remove styles
+        @_removeStyles()
+
+        # Remove resizing styles
+        $element.css
+            height: ""
+            width: ""
+            "margin-top": ""
+            "margin-right": ""
+            "margin-bottom": ""
+            "margin-left": ""
+    
+    # Set styles for zooming
+    Plugin::_setupStyles = ->
+        $element = $(@element)
+        
+        # Set parent to relative positioning if it's currently static so that the element's positioning works
+        if @data.parent.css("position") == "static"
+            @data.parent.css("position", 'relative')
+        
+        # Set the parent's overflow to hidden
+        @data.parent.css("overflow", "hidden")
+        
+        # Set the img (or whatever) to absolute positioning
+        $element.css("position", "absolute")
+    
+        # A max width / height will cause manual resizing to fail, so we remove it if present. 
+        $element.css
+            "max-width": "none"
+            "max-height": "none"
+            
+    # Remove styles for zooming
+    Plugin::_removeStyles = ->
+        $element = $(@element)
+        
+        @data.parent.css
+            "position": ""
+            "overflow": ""
+        
+        $element.css
+            "position": ""
+            "max-width": ""
+            "max-height": ""
+    
     # Refresh the values stored in @data for the parent's dimentions
     Plugin::refresh = ->
         $element = $(@element)
