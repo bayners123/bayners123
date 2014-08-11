@@ -136,13 +136,12 @@
         @_addStyles()
         
         # Resize
-        @_resizeToFull()
+        # Argument is a function to be executed after resize
+        @_resizeToFull callback
         
-        # Scroll to
+        # Scroll to the element
+        # This happens concurrenty with the resize
         @_scrollTo(true)
-        
-        # Run the callback
-        callback() if callback?
         
         @
     
@@ -210,7 +209,7 @@
         false
 
     # Resize the element fully    
-    Plugin::_resizeToFull = ->
+    Plugin::_resizeToFull = (afterResized) ->
         $element = $(@element)
         
         # Get target height & widths
@@ -233,11 +232,19 @@
             clearTimeout(@data.resizeTimeout) if @data.resizeTimeout
             
             # Register new timeout if the element was previously focussed
-            if @data.hasFocus
-                @data.resizeTimeout = setTimeout =>
-                    @_scrollTo(false)
-                    @data.resizeTimeout = null
+            @data.resizeTimeout = setTimeout =>
                 
+                if @data.hasFocus
+                    @_scrollTo(false)
+                
+                # Execute the callback passed as a parameter to this function
+                afterResized() if afterResized?
+            
+                # Trigger the resize callback passed as an option to this plugin
+                @options.resizeCallback(@element)
+                
+                @data.resizeTimeout = null
+            
         else
             # Flag start of animation
             @data.animating = true
@@ -266,9 +273,12 @@
                 @element.style[@data.vendorPrefix + "Transition"] = ""
                 @data.animating = false
                 
-                # Trigger the resize callback
+                # Execute the callback passed as a parameter to this function
+                afterResized() if afterResized?
+                
+                # Trigger the resize callback passed as an option to this plugin
                 @options.resizeCallback(@element)
-            
+                
         @
         
     # Remove any inline height/width styles
