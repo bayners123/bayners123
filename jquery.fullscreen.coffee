@@ -129,15 +129,28 @@
         @data.originalWidth = $element.width()
               
     Plugin::setActive = ->
+        # Mark as active
         $(@element).addClass @options.activeClass
+        
+        # Prepare styles
+        @_addStyles()
+        
+        # Resize
         @_resizeToFull()
+        
+        # Scroll to
         @_scrollTo(true)
         
         @
     
     Plugin::setInactive = ->
-        $(@element).removeClass @options.activeClass
+        # Inverse of setActive
+        
+        @_undoResize()
+        
         @_removeStyles()
+        
+        $(@element).removeClass @options.activeClass
         
         @
         
@@ -150,6 +163,36 @@
             @setActive()
             
         @
+        
+    # Add needed styles
+    Plugin::_addStyles = ->
+        $element = $(@element)
+        
+        # find the right children & add appropriate CSS
+        $element.find(".fullHolder, .fullHolderContent").css
+            display: "block"
+            height: "100%"
+            overflow: "hidden"
+            position: "relative"
+
+        $element.find(".fullHolder > img").css
+            position: "absolute"
+            width: "100%"
+            
+    # Remove needed styles
+    Plugin::_removeStyles = ->
+        $element = $(@element)
+        
+        # find the right children & add appropriate CSS
+        $element.find(".fullHolder, .fullHolderContent").css
+            display: ""
+            height: ""
+            overflow: ""
+            position: ""
+
+        $element.find(".fullHolder > img").css
+            position: ""
+            width: ""
         
     # @_getVendorPrefix()
     # Check if the browser supports CSS3 Transitions
@@ -231,7 +274,8 @@
         @
         
     # Remove any inline height/width styles
-    Plugin::_removeStyles = ->
+    # Argument is a function to be executed after resized
+    Plugin::_undoResize = (afterResized) ->
         $element = $(@element)
         
         @data.hasFocus = false
@@ -244,6 +288,9 @@
                 height: ""
                 width: ""
                 
+            # Execute the callback passed as a parameter to this function
+            afterResized() if afterResized?
+            
             # Trigger the resize callback passed as an option to this plugin
             @options.resizeCallback(@element)
         
@@ -294,7 +341,10 @@
                 @element.style[@data.vendorPrefix + "Transition"] = ""
                 @data.animating = false
                 
-                # Trigger the resize callback
+                # Execute the callback passed as a parameter to this function
+                afterResized() if afterResized?
+                
+                # Trigger the resize callback passed as an option to this plugin
                 @options.resizeCallback(@element)
               
         @

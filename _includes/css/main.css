@@ -226,7 +226,7 @@ a.expandSection i {
     overflow: hidden;
 }
 
-.fullHolder, .fullHolderContent {
+/*.fullHolder, .fullHolderContent {
     display: block;
     height: 100%;
     overflow: hidden;
@@ -236,7 +236,7 @@ a.expandSection i {
 .fullHolder > img {
     position: absolute;
     width: 100%;
-}
+}*/
 
 .groupDesc {
     color: white;
