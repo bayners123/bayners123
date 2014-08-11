@@ -83,9 +83,7 @@
         @data.active = @options.active
         
         # If so, set up the image for resizing
-        if @data.active
-            
-            @_setupStyles()
+        @_setupStyles() if @data.active
         
         # Register the function to zoom the image (or whatever) as soon as it's loaded if active
         $element.one "load.#{@_name}", =>
@@ -104,7 +102,7 @@
             @refresh()
                 
             # Do the resizing    
-            @resize(false) if @data.active
+            @resize(false)
             
         # If the image was already loaded by the time this code runs, trigger the "load" handler now
         if @element.complete || @element.naturalWidth != 0
@@ -117,7 +115,7 @@
             @refresh()
 
             # Resize element
-            @resize(false) if @data.active
+            @resize(false)
     
     # Start zooming this element
     Plugin::setActive = ->
@@ -210,6 +208,9 @@
     Plugin::resize = (animation) ->
         $element = $(@element)
         
+        # If not active, exit here
+        return false unless @data.active
+        
         if @options.useMarginFunctions
             @options.xOverride = @options.getXOverride()
             @options.yOverride = @options.getYOverride()
@@ -286,7 +287,7 @@
         @options.yOverride = yOverride
         
         # Resize the image
-        @resize(true) if @data.active
+        @resize(true)
     
     Plugin::xOverride = (xOverride) ->
         
@@ -294,13 +295,13 @@
         @options.xOverride = xOverride
         
         # Resize the image
-        @resize(true) if @data.active
+        @resize(true)
         
     Plugin::update = ->
         
         @refresh()
         
-        @resize(false) if @data.active
+        @resize(false)
     
     #  --- global functions ---
     
