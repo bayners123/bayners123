@@ -118,7 +118,7 @@
             @resize(false)
     
     # Start zooming this element
-    Plugin::setActive = ->
+    Plugin::setActive = (callback) ->
         
         # Set flag
         @data.active = true
@@ -132,8 +132,11 @@
         # Resize element with animation
         @resize(true)
         
+        # Run callback
+        callback() if callback?
+        
     # Stop zooming this element
-    Plugin::setInactive = ->
+    Plugin::setInactive = (callback) ->
         $element = $(@element)
         
         # Set flag
@@ -151,13 +154,16 @@
             "margin-bottom": ""
             "margin-left": ""
             
+        # Run callback
+        callback() if callback?
+            
     # Toggle active status
-    Plugin::toggleActive = ->
+    Plugin::toggleActive = (callback) ->
         
         if @data.active
-            @setInactive()
+            @setInactive(callback)
         else
-            @setActive()   
+            @setActive(callback)   
     
     # Set styles for zooming
     Plugin::_setupStyles = ->

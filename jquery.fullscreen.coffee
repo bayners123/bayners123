@@ -128,7 +128,7 @@
         @data.originalHeight = $element.height()
         @data.originalWidth = $element.width()
               
-    Plugin::setActive = ->
+    Plugin::setActive = (callback) ->
         # Mark as active
         $(@element).addClass @options.activeClass
         
@@ -141,9 +141,12 @@
         # Scroll to
         @_scrollTo(true)
         
+        # Run the callback
+        callback() if callback?
+        
         @
     
-    Plugin::setInactive = ->
+    Plugin::setInactive = (callback) ->
         # Inverse of setActive
         
         # The arguments to @_undoResize is a function to be executed after the animation (or not) is complete
@@ -153,18 +156,18 @@
         
             $(@element).removeClass @options.activeClass
             
-            console.log "Done"
+            callback() if callback?
         
         @
         
-    Plugin::toggleActive = ->
+    Plugin::toggleActive = (callback) ->
         $element = $(@element)
         
         if $element.hasClass @options.activeClass
-            @setInactive()
+            @setInactive(callback)
         else
-            @setActive()
-            
+            @setActive(callback)
+        
         @
         
     # Add needed styles
