@@ -146,11 +146,14 @@
     Plugin::setInactive = ->
         # Inverse of setActive
         
-        @_undoResize()
+        # The arguments to @_undoResize is a function to be executed after the animation (or not) is complete
+        @_undoResize =>
         
-        @_removeStyles()
+            @_removeStyles()
         
-        $(@element).removeClass @options.activeClass
+            $(@element).removeClass @options.activeClass
+            
+            console.log "Done"
         
         @
         
