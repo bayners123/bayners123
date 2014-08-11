@@ -308,14 +308,34 @@ Modernizr.load [
         complete: ->
 
             # Fullscreen test for group members section
-
+            
+            # Toggle section:
+            toggleSection = (parentSection) ->
+                console.log "test"
+                
+                parentSection = $(parentSection)
+                img =  parentSection.find(".slideImg")
+                
+                if parentSection.hasClass("foo")
+                    console.log 1
+                    img.data("plugin_zoomImage").toggleActive =>
+                        console.log 2
+                        parentSection.data("plugin_fullscreen").toggleActive()
+                        
+                else
+                    console.log 3
+                    parentSection.data("plugin_fullscreen").toggleActive =>
+                        console.log 4
+                        img.data("plugin_zoomImage").toggleActive()
+            
             $('#groupmembers').fullscreen
                 activeClass : "foo"
                 scrollCallback: ->
                     $('#menubar, #mobilebar').addClass("hidden")
-                shrinkOnLostFocus: true
+                shrinkOnLostFocus: false
                 lostFocusCallback: (element) ->
-                    $(element).find('.slideImg').data("plugin_zoomImage").toggleActive()
+                    toggleSection $(element)
+                    
                     # console.log $(element).find('.slideImg')
                 # animation: false
                 # animationDuration: "1s"
@@ -336,12 +356,7 @@ Modernizr.load [
                 "img": $('#groupmembers .slideImg')
             , (e) ->
                 
-                if $(e.data.parent).hasClass("foo")
-                    $(e.data.parent).data("plugin_fullscreen").toggleActive =>
-                        $(e.data.img).data("plugin_zoomImage").toggleActive()
-                else
-                    $(e.data.parent).data("plugin_fullscreen").toggleActive =>
-                        $(e.data.img).data("plugin_zoomImage").toggleActive()
+                toggleSection $('#groupmembers')
                     
                 return false
 
