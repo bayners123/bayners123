@@ -180,10 +180,6 @@
             height: "100%"
             overflow: "hidden"
             position: "relative"
-
-        $element.find(".fullHolder > img").css
-            position: "absolute"
-            width: "100%"
             
     # Remove needed styles
     Plugin::_removeStyles = ->
@@ -195,10 +191,6 @@
             height: ""
             overflow: ""
             position: ""
-
-        $element.find(".fullHolder > img").css
-            position: ""
-            width: ""
         
     # @_getVendorPrefix()
     # Check if the browser supports CSS3 Transitions
