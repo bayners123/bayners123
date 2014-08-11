@@ -113,7 +113,7 @@
             
         # Zoom the image and goto the first slide on load
         $ =>
-            # Set image to zoom to fill the area using the zoomImage plugin
+            # Set image to zoom to fill the area using the zoomImage plugin, start inactive
             @data.slideImg.zoomImage
                 # Whenever the image gets resized, update skrollr
                 resizeCallbackAfter: ->
@@ -124,6 +124,8 @@
                 useMarginFunctions: true
                 getXOverride: =>
                     @getXMargin(@data.currentSlide)
+                # Don't zoom the image initially (this will be activated when the section goes fullscreen)
+                active: false
                     
             # Goto first slide with no animation
             @_goto(@options.first, false)

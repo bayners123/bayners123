@@ -314,8 +314,9 @@ Modernizr.load [
                 scrollCallback: ->
                     $('#menubar, #mobilebar').addClass("hidden")
                 shrinkOnLostFocus: true
-                # lostFocusCallback: (element) ->
-                #     $(element).data("plugin_fullscreen").setInactive()
+                lostFocusCallback: (element) ->
+                    $(element).find('.slideImg').data("plugin_zoomImage").toggleActive()
+                    # console.log $(element).find('.slideImg')
                 # animation: false
                 # animationDuration: "1s"
                 # parentElement: $('#skrollr-body')
@@ -330,8 +331,12 @@ Modernizr.load [
                         $.zoomImage.updateAll() # Run twice since otherwise the image scrolling won't work when
                         $.zoomImage.updateAll() #  you open the fullscreen bit. Hacky hacky hack
 
-            $('#tempSectionToggle').click "parent": $('#groupmembers'), (e) ->
+            $('#tempSectionToggle').click 
+                "parent": $('#groupmembers')
+                "img": $('#groupmembers .slideImg')
+            , (e) ->
                 $(e.data.parent).data("plugin_fullscreen").toggleActive()
+                $(e.data.img).data("plugin_zoomImage").toggleActive()
                 return false
 
     ,
