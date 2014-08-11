@@ -152,6 +152,14 @@
             "margin-right": ""
             "margin-bottom": ""
             "margin-left": ""
+            
+    # Toggle active status
+    Plugin::toggleActive = ->
+        
+        if @data.active
+            @setInactive()
+        else
+            @setActive()   
     
     # Set styles for zooming
     Plugin::_setupStyles = ->
