@@ -122,6 +122,7 @@
                         skrollr.get().refresh()
                 # Before the image gets resized, recalculate the xMargin
                 useMarginFunctions: true
+                initialAnimation: false
                 getXOverride: =>
                     @getXMargin(@data.currentSlide)
                 # Don't zoom the image initially (this will be activated when the section goes fullscreen)

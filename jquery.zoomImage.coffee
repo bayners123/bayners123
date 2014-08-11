@@ -37,7 +37,8 @@
         yOverride: null # I.e. if it's taller than it is wide then the y margin is set to 
                      #  yOverride instead of calculated and the value in xOverride is ignored
                      # N.B. these are percentages of the container's WIDTH
-        animation: true
+        animation: true # Animate margin changes
+        initialAnimation: true # Animate margin changes on the first, initial resize
         
     data =
         active: null
@@ -130,7 +131,7 @@
         @refresh()
 
         # Resize element with animation
-        @resize(true)
+        @resize(@options.initialAnimation)
         
         # Run callback
         callback() if callback?
