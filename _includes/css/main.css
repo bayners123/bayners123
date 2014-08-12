@@ -40,8 +40,12 @@ em { font-style: italic; }
     background: #EEE;
 }
 
+.expandable {
+    position: relative;
+    z-index: 1;
+}
 .expandSection {
-    z-index: -1;
+    z-index: 0;
     border-top: none;
 }
 

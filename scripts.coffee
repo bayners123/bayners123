@@ -242,6 +242,11 @@ Modernizr.load [
                                 
                             # Prevent default link action 
                             e.preventDefault()
+                    else
+                        # No controlling element found
+                        console.log "No .expandSection control found for section:"
+                        console.log this
+                        console.log "This should be either a child or sibling of the .expandable element"
                             
                 # Init skrollr if we're not on a mobile (after slider)
                 if !Modernizr.touch
