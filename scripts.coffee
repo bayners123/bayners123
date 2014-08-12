@@ -351,6 +351,8 @@ Modernizr.load [
                         swap: true
                         pauseOnHover: false
                         generate: false
+                    pagination:
+                        active: false
                     effect:
                         fade: 
                             speed: 600
