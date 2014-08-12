@@ -355,12 +355,6 @@ Modernizr.load [
                         $.zoomImage.updateAll() # Run twice since otherwise the image scrolling won't work when
                         $.zoomImage.updateAll() #  you open the fullscreen bit. Hacky hacky hack
 
-            $('#tempSectionToggle').click ->
-                
-                toggleSection $('#groupmembers')
-                    
-                return false
-
     ,
         load: ['jquery.zoomImage.js','jquery.groupMembers.js']
         complete: ->
