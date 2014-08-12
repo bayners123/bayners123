@@ -315,6 +315,7 @@ Modernizr.load [
             $('#groupmembers').fullscreen
                 activeClass : "foo"
                 active: true
+                animation: false
                 scrollCallback: ->
                     $('#menubar, #mobilebar').addClass("hidden")
                 # lostFocusCallback: (element) ->
