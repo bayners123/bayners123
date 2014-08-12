@@ -226,6 +226,10 @@ a.expandSection i {
     overflow: hidden;
 }
 
+#groupmembers .fullHolderContent {
+    display: none;
+}
+
 .fullHolder > img {
     width: 100%;
 }
