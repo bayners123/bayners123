@@ -1,4 +1,20 @@
 (function() {
+  var refreshSkrollr, scrollTo;
+
+  refreshSkrollr = function() {
+    if (typeof skrollr !== "undefined" && skrollr !== null) {
+      if (skrollr.get()) {
+        return skrollr.get().refresh();
+      }
+    }
+  };
+
+  scrollTo = function(selector) {
+    return $('html, body').animate({
+      scrollTop: $(selector).offset().top
+    }, 200);
+  };
+
   Modernizr.load([
     {
       test: Modernizr.touch,
@@ -153,20 +169,25 @@
                 if (long.hasClass("hidden")) {
                   short.addClass('hidden');
                   long.removeClass('hidden');
-                  short.slideUp();
-                  long.slideDown();
+                  short.slideUp({
+                    complete: refreshSkrollr
+                  });
+                  long.slideDown({
+                    complete: refreshSkrollr
+                  });
+                  scrollTo(long);
                   arrow.addClass("fa-arrow-up").removeClass("fa-arrow-down");
                 } else {
                   short.removeClass('hidden');
                   long.addClass('hidden');
-                  short.slideDown();
-                  long.slideUp();
+                  short.slideDown({
+                    complete: refreshSkrollr
+                  });
+                  long.slideUp({
+                    complete: refreshSkrollr
+                  });
+                  scrollTo(long);
                   arrow.addClass("fa-arrow-down").removeClass("fa-arrow-up");
-                }
-                if (typeof skrollr !== "undefined" && skrollr !== null) {
-                  if (skrollr.get()) {
-                    skrollr.get().refresh();
-                  }
                 }
                 return e.preventDefault();
               });
@@ -189,14 +210,10 @@
           mobileMode = $("#topSlider").data("plugin_slidesjs").options.width / $("#topSlider").data("plugin_slidesjs").options.height === slideWidth / slideHeightMobile;
           if (mobileMode && $(this).width() > mobileThreshold) {
             $("#topSlider").data("plugin_slidesjs").resize(slideWidth, slideHeight);
-            if (typeof skrollr !== "undefined" && skrollr !== null) {
-              return skrollr.get().refresh();
-            }
+            return refreshSkrollr();
           } else if ($(this).width() < mobileThreshold && !mobileMode) {
             $("#topSlider").data("plugin_slidesjs").resize(slideWidth, slideHeightMobile);
-            if (typeof skrollr !== "undefined" && skrollr !== null) {
-              return skrollr.get().refresh();
-            }
+            return refreshSkrollr();
           }
         });
         $('.hoverPulse').addClass('animated').hover(function() {
@@ -235,9 +252,7 @@
           scrollCaptureRange: 150,
           lostFocusRange: 151,
           resizeCallback: function() {
-            if (typeof skrollr !== "undefined" && skrollr !== null) {
-              skrollr.get().refresh();
-            }
+            refreshSkrollr();
             if ($.zoomImage != null) {
               $.zoomImage.updateAll();
               return $.zoomImage.updateAll();
@@ -280,9 +295,7 @@
           lostFocusRange: 151,
           resizeCallback: function() {
             var arrows, height, left, right, width;
-            if (typeof skrollr !== "undefined" && skrollr !== null) {
-              skrollr.get().refresh();
-            }
+            refreshSkrollr();
             width = $('#facilities').width();
             height = $('#facilities').height();
             $("#facilities .slider").data("plugin_slidesjs").resize(width, height);

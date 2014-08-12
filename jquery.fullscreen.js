@@ -31,7 +31,7 @@
         this.options = $.extend(true, {}, defaults, options);
         this._defaults = defaults;
         this._name = pluginName;
-        this.data = data;
+        this.data = $.extend(true, {}, data);
         this.init();
       }
 
@@ -54,10 +54,10 @@
       if (this.options.scrollCapture) {
         $(this.options.parentElement).scroll((function(_this) {
           return function() {
-            clearTimeout($.data(window, 'scrollTimer'));
-            return $.data(window, 'scrollTimer', setTimeout(function() {
+            clearTimeout(_this.data.scrollTimer);
+            return _this.data.scrollTimer = setTimeout(function() {
               return _this._checkScroll();
-            }, 500));
+            }, 500);
           };
         })(this));
       }

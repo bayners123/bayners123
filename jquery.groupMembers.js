@@ -119,13 +119,23 @@
     };
     Plugin.prototype._goto = function(slide, animation) {
       var $slides, $thisSlide;
-      if (slide < this.data.noSlides) {
+      if ((0 <= slide && slide < this.data.noSlides)) {
         $slides = this.data.descUL.children("li");
         $thisSlide = $slides.eq(slide);
         $slides.hide();
         $thisSlide.show();
         this.data.personHeading.html($thisSlide.data("person"));
         this.data.currentSlide = slide;
+        if (slide === 0) {
+          this.data.leftArrow.hide();
+          this.data.rightArrow.show();
+        } else if (slide === this.data.noSlides - 1) {
+          this.data.leftArrow.show();
+          this.data.rightArrow.hide();
+        } else {
+          this.data.leftArrow.show();
+          this.data.rightArrow.show();
+        }
         return this.data.slideImg.data("plugin_zoomImage").resize(animation);
       }
     };
