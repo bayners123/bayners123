@@ -37,6 +37,7 @@
         shrinkOnLostFocus: false # Collapse the element if it's expanded and the user scrolls out of the lostFocus range
         parentElement: window # Parent element to be resized to match
         resizeCallback: $.noop # Function (theElement)
+        active: false # Start fullscreen?
     
     data = 
         vendorPrefix : null
@@ -55,6 +56,7 @@
         @init()
 
     Plugin::init = ->
+        $element = $(@element)
         
         # Save the vendor prefix
         @data.vendorPrefix = @_getVendorPrefix()
@@ -103,6 +105,10 @@
                     @data.hasFocus = false
                     
                     @options.lostFocusCallback(@element)
+                    
+        # Activate the element if requested
+        @setActive() if @options.active
+        
         @
         
     # Check if the element has the active class and, if it does, resize it
@@ -124,7 +130,7 @@
         @data.originalHeight = $element.height()
         @data.originalWidth = $element.width()
               
-    Plugin::setActive = (callback) ->
+    Plugin::setActive = (callback, scroll) ->
         # Mark as active
         $(@element).addClass @options.activeClass
         
@@ -137,7 +143,7 @@
         
         # Scroll to the element
         # This happens concurrenty with the resize
-        @_scrollTo(true)
+        @_scrollTo(true) if scroll
         
         @
     
@@ -155,13 +161,13 @@
         
         @
         
-    Plugin::toggleActive = (callback) ->
+    Plugin::toggleActive = (callback, scroll) ->
         $element = $(@element)
         
         if $element.hasClass @options.activeClass
             @setInactive(callback)
         else
-            @setActive(callback)
+            @setActive(callback, scroll)
         
         @
         

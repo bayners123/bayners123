@@ -324,8 +324,10 @@ Modernizr.load [
                 
                 # If it's active, de-zoom and then de-fullscreen
                 if parentSection.hasClass("foo")
+                    
                     img.data("plugin_zoomImage").toggleActive =>
-                        parentSection.data("plugin_fullscreen").toggleActive() 
+                        parentSection.data("plugin_fullscreen").toggleActive null, true  # ... & scroll to it
+                    
                 # If it's not yet active, make both active but in the order fullscreen, zoom
                 else
                     parentSection.data("plugin_fullscreen").toggleActive =>
@@ -333,6 +335,7 @@ Modernizr.load [
             
             $('#groupmembers').fullscreen
                 activeClass : "foo"
+                active: true
                 scrollCallback: ->
                     $('#menubar, #mobilebar').addClass("hidden")
                 # lostFocusCallback: (element) ->
