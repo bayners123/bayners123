@@ -106,9 +106,13 @@
                     
                     @options.lostFocusCallback(@element)
                     
-        # Activate the element if requested
-        @setActive() if @options.active
-        
+        # Activate the element if requested, disabling then restoring original animation setting (hackity hack hack)
+        if @options.active
+            anim = @options.animation
+            @options.animation = false
+            @setActive() 
+            @options.animation = anim
+            
         @
         
     # Check if the element has the active class and, if it does, resize it
