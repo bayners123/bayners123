@@ -311,27 +311,6 @@ Modernizr.load [
     ,
         load: 'jquery.fullscreen.js',
         complete: ->
-
-            # Fullscreen test for group members section
-            
-            # Toggle section:
-            toggleSection = (parentSection) ->
-                
-                parentSection = $(parentSection)
-                img =  parentSection.find(".slideImg")
-                
-                # Given the parent section, find the image to zoom
-                
-                # If it's active, de-zoom and then de-fullscreen
-                if parentSection.hasClass("foo")
-                    
-                    img.data("plugin_zoomImage").toggleActive =>
-                        parentSection.data("plugin_fullscreen").toggleActive null, true  # ... & scroll to it
-                    
-                # If it's not yet active, make both active but in the order fullscreen, zoom
-                else
-                    parentSection.data("plugin_fullscreen").toggleActive =>
-                        img.data("plugin_zoomImage").toggleActive()
             
             $('#groupmembers').fullscreen
                 activeClass : "foo"
