@@ -311,21 +311,19 @@ Modernizr.load [
             
             # Toggle section:
             toggleSection = (parentSection) ->
-                console.log "test"
                 
                 parentSection = $(parentSection)
                 img =  parentSection.find(".slideImg")
                 
+                # Given the parent section, find the image to zoom
+                
+                # If it's active, de-zoom and then de-fullscreen
                 if parentSection.hasClass("foo")
-                    console.log 1
                     img.data("plugin_zoomImage").toggleActive =>
-                        console.log 2
-                        parentSection.data("plugin_fullscreen").toggleActive()
-                        
+                        parentSection.data("plugin_fullscreen").toggleActive() 
+                # If it's not yet active, make both active but in the order fullscreen, zoom
                 else
-                    console.log 3
                     parentSection.data("plugin_fullscreen").toggleActive =>
-                        console.log 4
                         img.data("plugin_zoomImage").toggleActive()
             
             $('#groupmembers').fullscreen
