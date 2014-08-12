@@ -1,8 +1,8 @@
 #headerarea {
     -skrollr-animation-name: header;
     }
-#slider > img, #slider > div > img {
-    -skrollr-anchor-target: '#slider';
+#topSlider > img, #topSlider > div > img {
+    -skrollr-anchor-target: '#topSlider';
     -skrollr-animation-name: sliderParallax;
 }
 .content > .left {

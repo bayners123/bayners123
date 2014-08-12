@@ -66,16 +66,16 @@ Modernizr.load [
                     toggleMenu $menubar, $moreButtonI
 
             # Load constants for the slider
-            slideWidth = $("#slider").data("aspectratio")
+            slideWidth = $("#topSlider").data("aspectratio")
             slideHeight = 1
-            slideHeightMobile = $("#slider").data("aspectratiomobile")
+            slideHeightMobile = $("#topSlider").data("aspectratiomobile")
             mobileThreshold = 550
 
             # Bind to doc. ready
             $ ->
                 
                 # Initiation of slider
-                $("#slider")
+                $("#topSlider")
                     .slidesjs
                         width: slideWidth,
                         height: if (screen.width < mobileThreshold ) then slideHeightMobile else slideHeight,
@@ -262,11 +262,11 @@ Modernizr.load [
             $(window).resize ->
                             
                 # Are we already in mobile mode? Check by looking at the slider's current dimentions
-                mobileMode = $("#slider").data("plugin_slidesjs").options.width / $("#slider").data("plugin_slidesjs").options.height == slideWidth / slideHeightMobile
+                mobileMode = $("#topSlider").data("plugin_slidesjs").options.width / $("#topSlider").data("plugin_slidesjs").options.height == slideWidth / slideHeightMobile
 
                 # If it's currently in mobile mode & we changed to normal mode:
                 if mobileMode && $(@).width() > mobileThreshold
-                    $("#slider").data("plugin_slidesjs").resize slideWidth, slideHeight
+                    $("#topSlider").data("plugin_slidesjs").resize slideWidth, slideHeight
                     
                     # Refresh skrollr if present
                     if skrollr?
@@ -274,7 +274,7 @@ Modernizr.load [
 
                 # Else if it's currently in normal and we changed to mobile:
                 else if $(@).width() < mobileThreshold  && !mobileMode
-                    $("#slider").data("plugin_slidesjs").resize slideWidth, slideHeightMobile
+                    $("#topSlider").data("plugin_slidesjs").resize slideWidth, slideHeightMobile
                     
                     # Refresh skrollr if present
                     if skrollr?
@@ -313,7 +313,6 @@ Modernizr.load [
         complete: ->
             
             $('#groupmembers').fullscreen
-                activeClass : "foo"
                 active: true
                 scrollCallback: ->
                     $('#menubar, #mobilebar').addClass("hidden")
