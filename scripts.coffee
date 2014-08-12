@@ -1,6 +1,9 @@
 ---
 ---
 
+# TODO: Make mobile topbar disappear
+# FIXME: deal with iPhone resizing screen without firing resize event
+
 # Load scripts depending on browser capabilities
 
 # Load skrollr if we're not on a mobile, but don't initialise it yet
