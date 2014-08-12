@@ -6,6 +6,13 @@
 
 # Load scripts depending on browser capabilities
 
+# Function to refresh skrollr
+refreshSkrollr = ->
+    # Refresh skrollr once the animation is over
+    if skrollr?
+        if skrollr.get()
+            skrollr.get().refresh()
+            
 # Load skrollr if we're not on a mobile, but don't initialise it yet
 Modernizr.load [
     test: Modernizr.touch,
@@ -211,7 +218,7 @@ Modernizr.load [
                         
                         # Register a click handler to toggle their visibility
                         $expandControl.on "click.expansion", eventData, (e) ->
-
+                            
                             # Get the sections which it controls (set earlier in the initialisation)
                             short = e.data.shortSection
                             long = e.data.longSection
@@ -224,8 +231,10 @@ Modernizr.load [
                                 long.removeClass 'hidden'
                                 
                                 # Hide / show them
-                                short.slideUp()
-                                long.slideDown()
+                                short.slideUp
+                                    complete: refreshSkrollr
+                                long.slideDown
+                                    complete: refreshSkrollr
                                 
                                 # Change the arrow
                                 arrow
@@ -234,15 +243,13 @@ Modernizr.load [
                             else
                                 short.removeClass 'hidden'
                                 long.addClass 'hidden'
-                                short.slideDown()
-                                long.slideUp()
+                                short.slideDown
+                                    complete: refreshSkrollr
+                                long.slideUp
+                                    complete: refreshSkrollr
                                 arrow
                                     .addClass "fa-arrow-down"
                                     .removeClass "fa-arrow-up"
-                                
-                            if skrollr?
-                                if skrollr.get()
-                                    skrollr.get().refresh()
                                 
                             # Prevent default link action 
                             e.preventDefault()
@@ -273,16 +280,14 @@ Modernizr.load [
                     $("#topSlider").data("plugin_slidesjs").resize slideWidth, slideHeight
                     
                     # Refresh skrollr if present
-                    if skrollr?
-                        skrollr.get().refresh()
+                    refreshSkrollr()
 
                 # Else if it's currently in normal and we changed to mobile:
                 else if $(@).width() < mobileThreshold  && !mobileMode
                     $("#topSlider").data("plugin_slidesjs").resize slideWidth, slideHeightMobile
                     
                     # Refresh skrollr if present
-                    if skrollr?
-                        skrollr.get().refresh()
+                    refreshSkrollr()
                         
             # Animate .hoverPulse elements when hovered using 'Animate.css'
             $('.hoverPulse').addClass('animated').hover ->
@@ -331,8 +336,7 @@ Modernizr.load [
                 lostFocusRange: 151 # Distance at which to trigger the lostFocusCallback
                 resizeCallback: ->
                     # Refresh skrollr if present
-                    if skrollr?
-                        skrollr.get().refresh()
+                    refreshSkrollr()
                     if $.zoomImage?
                         $.zoomImage.updateAll() # Run twice since otherwise the image scrolling won't work when
                         $.zoomImage.updateAll() #  you open the fullscreen bit. Hacky hacky hack
@@ -370,8 +374,7 @@ Modernizr.load [
                 lostFocusRange: 151 # Distance at which to trigger the lostFocusCallback
                 resizeCallback: ->
                     # Refresh skrollr if present
-                    if skrollr?
-                        skrollr.get().refresh()
+                    refreshSkrollr()
                         
                     # Resize the slider
                     width = $('#facilities').width()
