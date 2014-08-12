@@ -360,14 +360,28 @@ Modernizr.load [
                     $('#menubar, #mobilebar').addClass("hidden")
                 scrollCaptureRange: 150 # Distance from element within which the window will lock to it
                 lostFocusRange: 151 # Distance at which to trigger the lostFocusCallback
+                scrollCapture: false
                 resizeCallback: ->
                     # Refresh skrollr if present
                     if skrollr?
                         skrollr.get().refresh()
-                    # Resize the slider
-                    width = $('#facilities').width()
-                    height = $('#facilities').height()
-                    console.log $("#facilities .slider").data("plugin_slidesjs").resize(width, height)
+
+                    # Resize the slider:
+                    console.log "should resize"
+                    
+                    # Clear any timers
+                    if $("#facilities .slider").data("timeout")
+                        clearTimeout $("#facilities .slider").data("timeout")
+                     
+                    # Set a new timer to resize the slider
+                    $("#facilities .slider").data "timeout", setTimeout ->
+                        width = $('#facilities').width()
+                        height = $('#facilities').height()
+                        $("#facilities .slider").data("plugin_slidesjs").resize(width, height)
+                        $("#facilities .slider").data("timeout", null)
+                        console.log "resized"
+                    , 2000
+                    
     ,
         load: ['jquery.zoomImage.js','jquery.groupMembers.js']
         complete: ->
