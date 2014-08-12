@@ -92,7 +92,7 @@ em { font-style: italic; }
 
 #headerarea h2 { font-size: 22px; text-align: right;}
 
-#topSlider {
+.slider {
     width: 100%;
 	display: none;
 	position: relative;
@@ -103,12 +103,12 @@ em { font-style: italic; }
 	border-bottom: 5px solid white;
 }
 
-#topSlider a {
+.slider a {
 	text-decoration: none;
 	color: white;
 }
 
-#topSlider .slideNavBox {
+.slider .slideNavBox {
 	color: white;
 	position: absolute;
 	padding: 0.9375em 0.625em 0.625em; /* 15px 10px 10px */
@@ -116,7 +116,8 @@ em { font-style: italic; }
 	z-index: 15
 }
 
-#topSlider .caption {
+.slider .caption {
+    color: white;
 	position: absolute;
 	bottom: 0;
 	right: 0; 
