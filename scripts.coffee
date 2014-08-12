@@ -364,10 +364,19 @@ Modernizr.load [
                     # Refresh skrollr if present
                     if skrollr?
                         skrollr.get().refresh()
+                        
                     # Resize the slider
                     width = $('#facilities').width()
                     height = $('#facilities').height()
                     $("#facilities .slider").data("plugin_slidesjs").resize(width, height)
+                    
+                    # Reposition the arrows in the center
+                    arrows = $('#facilities .slidesjs-next, #facilities .slidesjs-previous')
+                    right = $('#facilities .slidesjs-next')
+                    left = $('#facilities .slidesjs-previous')
+                    
+                    arrows.css
+                        top: ($('#facilities .slider').height() - arrows.first().height()) / 2
                     
     ,
         load: ['jquery.zoomImage.js','jquery.groupMembers.js']

@@ -125,6 +125,19 @@ em { font-style: italic; }
 	padding: 30px;
 }
 
+#facilities .slidesjs-next, #facilities .slidesjs-previous {
+    position: absolute;
+/*  Width is positioned by javascript */
+    z-index: 20;
+    font-size: 30px;
+}
+#facilities .slidesjs-next {
+    right: 10px;
+} 
+#facilities .slidesjs-previous {
+    left: 10px;
+}
+
 #welcome > .content > h2 { 
     color: #FFF;
     text-shadow: 0.04em 0.05em #000;
