@@ -80,7 +80,8 @@ Modernizr.load [
                         width: slideWidth,
                         height: if (screen.width < mobileThreshold ) then slideHeightMobile else slideHeight,
                         zoom: true,
-                        navigation: false,
+                        navigation: 
+                            active: false,
                         play:
                             active: true,
                             effect: "fade"
@@ -339,7 +340,9 @@ Modernizr.load [
                     width: screen.width
                     height: screen.height
                     zoom: true
-                    navigation: false
+                    navigation:
+                        active: false
+                        rollover: false
                     play:
                         active: true
                         effect: "fade"

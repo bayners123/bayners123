@@ -47,6 +47,8 @@
         # next: class="slidesjs-next slidesjs-navigation"
       effect: "slide"
         # [string] Can be either "slide" or "fade".
+      rollover: true
+        # [boolean] "Next" on final slide goes back to first
     pagination:
         # Pagination settings
       active: true
@@ -239,7 +241,7 @@
       # Search for user's play/stop buttons
           playButton = $(".slidesjs-play.slidesjs-navigation")
           stopButton = $(".slidesjs-stop.slidesjs-navigation")
-          
+      
 
       playButton.click (e) =>
         e.preventDefault()
@@ -292,6 +294,10 @@
     # Auto play slideshow
     if @options.play.auto
       @play()
+      
+    # If we're on the first or last slides and rollover is off, remove the appropriate arrow
+    # Otherwise show both
+    @_hideNavArrows() unless @options.navigation.rollover
 
     # Slides has loaded
     @options.callback.loaded(@options.start)
@@ -746,7 +752,11 @@
             display: "none"
             left: 0
             zIndex: 0
-
+            
+          # If we're on the first or last slides and rollover is off, remove the appropriate arrow
+          # Otherwise show both
+          @_hideNavArrows() unless @options.navigation.rollover
+              
           # If touch device setup next slides
           @_setuptouch() if @data.touch
 
@@ -766,7 +776,11 @@
 
             # Set the new slide to the current
             $.data this, "current", next
-
+            
+            # If we're on the first or last slides and rollover is off, remove the appropriate arrow
+            # Otherwise show both
+            @_hideNavArrows() unless @options.navigation.rollover
+            
             # Set animating to false
             $.data this, "animating", false
 
@@ -838,6 +852,10 @@
 
           # Set the new slide to the current
           $.data this, "current", next
+          
+          # If we're on the first or last slides and rollover is off, remove the appropriate arrow
+          # Otherwise show both
+          @_hideNavArrows() unless @options.navigation.rollover
 
           # End of the animation, call complete callback
           @options.callback.complete(next + 1)
@@ -860,10 +878,32 @@
 
           # Set the new slide to the current
           $.data this, "current", next
+          
+          # If we're on the first or last slides and rollover is off, remove the appropriate arrow
+          # Otherwise show both
+          @_hideNavArrows() unless @options.navigation.rollover
 
           # End of the animation, call complete callback
           @options.callback.complete(next + 1)
         )
+        
+  # @_hideNavArrows()
+  # Hides the nav arrows if we're on the first or last slide & shows them otherwise
+  Plugin::_hideNavArrows = () ->
+    $element = $(@element)
+    
+    leftArrow = $(".slidesjs-previous", $element)
+    rightArrow = $(".slidesjs-next", $element)
+    
+    if @data.current == 0
+      leftArrow.hide()
+      rightArrow.show()
+    else if @data.current == @data.total - 1
+      rightArrow.hide()
+      leftArrow.show()
+    else
+      rightArrow.show()
+      leftArrow.show()  
 
   # @_getVendorPrefix()
   # Check if the browser supports CSS3 Transitions
