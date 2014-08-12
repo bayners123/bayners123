@@ -87,7 +87,7 @@ Modernizr.load [
                             interval: 4000,
                             auto: true,
                             swap: true,
-                            pauseOnHover: true,
+                            pauseOnHover: false,
                             generate: false,
                             restartDelay: 1000
                         effect:
