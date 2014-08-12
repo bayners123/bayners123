@@ -146,7 +146,7 @@
     Plugin::_goto = (slide, animation) ->
         
         # Check the argument is valid
-        if slide < @data.noSlides
+        if 0 <= slide < @data.noSlides
             # Get all the list items (the slides)
             $slides = @data.descUL.children("li")
             $thisSlide = $slides.eq(slide)
@@ -162,6 +162,17 @@
             
             # Update the current slide
             @data.currentSlide = slide
+            
+            # Hide the arrow if we've reached far left/right
+            if slide == 0
+              @data.leftArrow.hide()
+              @data.rightArrow.show()
+            else if slide == @data.noSlides-1
+              @data.leftArrow.show()
+              @data.rightArrow.hide()
+            else
+              @data.leftArrow.show()
+              @data.rightArrow.show()              
             
             # Resize the image (using animation). This will cause zoomImage to call getXMargin to determine the correct offset
             @data.slideImg.data("plugin_zoomImage").resize(animation)
