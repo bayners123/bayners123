@@ -176,29 +176,29 @@ em { font-style: italic; }
     padding-top: 3em;
 }
 
-#publications > div > div > div img {
+#publications > div > div > .shrunk img {
     margin: 0 auto 1em;
     border: 1px solid black;
     display: block;
 }
 
-#publications > div > div > div p {
+#publications > div > div > .shrunk p {
     font-style: italic;
     font-size: 0.75em;
     margin: 0;
 }
 
-#publications > div > div > div a {
+#publications > div > div > .shrunk a {
     color: #002147;
     text-decoration: none;
 }
     
-#publications > div > div > div .pubtitle {
+#publications > div > div > .shrunk .pubtitle {
     font-weight: bold;
     text-align: justify;
 }
 
-#publications > div > div > div .pubdate {
+#publications > div > div > .shrunk .pubdate {
     float: right;
 }
 
