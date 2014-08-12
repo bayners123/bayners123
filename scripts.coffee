@@ -335,10 +335,8 @@ Modernizr.load [
                 activeClass : "foo"
                 scrollCallback: ->
                     $('#menubar, #mobilebar').addClass("hidden")
-                shrinkOnLostFocus: false
-                lostFocusCallback: (element) ->
-                    toggleSection $(element)
-                    
+                # lostFocusCallback: (element) ->
+                #     toggleSection $(element)
                     # console.log $(element).find('.slideImg')
                 # animation: false
                 # animationDuration: "1s"
@@ -354,10 +352,7 @@ Modernizr.load [
                         $.zoomImage.updateAll() # Run twice since otherwise the image scrolling won't work when
                         $.zoomImage.updateAll() #  you open the fullscreen bit. Hacky hacky hack
 
-            $('#tempSectionToggle').click 
-                "parent": $('#groupmembers')
-                "img": $('#groupmembers .slideImg')
-            , (e) ->
+            $('#tempSectionToggle').click ->
                 
                 toggleSection $('#groupmembers')
                     

@@ -69,10 +69,6 @@
             if @data.hasFocus
                 @_scrollTo(false)
             
-        # Check once at document.ready
-        $ =>
-            @check()
-            
         # If we're capturing scrolling, register the handler
         if @options.scrollCapture
             $(@options.parentElement).scroll =>
