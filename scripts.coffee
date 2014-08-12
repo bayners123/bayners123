@@ -87,7 +87,7 @@ Modernizr.load [
                             interval: 4000,
                             auto: true,
                             swap: true,
-                            pauseOnHover: true,
+                            pauseOnHover: false,
                             generate: false,
                             restartDelay: 1000
                         effect:
@@ -311,34 +311,14 @@ Modernizr.load [
     ,
         load: 'jquery.fullscreen.js',
         complete: ->
-
-            # Fullscreen test for group members section
-            
-            # Toggle section:
-            toggleSection = (parentSection) ->
-                
-                parentSection = $(parentSection)
-                img =  parentSection.find(".slideImg")
-                
-                # Given the parent section, find the image to zoom
-                
-                # If it's active, de-zoom and then de-fullscreen
-                if parentSection.hasClass("foo")
-                    img.data("plugin_zoomImage").toggleActive =>
-                        parentSection.data("plugin_fullscreen").toggleActive() 
-                # If it's not yet active, make both active but in the order fullscreen, zoom
-                else
-                    parentSection.data("plugin_fullscreen").toggleActive =>
-                        img.data("plugin_zoomImage").toggleActive()
             
             $('#groupmembers').fullscreen
                 activeClass : "foo"
+                active: true
                 scrollCallback: ->
                     $('#menubar, #mobilebar').addClass("hidden")
-                shrinkOnLostFocus: false
-                lostFocusCallback: (element) ->
-                    toggleSection $(element)
-                    
+                # lostFocusCallback: (element) ->
+                #     toggleSection $(element)
                     # console.log $(element).find('.slideImg')
                 # animation: false
                 # animationDuration: "1s"
@@ -353,15 +333,6 @@ Modernizr.load [
                     if $.zoomImage?
                         $.zoomImage.updateAll() # Run twice since otherwise the image scrolling won't work when
                         $.zoomImage.updateAll() #  you open the fullscreen bit. Hacky hacky hack
-
-            $('#tempSectionToggle').click 
-                "parent": $('#groupmembers')
-                "img": $('#groupmembers .slideImg')
-            , (e) ->
-                
-                toggleSection $('#groupmembers')
-                    
-                return false
 
     ,
         load: ['jquery.zoomImage.js','jquery.groupMembers.js']
