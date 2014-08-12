@@ -52,7 +52,7 @@
         @options = $.extend true, {}, defaults, options
         @_defaults = defaults
         @_name = pluginName
-        @data = data
+        @data = $.extend(true, {}, data)
         @init()
 
     Plugin::init = ->
@@ -75,8 +75,8 @@
         if @options.scrollCapture
             $(@options.parentElement).scroll =>
                 # Launch @_checkScroll after 500ms stationary
-                clearTimeout $.data(window, 'scrollTimer')
-                $.data window, 'scrollTimer', setTimeout( =>
+                clearTimeout @data.scrollTimer
+                @data.scrollTimer = setTimeout( =>
                     @_checkScroll()
                 , 500)
         
