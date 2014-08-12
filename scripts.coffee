@@ -13,6 +13,12 @@ refreshSkrollr = ->
         if skrollr.get()
             skrollr.get().refresh()
             
+# Function to scroll to an object
+scrollTo = (selector) ->
+    $('html, body').animate
+        scrollTop: $(selector).offset().top
+    , 200
+            
 # Load skrollr if we're not on a mobile, but don't initialise it yet
 Modernizr.load [
     test: Modernizr.touch,
@@ -235,6 +241,9 @@ Modernizr.load [
                                     complete: refreshSkrollr
                                 long.slideDown
                                     complete: refreshSkrollr
+                                    
+                                # Put the view back to the section top
+                                scrollTo long
                                 
                                 # Change the arrow
                                 arrow
@@ -247,6 +256,12 @@ Modernizr.load [
                                     complete: refreshSkrollr
                                 long.slideUp
                                     complete: refreshSkrollr
+                                    
+                                # FIXME: Make this scroll to the right place when the section is expanded!
+                                    
+                                # Put the view back to the section top
+                                scrollTo long
+                                
                                 arrow
                                     .addClass "fa-arrow-down"
                                     .removeClass "fa-arrow-up"
