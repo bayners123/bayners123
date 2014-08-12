@@ -3,6 +3,7 @@
     var Plugin, data, defaults, pluginName;
     pluginName = "zoomImage";
     defaults = {
+      active: true,
       parent: null,
       useMarginFunctions: false,
       getXOverride: function() {
@@ -14,9 +15,11 @@
       resizeCallbackAfter: $.noop,
       xOverride: null,
       yOverride: null,
-      animation: true
+      animation: true,
+      initialAnimation: true
     };
     data = {
+      active: null,
       parent: null,
       parentWidth: null,
       parentHeight: null,
@@ -51,15 +54,10 @@
       } else {
         this.data.parent = $element.parent();
       }
-      if (this.data.parent.css("position") === "static") {
-        this.data.parent.css("position", 'relative');
+      this.data.active = this.options.active;
+      if (this.data.active) {
+        this._setupStyles();
       }
-      this.data.parent.css("overflow", "hidden");
-      $element.css("position", "absolute");
-      $element.css({
-        "max-width": "none",
-        "max-height": "none"
-      });
       $element.one("load." + this._name, (function(_this) {
         return function() {
           $element = $(_this.element);
@@ -80,6 +78,65 @@
         };
       })(this));
     };
+    Plugin.prototype.setActive = function(callback) {
+      this.data.active = true;
+      this._setupStyles();
+      this.refresh();
+      this.resize(this.options.initialAnimation);
+      if (callback != null) {
+        return callback();
+      }
+    };
+    Plugin.prototype.setInactive = function(callback) {
+      var $element;
+      $element = $(this.element);
+      this.data.active = false;
+      this._removeStyles();
+      $element.css({
+        height: "",
+        width: "",
+        "margin-top": "",
+        "margin-right": "",
+        "margin-bottom": "",
+        "margin-left": ""
+      });
+      if (callback != null) {
+        return callback();
+      }
+    };
+    Plugin.prototype.toggleActive = function(callback) {
+      if (this.data.active) {
+        return this.setInactive(callback);
+      } else {
+        return this.setActive(callback);
+      }
+    };
+    Plugin.prototype._setupStyles = function() {
+      var $element;
+      $element = $(this.element);
+      if (this.data.parent.css("position") === "static") {
+        this.data.parent.css("position", 'relative');
+      }
+      this.data.parent.css("overflow", "hidden");
+      $element.css("position", "absolute");
+      return $element.css({
+        "max-width": "none",
+        "max-height": "none"
+      });
+    };
+    Plugin.prototype._removeStyles = function() {
+      var $element;
+      $element = $(this.element);
+      this.data.parent.css({
+        "position": "",
+        "overflow": ""
+      });
+      return $element.css({
+        "position": "",
+        "max-width": "",
+        "max-height": ""
+      });
+    };
     Plugin.prototype.refresh = function() {
       var $element;
       $element = $(this.element);
@@ -91,7 +148,9 @@
     Plugin.prototype.resize = function(animation) {
       var $element, overflow;
       $element = $(this.element);
-      console.log("Resize with animation? " + animation);
+      if (!this.data.active) {
+        return false;
+      }
       if (this.options.useMarginFunctions) {
         this.options.xOverride = this.options.getXOverride();
         this.options.yOverride = this.options.getYOverride();
@@ -137,7 +196,6 @@
     Plugin.prototype._transitions = function(option) {
       var $element;
       $element = $(this.element);
-      console.log("Animations! " + option);
       if (option === "add") {
         $element.css({
           "-webkit-transition": "margin 0.25s ease-in-out",

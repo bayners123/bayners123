@@ -17,7 +17,8 @@
       slideImg: null,
       descUL: null,
       currentSlide: null,
-      noSlides: null
+      noSlides: null,
+      groupListLinks: null
     };
     Plugin = (function() {
       function Plugin(element, options) {
@@ -60,6 +61,11 @@
       } else {
         this.data.descUL = $element.find(".desc");
       }
+      if (this.options.groupListLinks) {
+        this.data.groupListLinks = $(this.options.groupListLinks);
+      } else {
+        this.data.groupListLinks = $element.find(".groupList a");
+      }
       this.data.noSlides = this.data.descUL.children("li").length;
       this.data.leftArrow.on("click.groupMembers", (function(_this) {
         return function() {
@@ -73,15 +79,26 @@
           return false;
         };
       })(this));
+      this.data.groupListLinks.click((function(_this) {
+        return function(e) {
+          var clickedLink;
+          clickedLink = e.target;
+          e.preventDefault();
+          return _this._goto(_this.data.groupListLinks.index(clickedLink), true);
+        };
+      })(this));
       return $((function(_this) {
         return function() {
           _this.data.slideImg.zoomImage({
             resizeCallbackAfter: function() {
-              if (skrollr.get()) {
-                return skrollr.get().refresh();
+              if (typeof skrollr !== "undefined" && skrollr !== null) {
+                if (skrollr.get()) {
+                  return skrollr.get().refresh();
+                }
               }
             },
             useMarginFunctions: true,
+            initialAnimation: false,
             getXOverride: function() {
               return _this.getXMargin(_this.data.currentSlide);
             }

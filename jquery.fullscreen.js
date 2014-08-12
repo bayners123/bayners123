@@ -14,14 +14,16 @@
       lostFocusRange: 200,
       shrinkOnLostFocus: false,
       parentElement: window,
-      resizeCallback: $.noop
+      resizeCallback: $.noop,
+      active: false
     };
     data = {
       vendorPrefix: null,
       originalHeight: null,
       originalWidth: null,
       animating: false,
-      hasFocus: false
+      hasFocus: false,
+      resizeTimeout: null
     };
     Plugin = (function() {
       function Plugin(element, options) {
@@ -37,6 +39,8 @@
 
     })();
     Plugin.prototype.init = function() {
+      var $element, anim;
+      $element = $(this.element);
       this.data.vendorPrefix = this._getVendorPrefix();
       this._getDims();
       $(window).resize((function(_this) {
@@ -45,11 +49,6 @@
           if (_this.data.hasFocus) {
             return _this._scrollTo(false);
           }
-        };
-      })(this));
-      $((function(_this) {
-        return function() {
-          return _this.check();
         };
       })(this));
       if (this.options.scrollCapture) {
@@ -64,7 +63,7 @@
       }
       $(this.options.parentElement).scroll((function(_this) {
         return function() {
-          var $element, elementPos, scrollPos;
+          var elementPos, scrollPos;
           $element = $(_this.element);
           if ($element.hasClass(_this.options.activeClass) && !_this.data.animating) {
             elementPos = _this.element.offsetTop;
@@ -82,6 +81,12 @@
           }
         };
       })(this));
+      if (this.options.active) {
+        anim = this.options.animation;
+        this.options.animation = false;
+        this.setActive();
+        this.options.animation = anim;
+      }
       return this;
     };
     Plugin.prototype.check = function() {
@@ -102,26 +107,56 @@
       this.data.originalHeight = $element.height();
       return this.data.originalWidth = $element.width();
     };
-    Plugin.prototype.setActive = function() {
+    Plugin.prototype.setActive = function(callback, scroll) {
       $(this.element).addClass(this.options.activeClass);
-      this._resizeToFull();
-      this._scrollTo(true);
+      this._addStyles();
+      this._resizeToFull(callback);
+      if (scroll) {
+        this._scrollTo(true);
+      }
       return this;
     };
-    Plugin.prototype.setInactive = function() {
-      $(this.element).removeClass(this.options.activeClass);
-      this._removeStyles();
+    Plugin.prototype.setInactive = function(callback) {
+      this._undoResize((function(_this) {
+        return function() {
+          _this._removeStyles();
+          $(_this.element).removeClass(_this.options.activeClass);
+          if (callback != null) {
+            return callback();
+          }
+        };
+      })(this));
       return this;
     };
-    Plugin.prototype.toggleActive = function() {
+    Plugin.prototype.toggleActive = function(callback, scroll) {
       var $element;
       $element = $(this.element);
       if ($element.hasClass(this.options.activeClass)) {
-        this.setInactive();
+        this.setInactive(callback);
       } else {
-        this.setActive();
+        this.setActive(callback, scroll);
       }
       return this;
+    };
+    Plugin.prototype._addStyles = function() {
+      var $element;
+      $element = $(this.element);
+      return $element.find(".fullHolder, .fullHolderContent").css({
+        display: "block",
+        height: "100%",
+        overflow: "hidden",
+        position: "relative"
+      });
+    };
+    Plugin.prototype._removeStyles = function() {
+      var $element;
+      $element = $(this.element);
+      return $element.find(".fullHolder, .fullHolderContent").css({
+        display: "",
+        height: "",
+        overflow: "",
+        position: ""
+      });
     };
     Plugin.prototype._getVendorPrefix = function() {
       var body, i, style, vendor;
@@ -137,7 +172,7 @@
       }
       return false;
     };
-    Plugin.prototype._resizeToFull = function() {
+    Plugin.prototype._resizeToFull = function(afterResized) {
       var $element, targetHeight, targetWidth;
       $element = $(this.element);
       targetHeight = $(this.options.parentElement).get(0).innerHeight;
@@ -147,6 +182,21 @@
           height: targetHeight,
           width: targetWidth
         });
+        if (this.data.resizeTimeout) {
+          clearTimeout(this.data.resizeTimeout);
+        }
+        this.data.resizeTimeout = setTimeout((function(_this) {
+          return function() {
+            if (_this.data.hasFocus) {
+              _this._scrollTo(false);
+            }
+            if (afterResized != null) {
+              afterResized();
+            }
+            _this.options.resizeCallback(_this.element);
+            return _this.data.resizeTimeout = null;
+          };
+        })(this));
       } else {
         this.data.animating = true;
         $element.css("height", $element.height());
@@ -166,13 +216,16 @@
             $element = $(_this.element);
             _this.element.style[_this.data.vendorPrefix + "Transition"] = "";
             _this.data.animating = false;
+            if (afterResized != null) {
+              afterResized();
+            }
             return _this.options.resizeCallback(_this.element);
           };
         })(this));
       }
       return this;
     };
-    Plugin.prototype._removeStyles = function() {
+    Plugin.prototype._undoResize = function(afterResized) {
       var $element, targetHeight, targetWidth;
       $element = $(this.element);
       this.data.hasFocus = false;
@@ -181,6 +234,10 @@
           height: "",
           width: ""
         });
+        if (afterResized != null) {
+          afterResized();
+        }
+        this.options.resizeCallback(this.element);
       } else {
         this.data.animating = true;
         targetHeight = this.data.originalHeight;
@@ -188,21 +245,18 @@
         this.element.style[this.data.vendorPrefix + "Transition"] = "height " + this.options.animationDuration + " ease-in-out";
         setTimeout((function(_this) {
           return function() {
-            var elementBottom;
+            var currentScroll, elementDelta;
             $element.css({
               height: targetHeight,
               width: targetWidth
             });
             if (_this.data.autoShrinking) {
-              elementBottom = _this.element.offsetTop + _this.data.originalHeight;
+              elementDelta = $element.height() - _this.data.originalHeight;
+              currentScroll = $(_this.options.parentElement).scrollTop();
               if ($(_this.options.parentElement).get(0) === window) {
-                $('html, body').animate({
-                  scrollTop: elementBottom
-                }, 300);
+                $('html, body').scrollTop(currentScroll - elementDelta);
               } else {
-                $(_this.options.parentElement).animate({
-                  scrollTop: elementBottom
-                }, 300);
+                $(_this.options.parentElement).scrollTop(currentScroll - elementDelta);
               }
               return _this.data.autoShrinking = false;
             }
@@ -217,6 +271,9 @@
             });
             _this.element.style[_this.data.vendorPrefix + "Transition"] = "";
             _this.data.animating = false;
+            if (afterResized != null) {
+              afterResized();
+            }
             return _this.options.resizeCallback(_this.element);
           };
         })(this));
