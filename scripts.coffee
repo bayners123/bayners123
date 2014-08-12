@@ -333,7 +333,42 @@ Modernizr.load [
                     if $.zoomImage?
                         $.zoomImage.updateAll() # Run twice since otherwise the image scrolling won't work when
                         $.zoomImage.updateAll() #  you open the fullscreen bit. Hacky hacky hack
-
+                        
+            # Initiation of second slider
+            $("#facilities .slider")
+                .slidesjs
+                    width: screen.width
+                    height: screen.height
+                    zoom: true
+                    navigation: false
+                    play:
+                        active: true
+                        effect: "fade"
+                        interval: 4000
+                        auto: false
+                        swap: true
+                        pauseOnHover: false
+                        generate: false
+                    effect:
+                        fade: 
+                            speed: 600
+                            crossfade: true
+                            
+            # Fullscreen the facilities section
+            $('#facilities').fullscreen
+                active: true
+                scrollCallback: ->
+                    $('#menubar, #mobilebar').addClass("hidden")
+                scrollCaptureRange: 150 # Distance from element within which the window will lock to it
+                lostFocusRange: 151 # Distance at which to trigger the lostFocusCallback
+                resizeCallback: ->
+                    # Refresh skrollr if present
+                    if skrollr?
+                        skrollr.get().refresh()
+                    # Resize the slider
+                    width = $('#facilities').width()
+                    height = $('#facilities').height()
+                    console.log $("#facilities .slider").data("plugin_slidesjs").resize(width, height)
     ,
         load: ['jquery.zoomImage.js','jquery.groupMembers.js']
         complete: ->
