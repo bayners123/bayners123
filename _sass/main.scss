@@ -1,7 +1,10 @@
+$oxford-color: #002147;
+$oxfordText-color: #002147;
+$textContrast-color: #FFF;
 
 body {
    font: normal 100% "Geneva", Helvetica, sans-serif;
-   color: #FFF;
+   color: $textContrast-color;
    min-width: 750px;
    -webkit-font-smoothing: antialiased;
    background: url('/images/bgtile.png');
@@ -12,7 +15,7 @@ body {
     overflow: hidden;
 }
 
-section { color: #002147; }
+section { color: $oxfordText-color; }
 
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -33,9 +36,9 @@ strong { font-weight: bold; }
 em { font-style: italic; }
 
 .box, .expandSection {
-	color: #002147;
+	color: $oxfordText-color;
 	box-shadow: 0 0 20px #000;
-    border: 3px solid #002147;
+    border: 3px solid $oxford-color;
     background: #EEE;
 }
 
@@ -72,7 +75,7 @@ em { font-style: italic; }
 
 #menubar a {
     text-decoration: none;
-    color: #002147;
+    color: $oxfordText-color;
     font-size: 0.875em;
     padding: 0 10px;
 }
@@ -104,11 +107,11 @@ em { font-style: italic; }
 
 .slider a {
 	text-decoration: none;
-	color: white;
+	color: $textContrast-color;
 }
 
 .slider .slideNavBox {
-	color: white;
+	color: $textContrast-color;
 	position: absolute;
 	padding: 0.9375em 0.625em 0.625em; /* 15px 10px 10px */
 	bottom: 24px; left: 0;
@@ -116,7 +119,7 @@ em { font-style: italic; }
 }
 
 .slider .caption {
-    color: white;
+    color: $textContrast-color;
 	position: absolute;
 	bottom: 0;
 	right: 0; 
@@ -126,7 +129,7 @@ em { font-style: italic; }
 
 #facilities .slidesjs-next, #facilities .slidesjs-previous {
     position: absolute;
-/*  Width is positioned by javascript */
+//  Width is positioned by javascript
     z-index: 20;
     font-size: 30px;
 }
@@ -138,7 +141,7 @@ em { font-style: italic; }
 }
 
 #welcome > .content > h2 { 
-    color: #FFF;
+    color: $textContrast-color;
     text-shadow: 0.04em 0.05em #000;
 }
 
@@ -169,7 +172,7 @@ em { font-style: italic; }
     text-align: center;
 }
 
-#researchBubbles a { text-decoration: none; color: #002147; }
+#researchBubbles a { text-decoration: none; color: $oxfordText-color; }
 
 #research2 {
     padding-top: 3em;
@@ -188,7 +191,7 @@ em { font-style: italic; }
 }
 
 #publications > div > div > .shrunk a {
-    color: #002147;
+    color: $oxfordText-color;
     text-decoration: none;
 }
     
@@ -221,11 +224,11 @@ a.expandSection i {
 .tabmenu > li > a {
     display: block;
     padding: 10px;
-    color: #002147;
+    color: $oxfordText-color;
 }
 
 .tabmenu > li > a.active {
-    border: 3px solid #002147;
+    border: 3px solid $oxford-color;
     border-right: none;
     margin-right: -3px;
     border-radius: 8px 0 0 8px;
@@ -252,14 +255,14 @@ a.expandSection i {
 }
 
 .groupDesc {
-    color: white;
+    color: $textContrast-color;
     width: 100%;
     position: absolute;
     bottom: 0;
     padding: 1em 0 1.8em;
 }
 
-.groupDesc a { color: white; }
+.groupDesc a { color: $textContrast-color }
 
 .groupDesc .arrow {
     position: absolute;
