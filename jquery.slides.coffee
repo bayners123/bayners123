@@ -26,7 +26,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# TODO: stop scrolling being possible for mobile swipes too when rollover: false
+# MAYBE: stop scrolling being possible for mobile swipes too when rollover: false
 
 (($, window, document) ->
   pluginName = "slidesjs"
