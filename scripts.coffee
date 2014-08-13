@@ -206,10 +206,11 @@ Modernizr.load [
                     # If we found a controlling link...
                     if $expandControl.length != 0
                         
-                        # Look for the two divs containing the shrunk and the expanded display
+                        # Look for the two divs containing the shrunk and the expanded display & the parent
                         # Also find the arrow if present
                         $shortSection = $(this).children('.shrunk')
                         $longSection = $(this).children('.expanded')
+                        $container= $shortSection.parent()
                         $arrow = $expandControl.children('.fa.fa-arrow-down')
                         
                         $longSection
@@ -218,6 +219,7 @@ Modernizr.load [
                         
                         # Save the jQuery objects for these with the link
                         eventData = 
+                            "container" : $container
                             "shortSection": $shortSection
                             "longSection": $longSection
                             "arrow": $arrow
@@ -226,6 +228,7 @@ Modernizr.load [
                         $expandControl.on "click.expansion", eventData, (e) ->
                             
                             # Get the sections which it controls (set earlier in the initialisation)
+                            container = e.data.container
                             short = e.data.shortSection
                             long = e.data.longSection
                             arrow = e.data.arrow
@@ -243,7 +246,7 @@ Modernizr.load [
                                     complete: refreshSkrollr
                                     
                                 # Put the view back to the section top
-                                scrollTo long
+                                scrollTo container
                                 
                                 # Change the arrow
                                 arrow
@@ -256,11 +259,9 @@ Modernizr.load [
                                     complete: refreshSkrollr
                                 long.slideUp
                                     complete: refreshSkrollr
-                                    
-                                # FIXME: Make this scroll to the right place when the section is expanded!
-                                    
+                                
                                 # Put the view back to the section top
-                                scrollTo long
+                                scrollTo container
                                 
                                 arrow
                                     .addClass "fa-arrow-down"
