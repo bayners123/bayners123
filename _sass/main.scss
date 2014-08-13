@@ -2,6 +2,8 @@ $oxford-color: #002147;
 $oxfordText-color: #002147;
 $textContrast-color: #FFF;
 
+$thickBorder: 5px solid white;
+
 body {
    font: normal 100% "Geneva", Helvetica, sans-serif;
    color: $textContrast-color;
@@ -101,8 +103,8 @@ em { font-style: italic; }
 }
 
 #topSlider .slidesjs-container {
-	border-top: 5px solid white;
-	border-bottom: 5px solid white;
+	border-top: $thickBorder;
+	border-bottom: $thickBorder;
 }
 
 .slider a {
@@ -296,7 +298,16 @@ a.expandSection i {
 }
 
 #footer {
-    background: blue;
+    margin-top: 5em;
+    padding-top: 3em;
+    padding-bottom: 1.5em;
+    background: $oxford-color;
+    color: $textContrast-color;
+    a { color: $textContrast-color; font-weight: bold; }
+}
+
+#footer .unit:nth-child(2) {
+    text-align: right;
 }
 
 .alpha60bgBlack {
