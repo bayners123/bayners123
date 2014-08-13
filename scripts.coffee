@@ -23,11 +23,18 @@ scrollTo = (selector, delay) ->
     $('html, body').animate
         scrollTop: $(selector).offset().top
     , delay
-            
-# Load skrollr if we're not on a mobile, but don't initialise it yet
+
+# Function to check for body having a given class
+checkBody = (testClass) ->
+    classes = document.body.className
+    test = new RegExp("\\b" + testClass + "\\b",'g')
+    
+    return classes.match(test)?
+
+# Load skrollr if we're not on a mobile & the body has the class "skrollrMe", but don't initialise it yet
 Modernizr.load [
-    test: Modernizr.touch,
-    nope: ['/skrollr.min.js', '/skrollr-stylesheets.js', '/skrollr-menu.min.js'],
+    test: checkBody("skrollrMe") and not Modernizr.touch,
+    yep: ['/skrollr.min.js', '/skrollr-stylesheets.js', '/skrollr-menu.min.js'],
 
     callback: (url, result, key) ->
     # If we loaded Skrollr & aren't on a small screen, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
@@ -314,8 +321,8 @@ Modernizr.load [
                                 crossfade: true
 
 
-                # Init skrollr if we're not on a mobile (after slider)
-                if !Modernizr.touch
+                # Init skrollr if present (after slider)
+                if skrollr?
                     skrollr.init
                         smoothScrolling: false,
                         forceHeight: false
