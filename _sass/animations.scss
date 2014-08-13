@@ -67,6 +67,12 @@
 }
 
 @-skrollr-keyframes mobilebar {
-    0 {background-color:rgba(255,255,255, 1); font-size: 2em;}
-    100 {background-color:rgba(255,255,255, 0.9); font-size: 1.5em;}
+    0 {
+        background-color:rgba(255,255,255, 0.999); // Because SASS will turn opacity 1 -> "white" which breaks skrollr
+        font-size: 2em;
+    }
+    100 {
+        background-color:rgba(255,255,255, 0.9);
+        font-size: 1.5em;
+    }
 }
