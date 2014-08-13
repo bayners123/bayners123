@@ -8,7 +8,6 @@ body {
 }
 
 #skrollr-body {
-    padding-bottom: 5em;
     background: transparent repeat-x url('/images/bg.png');
     overflow: hidden;
 }
@@ -291,6 +290,10 @@ a.expandSection i {
 }
 .groupDesc .groupList a {
     padding: 0 0.5em;
+}
+
+#footer {
+    background: blue;
 }
 
 .alpha60bgBlack {
