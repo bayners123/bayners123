@@ -14,10 +14,14 @@ refreshSkrollr = ->
             skrollr.get().refresh()
             
 # Function to scroll to an object
-scrollTo = (selector) ->
+scrollTo = (selector, delay) ->
+    # Default 200ms delay
+    delay = 200 unless delay?
+    
+    # Do the scroll
     $('html, body').animate
         scrollTop: $(selector).offset().top
-    , 200
+    , delay
             
 # Load skrollr if we're not on a mobile, but don't initialise it yet
 Modernizr.load [
@@ -241,12 +245,14 @@ Modernizr.load [
                                 
                                 # Hide / show them
                                 short.slideUp
+                                    duration: 500
                                     complete: refreshSkrollr
                                 long.slideDown
+                                    duration: 500
                                     complete: refreshSkrollr
                                     
                                 # Put the view back to the section top
-                                scrollTo container
+                                scrollTo container, 500
                                 
                                 # Change the arrow
                                 arrow
@@ -256,12 +262,14 @@ Modernizr.load [
                                 short.removeClass 'hidden'
                                 long.addClass 'hidden'
                                 short.slideDown
+                                    duration: 500
                                     complete: refreshSkrollr
                                 long.slideUp
+                                    duration: 500
                                     complete: refreshSkrollr
                                 
                                 # Put the view back to the section top
-                                scrollTo container
+                                scrollTo container, 500
                                 
                                 arrow
                                     .addClass "fa-arrow-down"
