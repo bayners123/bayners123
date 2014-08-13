@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: mainpage
 ---
 
 # Make lazy loading work!

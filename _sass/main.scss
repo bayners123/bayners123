@@ -1,5 +1,6 @@
 $oxford-color: #002147;
-$oxfordText-color: #002147;
+$contrast-color: #FFF;
+$text-color: #002147;
 $textContrast-color: #FFF;
 
 $thickBorder: 5px solid white;
@@ -17,7 +18,7 @@ body {
     overflow: hidden;
 }
 
-section { color: $oxfordText-color; }
+section { color: $text-color; }
 
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -38,7 +39,7 @@ strong { font-weight: bold; }
 em { font-style: italic; }
 
 .box, .expandSection {
-	color: $oxfordText-color;
+	color: $text-color;
 	box-shadow: 0 0 20px #000;
     border: 3px solid $oxford-color;
     background: #EEE;
@@ -77,7 +78,7 @@ em { font-style: italic; }
 
 #menubar a {
     text-decoration: none;
-    color: $oxfordText-color;
+    color: $text-color;
     font-size: 0.875em;
     padding: 0 10px;
 }
@@ -174,7 +175,7 @@ em { font-style: italic; }
     text-align: center;
 }
 
-#researchBubbles a { text-decoration: none; color: $oxfordText-color; }
+#researchBubbles a { text-decoration: none; color: $text-color; }
 
 #research2 {
     padding-top: 3em;
@@ -193,7 +194,7 @@ em { font-style: italic; }
 }
 
 #publications > div > div > .shrunk a {
-    color: $oxfordText-color;
+    color: $text-color;
     text-decoration: none;
 }
     
@@ -226,7 +227,7 @@ a.expandSection i {
 .tabmenu > li > a {
     display: block;
     padding: 10px;
-    color: $oxfordText-color;
+    color: $text-color;
 }
 
 .tabmenu > li > a.active {
@@ -301,6 +302,7 @@ a.expandSection i {
     margin-top: 5em;
     padding-top: 3em;
     padding-bottom: 1.5em;
+    border-top: 1px solid $contrast-color;
     background: $oxford-color;
     color: $textContrast-color;
     a { color: $textContrast-color; font-weight: bold; }
