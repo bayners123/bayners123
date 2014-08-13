@@ -74,18 +74,213 @@ Modernizr.load [
                 toggleMenu $menubar, $moreButtonI
                 
             # Hide the menubar if we click it on a mobile (since the mobilebar is also present)
-            # N.B. we do not preventDefault so the click will still cause navigation
+            # N.B. we do not preventDefault so the click will still cause navigation as expected
             $($menubar).click ->
                 # If we're in mobile mode:
                 if $mobilebar.is(':visible')
                 # then hide the menubar
                     toggleMenu $menubar, $moreButtonI
+            
+            # TAB MENU GENERIC STUFF: 
+            
+            # Initiation of .tabgroups
+            $(".tabgroup").each ->
+                
+                # Find all the links and tabs in this tabgroup
+                # Hopefully there will be the same number of each!
+                $group = $(this)
+                $links = $group.find(".tabmenu a")
+                $tabs = $group.find(".tabs .tab")
+                
+                # Disable all the links in case there aren't the same number of links/tabs (user error):
+                $links.click ->
+                    false
+                    
+                # Define function to show a tab
+                showTab = (group, link, tab) ->
+                    links = group.find(".tabmenu a")
+                    tabs = group.find(".tabs .tab")
+                    
+                    # Disable all links and tabs
+                    links.removeClass('active')
+                    tabs.removeClass('active')
+                    
+                    # Enable the correct two
+                    link.addClass('active')
+                    tab.addClass('active')
+                    
+                # Set slider to the first tab if it isn't already
+                showTab $group, $links.first(), $tabs.first()
+                
+                # Click handler for links, to move to the appropriate tab
+                clickHandler = (e) ->
+                    # Get the clicked link from the click event
+                    clickedLink = $(e.target)
+                    
+                    # Call the show tab function, retrieving the associated tab that we saved earlier
+                    showTab clickedLink.data("myGroup"), clickedLink, clickedLink.data("myTab")
+                    
+                    # Disable normal link action
+                    return false
+                    
+                # Loop over all links / tabs until we run out of either (hopefully both)
+                i = 0
+                while $links.size() > i && $tabs.size() > i
+                
+                    # The current link
+                    theLink = $links.eq(i)
+                    
+                    # Store the associated tabs with the links
+                    theLink.data("myGroup", $group)
+                    theLink.data("myTab", $tabs.eq(i))
+                    
+                    # Bind click handler
+                    theLink.click clickHandler
+                    
+                    # Increment    
+                    i++
 
+            # END TAB MENU GENERIC STUFF
+                
+            # Set research tabs to hidden on load (so they're visible if Java is disabled)
+            $('#researchDetails').hide()
+            
+            # Bind research bubbles to the appropriate sections of the tabs & make them cause the tabs to appear
+            $('.researchBubble').click ->
+                # $('#researchDetails').removeClass("hidden")
+                $('#researchDetails').show().addClass("animated appearZoom")
+            
+            $('#research1').click ->
+                $('#researchLink1').click()
+            $('#research2').click ->
+                $('#researchLink2').click()
+            $('#research3').click ->
+                $('#researchLink3').click()
+            
+            # EXPANDABLE SECTIONS
+            
+            # Find all .expandable sections
+            $expandableSections = $('.expandable')
+            
+            # For each of them, initialise the controlling link to show / hide appropriately
+            $expandableSections.each ->
+                
+                # Find the controlling link. Look first for a child of the .expandable section
+                # If not found, look at the siblings
+                $expandControl = $(this).children('.expandSection')
+                if $expandControl.length == 0
+                    $expandControl = $(this).siblings('.expandSection')
+                
+                # If we found a controlling link...
+                if $expandControl.length != 0
+                    
+                    # Look for the two divs containing the shrunk and the expanded display & the parent
+                    # Also find the arrow if present
+                    $shortSection = $(this).children('.shrunk')
+                    $longSection = $(this).children('.expanded')
+                    $container= $shortSection.parent()
+                    $arrow = $expandControl.children('.fa.fa-arrow-down')
+                    
+                    $longSection
+                        .addClass 'hidden'
+                        .hide()
+                    
+                    # Save the jQuery objects for these with the link
+                    eventData = 
+                        "container" : $container
+                        "shortSection": $shortSection
+                        "longSection": $longSection
+                        "arrow": $arrow
+                    
+                    # Register a click handler to toggle their visibility
+                    $expandControl.on "click.expansion", eventData, (e) ->
+                        
+                        # Get the sections which it controls (set earlier in the initialisation)
+                        container = e.data.container
+                        short = e.data.shortSection
+                        long = e.data.longSection
+                        arrow = e.data.arrow
+                        
+                        # Toggle their visibilities
+                        if long.hasClass("hidden")
+                            # Mark it as hidden for this script
+                            short.addClass 'hidden'
+                            long.removeClass 'hidden'
+                            
+                            # Hide / show them
+                            short.slideUp
+                                duration: 500
+                                complete: refreshSkrollr
+                            long.slideDown
+                                duration: 500
+                                complete: refreshSkrollr
+                                
+                            # Put the view back to the section top
+                            scrollTo container, 500
+                            
+                            # Change the arrow
+                            arrow
+                                .addClass "fa-arrow-up"
+                                .removeClass "fa-arrow-down"
+                        else
+                            short.removeClass 'hidden'
+                            long.addClass 'hidden'
+                            short.slideDown
+                                duration: 500
+                                complete: refreshSkrollr
+                            long.slideUp
+                                duration: 500
+                                complete: refreshSkrollr
+                            
+                            # Put the view back to the section top
+                            scrollTo container, 500
+                            
+                            arrow
+                                .addClass "fa-arrow-down"
+                                .removeClass "fa-arrow-up"
+                            
+                        # Prevent default link action 
+                        e.preventDefault()
+                else
+                    # No controlling element found
+                    console.log "No .expandSection control found for section:"
+                    console.log this
+                    console.log "This should be either a child or sibling of the .expandable element"
+             
+
+            # Animate .hoverPulse elements when hovered using 'Animate.css'
+            $('.hoverPulse').addClass('animated').hover ->
+                    $(this).toggleClass('pulse')
+                    
+            # Hide menubar when scrolling downwards
+            delta = 0
+            scrollIntercept = (e) ->
+                appearanceThreshold = 5
+                
+                if e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0
+                    delta--
+                else
+                    delta++
+                    
+                if delta > 0
+                    delta = 0
+                else if delta < -appearanceThreshold 
+                    delta = -appearanceThreshold
+                    
+                if delta == 0
+                    $('#menubar').addClass("hidden")
+                    # $('#mobilebar').addClass("hidden")
+                else if delta == -appearanceThreshold
+                    $('#menubar').removeClass("hidden")
+                    # $('#mobilebar').removeClass("hidden")
+                
+            $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling', scrollIntercept
+            
     ,
         load: '/jquery.slides.js'
         complete: ->
 
-    # ... then run code that depends on jQuery & slidesjs
+    # ... then run code that depends on slidesjs
 
             # Load constants for the slider
             slideWidth = $("#topSlider").data("aspectratio")
@@ -117,174 +312,8 @@ Modernizr.load [
                             fade: 
                                 speed: 600
                                 crossfade: true
-                            
 
-                # TAB MENU GENERIC STUFF: 
-                
-                # Initiation of .tabgroups
-                $(".tabgroup").each ->
-                    
-                    # Find all the links and tabs in this tabgroup
-                    # Hopefully there will be the same number of each!
-                    $group = $(this)
-                    $links = $group.find(".tabmenu a")
-                    $tabs = $group.find(".tabs .tab")
-                    
-                    # Disable all the links in case there aren't the same number of links/tabs (user error):
-                    $links.click ->
-                        false
-                        
-                    # Define function to show a tab
-                    showTab = (group, link, tab) ->
-                        links = group.find(".tabmenu a")
-                        tabs = group.find(".tabs .tab")
-                        
-                        # Disable all links and tabs
-                        links.removeClass('active')
-                        tabs.removeClass('active')
-                        
-                        # Enable the correct two
-                        link.addClass('active')
-                        tab.addClass('active')
-                        
-                    # Set slider to the first tab if it isn't already
-                    showTab $group, $links.first(), $tabs.first()
-                    
-                    # Click handler for links, to move to the appropriate tab
-                    clickHandler = (e) ->
-                        # Get the clicked link from the click event
-                        clickedLink = $(e.target)
-                        
-                        # Call the show tab function, retrieving the associated tab that we saved earlier
-                        showTab clickedLink.data("myGroup"), clickedLink, clickedLink.data("myTab")
-                        
-                        # Disable normal link action
-                        return false
-                        
-                    # Loop over all links / tabs until we run out of either (hopefully both)
-                    i = 0
-                    while $links.size() > i && $tabs.size() > i
-                    
-                        # The current link
-                        theLink = $links.eq(i)
-                        
-                        # Store the associated tabs with the links
-                        theLink.data("myGroup", $group)
-                        theLink.data("myTab", $tabs.eq(i))
-                        
-                        # Bind click handler
-                        theLink.click clickHandler
-                        
-                        # Increment    
-                        i++
 
-                # END TAB MENU GENERIC STUFF
-                    
-                # Set research tabs to hidden on load (so they're visible if Java is disabled)
-                $('#researchDetails').hide()
-                
-                # Bind research bubbles to the appropriate sections of the tabs & make them cause the tabs to appear
-                $('.researchBubble').click ->
-                    # $('#researchDetails').removeClass("hidden")
-                    $('#researchDetails').show().addClass("animated appearZoom")
-                
-                $('#research1').click ->
-                    $('#researchLink1').click()
-                $('#research2').click ->
-                    $('#researchLink2').click()
-                $('#research3').click ->
-                    $('#researchLink3').click()
-                
-                # EXPANDABLE SECTIONS
-                
-                # Find all .expandable sections
-                $expandableSections = $('.expandable')
-                
-                # For each of them, initialise the controlling link to show / hide appropriately
-                $expandableSections.each ->
-                    
-                    # Find the controlling link. Look first for a child of the .expandable section
-                    # If not found, look at the siblings
-                    $expandControl = $(this).children('.expandSection')
-                    if $expandControl.length == 0
-                        $expandControl = $(this).siblings('.expandSection')
-                    
-                    # If we found a controlling link...
-                    if $expandControl.length != 0
-                        
-                        # Look for the two divs containing the shrunk and the expanded display & the parent
-                        # Also find the arrow if present
-                        $shortSection = $(this).children('.shrunk')
-                        $longSection = $(this).children('.expanded')
-                        $container= $shortSection.parent()
-                        $arrow = $expandControl.children('.fa.fa-arrow-down')
-                        
-                        $longSection
-                            .addClass 'hidden'
-                            .hide()
-                        
-                        # Save the jQuery objects for these with the link
-                        eventData = 
-                            "container" : $container
-                            "shortSection": $shortSection
-                            "longSection": $longSection
-                            "arrow": $arrow
-                        
-                        # Register a click handler to toggle their visibility
-                        $expandControl.on "click.expansion", eventData, (e) ->
-                            
-                            # Get the sections which it controls (set earlier in the initialisation)
-                            container = e.data.container
-                            short = e.data.shortSection
-                            long = e.data.longSection
-                            arrow = e.data.arrow
-                            
-                            # Toggle their visibilities
-                            if long.hasClass("hidden")
-                                # Mark it as hidden for this script
-                                short.addClass 'hidden'
-                                long.removeClass 'hidden'
-                                
-                                # Hide / show them
-                                short.slideUp
-                                    duration: 500
-                                    complete: refreshSkrollr
-                                long.slideDown
-                                    duration: 500
-                                    complete: refreshSkrollr
-                                    
-                                # Put the view back to the section top
-                                scrollTo container, 500
-                                
-                                # Change the arrow
-                                arrow
-                                    .addClass "fa-arrow-up"
-                                    .removeClass "fa-arrow-down"
-                            else
-                                short.removeClass 'hidden'
-                                long.addClass 'hidden'
-                                short.slideDown
-                                    duration: 500
-                                    complete: refreshSkrollr
-                                long.slideUp
-                                    duration: 500
-                                    complete: refreshSkrollr
-                                
-                                # Put the view back to the section top
-                                scrollTo container, 500
-                                
-                                arrow
-                                    .addClass "fa-arrow-down"
-                                    .removeClass "fa-arrow-up"
-                                
-                            # Prevent default link action 
-                            e.preventDefault()
-                    else
-                        # No controlling element found
-                        console.log "No .expandSection control found for section:"
-                        console.log this
-                        console.log "This should be either a child or sibling of the .expandable element"
-                            
                 # Init skrollr if we're not on a mobile (after slider)
                 if !Modernizr.touch
                     skrollr.init
@@ -314,34 +343,6 @@ Modernizr.load [
                     
                     # Refresh skrollr if present
                     refreshSkrollr()
-                        
-            # Animate .hoverPulse elements when hovered using 'Animate.css'
-            $('.hoverPulse').addClass('animated').hover ->
-                    $(this).toggleClass('pulse')
-                    
-            # Hide menubar when scrolling downwards
-            delta = 0
-            scrollIntercept = (e) ->
-                appearanceThreshold = 5
-                
-                if e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0
-                    delta--
-                else
-                    delta++
-                    
-                if delta > 0
-                    delta = 0
-                else if delta < -appearanceThreshold 
-                    delta = -appearanceThreshold
-                    
-                if delta == 0
-                    $('#menubar').addClass("hidden")
-                    # $('#mobilebar').addClass("hidden")
-                else if delta == -appearanceThreshold
-                    $('#menubar').removeClass("hidden")
-                    # $('#mobilebar').removeClass("hidden")
-                
-            $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling', scrollIntercept
             
     ,
         load: 'jquery.fullscreen.js',
