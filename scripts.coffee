@@ -3,6 +3,7 @@
 
 # TODO: Make mobile topbar disappear
 # FIXME: deal with iPhone resizing screen without firing resize event
+# FIXME: mobile menubar is fucked again. Try expanding it
 
 # Load scripts depending on browser capabilities
 
@@ -46,12 +47,7 @@ Modernizr.load [
             if !window.jQuery
                 Modernizr.load
                     load: '/jquery.min.js'
-    ,
-        load: '/jquery.slides.js'
-        complete: ->
-
-    # ... then run code that depends on jQuery & slidesjs
-
+                    
             # function to toggle menubar visibility & change mobilebar morebutton icon
             toggleMenu = (menubar, moreButtonI) ->
                 if menubar.is(':visible')
@@ -84,6 +80,12 @@ Modernizr.load [
                 if $mobilebar.is(':visible')
                 # then hide the menubar
                     toggleMenu $menubar, $moreButtonI
+
+    ,
+        load: '/jquery.slides.js'
+        complete: ->
+
+    # ... then run code that depends on jQuery & slidesjs
 
             # Load constants for the slider
             slideWidth = $("#topSlider").data("aspectratio")
