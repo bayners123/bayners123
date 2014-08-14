@@ -34,7 +34,7 @@ checkBody = (testClass) ->
 # Load skrollr if we're not on a mobile & the body has the class "skrollrMe", but don't initialise it yet
 Modernizr.load [
     test: checkBody("skrollrMe") and not Modernizr.touch,
-    yep: ['/skrollr.min.js', '/skrollr-stylesheets.js', '/skrollr-menu.min.js'],
+    yep: ['/js/skrollr.min.js', '/js/skrollr-stylesheets.js', '/js/skrollr-menu.min.js'],
 
     callback: (url, result, key) ->
     # If we loaded Skrollr & aren't on a small screen, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
@@ -46,14 +46,14 @@ Modernizr.load [
 
             # Are we running IE 8 or less? Well bugger, but let's try to patch some holes
             if typeof IElt9 != 'undefined'
-                Modernizr.load '/skrollr.ie.min.js'
+                Modernizr.load '/js/skrollr.ie.min.js'
     ,
     # Load jquery with a local fallback 
         load: 'timeout=2000!//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
         complete: ->
             if !window.jQuery
                 Modernizr.load
-                    load: '/jquery.min.js'
+                    load: '/js/jquery.min.js'
                     
             # function to toggle menubar visibility & change mobilebar morebutton icon
             toggleMenu = (menubar, moreButtonI) ->
@@ -284,7 +284,7 @@ Modernizr.load [
             $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling', scrollIntercept
             
     ,
-        load: '/jquery.slides.js'
+        load: '/js/jquery.slides.js'
         complete: ->
 
     # ... then run code that depends on slidesjs
@@ -352,7 +352,7 @@ Modernizr.load [
                     refreshSkrollr()
             
     ,
-        load: 'jquery.fullscreen.js',
+        load: '/js/jquery.fullscreen.js',
         complete: ->
             
             $('#groupmembers').fullscreen
@@ -424,7 +424,7 @@ Modernizr.load [
                         top: ($('#facilities .slider').height() - arrows.first().height()) / 2
                     
     ,
-        load: ['jquery.zoomImage.js','jquery.groupMembers.js']
+        load: ['/js/jquery.zoomImage.js','/js/jquery.groupMembers.js']
         complete: ->
             $('#groupmembers .fullHolder').groupScroller
                 first: 1
