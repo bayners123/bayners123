@@ -432,8 +432,9 @@ Modernizr.load [
     ,
         test: checkBody("mainpage")
         yep: ['/js/jquery.zoomImage.js','/js/jquery.groupMembers.js']
-        callback: ->
-            $('#groupmembers .fullHolder').groupScroller
-                first: 1
+        complete: ->
+            if checkBody("mainpage")
+                $('#groupmembers .fullHolder').groupScroller
+                    first: 1
 
     ]
