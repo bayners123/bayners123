@@ -14,6 +14,8 @@ Jose Goicoechea currently teaches:
 	* [Handout for lecture 3](/resources/abse_lecture3.pdf)
 	* [Handout for lecture 4](/resources/abse_lecture4.pdf)
 
+So that I can see how it looks, [here](http://google.com) is an inline link. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, laboriosam, repellendus consequatur [inventore adipisci voluptatem](test) at placeat consectetur dicta in doloremque assumenda cum dignissimos ad esse sed magnam ipsam dolore est illum voluptatibus aliquid quaerat rerum laudantium mollitia tenetur voluptate.
+
 <!--
 
 THIS COURSE NO LONGER TAUGHT, CODE LEFT HERE AS PLACEHOLDER
