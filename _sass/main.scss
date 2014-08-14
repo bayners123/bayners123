@@ -30,19 +30,86 @@ a:hover { text-decoration: underline; }
 
 img { max-width: 100%; }
 
-h1 { text-weight: bold; font-size: 24pt; margin-bottom: 10px; }
-h2 { font-size: 2.5em; margin-bottom: 10px; }
-h3 { font-size: 16pt; margin-bottom: 10px; }
-h4 { font-size: 14pt; margin-bottom: 10px; }
-p { margin-bottom: 0.625em; }
-strong { font-weight: bold; }
-em { font-style: italic; }
+h1 { font-size: 24pt; }
+h2 { font-size: 2.5em; }
+h1, h2, h3, h4 { margin-bottom: 10px; }
+
+.italic { font-style: italic; }
+.bold { font-weight: bold; }
+
+b, strong { @extend .bold; }
+i, em { @extend .italic; }
 
 .box, .expandSection {
 	color: $text-color;
 	box-shadow: 0 0 20px #000;
     border: 3px solid $oxford-color;
     background: #EEE;
+}
+
+// Styles for standard html elements in a box (i.e. inline styles)
+.box {
+    a { 
+        color: #519548;
+        font-size: 1.1em;
+    }
+    .heading {
+        margin: 0.3em 0 0.6em;
+    }
+    h1 { @extend .heading; font-size: 2.5em; }
+    h2 { @extend .heading; font-size: 2.0em; }
+    h3 { @extend .heading; font-size: 1.5em; }
+    h4 { @extend .heading; font-size: 1em; text-decoration: underline; }
+    h5 { @extend .heading; font-size: 1em; @extend .italic; }
+    h6 { @extend .heading; margin-left: 1em; }
+    
+    .blockElement, p, div { margin-bottom: 0.625em; }
+    
+    ul, ol, menu, dir {
+        @extend .blockElement;
+        padding-left: 60px/16px * 1em;
+    }
+    ul { list-style-type: square; }
+    ol {
+        list-style-type: upper-roman;
+        ol { list-style-type: lower-roman; }
+    }
+    li { margin-bottom: 0.3em; }
+    li:last-child { margin-bottom: 0; }
+    
+    blockquote {
+        margin-left: 1em;
+        @extend .italic;
+    }
+    
+    abbr, acronym { border-bottom: 1px $text-color dotted; }
+    
+    cite { @extend .italic; }
+    
+    big { font-size: 2em; }
+    small { font-size: 0.5em; }
+    
+    sup, sub { font-size: 13px/16px * 1em; }
+    sup { vertical-align: super; }
+    sub { vertical-align: sub; }
+    
+    tt, code, kbd, samp { font-family: "Courier New", Courier, monospace }
+    
+    table {
+//        border-left: 1px $text-color solid;
+        caption { @extend .italic; }
+        td, th {
+            border-right: 1px $text-color solid;
+            padding: 0.5em;
+        }
+        td:last-child, th:last-child {
+            border-right: none;
+        }
+        tr:first-child > th {
+            border-bottom: 3px $text-color double;
+        }
+        th { @extend .bold; }
+    }
 }
 
 .expandable {
@@ -188,7 +255,7 @@ em { font-style: italic; }
 }
 
 #publications > div > div > .shrunk p {
-    font-style: italic;
+    @extend .italic;
     font-size: 0.75em;
     margin: 0;
 }
@@ -199,7 +266,7 @@ em { font-style: italic; }
 }
     
 #publications > div > div > .shrunk .pubtitle {
-    font-weight: bold;
+    @extend .bold;
     text-align: justify;
 }
 
@@ -305,7 +372,7 @@ a.expandSection i {
     border-top: 1px solid $contrast-color;
     background: $oxford-color;
     color: $textContrast-color;
-    a { color: $textContrast-color; font-weight: bold; }
+    a { color: $textContrast-color; @extend .bold; }
 }
 
 #footer .unit:nth-child(2) {
