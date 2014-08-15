@@ -13,9 +13,7 @@ title: Testpage
 }  
 </style>
 
-# Testing display of HTML elements
-
-# This is a 1st level heading
+# Testing display of HTML elements (h1)
 
 This is a test paragraph.
 
@@ -202,21 +200,3 @@ prevent the characters from being displayed at all.
 <tr><td>&#x2300;</td><td>diameter sign</td><td>relatively rare in fonts</td></tr>
 </table>
 
-## Hyphenation
-In the following, a width setting should cause some hyphenation,
-depending on support to various methods of hyphenation.
-
-<h3>CSS-based hyphenation</h3>
-<p class="limited hyphens">Until recently the great majority of naturalists believed that species were immutable productions, and had been separately created. This view has been ably maintained by many authors.
-
-<h3>JavaScript-driven hyphenation</h3>
-<p class="limited hyphenate">Until recently the great majority of naturalists believed that species were immutable productions, and had been separately created. This view has been ably maintained by many authors.
-
-<h3>Explicit hyphenation hints (soft hyphens)</h3>
-<p class="limited">Un­til re­cent­ly the great
- ma­jor­i­ty of nat­u­ral­ists
-be­lieved that spe­cies were
- im­mu­ta­ble
- pro­duc­tions,
- and had been sep­a­rate­ly cre­at­ed.
-This view has been ably main­tain­ed by many au­thors.
