@@ -1,5 +1,5 @@
 url: 
 markdown: kramdown
 kramdown: 
-  parse_block_html: true
+  parse_block_html: false
 permalink: pretty
