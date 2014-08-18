@@ -32,6 +32,7 @@ img { max-width: 100%; }
 
 h1 { font-size: 24pt; }
 h2 { font-size: 2.5em; }
+h3 { font-size: 1.5em; }
 h1, h2, h3, h4 { margin-bottom: 10px; }
 
 .italic { font-style: italic; }
@@ -47,8 +48,8 @@ i, em { @extend .italic; }
     background: #EEE;
 }
 
-// Styles for standard html elements in a box (i.e. inline styles)
-.box {
+// Styles for standard html elements in a prose section (i.e. user-controllable text)
+.prose {
     a { 
         color: #519548;
         font-size: 1.1em;
