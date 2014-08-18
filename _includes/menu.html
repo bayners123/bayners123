@@ -9,7 +9,9 @@
 	<a href="/teaching">Teaching</a>
 </nav>
 
-<!-- FIXME: Menu attempts often take two clicks... -->
+<!-- FIXME: Menu attempts often take two clicks. This happens because skrollr-menu looks for a link with a target
+	 	"#xxx" but doesn't find it since mine are "/#xxx". It also disables the broswer's scroll so that it can do it manually,
+		but then fails to do it manually. -->
 
 <nav id="mobilebar" class="mobileOnly alpha90bgWhite" >
 	<a href="/#"><i class="fa fa-home fa-fw"></i></a>
