@@ -181,20 +181,22 @@ i, em { @extend .italic; }
 	color: $textContrast-color;
 }
 
-.slider .slideNavBox {
+.sliderBlackBox {
+    @extend .alpha60bgBlack;
 	color: $textContrast-color;
 	position: absolute;
-	padding: 0.9375em 0.625em 0.625em; /* 15px 10px 10px */
+    z-index: 15;
+}
+
+.slider .slideNavBox {
+    @extend .sliderBlackBox;
 	bottom: 24px; left: 0;
-	z-index: 15
+    padding: 15px/16px*1em 10px/16px*1em 10px/16px*1em; // 15px 10px 10px (10px)
 }
 
 .slider .caption {
-    color: $textContrast-color;
-	position: absolute;
-	bottom: 0;
-	right: 0; 
-	z-index: 15;
+    @extend .sliderBlackBox;
+	bottom: 0; right: 0; 
 	padding: 30px;
 }
 
@@ -326,6 +328,7 @@ a.expandSection i {
 }
 
 .groupDesc {
+    @extend .alpha60bgBlack;
     color: $textContrast-color;
     width: 100%;
     position: absolute;
