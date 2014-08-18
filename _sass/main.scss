@@ -373,7 +373,7 @@ a.expandSection i {
     margin-top: 5em;
     padding-top: 3em;
     padding-bottom: 1.5em;
-    border-top: 1px solid $contrast-color;
+    border-top: 4px solid $contrast-color;
     background: $oxford-color;
     color: $textContrast-color;
     a { color: $textContrast-color; @extend .bold; }
