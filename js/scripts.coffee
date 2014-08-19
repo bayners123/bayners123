@@ -2,6 +2,7 @@
 ---
 
 # FIXME: fullscreen sections incorrectly keep focus on mobile
+# FIXME: Menubar flies off into the distance when you quickly scroll to the top of the page
 
 # Load scripts depending on browser capabilities
 
