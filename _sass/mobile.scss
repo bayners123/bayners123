@@ -47,6 +47,16 @@ h2 { font-size: 1.5em }
 	padding: 0.4em 0 0.2em;
 	text-align: center;
 	font-size: 1.5em;
+	
+  /* To hide the bar when scrolling down */
+  -webkit-transition: margin-top 0.25s ease-in-out;
+  -moz-transition: margin-top 0.25s ease-in-out;
+  -o-transition: margin-top 0.25s ease-in-out;
+  transition: margin-top 0.25s ease-in-out;
+}
+
+#mobilebar.hidden {
+	margin-top: -100% !important;
 }
 
 #mobilebar a { color: #999; }
