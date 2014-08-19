@@ -2,6 +2,7 @@
 ---
 
 # FIXME: deal with iPhone resizing screen without firing resize event
+# FIXME: fullscreen sections incorrectly keep focus on mobile
 
 # Load scripts depending on browser capabilities
 
