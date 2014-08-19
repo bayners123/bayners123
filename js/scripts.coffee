@@ -30,6 +30,9 @@ checkBody = (testClass) ->
     test = new RegExp("\\b" + testClass + "\\b",'g')
     
     return classes.match(test)?
+        
+# Are we in mobile mode? This is updated by a screen resize callback once jquery is loaded
+window.mobileMode = screen.width < 800
 
 # Load skrollr if we're not on a mobile & the body has the class "skrollrMe", but don't initialise it yet
 Modernizr.load [
@@ -54,6 +57,10 @@ Modernizr.load [
             if !window.jQuery
                 Modernizr.load
                     load: '/js/jquery.min.js'
+                    
+            # Keep mobilemode up-to-date
+            $(window).resize ->
+                window.mobileMode = screen.width < 800
                     
             # function to toggle menubar visibility & change mobilebar morebutton icon
             toggleMenu = (menubar, moreButtonI) ->
@@ -84,7 +91,7 @@ Modernizr.load [
             # N.B. we do not preventDefault so the click will still cause navigation as expected
             $($menubar).click ->
                 # If we're in mobile mode:
-                if $mobilebar.is(':visible')
+                if mobileMode
                 # then hide the menubar
                     toggleMenu $menubar, $moreButtonI
             
