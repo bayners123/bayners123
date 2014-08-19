@@ -1,7 +1,6 @@
 ---
 ---
 
-# TODO: Make mobile topbar disappear
 # FIXME: deal with iPhone resizing screen without firing resize event
 
 # Load scripts depending on browser capabilities
@@ -103,13 +102,16 @@ Modernizr.load [
             
             # Hide menubar when scrolling downwards (not mobile as yet)
             delta = 0
-            scrollIntercept = (e) ->
+            window.scrollIntercept = (e, override) ->
                 appearanceThreshold = 5
                 
-                if e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0 || e.originalEvent.deltaY > 0
-                    delta--
+                if override?
+                    delta = override
                 else
-                    delta++
+                    if e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0 || e.originalEvent.deltaY > 0
+                        delta--
+                    else
+                        delta++
                     
                 if delta > 0
                     delta = 0
@@ -129,8 +131,7 @@ Modernizr.load [
                     else if delta == -appearanceThreshold
                         $menubar.removeClass("hidden")
                 
-            $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling wheel.menuscrolling', scrollIntercept
-            
+            $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling wheel.menuscrolling', window.scrollIntercept
             
             # If we're on the main page, do stuff to those elements:
             if checkBody("mainpage")
@@ -305,6 +306,19 @@ Modernizr.load [
                 $('.hoverPulse').addClass('animated').hover ->
                         $(this).toggleClass('pulse')
                     
+    ,
+        test: Modernizr.touch
+        yep: '/js/jquery.touchwipe.min.js'
+        callback: ->
+            $(window).touchwipe({
+                wipeUp: ->
+                    window.scrollIntercept(null, -100)
+                wipeDown: ->
+                    window.scrollIntercept(null, 0)
+                min_move_x: 20,
+                min_move_y: 20,
+                preventDefaultEvents: false
+            });
     ,
         test: checkBody("mainpage")
         yep: '/js/jquery.slides.js'
