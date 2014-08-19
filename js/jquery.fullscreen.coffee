@@ -70,6 +70,26 @@
             # if it had focus, retain focus
             if @data.hasFocus
                 @_scrollTo(false)
+                
+        # iPhones don't call resize when the address bar disappears, causing the window to resize (go figure)
+        # So, we need to try and detect this. Lets check every 2s for a change in dimentions since I'm lazy
+        if navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)
+            @data.iPhoneWidth = $(@options.parentElement).get(0).innerWidth
+            @data.iPhoneHeight = $(@options.parentElement).get(0).innerHeight
+            
+            # Run this every 2 seconds:
+            @data.iPhoneInterval = setInterval =>
+                
+                # Get new dimentions
+                newWidth = $(@options.parentElement).get(0).innerWith
+                newHeight = $(@options.parentElement).get(0).innerHeight
+                
+                # If different to last check, update stored values and trigger the window.resize event
+                if newWidth != @data.iPhoneWidth or newHeight != @data.iPhoneHeight
+                    @data.iPhoneWidth = newWidth
+                    @data.iPhoneHeight = newHeight
+                    $(window).resize()
+            , 2000
             
         # If we're capturing scrolling, register the handler
         if @options.scrollCapture
