@@ -34,7 +34,7 @@ checkBody = (testClass) ->
 # Load skrollr if we're not on a mobile & the body has the class "skrollrMe", but don't initialise it yet
 Modernizr.load [
         test: checkBody("skrollrMe") and not Modernizr.touch,
-        yep: ['/js/skrollr.min.js', '/js/skrollr-stylesheets.js', '/js/skrollr-menu.js'],
+        yep: ['/js/skrollr.min.js', '/js/skrollr-stylesheets.js', '/js/skrollr-menu.min.js'],
 
         callback: (url, result, key) ->
         # If we loaded Skrollr & aren't on a small screen, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
