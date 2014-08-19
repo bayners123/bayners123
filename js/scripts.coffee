@@ -3,7 +3,6 @@
 
 # TODO: Make mobile topbar disappear
 # FIXME: deal with iPhone resizing screen without firing resize event
-# FIXME: mobile menubar is fucked again. Try expanding it
 
 # Load scripts depending on browser capabilities
 
@@ -64,17 +63,16 @@ Modernizr.load [
                     
             # function to toggle menubar visibility & change mobilebar morebutton icon
             toggleMenu = (menubar, moreButtonI) ->
-                if menubar.is(':visible')
-                    menubar.slideUp()
-                    moreButtonI
-                        .removeClass("fa-angle-double-up")
-                        .addClass("fa-angle-double-down")
-                else
-                    menubar
-                        .slideDown()
+                if menubar.hasClass('hidden')
+                    menubar.removeClass('hidden')
                     moreButtonI
                         .removeClass("fa-angle-double-down")
                         .addClass("fa-angle-double-up")
+                else
+                    menubar.addClass('hidden')
+                    moreButtonI
+                        .removeClass("fa-angle-double-up")
+                        .addClass("fa-angle-double-down")
                         
             $menubar = $('#menubar')
             $mobilebar= $('#mobilebar')
@@ -86,6 +84,14 @@ Modernizr.load [
                 event.preventDefault()
 
                 toggleMenu $menubar, $moreButtonI
+                
+            # Set the menubar to hidden if we're mobile & remove the CSS hiding it from view
+            # This means it's hidden by the margin rather than display: none
+            if mobileMode
+                $menubar
+                    .addClass "hidden"
+                    .css "display", "block"
+                
                 
             # Hide the menubar if we click it on a mobile (since the mobilebar is also present)
             # N.B. we do not preventDefault so the click will still cause navigation as expected
@@ -109,13 +115,19 @@ Modernizr.load [
                     delta = 0
                 else if delta < -appearanceThreshold 
                     delta = -appearanceThreshold
-                    
-                if delta == 0
-                    $('#menubar').addClass("hidden")
-                    # $('#mobilebar').addClass("hidden")
-                else if delta == -appearanceThreshold
-                    $('#menubar').removeClass("hidden")
-                    # $('#mobilebar').removeClass("hidden")
+                
+                if mobileMode
+                    if delta == 0
+                        $mobilebar.addClass("hidden")
+                        if not $menubar.hasClass("hidden")
+                            toggleMenu $menubar, $moreButtonI
+                    else if delta == -appearanceThreshold
+                        $mobilebar.removeClass("hidden")
+                else
+                    if delta == 0
+                        $menubar.addClass("hidden")
+                    else if delta == -appearanceThreshold
+                        $menubar.removeClass("hidden")
                 
             $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling', scrollIntercept
             

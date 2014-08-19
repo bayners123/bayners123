@@ -59,11 +59,14 @@ h2 { font-size: 1.5em }
 	margin-top: -100% !important;
 }
 
+#menubar {
+	// To avoid flash at load, javascript will overwrite this property and also assign the 'hidden' class
+	display: none;
+}
+
 #mobilebar a { color: #999; }
 
 #skrollr-body { padding-top: 3.875em; }
-
-#menubar { display: none; }
 
 #menubar { 
 	background: white !important;
