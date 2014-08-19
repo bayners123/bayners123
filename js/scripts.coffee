@@ -106,7 +106,7 @@ Modernizr.load [
             scrollIntercept = (e) ->
                 appearanceThreshold = 5
                 
-                if e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0
+                if e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0 || e.originalEvent.deltaY > 0
                     delta--
                 else
                     delta++
@@ -129,7 +129,7 @@ Modernizr.load [
                     else if delta == -appearanceThreshold
                         $menubar.removeClass("hidden")
                 
-            $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling', scrollIntercept
+            $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling wheel.menuscrolling', scrollIntercept
             
             
             # If we're on the main page, do stuff to those elements:
