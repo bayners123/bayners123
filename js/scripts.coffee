@@ -2,6 +2,7 @@
 ---
 
 # FIXME: fullscreen sections incorrectly keep focus on mobile
+# MAYBE: Turn plugins into proper Grunt plugins & extract more code as plugins where possible
 
 # Load scripts depending on browser capabilities
 
