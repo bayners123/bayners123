@@ -133,13 +133,16 @@ i, em { @extend .italic; }
     min-width: 750px;
     display: block;
     text-align: center;
-    
-    /* To hide the bar when scrolling down */
+}
+
+#menubar.animated, #mobilebar.animated {
+//    To hide the bar when scrolling down
     -webkit-transition: margin-top 0.25s ease-in-out;
     -moz-transition: margin-top 0.25s ease-in-out;
     -o-transition: margin-top 0.25s ease-in-out;
     transition: margin-top 0.25s ease-in-out;
 }
+
 
 #menubar.hidden {
     margin-top: -50px !important;
