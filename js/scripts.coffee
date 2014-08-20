@@ -109,7 +109,7 @@ Modernizr.load [
                 if override?
                     delta = override
                 else
-                    if e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0 || e.originalEvent.deltaY > 0
+                    if e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0 || e.originalEvent.deltaY < 0
                         delta--
                     else
                         delta++
