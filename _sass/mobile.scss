@@ -37,8 +37,31 @@ body{
 body, #menubar { min-width: 0; }
 
 h2 { font-size: 1.5em }
-		
+
+.alpha60bgBlackMob {
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(0, 0, 0) transparent;
+    /* RGBa with 0.6 opacity */
+    background: rgba(0, 0, 0, 0.6);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000, endColorstr=#E5000000);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000, endColorstr=#E5000000)";
+}
+
+.alpha90bgWhiteMob {
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(255, 255, 255) transparent;
+    /* RGBa with 0.6 opacity */
+    background: rgba(255, 255, 255, 0.9);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff)";
+}
+
 #mobilebar {
+    @extend .alpha90bgWhiteMob;
 	display: block;
 	position: fixed;
 	z-index: 20;

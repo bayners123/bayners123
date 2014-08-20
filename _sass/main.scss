@@ -123,6 +123,7 @@ i, em { @extend .italic; }
 }
 
 #menubar {
+    @extend .alpha90bgWhite;
     position: fixed;
     z-index: 20;
     top: 0;
