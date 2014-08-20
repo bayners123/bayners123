@@ -105,16 +105,6 @@ Modernizr.load [
             window.scrollIntercept = (e, override) ->
                 appearanceThreshold = 5
                 
-                # If we're at the top of the screen & on the homepage, disable all this and leave skrollr to deal with it
-                if $(window).scrollTop() < 200 and checkBody("mainpage")
-                    $mobilebar.removeClass("animated")
-                    $menubar.removeClass("animated")
-                    return
-                # Otherwise, continue
-                else
-                    $mobilebar.addClass("animated")
-                    $menubar.addClass("animated")
-                    
                 if override?
                     delta = override
                 else
