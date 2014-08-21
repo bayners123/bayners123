@@ -202,16 +202,18 @@ i, em { @extend .italic; }
 }
 
 #facilities {
-    .slidesjs-next, .slidesjs-previous {
+    .slidesjs-overlay {
         position: absolute;
     //  Height is positioned by javascript
         z-index: 20;
         font-size: 30px;
     }
     .slidesjs-next {
+        @extend .slidesjs-overlay;
         right: 10px;
     } 
     .slidesjs-previous {
+        @extend .slidesjs-overlay;
         left: 10px;
     }
     
