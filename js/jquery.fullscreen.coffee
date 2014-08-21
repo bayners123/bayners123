@@ -162,8 +162,9 @@
         @_addStyles()
         
         # Resize
-        # Argument is a function to be executed after resize
-        @_resizeToFull callback
+        # Argument is a function to be executed after resize. 
+        # Second 'true' calls for animation of the expansion unless overriden by options
+        @_resizeToFull callback, true
         
         # Scroll to the element
         # This happens concurrenty with the resize
@@ -235,43 +236,16 @@
         false
 
     # Resize the element fully    
-    Plugin::_resizeToFull = (afterResized) ->
+    Plugin::_resizeToFull = (afterResized, initialResize) ->
         $element = $(@element)
         
         # Get target height & widths
         targetHeight = $(@options.parentElement).get(0).innerHeight
         targetWidth = $(@options.parentElement).get(0).innerWidth
         
-        # Is animation enabled / are we already locked?
-        if not @options.animation or @data.hasFocus
+        # If animation is active and this is being toggled from inactive -> active
+        if @options.animation and initialResize
             
-            # Set the new values
-            $element.css
-                height: targetHeight 
-                width: targetWidth 
-        
-            # Finish focussed on the element if we were previously focussed:
-            
-            # To allow the DOM time to update, set a timeout
-            # But, to prevent multiple firing, disable any previously active timeouts
-            #  before registering a new one:
-            clearTimeout(@data.resizeTimeout) if @data.resizeTimeout
-            
-            # Register new timeout if the element was previously focussed
-            @data.resizeTimeout = setTimeout =>
-                
-                if @data.hasFocus
-                    @_scrollTo(false)
-                
-                # Execute the callback passed as a parameter to this function
-                afterResized() if afterResized?
-            
-                # Trigger the resize callback passed as an option to this plugin
-                @options.resizeCallback(@element)
-                
-                @data.resizeTimeout = null
-            
-        else
             # Flag start of animation
             @data.animating = true
             
@@ -304,6 +278,37 @@
                 
                 # Trigger the resize callback passed as an option to this plugin
                 @options.resizeCallback(@element)
+        
+        # Else, just resize immediately
+        else
+            
+            # Set the new values
+            $element.css
+                height: targetHeight 
+                width: targetWidth 
+        
+            # Finish focussed on the element if we were previously focussed:
+            
+            # To allow the DOM time to update, set a timeout
+            # But, to prevent multiple firing, disable any previously active timeouts
+            #  before registering a new one:
+            clearTimeout(@data.resizeTimeout) if @data.resizeTimeout
+            
+            # Register new timeout if the element was previously focussed
+            @data.resizeTimeout = setTimeout =>
+                
+                if @data.hasFocus
+                    @_scrollTo(false)
+                
+                # Execute the callback passed as a parameter to this function
+                afterResized() if afterResized?
+            
+                # Trigger the resize callback passed as an option to this plugin
+                @options.resizeCallback(@element)
+                
+                @data.resizeTimeout = null
+            
+        
                 
         @
         
