@@ -204,7 +204,7 @@ i, em { @extend .italic; }
 #facilities {
     .slidesjs-next, .slidesjs-previous {
         position: absolute;
-    //  Width is positioned by javascript
+    //  Height is positioned by javascript
         z-index: 20;
         font-size: 30px;
     }
@@ -214,6 +214,7 @@ i, em { @extend .italic; }
     .slidesjs-previous {
         left: 10px;
     }
+    
 }
 
 #welcome > .content > h2 { 
