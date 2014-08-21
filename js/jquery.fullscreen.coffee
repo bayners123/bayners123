@@ -68,8 +68,6 @@
         $(window).resize =>
             @check()
             # if it had focus, retain focus
-            if @data.hasFocus
-                @_scrollTo(false)
                 
         # iPhones don't call resize when the address bar disappears, causing the window to resize (go figure)
         # So, we need to try and detect this. Lets check every 2s for a change in dimentions since I'm lazy
