@@ -102,8 +102,8 @@
         $(@options.parentElement).scroll =>
             $element = $(@element)
             
-            # Are we active and not animating?
-            if $element.hasClass(@options.activeClass) and not @data.animating
+            # Are we active, not animating and there's no scroll timeout waiting to happen?
+            if $element.hasClass(@options.activeClass) and not @data.animating and not ( @data.resizeTimeout and @data.hasFocus )
                 
                 # If we leave the capture zone, trigger the callback and set the flag
                 elementPos = @element.offsetTop
