@@ -216,6 +216,10 @@ i, em { @extend .italic; }
         @extend .slidesjs-overlay;
         left: 10px;
     }
+    .slidesjs-pagination {
+        @extend .slidesjs-overlay;
+        width: 100%;
+    }
     
 }
 
