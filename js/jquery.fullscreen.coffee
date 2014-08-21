@@ -110,8 +110,9 @@
                 scrollPos = $(@options.parentElement).scrollTop()
         
                 # Check if we're out of the range (elementPosition + offset) ± captureRange
+                # Also, that we were previously in it
                 # If so, trigger the callback & maybe the shrinking element
-                if elementPos + @options.offset - @options.lostFocusRange > scrollPos || scrollPos > elementPos + @options.offset + @options.lostFocusRange
+                if @data.hasFocus and elementPos + @options.offset - @options.lostFocusRange > scrollPos || scrollPos > elementPos + @options.offset + @options.lostFocusRange
                     
                     if @options.shrinkOnLostFocus
                         # If we scrolled downwards, flag this to the shrinking function
