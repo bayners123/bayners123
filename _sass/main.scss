@@ -218,6 +218,8 @@ i, em { @extend .italic; }
     }
     .slidesjs-pagination {
         @extend .slidesjs-overlay;
+        bottom: 0;
+        left: 0;
         width: 100%;
     }
     
