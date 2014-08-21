@@ -26,8 +26,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# MAYBE: stop scrolling being possible for mobile swipes too when rollover: false
-
 (($, window, document) ->
   pluginName = "slidesjs"
   defaults =
@@ -519,12 +517,12 @@
     # Define slides control
     slidesControl = $(".slidesjs-control", $element)
 
-    # Slide has been dragged to the right, goto previous slide
-    if slidesControl.position().left > @options.width * 0.5 || slidesControl.position().left > @options.width * 0.1 && (Number(new Date()) - @data.touchtimer < 250)
+    # Slide has been dragged to the right & we're not at the limit/rollover is enabled: goto previous slide
+    if ( slidesControl.position().left > @options.width * 0.5 || slidesControl.position().left > @options.width * 0.1 && (Number(new Date()) - @data.touchtimer < 250) ) && ( @data.current != 0 || @options.navigation.rollover )
       $.data this, "direction", "previous"
       @_slide()
-    # Slide has been dragged to the left, goto next slide
-    else if slidesControl.position().left < -(@options.width * 0.5) || slidesControl.position().left < -(@options.width * 0.1) && (Number(new Date()) - @data.touchtimer < 250)
+    # Slide has been dragged to the left & we're not at the limit/rollover is enabled: goto next slide
+    else if ( slidesControl.position().left < -(@options.width * 0.5) || slidesControl.position().left < -(@options.width * 0.1) && (Number(new Date()) - @data.touchtimer < 250) ) && ( @data.current != @data.total-1 || @options.navigation.rollover )
       $.data this, "direction", "next"
       @_slide()
     else
