@@ -359,13 +359,7 @@ Modernizr.load [
                                 crossfade: true
 
 
-                # Init skrollr if present (after slider)
-                if skrollr?
-                    skrollr.init
-                        smoothScrolling: false,
-                        forceHeight: false
-                    # Init skrollr menus
-                    skrollr.menu.init skrollr.get()
+                
                     
                 # END DOC READY
                         
@@ -413,6 +407,14 @@ Modernizr.load [
                         fade: 
                             speed: 600
                             crossfade: true
+                            
+            # Init skrollr if present (after slider)
+            if skrollr?
+                skrollr.init
+                    smoothScrolling: false,
+                    forceHeight: false
+                # Init skrollr menus
+                skrollr.menu.init skrollr.get()
             
     ,
         test: checkBody("mainpage")
