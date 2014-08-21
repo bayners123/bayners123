@@ -221,6 +221,10 @@ i, em { @extend .italic; }
         bottom: 0;
         left: 0;
         width: 100%;
+        text-align: center;
+        li {
+            display: inline;
+        }
     }
     
 }
