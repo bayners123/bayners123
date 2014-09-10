@@ -110,6 +110,7 @@ i, em { @extend .italic; }
             border-bottom: 3px $text-color double;
         }
         th { @extend .bold; }
+        margin-bottom: 1em;
     }
 }
 

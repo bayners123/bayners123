@@ -3,17 +3,9 @@ layout: default
 title: Testpage
 ---
 
-<style>
-.limited { width: 15.5em; }
-.hyphens {
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto; 
-}  
-</style>
-
 # Testing display of HTML elements (h1)
+
+# This is a 1st level heading
 
 This is a test paragraph.
 
@@ -168,20 +160,21 @@ but they may have use as
 <cite>[Links Want To Be Links](https://www.cs.tut.fi/~jkorpela/www/links.html)</cite>.
 
 ## Tables
-The following table has a caption. The first row and the first column
-contain table header cells (`th` elements) only; other cells
-are data cells (`td` elements):
+The following table has a header row and three columns. 
 
-<table>
-<caption>Sample table: Areas of the Nordic countries, in sq km</caption>
-<tr><th>Country</th> <th>Total area</th> <th>Land area</th></tr>
-<tr><th>Denmark</th> <td> 43,070 </td><td> 42,370</td></tr>
-<tr><th>Finland</th> <td>337,030 </td><td>305,470</td></tr>
-<tr><th>Iceland</th> <td>103,000 </td><td>100,250</td></tr>
-<tr><th>Norway</th>  <td>324,220 </td><td>307,860</td></tr>
-<tr><th>Sweden</th>  <td>449,964 </td><td>410,928</td></tr>
-</table>
+| Country | Total area (km) | Land area (km<sup>2</sup>) |
+| :---- | :-----: | ------: |
+| Denmark |  43,070  |  42,370 |
+| Finland | 337,030  | 305,470 |
+| Iceland | 103,000  | 100,250 |
+| Norway | 324,220  | 307,860 |
+| Sweden | 449,964  | 410,928 |
 
+The first column is left-aligned, the second center-aligned and the third right-aligned. This is achieved by the colon position in the header separator row:
+
+    | Country | Total area (km) | Land area (km<sup>2</sup>) |
+    | :---- | :-----: | ------: |
+    ...
 
 ## Character test
 The following table has some sample characters with
@@ -190,13 +183,13 @@ contain all of them, they may get displayed using backup fonts.
 This may cause stylistic differences, but it should not
 prevent the characters from being displayed at all.
 
-<table>
-<tr><th>Char.</th><th>Explanation</th><th>Notes</th></tr>
-<tr><td>ê</td><td>e with circumflex</td><td>Latin 1 character, should be ok</td></tr>
-<tr><td>&#8212;</td><td>em dash</td><td>Windows Latin 1 character, should be ok, too</td></tr>
-<tr><td>&#x100;</td><td>A with macron (line above)</td><td>Latin Extended-A character, not present in all fonts</td></tr>
-<tr><td>&Omega;</td><td>capital omega</td><td>A Greek letter</td></tr>
-<tr><td>&#x2212;</td><td>minus sign</td><td>Unicode minus</td></tr>
-<tr><td>&#x2300;</td><td>diameter sign</td><td>relatively rare in fonts</td></tr>
-</table>
+|Char.|Explanation|Notes|
+|-----------------------|
+| ê | e with circumflex | Latin 1 character, should be ok |
+|&#8212;|em dash|Windows Latin 1 character, should be ok, too|
+|&#x100;|A with macron (line above)|Latin Extended-A character, not present in all fonts|
+|&Omega;|capital omega|A Greek letter|
+|&#x2212;|minus sign|Unicode minus|
+|&#x2300;|diameter sign|relatively rare in fonts|
+
 
