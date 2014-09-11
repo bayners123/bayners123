@@ -402,7 +402,8 @@ Modernizr.load [
                         pauseOnHover: false
                         generate: false
                     pagination:
-                        active: false
+                        active: true
+                        generate: false
                     effect:
                         fade: 
                             speed: 600

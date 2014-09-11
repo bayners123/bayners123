@@ -53,9 +53,12 @@
         # Pagination settings
       active: true
         # [boolean] Create pagination items.
-        # You cannot use your own pagination.
       effect: "slide"
         # [string] Can be either "slide" or "fade".
+      generate: true
+        # [boolean] Generate pagination nav. If false, search for a
+        #     ul.slidesjs-navigation.slidesjs-pagination > li > a 
+        #   structure.
     play:
         # Play and stop button setting.
       active: false
@@ -239,8 +242,8 @@
       
       else
       # Search for user's play/stop buttons
-          playButton = $(".slidesjs-play.slidesjs-navigation")
-          stopButton = $(".slidesjs-stop.slidesjs-navigation")
+          playButton = $(".slidesjs-play.slidesjs-navigation", $element)
+          stopButton = $(".slidesjs-stop.slidesjs-navigation", $element)
       
 
       playButton.click (e) =>
@@ -257,31 +260,49 @@
 
 
     if @options.pagination.active
-      # Create unordered list pagination
-      pagination = $("<ul>"
-        class: "slidesjs-pagination"
-      ).appendTo($element)
+      
+      if @options.pagination.generate
+        # Create unordered list pagination
+        pagination = $("<ul>"
+          class: "slidesjs-pagination"
+        ).appendTo($element)
 
-      # Create a list item and anchor for each slide
-      $.each(new Array(@data.total), (i) =>
-        paginationItem = $("<li>"
-          class: "slidesjs-pagination-item"
-        ).appendTo(pagination)
+        # Create a list item and anchor for each slide
+        $.each(new Array(@data.total), (i) =>
+          paginationItem = $("<li>"
+            class: "slidesjs-pagination-item"
+          ).appendTo(pagination)
 
-        paginationLink = $("<a>"
-          href: "#"
-          "data-slidesjs-item": i
-          html: i + 1
-        ).appendTo(paginationItem)
+          paginationLink = $("<a>"
+            href: "#"
+            "data-slidesjs-item": i
+            html: i + 1
+          ).appendTo(paginationItem)
 
-        # bind click events
-        paginationLink.click (e) =>
-          e.preventDefault()
-          # Stop play
-          @stop(true)
-          # Goto to selected slide
-          @goto( ($(e.currentTarget).attr("data-slidesjs-item") * 1) + 1 )
-      )
+          # bind click events
+          paginationLink.click (e) =>
+            e.preventDefault()
+            console.log $(e.currentTarget).attr("data-slidesjs-item")
+            # Stop play
+            @stop(true)
+            # Goto to selected slide
+            @goto( ($(e.currentTarget).attr("data-slidesjs-item") * 1) + 1 )
+        )
+      else
+        paginationLIs = $('.slidesjs-pagination li', $element)
+        
+        paginationLIs.each (i) =>
+          
+          # For each link already there, add the index
+          paginationLIs.eq(i)
+            .data("slidesjs-item", i)
+          # and bind click events
+            .click (e) =>
+              e.preventDefault()
+              # Stop play
+              @stop(true)
+              # Goto to selected slide
+              @goto( ($(e.currentTarget).data("slidesjs-item") * 1) + 1 )
 
     # Bind update on browser resize
     $(window).bind("resize", () =>

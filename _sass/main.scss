@@ -202,17 +202,37 @@ i, em { @extend .italic; }
 	padding: 30px;
 }
 
-#facilities .slidesjs-next, #facilities .slidesjs-previous {
-    position: absolute;
-//  Width is positioned by javascript
-    z-index: 20;
-    font-size: 30px;
-}
-#facilities .slidesjs-next {
-    right: 10px;
-} 
-#facilities .slidesjs-previous {
-    left: 10px;
+#facilities {
+    .slidesjs-overlay {
+        position: absolute;
+    //  Height of left & right buttons is positioned by javascript
+        z-index: 15;
+        font-size: 30px;
+    }
+    .slidesjs-next {
+        @extend .slidesjs-overlay;
+        right: 10px;
+    } 
+    .slidesjs-previous {
+        @extend .slidesjs-overlay;
+        left: 10px;
+    }
+    .slidesjs-pagination {
+        @extend .sliderBlackBox;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 0.5em 0;
+        li {
+            display: inline;
+            margin: 0 1em;
+            a {
+                color: #ddd;
+            }
+        }
+    }
+    
 }
 
 #welcome > .content > h2 { 
