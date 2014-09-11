@@ -108,20 +108,28 @@
                 # If we leave the capture zone, trigger the callback and set the flag
                 elementPos = @element.offsetTop
                 scrollPos = $(@options.parentElement).scrollTop()
-        
-                # Check if we're out of the range (elementPosition + offset) ± captureRange
-                # Also, that we were previously in it
+                
+                # Check that we were previously in the range & are now
+                #   out of the range (elementPosition + offset) ± captureRange
                 # If so, trigger the callback & maybe the shrinking element
-                if @data.hasFocus and elementPos + @options.offset - @options.lostFocusRange > scrollPos || scrollPos > elementPos + @options.offset + @options.lostFocusRange
+                if elementPos + @options.offset - @options.lostFocusRange > scrollPos || scrollPos > elementPos + @options.offset + @options.lostFocusRange
                     
-                    if @options.shrinkOnLostFocus
-                        # If we scrolled downwards, flag this to the shrinking function
-                        # It will compensate for our scroll so that the user isn't thrown all over the place by elements resizing
-                        @data.autoShrinking = true if scrollPos > elementPos + @options.offset + @options.lostFocusRange
-                        @setInactive()
+                    if @data.hasFocus
+                        
+                        if @options.shrinkOnLostFocus
+                            # If we scrolled downwards, flag this to the shrinking function
+                            # It will compensate for our scroll so that the user isn't thrown all over the place by elements resizing
+                            @data.autoShrinking = true if scrollPos > elementPos + @options.offset + @options.lostFocusRange
+                            @setInactive()
                     
-                    # Set flag
-                    @data.hasFocus = false
+                        # Set flag
+                        @data.hasFocus = false
+                
+                # Else, check if we are now in the range and previously weren't in it
+                else if not @data.hasFocus
+                    
+                    @data.hasFocus = true
+                    # Scroll capture is handled elsewhere but set the flag here in case scroll capturing is disabled
                     
                     @options.lostFocusCallback(@element)
                     
