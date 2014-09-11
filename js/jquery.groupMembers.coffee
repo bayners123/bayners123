@@ -127,6 +127,10 @@
                     @getXMargin(@data.currentSlide)
                 # Don't zoom the image initially (this will be activated when the section goes fullscreen)
                 # active: false
+                
+            # Re-scroll skrollr if needed
+            if (skrollr && skrollr.menu)
+                skrollr.menu.jumpToInitialPos()
                     
             # Goto first slide with no animation
             @_goto(@options.first, false)
