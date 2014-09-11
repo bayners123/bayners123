@@ -155,4 +155,13 @@ h2 { font-size: 1.5em }
     padding-top: 0;
 }
 
+#facilities {
+    .slidesjs-pagination {
+        font-size: 0.75em;
+        li {
+            margin: 0 0.5em;
+        }
+    }   
+}
+
 }
