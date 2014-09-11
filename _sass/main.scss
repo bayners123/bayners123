@@ -204,8 +204,8 @@ i, em { @extend .italic; }
 #facilities {
     .slidesjs-overlay {
         position: absolute;
-    //  Height is positioned by javascript
-        z-index: 20;
+    //  Height of left & right buttons is positioned by javascript
+        z-index: 15;
         font-size: 30px;
     }
     .slidesjs-next {
