@@ -432,8 +432,10 @@ Modernizr.load [
                 # animationDuration: "1s"
                 # parentElement: $('#skrollr-body')
                 # offset: -50
-                scrollCaptureRange: 150 # Distance from element within which the window will lock to it
-                lostFocusRange: 151 # Distance at which to trigger the lostFocusCallback
+                scrollCaptureRange: if window.mobileMode then 75 else 150
+                    # Distance from element within which the window will lock to it
+                    #    Smaller for mobiles
+                lostFocusRange: it window.mobileMode then 51 else 151 # Distance at which to trigger the lostFocusCallback
                 resizeCallback: ->
                     # Refresh skrollr if present
                     refreshSkrollr()
@@ -446,8 +448,10 @@ Modernizr.load [
                 active: true
                 scrollCallback: ->
                     $('#menubar, #mobilebar').addClass("hidden")
-                scrollCaptureRange: 150 # Distance from element within which the window will lock to it
-                lostFocusRange: 151 # Distance at which to trigger the lostFocusCallback
+                scrollCaptureRange: if window.mobileMode then 75 else 150
+                    # Distance from element within which the window will lock to it
+                    #    Smaller for mobiles
+                lostFocusRange: it window.mobileMode then 51 else 151 # Distance at which to trigger the lostFocusCallback
                 resizeCallback: ->
                     # Refresh skrollr if present
                     refreshSkrollr()
