@@ -68,8 +68,6 @@
         $(window).resize =>
             @check()
             # if it had focus, retain focus
-            if @data.hasFocus
-                @_scrollTo(false)
                 
         # iPhones don't call resize when the address bar disappears, causing the window to resize (go figure)
         # So, we need to try and detect this. Lets check every 2s for a change in dimentions since I'm lazy
@@ -104,25 +102,34 @@
         $(@options.parentElement).scroll =>
             $element = $(@element)
             
-            # Are we active and not animating?
-            if $element.hasClass(@options.activeClass) and not @data.animating
+            # Are we active, not animating and there's no scroll timeout waiting to happen?
+            if $element.hasClass(@options.activeClass) and not @data.animating and not ( @data.resizeTimeout and @data.hasFocus )
                 
                 # If we leave the capture zone, trigger the callback and set the flag
                 elementPos = @element.offsetTop
                 scrollPos = $(@options.parentElement).scrollTop()
-        
-                # Check if we're out of the range (elementPosition + offset) ± captureRange
+                
+                # Check that we were previously in the range & are now
+                #   out of the range (elementPosition + offset) ± captureRange
                 # If so, trigger the callback & maybe the shrinking element
                 if elementPos + @options.offset - @options.lostFocusRange > scrollPos || scrollPos > elementPos + @options.offset + @options.lostFocusRange
                     
-                    if @options.shrinkOnLostFocus
-                        # If we scrolled downwards, flag this to the shrinking function
-                        # It will compensate for our scroll so that the user isn't thrown all over the place by elements resizing
-                        @data.autoShrinking = true if scrollPos > elementPos + @options.offset + @options.lostFocusRange
-                        @setInactive()
+                    if @data.hasFocus
+                        
+                        if @options.shrinkOnLostFocus
+                            # If we scrolled downwards, flag this to the shrinking function
+                            # It will compensate for our scroll so that the user isn't thrown all over the place by elements resizing
+                            @data.autoShrinking = true if scrollPos > elementPos + @options.offset + @options.lostFocusRange
+                            @setInactive()
                     
-                    # Set flag
-                    @data.hasFocus = false
+                        # Set flag
+                        @data.hasFocus = false
+                
+                # Else, check if we are now in the range and previously weren't in it
+                else if not @data.hasFocus
+                    
+                    @data.hasFocus = true
+                    # Scroll capture is handled elsewhere but set the flag here in case scroll capturing is disabled
                     
                     @options.lostFocusCallback(@element)
                     
@@ -164,8 +171,9 @@
         @_addStyles()
         
         # Resize
-        # Argument is a function to be executed after resize
-        @_resizeToFull callback
+        # Argument is a function to be executed after resize. 
+        # Second 'true' calls for animation of the expansion unless overriden by options
+        @_resizeToFull callback, true
         
         # Scroll to the element
         # This happens concurrenty with the resize
@@ -237,43 +245,16 @@
         false
 
     # Resize the element fully    
-    Plugin::_resizeToFull = (afterResized) ->
+    Plugin::_resizeToFull = (afterResized, initialResize) ->
         $element = $(@element)
         
         # Get target height & widths
         targetHeight = $(@options.parentElement).get(0).innerHeight
         targetWidth = $(@options.parentElement).get(0).innerWidth
         
-        # Is animation enabled / are we already locked?
-        if not @options.animation or @data.hasFocus
+        # If animation is active and this is being toggled from inactive -> active
+        if @options.animation and initialResize
             
-            # Set the new values
-            $element.css
-                height: targetHeight 
-                width: targetWidth 
-        
-            # Finish focussed on the element if we were previously focussed:
-            
-            # To allow the DOM time to update, set a timeout
-            # But, to prevent multiple firing, disable any previously active timeouts
-            #  before registering a new one:
-            clearTimeout(@data.resizeTimeout) if @data.resizeTimeout
-            
-            # Register new timeout if the element was previously focussed
-            @data.resizeTimeout = setTimeout =>
-                
-                if @data.hasFocus
-                    @_scrollTo(false)
-                
-                # Execute the callback passed as a parameter to this function
-                afterResized() if afterResized?
-            
-                # Trigger the resize callback passed as an option to this plugin
-                @options.resizeCallback(@element)
-                
-                @data.resizeTimeout = null
-            
-        else
             # Flag start of animation
             @data.animating = true
             
@@ -306,6 +287,37 @@
                 
                 # Trigger the resize callback passed as an option to this plugin
                 @options.resizeCallback(@element)
+        
+        # Else, just resize immediately
+        else
+            
+            # Set the new values
+            $element.css
+                height: targetHeight 
+                width: targetWidth 
+        
+            # Finish focussed on the element if we were previously focussed:
+            
+            # To allow the DOM time to update, set a timeout
+            # But, to prevent multiple firing, disable any previously active timeouts
+            #  before registering a new one:
+            clearTimeout(@data.resizeTimeout) if @data.resizeTimeout
+            
+            # Register new timeout if the element was previously focussed
+            @data.resizeTimeout = setTimeout =>
+                
+                if @data.hasFocus
+                    @_scrollTo(false)
+                
+                # Execute the callback passed as a parameter to this function
+                afterResized() if afterResized?
+            
+                # Trigger the resize callback passed as an option to this plugin
+                @options.resizeCallback(@element)
+                
+                @data.resizeTimeout = null
+            
+        
                 
         @
         
