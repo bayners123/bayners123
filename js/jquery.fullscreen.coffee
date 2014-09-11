@@ -132,9 +132,7 @@
                     # Scroll capture is handled elsewhere but set the flag here in case scroll capturing is disabled
                     
                     @options.lostFocusCallback(@element)
-                    
-        # FIXME: scrolling to retain focus seems to be broken in some cases
-                  
+                                      
         # Activate the element if requested, disabling then restoring original animation setting (hackity hack hack)
         if @options.active
             anim = @options.animation
