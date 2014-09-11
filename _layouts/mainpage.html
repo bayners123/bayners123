@@ -49,9 +49,7 @@
                 <h2 class="left">Welcome</h2>
             
                 <div class="unit whole">
-                        
-                    {{ content }}
-                    
+                    {{ site.frontpage | where:"section","welcome" }}
                 </div>
             </div>
 
