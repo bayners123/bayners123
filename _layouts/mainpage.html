@@ -291,7 +291,7 @@
                 
 				<ul class="slidesjs-pagination slidesjs-navigation">
                     {% for page in site.facilities %}
-					<li><a href="#">{{ page.title }}</a></li>
+					<li><a href="#"><span class="mobileOnly">{{ page.shortTitle }}</span><span class="notMobileOnly">{{ page.title }}</span></a></li>
                     {% endfor %}
 				</ul>
                 
