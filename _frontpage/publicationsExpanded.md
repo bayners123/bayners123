@@ -1,5 +1,5 @@
 ---
-section: publications
+section: publicationsExpanded
 ---
 
 <!-- TODO: Sort out Mark's horrible CSS -->
