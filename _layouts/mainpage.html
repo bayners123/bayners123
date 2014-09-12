@@ -265,15 +265,12 @@
                 
                 <!-- Start slider content -->
                 
+                {% for page in site.facilities %}
                 <div>
-                    <span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque distinctio voluptatibus corporis reiciendis deleniti maiores in itaque? Laudantium, quae, tenetur, ullam voluptatibus velit eos iusto consequatur quisquam placeat unde fuga.</span>
-                    <img alt="Slideshow slide" src="/images/boat1.jpg">
+                    <span class="caption">{{ page.output }}</span>
+                    <img alt="{{ page.title }}" src="{{ page.image }}" />
                 </div>
-                <img alt="Slideshow slide" src="/images/boat2.jpg">
-                <div>
-                    <span class="caption">A final slide to test this properly.</span>
-                    <img alt="Slideshow slide" src="/images/boat1.jpg">
-                </div>
+                {% endfor %}
                 
                 <!-- End slider content -->
                 
@@ -291,11 +288,13 @@
                 </a>
                 
                 <!-- Slider pagination -->
+                
 				<ul class="slidesjs-pagination slidesjs-navigation">
-					<li><a href="#">Writeup area</a></li>
-					<li><a href="#">Lab</a></li>
-					<li><a href="#">Mass Spectrometry</a></li>
+                    {% for page in site.facilities %}
+					<li><a href="#">{{ page.title }}</a></li>
+                    {% endfor %}
 				</ul>
+                
                 <!-- End slider pagination -->
             </div>
 
