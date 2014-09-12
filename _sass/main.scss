@@ -235,6 +235,9 @@ i, em { @extend .italic; }
             a {
                 color: #ddd;
             }
+            a.active {
+                text-decoration: underline;
+            }
         }
     }
     
