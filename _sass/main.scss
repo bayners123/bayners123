@@ -304,6 +304,10 @@ i, em { @extend .italic; }
     float: right;
 }
 
+#publications .expanded li {
+    margin-bottom: 1em;
+}
+
 a.expandSection {
     display: table;
     overflow: hidden;
