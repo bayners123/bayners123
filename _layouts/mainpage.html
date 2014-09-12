@@ -194,20 +194,18 @@
                 <div class="unit whole box expandable">
                     <!-- The expandable class will cause the children ".shrunk" and ".expanded"
                         to toggle visibility when the sibling or child ".expandSection" is clicked.
-                         Child ".expandSection"s take priority, then siblings are searched for -->
+                         Child ".expandSection"s take priority, then siblings are searched for.
+                        In this case, the ".expandSection" is a sibling: the last 'a' element
+                         in this div. -->
                     
                     <div class="shrunk">
-                        
                         {{ site.frontpage | where:"section","publicationsShrunk" }}
-                        
                     </div>
                     
                     <div class="expanded">
-                        
                         {{ site.frontpage | where:"section","publicationsExpanded" }}
-                        
                     </div>
-                    <!-- end clever Jekylly bit -->
+                    
                 </div>
                 
                 <a class="expandSection unit" href="#">

@@ -3,6 +3,7 @@ section: publicationsExpanded
 ---
 
 <!-- TODO: Sort out Mark's horrible CSS -->
+
 ## Selected Recent Publications
 
 <ol>
