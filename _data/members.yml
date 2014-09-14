@@ -16,13 +16,7 @@
               Charles has been described by some people as an "honorary" member of the group.
               This means that he hangs around while the rest of the group is drinking often enough
               that they have come to accept him. 
-    - name: Gabriela Espinoza Quintero
-      desc: >
-              Gaby is from Mexico and completed an undergraduate course at Universidad de las Américas,
-              Puebla. She is in the third year of her D.Phil. She is researching the reactivity of group
-              14 & 15 Zintl anions towards organometallic complexes. She enjoys playing drums, capoeira
-              and sculpting marble figures of legendary Mexican singers in her free time. 
-    - name: Jose
+    - name: Jose Goecochia
       desc: >
               Jose carried out his undergraduate degree at the University of Zaragoza in his home country
               of Spain. After a brief stint as an Erasmus student at the University of Cambridge with
@@ -34,3 +28,10 @@
               
               Jose was appointed to a University Lectureship in Inorganic Chemistry at the University of Oxford
               on October 1st 2006.
+    - name: Gabriela Espinoza Quintero
+      desc: >
+              Gaby is from Mexico and completed an undergraduate course at Universidad de las Américas,
+              Puebla. She is in the third year of her D.Phil. She is researching the reactivity of group
+              14 & 15 Zintl anions towards organometallic complexes. She enjoys playing drums, capoeira
+              and sculpting marble figures of legendary Mexican singers in her free time. 
+    

@@ -128,7 +128,6 @@
             
         </section>
         
-<!--TODO: Groupmembers jekylling -->
         <section id="groupmembers" class="fullscreen">
             
             <div class="grid content">
@@ -138,7 +137,12 @@
             </div>
             
             <div class="box fullHolder">
-                <img src="/images/groupphoto.jpg" alt="The group" class="slideImg" />
+                {% for yearObj in site.data.members %}
+                {% comment %} Here's a fudge for now: {% endcomment %}
+                {% if yearObj.year == 2014 %}
+                
+                <img src="{{ yearObj.photo }}" alt="The group in {{ yearObj.year }}" class="slideImg" />
+                
                 <div class="fullHolderContent">
 
                     <div class="groupDesc">
@@ -151,29 +155,27 @@
                         </div>
                         
                         
-<!-- TODO: Generate the following with Jekyll -->
 <!--TODO: Add previous years -->
                         <div class="grid">
                             <ul class="desc unit whole">
-                                <li data-person="Gabriela Espinoza-Quintero">
-                                    Gaby is from Mexico and completed an undergraduate course at Universidad de las Américas, Puebla. She is in the third year of her D.Phil. She is researching the reactivity of group 14 & 15 Zintl anions towards organometallic complexes. She enjoys playing drums, capoeira and sculpting marble figures of legendary Mexican singers in her free time. 
+                                
+                                {% for member in yearObj.members %}
+                                <li data-person="{{ member.name }}">
+                                    {{ member.desc | markdownify }}
                                 </li>
-                                <li data-person="Jose Goicoechea">
-                                    Jose carried out his undergraduate degree at the University of Zaragoza in his home country of Spain. After a brief stint as an Erasmus student at the University of Cambridge with Professor Paul Raithby, he began his Ph.D work at the University of Bath under the supervision of Mike Whittlesey. He completed his thesis in 2003 on the synthesis and reactivity of novel water-soluble ruthenium (II) phosphine complexes. A postdoctoral position with Professor Slavi Sevov at the University of Notre Dame followed (2003-2006) exploring the reactivity of anionic deltahedral Zintl ions in solution.
-                                    <br>
-                                    Jose was appointed to a University Lectureship in Inorganic Chemistry at the University of Oxford on October 1st 2006.
-                                </li>
-                                <li data-person="Charles Baynham">
-                                    Charles has been described by some people as an "honorary" member of the group. This means that he hangs around while the rest of the group is drinking often enough that they have come to accept him. 
-                                </li>
+                                {% endfor %}
+                                
                             </ul>
                         </div>
                         
                         <nav class="groupList">
-                            <a href="#">Gabriela Espinoza-Quintero</a>
-                            <a href="#">Jose Goecochia</a>
-                            <a href="#">Charles Baynham</a>
+                            {% for member in yearObj.members %}
+                            <a href="#">{{ member.name }}</a>
+                            {% endfor %}
                         </nav>
+                        
+                        {% endif %}
+                        {% endfor %}
 
                     </div>
                 </div>
