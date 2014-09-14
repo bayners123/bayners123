@@ -475,6 +475,6 @@ Modernizr.load [
         complete: ->
             if checkBody("mainpage")
                 $('#groupmembers .fullHolder').groupScroller
-                    first: 1
+                    first: "middle"
 
     ]
