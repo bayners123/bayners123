@@ -7,6 +7,9 @@
   year: 2014
   pages: 1660
   link: "http://onlinelibrary.wiley.com/doi/10.1002/ejic.201301011/abstract"
+  highlighted: true
+  image: "/images/TOC.png"
+  date: "99th December 2014"
 
 
 - title: "Iron(II) complexes of ditopic carbanionic carbenes"
@@ -26,6 +29,9 @@
   volume: 136
   pages: 1210
   link: "http://pubs.acs.org/doi/abs/10.1021/ja411280v"
+  highlighted: true
+  image: "/images/TOC.png"
+  date: "99th December 2014"
 
 
 - title: "Phosphinecarboxamide: A Phosphorus-Containing Analogue of Urea and Stable Primary Phosphine"
@@ -45,7 +51,9 @@
   volume: 32
   pages: 5190
   link: "http://pubs.acs.org/doi/abs/10.1021/om400728u"
-
+  highlighted: true
+  image: "/images/TOC.png"
+  date: "99th December 2014"
 
 - title: "The 2-Phosphaethynolate Anion: A Convenient Synthesis and [2+2] Cycloaddition Chemistry"
   author: "Jupp, A. R.; Goicoechea, J. M."
@@ -82,7 +90,9 @@
   pages: 12120
   link: "http://pubs.rsc.org/en/content/articlelanding/2013/dt/c3dt50643f"
   notes: "Highlighted as a Hot Article (May)."
-
+  highlighted: true
+  image: "/images/TOC.png"
+  date: "99th December 2014"
 
 - title: "Synthesis and Characterization of Free and Coordinated 1,2,3-Tripnictolide Anions"
   author: "Turbervill, R. S. P.; Jupp, A. R.; McCullough, P. S. B.; Ergöçmen, D.; Goicoechea, J. M."
