@@ -307,6 +307,7 @@ Modernizr.load [
                         $(this).toggleClass('pulse')
                     
     ,
+    # Touchwipe allows us to simulate a scroll event for touchscreens that wouldn't otherwise fire one
         test: Modernizr.touch
         yep: '/js/jquery.touchwipe.min.js'
         callback: ->
@@ -473,8 +474,14 @@ Modernizr.load [
         test: checkBody("mainpage")
         yep: ['/js/jquery.zoomImage.js','/js/jquery.groupMembers.js']
         complete: ->
+            # Init all the groupmembers stuff
             if checkBody("mainpage")
                 $('#groupmembers .fullHolder').groupScroller
                     first: 1
+                    
+            # Zoom all the highlighted research images
+            
+                    
+                
 
     ]
