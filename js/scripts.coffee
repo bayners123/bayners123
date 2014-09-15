@@ -428,10 +428,17 @@ Modernizr.load [
         yep: '/js/jquery.fullscreen.js',
         callback: ->
             
+            # Setup animation for arrows
+            $('#groupmembers .arrow').addClass "animated"
+            
             $('#groupmembers').fullscreen
                 active: true
                 scrollCallback: ->
-                    $('#menubar, #mobilebar').addClass("hidden")
+                    $('#menubar, #mobilebar').addClass "hidden"
+                    $('#groupmembers .arrow')
+                        .one "animationend webkitAnimationEnd oAnimationEnd oanimationend MSAnimationEnd", ->
+                            $(this).removeClass "bounce"
+                        .addClass "bounce"
                 # lostFocusCallback: (element) ->
                 #     toggleSection $(element)
                     # console.log $(element).find('.slideImg')
