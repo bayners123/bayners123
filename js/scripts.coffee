@@ -479,6 +479,7 @@ Modernizr.load [
                 $('#groupmembers .fullHolder').groupScroller
                     first: "middle"
                     
-            # Zoom all the highlighted research images
+                # Zoom all the highlighted research images
+                $('#publications .shrunk .highlightedResearch img').zoomImage()
 
     ]

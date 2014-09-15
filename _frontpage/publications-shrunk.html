@@ -18,12 +18,10 @@ section: publicationsShrunk
 {% endcomment %}
 {% if found < 5 %}
     <a href="#" class="unit half hoverPulse highlightedResearch">
-        <div class="grid">
-            <div class="unit w-1-6"></div>
-            <div class="unit w-4-6">
+        <div class="imageHolder">
+            <div>
                 <img src="{{pub.image}}" alt="pub{{found}}" />
             </div>
-            <div class="unit w-1-6"></div>
         </div>
         <p class="pubtitle">{{pub.title}}</p>
         <p><span class="pubjournal">{{pub.journal}}</span><span class="pubdate">{{pub.date}}</span></p>
