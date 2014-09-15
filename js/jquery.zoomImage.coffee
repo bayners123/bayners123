@@ -38,7 +38,7 @@
                      #  yOverride instead of calculated and the value in xOverride is ignored
                      # N.B. these are percentages of the container's WIDTH
         animation: true # Animate margin changes
-        initialAnimation: true # Animate margin changes on the first, initial resize
+        initialAnimation: false # Animate margin changes on the first, initial resize
         
     data =
         active: null
