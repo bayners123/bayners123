@@ -429,16 +429,27 @@ Modernizr.load [
         callback: ->
             
             # Setup animation for arrows
-            $('#groupmembers .arrow').addClass "animated"
+            $('#groupmembers .arrow')
+                .addClass "animated"
+                .css
+                    "-webkit-animation-duration": "1s"
+                    "animation-duration": "1s"
+                    "-webkit-animation-iteration-count": "1"
+                    "animation-iteration-count": "1"
             
             $('#groupmembers').fullscreen
                 active: true
                 scrollCallback: ->
                     $('#menubar, #mobilebar').addClass "hidden"
-                    $('#groupmembers .arrow')
+                    $('#groupmembers .arrow.left')
                         .one "animationend webkitAnimationEnd oAnimationEnd oanimationend MSAnimationEnd", ->
-                            $(this).removeClass "bounce"
-                        .addClass "bounce"
+                            $(this).removeClass "pulseLeft"
+                        .addClass "pulseLeft"
+                    $('#groupmembers .arrow.right')
+                        .one "animationend webkitAnimationEnd oAnimationEnd oanimationend MSAnimationEnd", ->
+                            $(this).removeClass "pulseRight"
+                        .addClass "pulseRight"
+                        
                 # lostFocusCallback: (element) ->
                 #     toggleSection $(element)
                     # console.log $(element).find('.slideImg')
