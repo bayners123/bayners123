@@ -17,7 +17,7 @@ section: publicationsShrunk
     If found <=4, this one should be inserted. Else, do nothing. 
 {% endcomment %}
 {% if found < 5 %}
-    <a href="#" class="unit half hoverPulse highlightedResearch">
+    <a href="{{pub.link}}" class="unit half hoverPulse highlightedResearch">
         <div class="imageHolder">
             <div>
                 <img src="{{pub.image}}" alt="pub{{found}}" />
