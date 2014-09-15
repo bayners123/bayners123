@@ -3,3 +3,7 @@ markdown: kramdown
 kramdown: 
   parse_block_html: false
 permalink: pretty
+
+collections:
+  - frontpage
+  - facilities

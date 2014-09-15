@@ -1,16 +1,10 @@
 ---
-layout: default
+section: publicationsExpanded
 ---
 
-<ul class="bxslider">
-	<li><img title="The lab writeup area" src="/images/writeuparea.jpg"/></li>
-	<li><img title="Research stuff" src="/images/research1.jpg" /></li>
-</ul>
+<!-- TODO: Sort out Mark's horrible CSS -->
 
-<div class="unit whole">
-	
-Selected Recent Publications
-============================
+## Selected Recent Publications
 
 <ol>
 {% for paper in site.data.pubs %}
@@ -29,6 +23,3 @@ Selected Recent Publications
 </ol>
 
 Papers linked from here require subscription access to the appropriate journal.  For university staff or students not on a university provided connection, external access is available via the [VPN Service](http://www.oucs.ox.ac.uk/network/vpn/).
-
-
-</div>

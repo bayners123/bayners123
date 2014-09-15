@@ -66,6 +66,11 @@ i, em { @extend .italic; }
     h5 { @extend .heading; font-size: 1em; @extend .italic; }
     h6 { @extend .heading; margin-left: 1em; }
     
+    img {
+        float: right;
+        margin: 0.5em;
+    }
+    
     .blockElement, p, div { margin-bottom: 0.625em; }
     
     ul, ol, menu, dir {
@@ -232,6 +237,9 @@ i, em { @extend .italic; }
             a {
                 color: #ddd;
             }
+            a.active {
+                text-decoration: underline;
+            }
         }
     }
     
@@ -299,6 +307,10 @@ i, em { @extend .italic; }
 
 #publications > div > div > .shrunk .pubdate {
     float: right;
+}
+
+#publications .expanded li {
+    margin-bottom: 1em;
 }
 
 a.expandSection {

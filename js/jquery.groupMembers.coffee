@@ -32,7 +32,7 @@
         personHeading: null
         slideImg: null
         descUL: null
-        first: 0
+        first: "middle"
     
     data = 
         leftArrow: null
@@ -132,6 +132,11 @@
             if (skrollr && skrollr.menu)
                 skrollr.menu.jumpToInitialPos()
                     
+            # Calculate the middle slide if requested
+            if @options.first == "middle"
+                
+                @options.first = Math.floor((@data.noSlides - 1) / 2)
+                
             # Goto first slide with no animation
             @_goto(@options.first, false)
         

@@ -477,11 +477,8 @@ Modernizr.load [
             # Init all the groupmembers stuff
             if checkBody("mainpage")
                 $('#groupmembers .fullHolder').groupScroller
-                    first: 1
+                    first: "middle"
                     
             # Zoom all the highlighted research images
-            
-                    
-                
 
     ]

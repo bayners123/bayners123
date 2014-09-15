@@ -4,6 +4,7 @@
     /* Gridism will stack units in this range */
 
 	.mobileOnly { display: initial; }
+    .notMobileOnly { display: none; }
     
     .tabmenu {
         background: #CCC;
