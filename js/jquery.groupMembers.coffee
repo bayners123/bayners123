@@ -169,6 +169,12 @@
             # Set the person's name
             @data.personHeading.html $thisSlide.data("person")
             
+            # Remove all 'active' classes from person list
+            @data.groupListLinks.removeClass('active')
+            
+            # Add 'active' class to correct person
+            @data.groupListLinks.eq(slide).addClass('active')
+            
             # Update the current slide
             @data.currentSlide = slide
             
