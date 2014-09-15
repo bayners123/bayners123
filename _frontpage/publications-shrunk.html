@@ -11,31 +11,26 @@ section: publicationsShrunk
 
 {% assign found = 0 %}
 {% for pub in site.data.pubs %}
-
 {% if pub.highlighted %}
-{% capture found %}{{ found | plus:1 }}{% endcapture %}
-
+{% assign found = found | plus:1 %}
 {% comment %}
     If found <=4, this one should be inserted. Else, do nothing. 
 {% endcomment %}
-
-{% if found > 0 %}
+{% if found < 5 %}
     <a href="#" class="unit half hoverPulse">
         <img src="{{pub.image}}" alt="pub{{found}}" />
         <p class="pubtitle">{{pub.title}}</p>
         <p><span class="pubjournal">{{pub.journal}}</span><span class="pubdate">{{pub.date}}</span></p>
     </a>
 {% endif %}
-
 {% comment %}
     If found == 2, i.e. we've just inserted the second, close the first row and open the second:
 {% endcomment %}
-
 {% if found == 2 %}
 </div>
 
 <div class="grid">
 {% endif %}
-
 {% endif %}
 {% endfor %}
+</div>
