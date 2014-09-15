@@ -303,7 +303,13 @@ Modernizr.load [
              
 
                 # Animate .hoverPulse elements when hovered using 'Animate.css'
-                $('.hoverPulse').addClass('animated').hover ->
+                # Also, reduce duration to 0.5s
+                $('.hoverPulse')
+                    .addClass('animated')
+                    .css
+                        "-webkit-animation-duration": "0.5s"
+                        "animation-duration": "0.5s"
+                    .hover ->
                         $(this).toggleClass('pulse')
                     
     ,
