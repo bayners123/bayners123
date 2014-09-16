@@ -376,55 +376,63 @@ a.expandSection i {
     overflow: hidden;
 }
 
-#groupmembers .fullHolderContent {
-    display: none;
-}
+#groupmembers {
 
-.fullHolder > img {
-    width: 100%;
-}
+    .fullHolderContent {
+        display: none;
+    }
 
-.groupDesc {
-    @extend .alpha60bgBlack;
-    color: $textContrast-color;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    padding: 1em 0 1.8em;
-}
+    .fullHolder > img {
+        width: 100%;
+    }
+    
+    .imgHolder {
+        position: absolute;
+        top:0;right: 0;bottom: 0;left: 0;
+    }
 
-.groupDesc a { color: $textContrast-color }
+    .groupDesc {
+        @extend .alpha60bgBlack;
+        color: $textContrast-color;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        padding: 1em 0 1.8em;
 
-.groupDesc .arrow {
-    position: absolute;
-    display: block;
-    font-size: 4em;
-}
+        a { color: $textContrast-color }
 
-.groupDesc .arrow.left {
-    left: 2%;
-}
+        .arrow {
+            position: absolute;
+            display: block;
+            font-size: 4em;
+        }
 
-.groupDesc .arrow.right {
-    right: 2%;
-}
+        .arrow.left {
+            left: 2%;
+        }
 
-.groupDesc h3 {
-    display: block;
-    text-align: center;
-    margin: 0;
-}
+        .arrow.right {
+            right: 2%;
+        }
 
-.groupDesc .groupList {
-    text-align: center;
-    font-size: 0.75em;
-}
-.groupDesc .groupList a {
-    color: #AAA;
-    padding: 0 0.5em;
-}
-.groupDesc .groupList a.active {
-    text-decoration: underline;
+        h3 {
+            display: block;
+            text-align: center;
+            margin: 0;
+        }
+
+        .groupList {
+            text-align: center;
+            font-size: 0.75em;
+        }
+        .groupList a {
+            color: #AAA;
+            padding: 0 0.5em;
+        }
+        .groupList a.active {
+            text-decoration: underline;
+        }
+    }
 }
 
 #footer {
