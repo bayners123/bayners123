@@ -31,17 +31,18 @@
         rightArrow: null
         minusArrow: null
         plusArrow: null
+        yearHeading: null
         personHeading: null
         slideImgHolder: null
         descULHolder: null
         groupListHolder: null
-        first: "middle"
     
     data = 
         leftArrow: null
         rightArrow: null
         personHeading: null
         currentYear: 0 # 0 based index of groupInfo. 0 initially. 
+        noYears: null
         currentSlide: null # of current year
         noSlides: null # of current year
         
@@ -56,11 +57,7 @@
         #       nav: element
         #
         #     - year: ...
-                  
         
-        slideImg: null
-        descUL: null
-    
     class Plugin
       constructor: (@element, options) ->
         @options = $.extend true, {}, defaults, options
@@ -92,6 +89,11 @@
             @data.plusArrow= $(@options.plusArrow)
         else
             @data.plusArrow= $element.find(".yearBox .arrow.right")
+            
+        if @options.yearHeading
+            @data.yearHeading= $(@options.yearHeading)
+        else
+            @data.yearHeading= $element.find(".yearBox h3")
             
         if @options.personHeading
             @data.personHeading = $(@options.personHeading)
@@ -148,6 +150,9 @@
             
             $nav.hide() unless index == 0
         
+        # Number of years
+        @data.noYears = @data.groupInfo.length
+        
         # Number of slides:
         @data.noSlides = @data.groupInfo[0].descUL.children("li").length
         
@@ -157,6 +162,14 @@
             false
         @data.rightArrow.on "click.groupMembers", =>
             @_next()
+            false
+        
+        # Register plus and minus arrows
+        @data.plusArrow.on "click.groupMembers", =>
+            @_nextYear()
+            false
+        @data.minusArrow.on "click.groupMembers", =>
+            @_prevYear()
             false
             
         # Bind the .groupList nav to the slides
@@ -196,28 +209,21 @@
             if (skrollr && skrollr.menu)
                 skrollr.menu.jumpToInitialPos()
             
-            # Calculate the middle slide if requested
-            if @options.first == "middle"
-                @options.first = Math.floor((@data.noSlides - 1) / 2)
-            
             # Goto first slide with no animation
-            @_goto(@options.first, false)
+            @_gotoYear(0, false)
         
     Plugin::_prev = ->
         
         # Call @_goto with animation
         if @data.currentSlide != 0
-            # altered
             @_goto(@data.currentSlide - 1, true)
         
     Plugin::_next = ->
         
         # Call @_goto with animation
         if @data.currentSlide < @data.noSlides - 1
-            # altered
             @_goto(@data.currentSlide + 1, true)
         
-        # all this altered
     Plugin::_goto = (slide, animation) ->
         
         # Check the argument is valid
@@ -254,11 +260,69 @@
               @data.rightArrow.hide()
             else
               @data.leftArrow.show()
-              @data.rightArrow.show()              
+              @data.rightArrow.show()
             
             # Resize the image (using animation). This will cause zoomImage to call getXMargin to determine the correct offset
             @data.slideImg.data("plugin_zoomImage").resize(animation)
+    
+    Plugin::_prevYear = ->
+        
+        # Call @_gotoYear with animation
+        if @data.currentYear != 0
+            @_gotoYear(@data.currentYear - 1, true)
+        
+    Plugin::_nextYear = ->
+        
+        # Call @_gotoYear with animation
+        if @data.currentYear < @data.noYears - 1
+            @_gotoYear(@data.currentYear + 1, true)
             
+    # Goto the given 0-based year, at the initial slide
+    Plugin::_gotoYear = (year, animation) ->
+        
+        # Check the argument is valid
+        if 0 <= year < @data.groupInfo.length
+            
+            # Get all images, description uls and navs
+            images = $()
+            descs = $()
+            navs = $()
+            
+            $.each @data.groupInfo, (i) =>
+                images = images.add @data.groupInfo[i].image
+                descs = descs.add @data.groupInfo[i].descUL
+                navs = navs.add @data.groupInfo[i].nav
+            
+            # Hide all of these
+            images.add(descs).add(navs).hide()
+            
+            # Show just the requested one
+            images.eq(year).show()
+            descs.eq(year).show()
+            navs.eq(year).show()
+            
+            # Update year display
+            @data.yearHeading.html @data.groupInfo[year].year
+            
+            # Update year
+            @data.currentYear = year
+            
+            # Update noSlides
+            @data.noSlides = @data.groupInfo[year].descUL.children("li").length
+            
+            # Hide the arrow if we've reached far left/right
+            if year == 0
+              @data.minusArrow.hide()
+              @data.plusArrow.show()
+            else if year == @data.noYears - 1
+              @data.minusArrow.show()
+              @data.plusArrow.hide()
+            else
+              @data.minusArrow.show()
+              @data.plusArrow.show()
+            
+            # Calculate initial slide & goto it
+            @_goto Math.floor((@data.noSlides - 1) / 2), animation
             
     Plugin::getXMargin = (slide) ->
         
