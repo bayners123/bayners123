@@ -138,12 +138,11 @@
             </div>
             
             <div class="box fullHolder">
-                {% for yearObj in site.data.members %}
-                {% comment %} Here's a fudge for now: {% endcomment %}
-                {% if yearObj.year == 2014 %}
                 
                 <div class="imgHolder">
-                    <img src="{{ yearObj.photo }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="2014" />
+                    {% for yearObj in site.data.members %}
+                    <img src="{{ yearObj.photo }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />
+                    {% endfor %}
                 </div>
                 
                 <div class="fullHolderContent">
@@ -161,29 +160,28 @@
 <!--TODO: Add previous years -->
                         <div class="grid">
                             <ul class="unit whole descHolder">
-                                <ul class="desc" data-year="2014">
-                                
+                                {% for yearObj in site.data.members %}
+                                <ul class="desc" data-year="{{ yearObj.year }}">
                                     {% for member in yearObj.members %}
                                     <li data-person="{{ member.name }}">
                                         {{ member.desc | markdownify }}
                                     </li>
                                     {% endfor %}
-                                
                                 </ul>
+                                {% endfor %}
                             </ul>
                         </div>
                         
                         <div class="groupListHolder">
-                            <nav class="groupList" data-year="2014">
+                            {% for yearObj in site.data.members %}
+                            <nav class="groupList" data-year="{{ yearObj.year }}">
                                 {% for member in yearObj.members %}
                                 <a href="#">{{ member.name }}</a>
                                 {% endfor %}
                             </nav>
+                            {% endfor %}
                         </div>
                         
-                        {% endif %}
-                        {% endfor %}
-
                     </div>
                 </div>
                 
