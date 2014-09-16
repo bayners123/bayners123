@@ -42,17 +42,17 @@
         currentSlide: null # of current year
         noSlides: null # of current year
         
-        groupInfo: {}
-        # groupInfo is an object containing pointers to all the group's info in the HTML
+        groupInfo: []
+        # groupInfo is an array containing pointers to all the group's info in the HTML
         # It is structured as shown:
         #
-        # groupInfo = object
-        #     "2014": 
+        # groupInfo = array
+        #     - year: string
         #       image: element
         #       descUL: element
         #       nav: element
         #
-        #     "2013": ...
+        #     - year: ...
                   
         
         slideImg: null
@@ -96,8 +96,9 @@
             
             $img = slideImgHolder.children("img").eq(index)
             year = $img.data("year")
-            @data.groupInfo[year] = {}
-            @data.groupInfo[year].image = $img
+            @data.groupInfo.push 
+                year: year
+                image: $img
             
         if @options.descULHolder
             descULHolder = $(@options.descULHolder)
@@ -108,8 +109,9 @@
         $.each descULHolder.children("ul"), (index) =>
             
             $ul = descULHolder.children("ul").eq(index)
-            year = $ul.data("year")
-            @data.groupInfo[year].descUL = $ul
+            if @data.groupInfo[index].year != $ul.data("year")
+                console.log "Error: order of descHolder ul elements is mismatched with imgs"
+            @data.groupInfo[index].descUL = $ul
         
         if @options.groupListHolder
             groupListHolder = @options.groupListHolder
@@ -120,10 +122,11 @@
         $.each groupListHolder.children("nav"), (index) =>
             
             $nav = groupListHolder.children("nav").eq(index)
-            year = $nav.data("year")
-            @data.groupInfo[year].nav = $nav
-            
-        # altered
+            if @data.groupInfo[index].year != $nav.data("year")
+                console.log "Error: order of nav elements is mismatched with imgs"
+            @data.groupInfo[index].nav = $nav
+        
+        
         # Number of slides:
         @data.noSlides = @data.descUL.children("li").length
         
