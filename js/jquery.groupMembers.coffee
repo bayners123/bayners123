@@ -39,6 +39,7 @@
         leftArrow: null
         rightArrow: null
         personHeading: null
+        currentYear: 0 # 0 based index of groupInfo. 0 initially. 
         currentSlide: null # of current year
         noSlides: null # of current year
         
@@ -99,7 +100,10 @@
             @data.groupInfo.push 
                 year: year
                 image: $img
-            
+        
+        # set slideImg to the first img
+        @data.slideImg = @data.groupInfo[0].image
+        
         if @options.descULHolder
             descULHolder = $(@options.descULHolder)
         else
@@ -126,9 +130,8 @@
                 console.log "Error: order of nav elements is mismatched with imgs"
             @data.groupInfo[index].nav = $nav
         
-        
         # Number of slides:
-        @data.noSlides = @data.descUL.children("li").length
+        @data.noSlides = @data.groupInfo[0].descUL.children("li").length
         
         # Register left and right arrows
         @data.leftArrow.on "click.groupMembers", =>
@@ -138,49 +141,47 @@
             @_next()
             false
             
-        # all this altered
         # Bind the .groupList nav to the slides
         # We expect that the .groupList contains the same number of a elements as there are group members
-        @data.groupListLinks.click (e) =>
+        $.each @data.groupInfo, (index) =>
+            @data.groupInfo[index].nav.children("a").click (e) =>
             
-            # Get the clicked link
-            clickedLink = e.target
+                # Get the clicked link
+                clickedLink = e.target
             
-            # Disable the hyperlink
-            e.preventDefault()
+                # Disable the hyperlink
+                e.preventDefault()
             
-            # Goto the appropriate slide, with animation
-            @_goto @data.groupListLinks.index(clickedLink), true
+                # Goto the appropriate slide, with animation
+                @_goto @data.groupInfo[index].nav.children("a").index(clickedLink), true
             
             
         # Zoom the image and goto the first slide on load
         $ =>
-            # altered
-            # Set image to zoom to fill the area using the zoomImage plugin, start inactive
-            @data.slideImg.zoomImage
-                # Whenever the image gets resized, update skrollr
-                resizeCallbackAfter: ->
-                    if skrollr?
-                      if skrollr.get()
-                        skrollr.get().refresh()
-                # Before the image gets resized, recalculate the xMargin
-                useMarginFunctions: true
-                initialAnimation: false
-                getXOverride: =>
-                    @getXMargin(@data.currentSlide)
-                # Don't zoom the image initially (this will be activated when the section goes fullscreen)
-                # active: false
+            # Set images to zoom to fill the area using the zoomImage plugin
+            $.each @data.groupInfo, (index) =>
+                @data.groupInfo[index].image.zoomImage
+                    # Whenever the image gets resized, update skrollr
+                    # Only bind this for the first image, otherwise we'll just fire it multiple times
+                    resizeCallbackAfter: if index==0 then ->
+                        if skrollr?
+                          if skrollr.get()
+                            skrollr.get().refresh()
+                    else $.noop
+                    # Before the image gets resized, recalculate the xMargin
+                    useMarginFunctions: true
+                    initialAnimation: false
+                    getXOverride: =>
+                        @getXMargin(@data.currentSlide)
                 
             # Re-scroll skrollr if needed
             if (skrollr && skrollr.menu)
                 skrollr.menu.jumpToInitialPos()
             
-            # altered
             # Calculate the middle slide if requested
             if @options.first == "middle"
                 @options.first = Math.floor((@data.noSlides - 1) / 2)
             
-            # altered
             # Goto first slide with no animation
             @_goto(@options.first, false)
         
@@ -204,9 +205,10 @@
         # Check the argument is valid
         if 0 <= slide < @data.noSlides
             # Get all the list items (the slides)
-            $slides = @data.descUL.children("li")
+            $slides = @data.groupInfo[@data.currentYear].descUL.children("li")
             $thisSlide = $slides.eq(slide)
-        
+            $groupListLinks = @data.groupInfo[@data.currentYear].nav.children("a")
+            
             # Hide all slides
             $slides.hide()
         
@@ -217,10 +219,10 @@
             @data.personHeading.html $thisSlide.data("person")
             
             # Remove all 'active' classes from person list
-            @data.groupListLinks.removeClass('active')
+            $groupListLinks.removeClass('active')
             
             # Add 'active' class to correct person
-            @data.groupListLinks.eq(slide).addClass('active')
+            $groupListLinks.eq(slide).addClass('active')
             
             # Update the current slide
             @data.currentSlide = slide
@@ -250,8 +252,7 @@
         # The far right value = - (imgWidth - parentWidth) / parentWidth * 100
         #                     = - (imgWidth/parentWidth - 1) * 100
         
-        # Altered
-        imgWidth = @data.slideImg.width()
+        imgWidth = @data.groupInfo[@data.currentYear].image.width()
         parentWidth = $(@element).width()
         # =>
         farRight = - (imgWidth / parentWidth - 1) * 100
