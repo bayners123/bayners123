@@ -29,6 +29,8 @@
     defaults = 
         leftArrow: null
         rightArrow: null
+        minusArrow: null
+        plusArrow: null
         personHeading: null
         slideImgHolder: null
         descULHolder: null
@@ -74,17 +76,27 @@
         if @options.leftArrow
             @data.leftArrow = $(@options.leftArrow)
         else
-            @data.leftArrow = $element.find(".arrow.left")
+            @data.leftArrow = $element.find(".groupDesc .arrow.left")
             
         if @options.rightArrow
             @data.rightArrow = $(@options.rightArrow)
         else
-            @data.rightArrow = $element.find(".arrow.right")
+            @data.rightArrow = $element.find(".groupDesc .arrow.right")
+            
+        if @options.minusArrow
+            @data.minusArrow= $(@options.minusArrow)
+        else
+            @data.minusArrow= $element.find(".yearBox .arrow.left")
+            
+        if @options.plusArrow
+            @data.plusArrow= $(@options.plusArrow)
+        else
+            @data.plusArrow= $element.find(".yearBox .arrow.right")
             
         if @options.personHeading
             @data.personHeading = $(@options.personHeading)
         else
-            @data.personHeading = $element.find(".person")
+            @data.personHeading = $element.find(".groupDesc .person")
             
         # find the slideImgHolder
         if @options.slideImgHolder
