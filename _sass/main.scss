@@ -397,8 +397,8 @@ a.expandSection i {
         width: 100%;
         position: absolute;
         top: 0;
-        $yearboxTop : 1em;
-        padding: $yearboxTop 0 1.8em;
+        $yearboxTop : 0.7em;
+        padding: $yearboxTop 0 1.0em;
         
         a { color: $textContrast-color }
         
