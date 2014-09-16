@@ -92,7 +92,7 @@
         else
             slideImgHolder = $element.find(".imgHolder")
             
-        # loop through all images in it, getting their years
+        # loop through all images in it, getting their years & hiding all except the first
         $.each slideImgHolder.children("img"), (index) =>
             
             $img = slideImgHolder.children("img").eq(index)
@@ -100,6 +100,8 @@
             @data.groupInfo.push 
                 year: year
                 image: $img
+                
+            $img.hide() unless index == 0
         
         # set slideImg to the first img
         @data.slideImg = @data.groupInfo[0].image
@@ -109,26 +111,30 @@
         else
             descULHolder = $element.find(".descHolder")
             
-        # Loop through all ULs of descriptions, storing them
+        # Loop through all ULs of descriptions, storing them & hiding all except the first
         $.each descULHolder.children("ul"), (index) =>
             
             $ul = descULHolder.children("ul").eq(index)
             if @data.groupInfo[index].year != $ul.data("year")
                 console.log "Error: order of descHolder ul elements is mismatched with imgs"
             @data.groupInfo[index].descUL = $ul
+            
+            $ul.hide() unless index == 0
         
         if @options.groupListHolder
             groupListHolder = @options.groupListHolder
         else
             groupListHolder = $element.find(".groupListHolder")
             
-        # Loop through all NAVs of links, storing them too
+        # Loop through all NAVs of links, storing them too & hiding all except the first
         $.each groupListHolder.children("nav"), (index) =>
             
             $nav = groupListHolder.children("nav").eq(index)
             if @data.groupInfo[index].year != $nav.data("year")
                 console.log "Error: order of nav elements is mismatched with imgs"
             @data.groupInfo[index].nav = $nav
+            
+            $nav.hide() unless index == 0
         
         # Number of slides:
         @data.noSlides = @data.groupInfo[0].descUL.children("li").length
