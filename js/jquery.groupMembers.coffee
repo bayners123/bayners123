@@ -32,6 +32,7 @@
         personHeading: null
         slideImgHolder: null
         descULHolder: null
+        groupListHolder: null
         first: "middle"
     
     data = 
@@ -41,22 +42,21 @@
         currentSlide: null # of current year
         noSlides: null # of current year
         
-        groupInfo: []
-        # groupInfo is an array containing pointers to all the group's info in the HTML
+        groupInfo: {}
+        # groupInfo is an object containing pointers to all the group's info in the HTML
         # It is structured as shown:
         #
-        # groupInfo = array =>
-        #     - year: string
+        # groupInfo = object
+        #     "2014": 
         #       image: element
         #       descUL: element
-        #       navUL: element
+        #       nav: element
         #
-        #     - ...
+        #     "2013": ...
                   
         
         slideImg: null
         descUL: null
-        groupListLinks: null
     
     class Plugin
       constructor: (@element, options) ->
@@ -96,22 +96,32 @@
             
             $img = slideImgHolder.children("img").eq(index)
             year = $img.data("year")
+            @data.groupInfo[year] = {}
+            @data.groupInfo[year].image = $img
             
-            @data.groupInfo.push
-                year: year
-                image: $img
-            
-        # altered
-        if @options.descUL
-            @data.descUL= $(@options.descUL)
+        if @options.descULHolder
+            descULHolder = $(@options.descULHolder)
         else
-            @data.descUL= $element.find(".desc")
+            descULHolder = $element.find(".descHolder")
             
-        # altered
-        if @options.groupListLinks
-            @data.groupListLinks= $(@options.groupListLinks)
+        # Loop through all ULs of descriptions, storing them
+        $.each descULHolder.children("ul"), (index) =>
+            
+            $ul = descULHolder.children("ul").eq(index)
+            year = $ul.data("year")
+            @data.groupInfo[year].descUL = $ul
+        
+        if @options.groupListHolder
+            groupListHolder = @options.groupListHolder
         else
-            @data.groupListLinks= $element.find(".groupList a")
+            groupListHolder = $element.find(".groupListHolder")
+            
+        # Loop through all NAVs of links, storing them too
+        $.each groupListHolder.children("nav"), (index) =>
+            
+            $nav = groupListHolder.children("nav").eq(index)
+            year = $nav.data("year")
+            @data.groupInfo[year].nav = $nav
             
         # altered
         # Number of slides:
