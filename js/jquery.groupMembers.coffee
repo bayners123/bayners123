@@ -71,21 +71,25 @@
         else
             @data.personHeading = $element.find(".person")
             
+        # altered
         if @options.slideImg
             @data.slideImg= $(@options.slideImg)
         else
             @data.slideImg= $element.find(".slideImg")
         
+        # altered
         if @options.descUL
             @data.descUL= $(@options.descUL)
         else
             @data.descUL= $element.find(".desc")
             
+        # altered
         if @options.groupListLinks
             @data.groupListLinks= $(@options.groupListLinks)
         else
             @data.groupListLinks= $element.find(".groupList a")
             
+        # altered
         # Number of slides:
         @data.noSlides = @data.descUL.children("li").length
         
@@ -97,6 +101,7 @@
             @_next()
             false
             
+        # all this altered
         # Bind the .groupList nav to the slides
         # We expect that the .groupList contains the same number of a elements as there are group members
         @data.groupListLinks.click (e) =>
@@ -113,6 +118,7 @@
             
         # Zoom the image and goto the first slide on load
         $ =>
+            # altered
             # Set image to zoom to fill the area using the zoomImage plugin, start inactive
             @data.slideImg.zoomImage
                 # Whenever the image gets resized, update skrollr
@@ -131,12 +137,13 @@
             # Re-scroll skrollr if needed
             if (skrollr && skrollr.menu)
                 skrollr.menu.jumpToInitialPos()
-                    
+            
+            # altered
             # Calculate the middle slide if requested
             if @options.first == "middle"
-                
                 @options.first = Math.floor((@data.noSlides - 1) / 2)
-                
+            
+            # altered
             # Goto first slide with no animation
             @_goto(@options.first, false)
         
@@ -144,14 +151,17 @@
         
         # Call @_goto with animation
         if @data.currentSlide != 0
+            # altered
             @_goto(@data.currentSlide - 1, true)
         
     Plugin::_next = ->
         
         # Call @_goto with animation
         if @data.currentSlide < @data.noSlides - 1
+            # altered
             @_goto(@data.currentSlide + 1, true)
         
+        # all this altered
     Plugin::_goto = (slide, animation) ->
         
         # Check the argument is valid
@@ -203,6 +213,7 @@
         # The far right value = - (imgWidth - parentWidth) / parentWidth * 100
         #                     = - (imgWidth/parentWidth - 1) * 100
         
+        # Altered
         imgWidth = @data.slideImg.width()
         parentWidth = $(@element).width()
         # =>
