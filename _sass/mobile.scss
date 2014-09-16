@@ -139,17 +139,43 @@ h2 { font-size: 1.5em }
     color: #666;
 }
 
-.groupDesc {
-    padding: 0.5em 0 3%;
-}
-.groupDesc .arrow { font-size: 1.0em; }
-.groupDesc h3 { font-size: 1em; }
-.groupDesc .desc {
-    font-size: 0.75em;
-    padding: 0 !important;
-}
-.groupDesc .groupList {
-    font-size: 0.5em;
+#groupmembers {
+    
+    .yearBox {
+        $yearboxTopMob : 1em;
+        padding: $yearboxTopMob 0 1.8em;
+        
+        h3 {
+            font-size: 1.5em;
+        }
+        
+        .arrow {
+            font-size: 1.5em;
+            top: $yearboxTopMob/1.5;
+        }
+        
+        .arrow.left {
+            left: 20%;
+        }
+
+        .arrow.right {
+            right: 20%;
+        }
+    }
+    
+    .groupDesc {
+        padding: 0.5em 0 3%;
+        
+        .arrow { font-size: 1.0em; }
+        h3 { font-size: 1em; }
+        .desc {
+            font-size: 0.75em;
+            padding: 0 !important;
+        }
+        .groupList {
+            font-size: 0.5em;
+        }
+    }
 }
 
 #research2 {

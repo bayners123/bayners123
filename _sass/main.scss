@@ -390,6 +390,39 @@ a.expandSection i {
         position: absolute;
         top:0;right: 0;bottom: 0;left: 0;
     }
+    
+    .yearBox {
+        @extend .alpha60bgBlack;
+        color: $textContrast-color;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        $yearboxTop : 1em;
+        padding: $yearboxTop 0 1.8em;
+        
+        a { color: $textContrast-color }
+        
+        .arrow {
+            position: absolute;
+            display: block;
+            font-size: 2em;
+            top: $yearboxTop/2;
+        }
+
+        .arrow.left {
+            left: 20%;
+        }
+
+        .arrow.right {
+            right: 20%;
+        }
+    }
+    
+    h3 {
+        display: block;
+        text-align: center;
+        margin: 0;
+    }
 
     .groupDesc {
         @extend .alpha60bgBlack;
@@ -413,12 +446,6 @@ a.expandSection i {
 
         .arrow.right {
             right: 2%;
-        }
-
-        h3 {
-            display: block;
-            text-align: center;
-            margin: 0;
         }
 
         .groupList {
