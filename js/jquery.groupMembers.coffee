@@ -85,12 +85,22 @@
         else
             @data.personHeading = $element.find(".person")
             
-        # altered
-        if @options.slideImg
-            @data.slideImg= $(@options.slideImg)
+        # find the slideImgHolder
+        if @options.slideImgHolder
+            slideImgHolder = $(@options.slideImgHolder)
         else
-            @data.slideImg= $element.find(".slideImg")
-        
+            slideImgHolder = $element.find(".imgHolder")
+            
+        # loop through all images in it, getting their years
+        $.each slideImgHolder.children("img"), (index) =>
+            
+            $img = slideImgHolder.children("img").eq(index)
+            year = $img.data("year")
+            
+            @data.groupInfo.push
+                year: year
+                image: $img
+            
         # altered
         if @options.descUL
             @data.descUL= $(@options.descUL)
