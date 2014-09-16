@@ -117,9 +117,6 @@
                 
             $img.hide() unless index == 0
         
-        # set slideImg to the first img
-        @data.slideImg = @data.groupInfo[0].image
-        
         if @options.descULHolder
             descULHolder = $(@options.descULHolder)
         else
@@ -263,7 +260,7 @@
               @data.rightArrow.show()
             
             # Resize the image (using animation). This will cause zoomImage to call getXMargin to determine the correct offset
-            @data.slideImg.data("plugin_zoomImage").resize(animation)
+            @data.groupInfo[@data.currentYear].image.data("plugin_zoomImage").resize(animation)
     
     Plugin::_prevYear = ->
         
