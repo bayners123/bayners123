@@ -30,18 +30,32 @@
         leftArrow: null
         rightArrow: null
         personHeading: null
-        slideImg: null
-        descUL: null
+        slideImgHolder: null
+        descULHolder: null
         first: "middle"
     
     data = 
         leftArrow: null
         rightArrow: null
         personHeading: null
+        currentSlide: null # of current year
+        noSlides: null # of current year
+        
+        groupInfo: []
+        # groupInfo is an array containing pointers to all the group's info in the HTML
+        # It is structured as shown:
+        #
+        # groupInfo = array =>
+        #     - year: string
+        #       image: element
+        #       descUL: element
+        #       navUL: element
+        #
+        #     - ...
+                  
+        
         slideImg: null
         descUL: null
-        currentSlide: null
-        noSlides: null
         groupListLinks: null
     
     class Plugin
