@@ -322,23 +322,23 @@ i, em { @extend .italic; }
 }
 
 
-#publications > div > div > .shrunk p {
+#publications .shrunk p {
     @extend .italic;
     font-size: 0.75em;
     margin: 0;
 }
 
-#publications > div > div > .shrunk a {
+#publications .shrunk a {
     color: $text-color;
     text-decoration: none;
 }
     
-#publications > div > div > .shrunk .pubtitle {
+#publications .shrunk .pubtitle {
     @extend .bold;
     text-align: justify;
 }
 
-#publications > div > div > .shrunk .pubdate {
+#publications .shrunk .pubdate {
     float: right;
 }
 
