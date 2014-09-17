@@ -38,8 +38,6 @@ do ($ = jQuery, window, document) ->
             @data.links = @settings.links ? $element.find(".tabmenu a")
             @data.tabs = @settings.tabs ? $element.find(".tabs .tab")
             
-            console.log @data.links
-            
             # Disable all the links in case there aren't the same number of links/tabs (user error):
             @data.links.click ->
                 false
