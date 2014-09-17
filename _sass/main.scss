@@ -425,11 +425,13 @@ a.expandSection i {
     .tabmenu > li > a.active {
         border: 3px solid $oxford-color;
         border-right: none;
-        border-radius: 8px 0 0 8px;
-//        background: #EEE;
-//        box-shadow: -10px 0 6px #444;
-//        z-index: 10;
-//        position: relative;
+        border-left: none;
+    }
+    .tabmenu > li:first-child a.active {
+        border-top: 1px solid $oxford-color;;
+    }
+    .tabmenu > li:last-child a.active {
+        border-bottom: 1px solid $oxford-color;;
     }
 }
 
