@@ -136,61 +136,10 @@ Modernizr.load [
                 # TAB MENU GENERIC STUFF: 
             
                 # Initiation of .tabgroups
-                $(".tabgroup").each ->
-                
-                    # Find all the links and tabs in this tabgroup
-                    # Hopefully there will be the same number of each!
-                    $group = $(this)
-                    $links = $group.find(".tabmenu a")
-                    $tabs = $group.find(".tabs .tab")
-                
-                    # Disable all the links in case there aren't the same number of links/tabs (user error):
-                    $links.click ->
-                        false
-                    
-                    # Define function to show a tab
-                    showTab = (group, link, tab) ->
-                        links = group.find(".tabmenu a")
-                        tabs = group.find(".tabs .tab")
-                    
-                        # Disable all links and tabs
-                        links.removeClass('active')
-                        tabs.removeClass('active')
-                    
-                        # Enable the correct two
-                        link.addClass('active')
-                        tab.addClass('active')
-                    
-                    # Set slider to the first tab if it isn't already
-                    showTab $group, $links.first(), $tabs.first()
-                
-                    # Click handler for links, to move to the appropriate tab
-                    clickHandler = (e) ->
-                        # Get the clicked link from the click event
-                        clickedLink = $(e.target)
-                    
-                        # Call the show tab function, retrieving the associated tab that we saved earlier
-                        showTab clickedLink.data("myGroup"), clickedLink, clickedLink.data("myTab")
-                    
-                        # Disable normal link action
-                        return false
-                    
-                    # Loop over all links / tabs until we run out of either (hopefully both)
-                    i = 0
-                    while $links.size() > i && $tabs.size() > i
-                
-                        # The current link
-                        theLink = $links.eq(i)
-                    
-                        # Store the associated tabs with the links
-                        theLink.data("myGroup", $group)
-                        theLink.data("myTab", $tabs.eq(i))
-                    
-                        # Bind click handler
-                        theLink.click clickHandler
-                    
-                        # Increment    
-                        i++
+                Modernizr.load
+                    load: '/js/jquery.tabgroups.js'
+                    complete: ->
+                        $(".tabgroup").tabGroups()
 
                 # END TAB MENU GENERIC STUFF
                 
