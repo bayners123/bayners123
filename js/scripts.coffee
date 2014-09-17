@@ -502,6 +502,9 @@ Modernizr.load [
             if checkBody("mainpage")
                 $('#groupmembers .fullHolder').groupScroller
                     first: "middle"
+                
+                $('#groupmembers .fullHolder a').click ->
+                    scrollTo "#groupmembers"
                     
                 # Zoom all the highlighted research images
                 $('#publications .filledImg img').zoomImage()
