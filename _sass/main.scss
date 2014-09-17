@@ -299,26 +299,29 @@ i, em { @extend .italic; }
 // This junk is a wizardy CSS way of getting a fixed aspect ratio for the final div containing the images
 // This allows my zoomImage plugin to fill the div with the image
 // See http://stackoverflow.com/questions/12121090/responsively-change-div-size-keeping-aspect-ratio
-#publications .highlightedResearch .imageHolder {
+.filledImg {
     width: 90%;
     display: inline-block;
     margin-left: 5%;
     position: relative;
 }
-#publications .highlightedResearch .imageHolder:after {
+.filledImg:after {
     display: block;
     content: '';
     padding-left: 5%;
     padding-top: (142/392 * 100%);
 }
-#publications .highlightedResearch .imageHolder div {
+.filledImg div {
     position: absolute;
     top: 0; bottom: 0; right: 0; left: 0;
     border: 1px solid black;
+    overflow: hidden;
 }
-#publications .highlightedResearch .imageHolder div img {
+.filledImg div img {
     width: 100%;
     display: block;
+    margin: 0;
+    float: none;
 }
 
 
