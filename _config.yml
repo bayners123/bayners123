@@ -1,4 +1,5 @@
 url: ""
+title: "Goicoechea Group"
 markdown: kramdown
 kramdown: 
   parse_block_html: false
