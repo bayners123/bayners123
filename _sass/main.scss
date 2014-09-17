@@ -3,7 +3,8 @@ $contrast-color: #FFF;
 $text-color: #002147;
 $textContrast-color: #FFF;
 
-$thickBorder: 5px solid white;
+$thickBorder: 5px;
+$thickBorder-styles: solid white;
 
 body {
    font: normal 100% "Geneva", Helvetica, sans-serif;
@@ -180,16 +181,6 @@ i, em { @extend .italic; }
 	position: relative;
 }
 
-#topSlider .slidesjs-container {
-	border-top: $thickBorder;
-	border-bottom: $thickBorder;
-}
-
-.slider a {
-	text-decoration: none;
-	color: $textContrast-color;
-}
-
 .sliderBlackBox {
     @extend .alpha60bgBlack;
 	color: $textContrast-color;
@@ -197,16 +188,36 @@ i, em { @extend .italic; }
     z-index: 15;
 }
 
-.slider .slideNavBox {
-    @extend .sliderBlackBox;
-	bottom: 24px; left: 0;
-    padding: 15px/16px*1em 10px/16px*1em 10px/16px*1em; // 15px 10px 10px (10px)
+#topSlider {
+    .moreNews {
+        @extend .sliderBlackBox;
+        display: block;
+        top: $thickBorder; right: 0;
+        padding: 15px 30px;
+    }
+    .slidesjs-container {
+    	border-top: $thickBorder $thickBorder-styles;
+    	border-bottom: $thickBorder $thickBorder-styles;
+    }
 }
 
-.slider .caption {
-    @extend .sliderBlackBox;
-	bottom: 0; right: 0; 
-	padding: 30px;
+.slider {
+    a {
+    	text-decoration: none;
+    	color: $textContrast-color;
+    }
+
+    .slideNavBox {
+        @extend .sliderBlackBox;
+    	bottom: 24px; left: 0;
+        padding: 15px/16px*1em 10px/16px*1em 10px/16px*1em; // 15px 10px 10px (10px)
+    }
+
+    .caption {
+        @extend .sliderBlackBox;
+    	bottom: 0; right: 0; 
+    	padding: 30px;
+    }
 }
 
 #facilities {

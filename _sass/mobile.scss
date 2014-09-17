@@ -23,6 +23,13 @@
         z-index: 10;
         position: relative;
     }
+    
+    #topSlider {
+        .moreNews, .caption {
+            padding: 10px 20px;
+            font-size: 0.7em;
+        }
+    }
 
 }
 
