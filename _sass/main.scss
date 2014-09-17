@@ -300,15 +300,13 @@ i, em { @extend .italic; }
 // This allows my zoomImage plugin to fill the div with the image
 // See http://stackoverflow.com/questions/12121090/responsively-change-div-size-keeping-aspect-ratio
 .filledImg {
-    width: 90%;
+    width: 100%;
     display: inline-block;
-    margin-left: 5%;
     position: relative;
 }
 .filledImg:after {
     display: block;
     content: '';
-    padding-left: 5%;
     padding-top: (142/392 * 100%);
 }
 .filledImg div {
@@ -324,6 +322,10 @@ i, em { @extend .italic; }
     float: none;
 }
 
+#publications .filledImg {
+    width: 90%;
+    margin-left: 5%;
+}
 
 #publications .shrunk p {
     @extend .italic;
@@ -489,6 +491,17 @@ a.expandSection i {
 
 #footer .unit:nth-child(2) {
     text-align: right;
+}
+
+#newsPage {
+    .newsDate {
+        float: right;
+        margin-top: -0.625em;
+        font-style: italic;
+    }
+    .newsDate:before {
+        content: '- ';
+    }
 }
 
 .alpha60bgBlack {
