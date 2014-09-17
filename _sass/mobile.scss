@@ -29,6 +29,7 @@
     #publications .tabmenu {
         
         border-bottom: 3px solid $oxford-color;
+        margin-bottom: 1em;
         
         li a {
             -webkit-box-sizing: border-box;
@@ -41,19 +42,7 @@
         }
         li a.active {
             border: none !important;
-        }
-        
-        // clearfix
-        ul {
-          *zoom: 1;
-        }
-        ul:before, ul:after {
-          display: table;
-          content: "";
-          line-height: 0;
-        }
-        ul:after {
-          clear: both;
+            font-weight: bold;
         }
     }
 

@@ -2,30 +2,6 @@
 section: publicationsExpanded
 ---
 
-<!-- TODO: Sort out Mark's horrible CSS -->
-
-<h2>Selected Recent Publications</h2>
-
-{% comment %}
-<ol>
-{% for yearObj in site.data.pubs %}
-    <ol>
-        <li class="pub">
-            <span class="title">&ldquo;{{ paper.title }}&rdquo;</span>
-            <span class="authors">{{ paper.author }}</span>
-            <span class="journal">{{ paper.journal }}</span>
-            <span class="year">{{ paper.year }}</span>
-            <span class="volume">{{ paper.volume }}</span>
-            <span class="pages">{{ paper.pages }}</span>
-            <a href="{{ paper.link }}"> <img src="{{site.url}}/images/pdflogo.jpg" alt="View Article"></a>
-            {% if paper.notes %}
-            <p class="pubNotes">{{ paper.notes }}</p>
-            {% endif %}
-        </li>
-{% endfor %}
-</ol>
-{% endcomment %}
-
         <div class="grid tabGroup">
             <ul class="unit w-1-5 tabmenu no-gutters">
                 {% for yearObj in site.data.pubs %}
@@ -44,7 +20,7 @@ section: publicationsExpanded
                 </ol>
                 {% endfor %}
             
-                <a class="gotoTop mobileOnly" href="#researchDetails">
+                <a class="gotoTop mobileOnly" href="#publications">
                     <i class="fa fa-arrow-circle-up fa-3x"></i>
                 </a>
             </div>
