@@ -10,7 +10,8 @@ section: publicationsShrunk
 {% endcomment %}
 
 {% assign found = 0 %}
-{% for pub in site.data.pubs %}
+{% for yearObj in site.data.pubs %}
+{% for pub in yearObj.pubs %}
 {% if pub.highlighted %}
 {% assign found = found | plus:1 %}
 {% comment %}
@@ -36,5 +37,6 @@ section: publicationsShrunk
 <div class="grid">
 {% endif %}
 {% endif %}
+{% endfor %}
 {% endfor %}
 </div>
