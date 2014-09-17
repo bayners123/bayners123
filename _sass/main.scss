@@ -199,6 +199,9 @@ i, em { @extend .italic; }
     	border-top: $thickBorder $thickBorder-styles;
     	border-bottom: $thickBorder $thickBorder-styles;
     }
+    .caption {
+        max-width: 85%;
+    }
 }
 
 .slider {
@@ -217,7 +220,6 @@ i, em { @extend .italic; }
         @extend .sliderBlackBox;
     	bottom: 0; right: 0; 
     	padding: 30px;
-        max-width: 85%;
         .date {
             float: right;
             font-style: italic;
