@@ -342,14 +342,6 @@ Modernizr.load [
                         fade: 
                             speed: 600
                             crossfade: true
-                            
-            # Init skrollr if present (after slider)
-            if skrollr?
-                skrollr.init
-                    smoothScrolling: false,
-                    forceHeight: false
-                # Init skrollr menus
-                skrollr.menu.init skrollr.get()
             
     ,
         test: checkBody("mainpage")
@@ -460,5 +452,13 @@ Modernizr.load [
                 $('#researchLink2').click()
             $('#research3').click ->
                 $('#researchLink3').click()
+                
+            # Init skrollr if present (after sliders, tab groups and group members)
+            if skrollr?
+                skrollr.init
+                    smoothScrolling: false,
+                    forceHeight: false
+                # Init skrollr menus
+                skrollr.menu.init skrollr.get()
 
     ]
