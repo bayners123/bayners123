@@ -111,7 +111,7 @@
                 
                 # Check that we were previously in the range & are now
                 #   out of the range (elementPosition + offset) ± captureRange
-                # If so, trigger the callback & maybe the shrinking element
+                # If so, trigger the callback & possibly the shrinking element
                 if elementPos + @options.offset - @options.lostFocusRange > scrollPos || scrollPos > elementPos + @options.offset + @options.lostFocusRange
                     
                     if @data.hasFocus
