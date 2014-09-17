@@ -504,6 +504,6 @@ Modernizr.load [
                     first: "middle"
                     
                 # Zoom all the highlighted research images
-                $('#publications .shrunk .highlightedResearch img').zoomImage()
+                $('#publications .filledImg img').zoomImage()
 
     ]
