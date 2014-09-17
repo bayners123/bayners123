@@ -440,8 +440,11 @@ Modernizr.load [
         test: checkBody("mainpage")
         yep: window.joseURL + '/js/jquery.tabgroups.js'
         callback: ->
-            # Initiation of .tabgroups
-            $(".tabgroup").tabGroups()
+            # Initiation of tabgroups for research
+            $("#researchDetails").tabGroups()
+            
+            # Initiation of tabgroups for publications
+            $("#publications .expanded .tabGroup").tabGroups()
             
             # Set research tabs to hidden on load (so they're visible if Java is disabled)
             $('#researchDetails').hide()
