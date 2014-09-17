@@ -5,6 +5,11 @@
 
 # Load scripts depending on browser capabilities
 
+# Store url for all scripts. This should be done by Liquid tags, as it also should in SCSS,
+#  but for bizarre reasons it was disabled in the build of Jekyll that github now uses.
+#  This will have to do until they update to 2.4. 
+window.joseURL = ""
+
 # Function to refresh skrollr
 refreshSkrollr = ->
     # Refresh skrollr once the animation is over
@@ -33,7 +38,7 @@ window.mobileMode = screen.width < 800
 # Load skrollr if we're not on a mobile & the body has the class "skrollrMe", but don't initialise it yet
 Modernizr.load [
         test: checkBody("skrollrMe") and not Modernizr.touch,
-        yep: ['/js/skrollr.min.js', '/js/skrollr-stylesheets.js', '/js/skrollr-menu.min.js'],
+        yep: [window.joseURL + '/js/skrollr.min.js', window.joseURL + '/js/skrollr-stylesheets.js', window.joseURL + '/js/skrollr-menu.min.js'],
 
         callback: (url, result, key) ->
         # If we loaded Skrollr & aren't on a small screen, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
@@ -45,14 +50,14 @@ Modernizr.load [
 
                 # Are we running IE 8 or less? Well bugger, but let's try to patch some holes
                 if typeof IElt9 != 'undefined'
-                    Modernizr.load '/js/skrollr.ie.min.js'
+                    Modernizr.load window.joseURL + '/js/skrollr.ie.min.js'
     ,
     # Load jquery with a local fallback 
         load: 'timeout=2000!//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
         complete: ->
             if !window.jQuery
                 Modernizr.load
-                    load: '/js/jquery.min.js'
+                    load: window.joseURL + '/js/jquery.min.js'
                     
             # Keep mobilemode up-to-date
             $(window).resize ->
@@ -238,7 +243,7 @@ Modernizr.load [
     ,
     # Touchwipe allows us to simulate a scroll event for touchscreens that wouldn't otherwise fire one
         test: Modernizr.touch
-        yep: '/js/jquery.touchwipe.min.js'
+        yep: window.joseURL + '/js/jquery.touchwipe.min.js'
         callback: ->
             $(window).touchwipe({
                 wipeUp: ->
@@ -251,7 +256,7 @@ Modernizr.load [
             });
     ,
         test: checkBody("mainpage")
-        yep: '/js/jquery.slides.js'
+        yep: window.joseURL + '/js/jquery.slides.js'
         callback: ->
             
     # ... then run code that depends on slidesjs
@@ -348,7 +353,7 @@ Modernizr.load [
             
     ,
         test: checkBody("mainpage")
-        yep: '/js/jquery.fullscreen.js',
+        yep: window.joseURL + '/js/jquery.fullscreen.js',
         callback: ->
             
             # Setup animation for arrows
@@ -419,7 +424,7 @@ Modernizr.load [
                     
     ,
         test: checkBody("mainpage")
-        yep: ['/js/jquery.zoomImage.js','/js/jquery.groupMembers.js']
+        yep: [window.joseURL + '/js/jquery.zoomImage.js',window.joseURL + '/js/jquery.groupMembers.js']
         complete: ->
             # Init all the groupmembers stuff
             if checkBody("mainpage")
@@ -433,7 +438,7 @@ Modernizr.load [
                 $('#publications .filledImg img').zoomImage()
     ,   
         test: checkBody("mainpage")
-        yep: '/js/jquery.tabgroups.js'
+        yep: window.joseURL + '/js/jquery.tabgroups.js'
         callback: ->
             # Initiation of .tabgroups
             $(".tabgroup").tabGroups()

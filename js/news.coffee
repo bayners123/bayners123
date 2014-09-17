@@ -9,11 +9,11 @@ Modernizr.load [
     complete: ->
         if !window.jQuery
             Modernizr.load
-                load: '/js/jquery.min.js'
+                load: window.joseURL + '/js/jquery.min.js'
                 
 ,
     
-    load: '/js/jquery.zoomImage.js'
+    load: window.joseURL + '/js/jquery.zoomImage.js'
     complete: ->
         # Zoom all the news images
         $('.filledImg img').zoomImage()
