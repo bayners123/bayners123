@@ -8,9 +8,7 @@
 # Function to refresh skrollr
 refreshSkrollr = ->
     # Refresh skrollr once the animation is over
-    if skrollr?
-        if skrollr.get()
-            skrollr.get().refresh()
+    skrollr?.get()?.refresh()
             
 # Function to scroll to an object
 scrollTo = (selector, delay) ->
@@ -27,7 +25,7 @@ checkBody = (testClass) ->
     classes = document.body.className
     test = new RegExp("\\b" + testClass + "\\b",'g')
     
-    return classes.match(test)?
+    return test.test(classes)
         
 # Are we in mobile mode? This is updated by a screen resize callback once jquery is loaded
 window.mobileMode = screen.width < 800
@@ -58,7 +56,7 @@ Modernizr.load [
                     
             # Keep mobilemode up-to-date
             $(window).resize ->
-                window.mobileMode = screen.width < 800
+                (window.mobileMode = screen.width < 800)
                     
             # function to toggle menubar visibility & change mobilebar morebutton icon
             toggleMenu = (menubar, moreButtonI) ->
@@ -86,7 +84,7 @@ Modernizr.load [
                 
             # Set the menubar to hidden if we're mobile & remove the CSS hiding it from view
             # This means it's hidden by the margin rather than display: none
-            if mobileMode
+            if window.mobileMode
                 $menubar
                     .addClass "hidden"
                     .css "display", "block"
@@ -96,7 +94,7 @@ Modernizr.load [
             # N.B. we do not preventDefault so the click will still cause navigation as expected
             $($menubar).click ->
                 # If we're in mobile mode:
-                if mobileMode
+                if window.mobileMode
                 # then hide the menubar
                     toggleMenu $menubar, $moreButtonI
             
@@ -118,7 +116,7 @@ Modernizr.load [
                 else if delta < -appearanceThreshold 
                     delta = -appearanceThreshold
                 
-                if mobileMode
+                if window.mobileMode
                     if delta == 0
                         $mobilebar.addClass("hidden")
                         if not $menubar.hasClass("hidden")
@@ -374,17 +372,17 @@ Modernizr.load [
                 $(window).resize ->
                             
                     # Are we already in mobile mode? Check by looking at the slider's current dimentions
-                    mobileMode = $("#topSlider").data("plugin_slidesjs").options.width / $("#topSlider").data("plugin_slidesjs").options.height == slideWidth / slideHeightMobile
+                    window.mobileMode = $("#topSlider").data("plugin_slidesjs").options.width / $("#topSlider").data("plugin_slidesjs").options.height == slideWidth / slideHeightMobile
 
                     # If it's currently in mobile mode & we changed to normal mode:
-                    if mobileMode && $(@).width() > mobileThreshold
+                    if window.mobileMode && $(@).width() > mobileThreshold
                         $("#topSlider").data("plugin_slidesjs").resize slideWidth, slideHeight
                     
                         # Refresh skrollr if present
                         refreshSkrollr()
 
                     # Else if it's currently in normal and we changed to mobile:
-                    else if $(@).width() < mobileThreshold  && !mobileMode
+                    else if $(@).width() < mobileThreshold  && !window.mobileMode
                         $("#topSlider").data("plugin_slidesjs").resize slideWidth, slideHeightMobile
                     
                         # Refresh skrollr if present
