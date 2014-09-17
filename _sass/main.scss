@@ -327,33 +327,45 @@ i, em { @extend .italic; }
     float: none;
 }
 
-#publications .filledImg {
-    width: 90%;
-    margin-left: 5%;
-}
+#publications {
 
-#publications .shrunk p {
-    @extend .italic;
-    font-size: 0.75em;
-    margin: 0;
-}
+    .filledImg {
+        width: 90%;
+        margin-left: 5%;
+    }
 
-#publications .shrunk a {
-    color: $text-color;
-    text-decoration: none;
-}
+     .shrunk p {
+        @extend .italic;
+        font-size: 0.75em;
+        margin: 0;
+    }
+
+     .shrunk a {
+        color: $text-color;
+        text-decoration: none;
+    }
     
-#publications .shrunk .pubtitle {
-    @extend .bold;
-    text-align: justify;
-}
+     .shrunk .pubtitle {
+        @extend .bold;
+        text-align: justify;
+    }
 
-#publications .shrunk .pubdate {
-    float: right;
-}
+     .shrunk .pubdate {
+        float: right;
+    }
 
-#publications .expanded li {
-    margin-bottom: 1em;
+     .expanded {
+        li {
+            margin-bottom: 1em;
+        }
+        
+        .pub {
+            
+            .title, .journal, .volume { @extend .italic; }
+            .year { @extend .bold; }
+            
+        }
+    }
 }
 
 a.expandSection {
