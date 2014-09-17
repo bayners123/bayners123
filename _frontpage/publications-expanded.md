@@ -14,7 +14,7 @@ section: publicationsExpanded
 		<span class="content_publications_journal">{{ paper.journal }}</span>
 		<span class="content_publications_year">{{ paper.year }}</span>
 		<span class="content_publications_pages">{{ paper.pages }}</span>
-		<a href="{{ paper.link }}"> <img src="/images/pdflogo.jpg" alt="View Article"></a>
+		<a href="{{ paper.link }}"> <img src="{{site.url}}/images/pdflogo.jpg" alt="View Article"></a>
 		{% if paper.notes %}
 		<p class="pubNotes">{{ paper.notes }}</p>
 		{% endif %}
