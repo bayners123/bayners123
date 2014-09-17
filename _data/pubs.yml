@@ -1,443 +1,456 @@
 # To add a new paper simply add it to the top of the list using the same format as below
 # As before, to write superscript and subscript respectivly use <sup>...</sup> or <sub>...</sub>
 
-- title: "Hydropnictination Reactions of Carbodiimides and Isocyanates with Protonated Heptaphosphide and Heptaarsenide Zintl Ions"
-  author: "Turbervill, R. S. P.; Goicoechea, J. M."
-  journal: "Eur. J. Inorg. Chem."
-  year: 2014
-  pages: 1660
-  link: "http://onlinelibrary.wiley.com/doi/10.1002/ejic.201301011/abstract"
-  highlighted: true
-  image: "http://lorempixel.com/392/143"
-  date: "99th December 2014"
-
-
-- title: "Iron(II) complexes of ditopic carbanionic carbenes"
-  author: "Musgrave, R. A.; Turbervill, R. S. P.; Irwin, M.; Herchel, R.; Goicoechea, J. M."
-  journal: "Dalton Trans."
-  year: 2014
-  volume: 43
-  pages: 4335
-  link: "http://pubs.rsc.org/en/content/articlelanding/2014/dt/c3dt52638k#!divAbstract"
-  notes: "Highlighted as a Hot Article (November)."
-
-
-- title: "Synthesis and Characterization of [Ru@Ge<sub>12</sub>]<sup>3-</sup>: An Endohedral 3-Connected Cluster"
-  author: "Espinoza-Quintero, G.; Duckworth, J. C. A.; Myers, W. K.; McGrady, J. E.; Goicoechea, J. M."
-  journal: "J. Am. Chem. Soc."
-  year: 2014
-  volume: 136
-  pages: 1210
-  link: "http://pubs.acs.org/doi/abs/10.1021/ja411280v"
-  highlighted: true
-  image: "http://lorempixel.com/392/141"
-  date: "99th December 2014"
-
-
-- title: "Phosphinecarboxamide: A Phosphorus-Containing Analogue of Urea and Stable Primary Phosphine"
-  author: "Jupp, A. R.; Goicoechea, J. M."
-  journal: "J. Am. Chem. Soc."
-  year: 2013
-  volume: 135
-  pages: 19131
-  link: "http://pubs.acs.org/doi/abs/10.1021/ja4115693"
-  notes: "Highlighted in: <em>Chemical and Engineering News</em>, 23 December <strong>2013</strong>, <em>91(51)</em>, 12."
-
-
-- title: "Group 12 Metal Complexes of N-Heterocyclic Ditopic Carbanionic Carbenes"
-  author: "Waters, J. B.; Turbervill, R. S. P.; Goicoechea, J. M."
-  journal: "Organometallics"
-  year: 2013
-  volume: 32
-  pages: 5190
-  link: "http://pubs.acs.org/doi/abs/10.1021/om400728u"
-  highlighted: true
-  image: "http://lorempixel.com/390/142"
-  date: "99th December 2014"
-
-- title: "The 2-Phosphaethynolate Anion: A Convenient Synthesis and [2+2] Cycloaddition Chemistry"
-  author: "Jupp, A. R.; Goicoechea, J. M."
-  journal: "Angew. Chem., Int. Ed."
-  year: 2013
-  volume: 52
-  pages: 10064
-  link: "http://onlinelibrary.wiley.com/doi/10.1002/anie.201305235/abstract"
-
-
-- title: "‘Classical’ and ‘Abnormal’ Bonding in Tin (II) N-Heterocyclic Carbene Complexes"
-  author: "Turbervill, R. S. P.; Goicoechea, J. M."
-  journal: "Aus. J. Chem."
-  year: 2013
-  volume: 66
-  pages: 1131
-  link: "http://www.publish.csiro.au/paper/CH13115.htm"
-
-
-- title: "An Asymmetrically Derivatized 1,2,3-Triphospholide: Synthesis and Reactivity of the 4‐(2′-Pyridyl)-1,2,3-triphospholide Anion"
-  author: "Turbervill, R. S. P.; Goicoechea, J. M."
-  journal: "Inorg. Chem."
-  year: 2013
-  volume: 52
-  pages: 5527
-  link: "http://pubs.acs.org/doi/abs/10.1021/ic400448x"
-
-
-- title: "On the structural diversity in ten-vertex endohedral clusters, M@E<sub>10</sub> and the synthesis of a new member of the family, [Fe@Sn<sub>10</sub>]<sup>3−</sup>"
-  author: "Krämer, T.; Duckworth, J. C. A.; Ingram, M. D.; Zhou, B.;  McGrady, J. E.; Goicoechea, J. M."
-  journal: "Dalton Trans."
-  year: 2013
-  volume: 42
-  pages: 12120
-  link: "http://pubs.rsc.org/en/content/articlelanding/2013/dt/c3dt50643f"
-  notes: "Highlighted as a Hot Article (May)."
-  highlighted: true
-  image: "http://lorempixel.com/400/400"
-  date: "99th December 2014"
-
-- title: "Synthesis and Characterization of Free and Coordinated 1,2,3-Tripnictolide Anions"
-  author: "Turbervill, R. S. P.; Jupp, A. R.; McCullough, P. S. B.; Ergöçmen, D.; Goicoechea, J. M."
-  journal: "Organometallics"
-  year: 2013
-  volume: 32
-  pages: 2234
-  link: "http://pubs.acs.org/doi/abs/10.1021/om4001296"
-
-
-- title: "Transition-metal-mediated activation of the heptaarsenide trianion: Isolation of a diaryltetraarsenabutadienediide"
-  author: "Knapp, C. M; Westcott, B. H.; Raybould, M.; McGrady, J. E.; Goicoechea, J. M."
-  journal: "Chem. Commun."
-  year: 2012
-  volume: 48
-  pages: 12183
-  link: "http://pubs.rsc.org/en/content/articlelanding/2012/cc/c2cc36888a"
-
-
-- title: "A Homologous Series of First-Row Transition-Metal Complexes of 2,2′-Bipyridine and their Ligand Radical Derivatives: Trends in Structure, Magnetism, and Bonding"
-  author: "Irwin, M.; Doyle, L. R.; Kr&auml;mer, T;  Herchel, R.; McGrady, J. E.; Goicoechea, J. M."
-  journal: "Inorg. Chem."
-  year: 2012
-  volume: 51
-  pages: 12301
-  link: "http://pubs.acs.org/doi/abs/10.1021%2Fic301587f"
-
-
-- title: "Transition Metal Complexes of Anionic N-Heterocyclic Dicarbene Ligands"
-  author: "Musgrave, R. A.; Turbervill, R. S. P.; Irwin, M.; Goicoechea, J. M."
-  journal: "Angew. Chem., Int. Ed."
-  year: 2012
-  volume: 51
-  pages: 10832
-  link: "http://dx.doi.org/10.1002/anie.201206100"
-  notes: "Highlighted as a Hot paper."
-
-
-- title: "[Co(η<sup>5</sup>-P<sub>5</sub>){η<sup>2</sup>-P<sub>2</sub>H(mes)}]<sup>2−</sup>: A phospha-organometallic complex obtained by the transition-metal-mediated activation of the heptaphosphide trianion"
-  author: "Knapp, C. M.; Westcott, B. H.; Raybould, M. A. C.; McGrady, J. E.; Goicoechea, J. M."
-  journal: "Angew. Chem., Int. Ed."
-  year: 2012
-  volume: 51
-  pages: 9097
-  link: "http://dx.doi.org/10.1002/anie.201203980"
-
-
-- title: "Further studies into the reactivity and coordination chemistry of [Ge<sub>9</sub>]<sup>4-</sup> Zintl ions. The indium-containing [In(Ge<sub>9</sub>)<sub>2</sub>]<sup>5-</sup>, [(Ge<sub>9</sub>)<sub>2</sub>In(C<sub>6</sub>H<sub>5</sub>)]<sup>4-</sup> and [Ge<sub>9</sub>{In(C<sub>6</sub>H<sub>5</sub>)<sub>3</sub>}<sub>2</sub>]<sup>4-</sup>"
-  author: "Hansen, D. F.; Zhou, B.; Goicoechea, J. M."
-  journal: "J. Organomet. Chem."
-  year: 2012
-  volume: 721-722
-  pages: 53
-  link: "http://dx.doi.org/10.1016/j.jorganchem.2012.05.037"
-  notes: "Contribution to T. P. Fehlner's 75<sup>th</sup> birthday issue.  "
-
-
-- title: "Synthesis of 1,2,3-tripnictolide anions by reaction of group 15 Zintl ions with acetylene. Isolation of [E<sub>3</sub>C<sub>2</sub>H<sub>2</sub>]<sup>–</sup> (E = P, As) and preliminary reactivity studies"
-  author: "Turbervill, R. S. P.; Goicoechea, J. M."
-  journal: "Chem. Commun."
-  year: 2012
-  volume: 48
-  pages: 6100
-  link: "http://dx.doi.org/10.1039/C2CC32244G"
-  highlighted: true
-  image: "http://lorempixel.com/392/200"
-  date: "99th December 2014"
-
-
-- title: "Hydrophosphination of carbodiimides using protic heptaphosphide cages: A unique effect of the bimodal activity of protonated group 15 Zintl ions"
-  author: "Turbervill, R. S. P.; Goicoechea, J. M."
-  journal: "Organometallics"
-  year: 2012
-  volume: 31
-  pages: 2452
-  link: "http://dx.doi.org/10.1021/om300072z"
-
-
-- title: "Studies on the reactivity of group 15 Zintl ions with carbodiimides: synthesis and characterization of a heptaphosphaguanidine dianion"
-  author: "Turbervill, R. S. P.; Goicoechea, J. M."
-  journal: "Chem. Commun."
-  year: 2012
-  volume: 48
-  pages: 1470
-  link: "http://dx.doi.org/10.1039/C1CC12089A"
-
-
-- title: "A highly distorted open-shell endohedral Zintl cluster: [Mn@Pb<sub>12</sub>]<sup>3–</sup>"
-  author: "Zhou, B.; Kr&auml;mer, T.; Thompson, A. L.; McGrady, J. E.; Goicoechea, J. M."
-  journal: "Inorg. Chem."
-  year: 2011
-  volume: 50
-  pages: 8028
-  link: "http://dx.doi.org/10.1021/ic200329m"
-
-
-- title: "On the structural and electronic properties of [Zn<sub>2</sub>(4,4′-bipyridine)(mes)<sub>4</sub>]<sup>n−</sup> (n = 0–2), a homologous series of bimetallic complexes bridged by neutral, anionic, and dianionic 4,4′-bipyridine"
-  author: "Irwin, M; Kr&auml;mer, T; McGrady, J. E.; Goicoechea, J. M."
-  journal: "Inorg. Chem."
-  year: 2011
-  volume: 50
-  pages: 5006
-  link: "http://dx.doi.org/10.1021/ic200241d"
-
-
-- title: "Heteroatomic molecular clusters derived from group 15 Zintl ion cages: Synthesis and isolation of [M<sub>2</sub>(HP<sub>7</sub>)<sub>2</sub>]<sup>2−</sup> (M = Ag, Au), two novel cluster anions exhibiting metallophilic interactions"
-  author: "Knapp, C. M.; Jackson, C. S.; Large, J. S.; Thompson, A. L.; Goicoechea, J. M."
-  journal: "Inorg. Chem."
-  year: 2011
-  volume: 50
-  pages: 4021
-  link: "http://dx.doi.org/10.1021/ic102516g"
-
-
-- title: "The bis(hydrogenheptaphosphide)iron(II) dianion: a Zintl ion analogue of ferrocene?"
-  author: "Knapp, C. M.; Large, J. S.; Rees, N. H.; Goicoechea, J. M."
-  journal: "Chem. Commun."
-  year: 2011
-  volume: 47
-  pages: 4111
-  link: "http://dx.doi.org/10.1039/C1CC10236B"
-
-
-- title: "A versatile salt-metathesis route to heteroatomic clusters derived from phosphorus and arsenic Zintl anions"
-  author: "Knapp, C. M.; Large, J. S.; Rees, N. H.; Goicoechea, J. M."
-  journal: "Dalton Trans."
-  year: 2011
-  volume: 40
-  pages: 735
-  link: "http://dx.doi.org/10.1039/C0DT00918K"
-
-
-- title: "Studies on the reactivity of [Ge<sub>9</sub>]<sup>4–</sup> towards Fe(COT)(CO)<sub>3</sub>: Synthesis and characterization of [Ge<sub>8</sub>Fe(CO)<sub>3</sub>]<sup>3–</sup> and of the anionic organometallic species [Fe(COT)(CO)<sub>3</sub>]<sup>–</sup>"
-  author: "Zhou, B.; Goicoechea, J. M."
-  journal: "Chem. - Eur. J."
-  year: 2010
-  volume: 16
-  pages: 11145
-  link: "http://dx.doi.org/10.1002/chem.201000507"
-
-
-- title: "Experimental and computational study of the structural and electronic properties of Fe<sup>II</sup>(2,2′-bipyridine)(mes)<sub>2</sub> and [Fe<sup>II</sup>(2,2′-bipyridine)(mes)<sub>2</sub>]<sup>−</sup>, a complex containing a 2,2′-bipyridyl radical anion"
-  author: "Irwin, M.; Jenkins, R. K.; Denning, M. S.; Kr&auml;mer, T; Grandjean, F; Long, G. J.; Herchel, R; McGrady, J. E.; Goicoechea, J. M."
-  journal: "Inorg. Chem."
-  year: 2010
-  volume: 49
-  pages: 6160
-  link: "http://dx.doi.org/10.1021/ic100817s"
-
-
-- title: "Reactivity studies of group 15 Zintl ions towards homoleptic post-transition metal organometallics: a 'bottom-up' approach to bimetallic molecular clusters"
-  author: "Knapp, C.; Zhou, B.; Denning, M. S.; Rees, N. H.; Goicoechea, J. M."
-  journal: "Dalton Trans."
-  year: 2010
-  volume: 39
-  pages: 426
-  link: "http://dx.doi.org/10.1039/b911544g"
-
-
-- title: "Generation of Cationic Two-Coordinate Group-13 Ligand Systems by Spontaneous Halide Ejection: Remarkably Nucleophile-Resistant (Dimethylamino)borylene Complexes"
-  author: "Addy, D. A.; Pierce, G. A.; Vidovic, D.; Mallick, D.; Jemmis, E. D.; Goicoechea, J. M.; Aldridge, S."
-  journal: "J. Am. Chem. Soc."
-  year: 2010
-  volume: 132
-  pages: 4586
-  link: "http://pubs.acs.org/doi/abs/10.1021/ja101192e"
-
-
-- title: "Bis(permethylpentalene)uranium"
-  author: "Chadwick, F. M.; Ashley, A.; Wildgoose, G.; Goicoechea, J. M.; Randall, S.; O'Hare, D."
-  journal: "Dalton Trans."
-  year: 2010
-  volume: 39
-  pages: 6789
-  link: "http://pubs.acs.org/doi/abs/10.1021/ja101192e"
-
-
-- title: "[Pb<sub>9</sub>CdCdPb<sub>9</sub>]<sup>6-</sup>: A Zintl cluster anion with an unsupported cadmium-cadmium bond"
-  author: "Zhou, B.; Denning, M. S.; Chapman, T. A. D.; McGrady, J. E.; Goicoechea, J. M."
-  journal: "Chem. Commun."
-  year: 2009
-  pages: 7221
-  link: "http://dx.doi.org/10.1039/b917185a"
-  notes: "Highlighted by: <em>CrystEngSelects</em>, 05 November 2009."
-
-
-- title: "Synthesis and isolation of [Fe@Ge<sub>10</sub>]<sup>3-</sup>: A pentagonal prismatic Zintl ion cage encapsulating an interstitial iron atom"
-  author: "Zhou, B.; Denning, M. S.; Kays, D. L.; Goicoechea, J. M."
-  journal: "J. Am. Chem. Soc."
-  year: 2009
-  volume: 131
-  pages: 2802
-  link: "http://dx.doi.org/10.1021/ja900055j"
-
-- title: "Synthesis and characterization of alkali-metal salts of 2,2' and 2,4'-bipyridyl radicals and dianions"
-  author: "Gore-Randall, E.; Irwin, M.; Denning, M. S.; Goicoechea, J. M."
-  journal: "Inorg. Chem."
-  year: 2009
-  volume: 48
-  pages: 8304
-  link: "http://dx.doi.org/10.1021/ic9009459"
-
-
-- title: "Reductive cleavage of Zn-C bonds by group 14 Zintl anions: Synthesis and characterisation of [E<sub>9</sub>ZnR]<sup>3−</sup> (E = Ge, Sn, Pb; R = Mes, <sup>i</sup>Pr)&rdquo;."
-  author: "Zhou, B.; Denning, M. S.; Jones, C.; Goicoechea, J. M."
-  journal: "Dalton Trans."
-  year: 2009
-  pages: 1571
-  link: "http://dx.doi.org/10.1039/B815122A"
-
-
-- title: "Coupling Reactions of functionalized Zintl ions [E<sub>9</sub>Cd(C<sub>6</sub>H<sub>5</sub>)]<sup>3-</sup> (E = Sn, Pb) with tributyltinhydride: Synthesis and isolation of {Sn<sub>9</sub>CdSn[(CH<sub>2</sub>)<sub>3</sub>CH<sub>3</sub>]<sub>3</sub>}<sup>3-</sup>"
-  author: "Zhou, B.; Denning, M. S.; Chapman, T. A. D.; Goicoechea, J. M."
-  journal: "Inorg. Chem."
-  year: 2009
-  volume: 48
-  pages: 2899
-  link: "http://dx.doi.org/10.1021/ic8022826"
-
-
-- title: "[Hg<sub>3</sub>(Ge<sub>9</sub>)<sub>4</sub>]<sup>10-</sup>: A nanometric molecular rod precursor to polymeric mercury-linked cluster chains"
-  author: "Denning, M. S.; Goicoechea J. M."
-  journal: "Dalton Trans."
-  year: 2008
-  pages: 5882
-  link: "http://dx.doi.org/10.1039/b810990g"
-
-
-- title: "Synthesis and characterization of the 4,4'-bipyridyl dianion and radical monoanion. A structural study"
-  author: "Denning, M. S.; Irwin, M.; Goicoechea J. M."
-  journal: "Inorg. Chem."
-  year: 2008
-  volume: 47
-  pages: 6118
-  link: "http://dx.doi.org/10.1021/ic800726p"
-
-
-- title: "Heteroatomic deltahedral clusters: Synthesis of closo-[Bi<sub>3</sub>Ni<sub>4</sub>(CO)<sub>6</sub>]<sup>3−</sup>, closo-[Bi<sub>4</sub>Ni<sub>4</sub>(CO)<sub>6</sub>]<sup>2−</sup>, the Open Cluster [Bi<sub>3</sub>Ni<sub>6</sub>(CO)<sub>9</sub>]<sup>3−</sup>, and the intermetalloid closo-[Ni<sub>x</sub>@{Bi<sub>6</sub>Ni<sub>6</sub>(CO)<sub>8</sub>}]<sup>4−</sup>"
-  author: "Goicoechea, J. M.; Hull, M. K.; Sevov, S. C."
-  journal: "J. Am. Chem. Soc."
-  year: 2007
-  volume: 129
-  pages: 7885
-  link: "http://dx.doi.org/10.1021/ja071044b"
-
-
-- title: "Chemistry of deltahedral Zintl ions"
-  author: "Goicoechea, J. M.; Sevov, S. C."
-  journal: "Organometallics"
-  year: 2006
-  volume: 25
-  pages: 5678
-  link: "http://dx.doi.org/10.1021/om060480o"
-
-
-- title: "Organozinc derivatives of deltahedral Zintl ions: Synthesis and characterization of closo-[E<sub>9</sub>Zn(C<sub>6</sub>H<sub>5</sub>)]<sup>3−</sup> (E = Si, Ge, Sn, Pb)"
-  author: "Goicoechea, J. M.; Sevov, S. C."
-  journal: "Organometallics"
-  year: 2006
-  volume: 25
-  pages: 4530
-  link: "http://dx.doi.org/10.1021/om060481g"
-
-
-- title: "[Zn<sub>9</sub>Bi<sub>11</sub>]<sup>5−</sup>: A ligand-free intermetalloid cluster"
-  author: "Goicoechea, J. M.; Sevov, S. C."
-  journal: "Angew. Chem. Int. Ed."
-  year: 2006
-  volume: 45
-  pages: 5147
-  link: "http://dx.doi.org/10.1002/anie.200601805"
-  notes: "Highlighted as a VIP paper.<br>Highlighted in: <em>Chemical and Engineering News</em>, 10 July <strong>2006</strong>, <em>84(28)</em>, 22."
-
-
-- title: "Deltahedral germanium clusters: Insertion of transition-metal atoms and addition of organometallic fragments"
-  author: "Goicoechea, J. M.; Sevov, S. C."
-  journal: "J. Am. Chem. Soc."
-  year: 2006
-  volume: 128
-  pages: 4155
-  link: "http://dx.doi.org/10.1021/ja058652g"
-
-
-- title: "[(Ni-Ni-Ni)@(Ge<sub>9</sub>)<sub>2</sub>]<sup>4−</sup>: A linear triatomic nickel filament enclosed in a dimer of nine-atom germanium clusters"
-  author: "Goicoechea, J. M.; Sevov, S. C."
-  journal: "Angew. Chem. Int. Ed."
-  year: 2005
-  volume: 44
-  pages: 4026
-  link: "http://dx.doi.org/10.1002/anie.200500600"
-  notes: "Highlighted as a VIP paper."
-
-
-- title: "[(Pd-Pd)@Ge<sub>18</sub>]<sup>4−</sup>: A palladium dimer inside the largest single-cage deltahedron"
-  author: "Goicoechea, J. M.; Sevov, S. C."
-  journal: "J. Am. Chem. Soc."
-  year: 2005
-  volume: 127
-  pages: 7676
-  link: "http://dx.doi.org/10.1021/ja051224q"
-  notes: "Highlighted in: <em>Science</em>, 20 May <strong>2005</strong>, 1088."
-  link: "http://dx.doi.org/10.1126/science.308.5725.1088c"
-
-
-
-- title: "Ligand-free deltahedral silicon clusters in solution: Synthesis, structure and electrochemistry of Si<sub>9</sub><sup>2−</sup>"
-  author: "Goicoechea, J. M.; Sevov, S. C."
-  journal: "Inorg. Chem."
-  year: 2005
-  volume: 44
-  pages: 2654
-  link: "http://dx.doi.org/10.1021/ic0500964"
-
-
-- title: "Mononuclear and dinuclear ruthenium complexes with a [Ru(<sup>t</sup>Bu<sub>2</sub>PCH<sub>2</sub>CH<sub>2</sub>P<sup>t</sup>Bu<sub>2</sub>)(CO)] core"
-  author: "Goicoechea, J. M.; Mahon, M. F.; Whittlesey, M. K.; Kumar P. G. A.; Pregosin, P. S."
-  journal: "Dalton Trans."
-  year: 2005
-  pages: 588
-  link: "http://dx.doi.org/10.1039/b415812a"
-  notes: "Highlighted as one of the most cited Dalton Transaction articles published in 2005 and 2006."
-
-
-- title: "The reaction of M(CO)<sub>3</sub>(Ph<sub>2</sub>PCH<sub>2</sub>CH<sub>2</sub>PPh<sub>2</sub>) (M = Fe, Ru) with parahydrogen: probing the electronic structure of reaction intermediates and the internal rearrangement mechanism for the dihydride products"
-  author: "”. Schott, D.; Callaghan, P.; Dunne, J.; Duckett, S. B.; Godard, C.; Goicoechea, J. M.; Harvey, J. N.; Lowe, J. P.; Mawby, R. J.; Müller, G.; Perutz, R. N.; Poli R.; Whittlesey, M. K"
-  journal: ". J. Chem. Soc., Dalton Trans."
-  year: 2004
-  pages: 3218
-  link: "http://dx.doi.org/10.1039/b407457b"
-
-
-- title: "Naked deltahedral silicon clusters in solution: Synthesis and characterization of Si<sub>9</sub><sup>3−</sup> and Si<sub>5</sub><sup>2−</sup>"
-  author: "Goicoechea, J. M.; Sevov, S. C."
-  journal: "J. Am. Chem. Soc."
-  year: 2004
-  volume: 126
-  pages: 6860
-  link: "http://dx.doi.org/10.1021/ja0488075"
-  notes: "Highlighted in: Chemistry and Industry, 21 June 2004, 30."
-
-
-- title: "PGSE diffusion studies on chelating phosphine complexes of Ru (II). Solvent dependence and ion pairing"
-  author: "Kumar, P. G. A.; Pregosin, P. S.; Whittlesey M. K.; Goicoechea, J. M."
-  journal: "Organometallics"
-  year: 2003
-  volume: 22
-  pages: 2956
-  link: "http://dx.doi.org/10.1021/om030145p"
+- year: 2014
+  pubs: 
+  - title: "Hydropnictination Reactions of Carbodiimides and Isocyanates with Protonated Heptaphosphide and Heptaarsenide Zintl Ions"
+    author: "Turbervill, R. S. P.; Goicoechea, J. M."
+    journal: "Eur. J. Inorg. Chem."
+    year: 2014
+    pages: 1660
+    link: "http://onlinelibrary.wiley.com/doi/10.1002/ejic.201301011/abstract"
+    highlighted: true
+    image: "http://lorempixel.com/392/143"
+    date: "99th December 2014"
+
+
+  - title: "Iron(II) complexes of ditopic carbanionic carbenes"
+    author: "Musgrave, R. A.; Turbervill, R. S. P.; Irwin, M.; Herchel, R.; Goicoechea, J. M."
+    journal: "Dalton Trans."
+    year: 2014
+    volume: 43
+    pages: 4335
+    link: "http://pubs.rsc.org/en/content/articlelanding/2014/dt/c3dt52638k#!divAbstract"
+    notes: "Highlighted as a Hot Article (November)."
+
+
+  - title: "Synthesis and Characterization of [Ru@Ge<sub>12</sub>]<sup>3-</sup>: An Endohedral 3-Connected Cluster"
+    author: "Espinoza-Quintero, G.; Duckworth, J. C. A.; Myers, W. K.; McGrady, J. E.; Goicoechea, J. M."
+    journal: "J. Am. Chem. Soc."
+    year: 2014
+    volume: 136
+    pages: 1210
+    link: "http://pubs.acs.org/doi/abs/10.1021/ja411280v"
+    highlighted: true
+    image: "http://lorempixel.com/392/141"
+    date: "99th December 2014"
+
+- year: 2013
+  pubs: 
+  - title: "Phosphinecarboxamide: A Phosphorus-Containing Analogue of Urea and Stable Primary Phosphine"
+    author: "Jupp, A. R.; Goicoechea, J. M."
+    journal: "J. Am. Chem. Soc."
+    year: 2013
+    volume: 135
+    pages: 19131
+    link: "http://pubs.acs.org/doi/abs/10.1021/ja4115693"
+    notes: "Highlighted in: <em>Chemical and Engineering News</em>, 23 December <strong>2013</strong>, <em>91(51)</em>, 12."
+
+
+  - title: "Group 12 Metal Complexes of N-Heterocyclic Ditopic Carbanionic Carbenes"
+    author: "Waters, J. B.; Turbervill, R. S. P.; Goicoechea, J. M."
+    journal: "Organometallics"
+    year: 2013
+    volume: 32
+    pages: 5190
+    link: "http://pubs.acs.org/doi/abs/10.1021/om400728u"
+    highlighted: true
+    image: "http://lorempixel.com/390/142"
+    date: "99th December 2014"
+
+  - title: "The 2-Phosphaethynolate Anion: A Convenient Synthesis and [2+2] Cycloaddition Chemistry"
+    author: "Jupp, A. R.; Goicoechea, J. M."
+    journal: "Angew. Chem., Int. Ed."
+    year: 2013
+    volume: 52
+    pages: 10064
+    link: "http://onlinelibrary.wiley.com/doi/10.1002/anie.201305235/abstract"
+
+
+  - title: "‘Classical’ and ‘Abnormal’ Bonding in Tin (II) N-Heterocyclic Carbene Complexes"
+    author: "Turbervill, R. S. P.; Goicoechea, J. M."
+    journal: "Aus. J. Chem."
+    year: 2013
+    volume: 66
+    pages: 1131
+    link: "http://www.publish.csiro.au/paper/CH13115.htm"
+
+
+  - title: "An Asymmetrically Derivatized 1,2,3-Triphospholide: Synthesis and Reactivity of the 4‐(2′-Pyridyl)-1,2,3-triphospholide Anion"
+    author: "Turbervill, R. S. P.; Goicoechea, J. M."
+    journal: "Inorg. Chem."
+    year: 2013
+    volume: 52
+    pages: 5527
+    link: "http://pubs.acs.org/doi/abs/10.1021/ic400448x"
+
+
+  - title: "On the structural diversity in ten-vertex endohedral clusters, M@E<sub>10</sub> and the synthesis of a new member of the family, [Fe@Sn<sub>10</sub>]<sup>3−</sup>"
+    author: "Krämer, T.; Duckworth, J. C. A.; Ingram, M. D.; Zhou, B.;  McGrady, J. E.; Goicoechea, J. M."
+    journal: "Dalton Trans."
+    year: 2013
+    volume: 42
+    pages: 12120
+    link: "http://pubs.rsc.org/en/content/articlelanding/2013/dt/c3dt50643f"
+    notes: "Highlighted as a Hot Article (May)."
+    highlighted: true
+    image: "http://lorempixel.com/400/400"
+    date: "99th December 2014"
+
+  - title: "Synthesis and Characterization of Free and Coordinated 1,2,3-Tripnictolide Anions"
+    author: "Turbervill, R. S. P.; Jupp, A. R.; McCullough, P. S. B.; Ergöçmen, D.; Goicoechea, J. M."
+    journal: "Organometallics"
+    year: 2013
+    volume: 32
+    pages: 2234
+    link: "http://pubs.acs.org/doi/abs/10.1021/om4001296"
+
+- year: 2012
+  pubs: 
+  - title: "Transition-metal-mediated activation of the heptaarsenide trianion: Isolation of a diaryltetraarsenabutadienediide"
+    author: "Knapp, C. M; Westcott, B. H.; Raybould, M.; McGrady, J. E.; Goicoechea, J. M."
+    journal: "Chem. Commun."
+    year: 2012
+    volume: 48
+    pages: 12183
+    link: "http://pubs.rsc.org/en/content/articlelanding/2012/cc/c2cc36888a"
+
+
+  - title: "A Homologous Series of First-Row Transition-Metal Complexes of 2,2′-Bipyridine and their Ligand Radical Derivatives: Trends in Structure, Magnetism, and Bonding"
+    author: "Irwin, M.; Doyle, L. R.; Kr&auml;mer, T;  Herchel, R.; McGrady, J. E.; Goicoechea, J. M."
+    journal: "Inorg. Chem."
+    year: 2012
+    volume: 51
+    pages: 12301
+    link: "http://pubs.acs.org/doi/abs/10.1021%2Fic301587f"
+
+
+  - title: "Transition Metal Complexes of Anionic N-Heterocyclic Dicarbene Ligands"
+    author: "Musgrave, R. A.; Turbervill, R. S. P.; Irwin, M.; Goicoechea, J. M."
+    journal: "Angew. Chem., Int. Ed."
+    year: 2012
+    volume: 51
+    pages: 10832
+    link: "http://dx.doi.org/10.1002/anie.201206100"
+    notes: "Highlighted as a Hot paper."
+
+
+  - title: "[Co(η<sup>5</sup>-P<sub>5</sub>){η<sup>2</sup>-P<sub>2</sub>H(mes)}]<sup>2−</sup>: A phospha-organometallic complex obtained by the transition-metal-mediated activation of the heptaphosphide trianion"
+    author: "Knapp, C. M.; Westcott, B. H.; Raybould, M. A. C.; McGrady, J. E.; Goicoechea, J. M."
+    journal: "Angew. Chem., Int. Ed."
+    year: 2012
+    volume: 51
+    pages: 9097
+    link: "http://dx.doi.org/10.1002/anie.201203980"
+
+
+  - title: "Further studies into the reactivity and coordination chemistry of [Ge<sub>9</sub>]<sup>4-</sup> Zintl ions. The indium-containing [In(Ge<sub>9</sub>)<sub>2</sub>]<sup>5-</sup>, [(Ge<sub>9</sub>)<sub>2</sub>In(C<sub>6</sub>H<sub>5</sub>)]<sup>4-</sup> and [Ge<sub>9</sub>{In(C<sub>6</sub>H<sub>5</sub>)<sub>3</sub>}<sub>2</sub>]<sup>4-</sup>"
+    author: "Hansen, D. F.; Zhou, B.; Goicoechea, J. M."
+    journal: "J. Organomet. Chem."
+    year: 2012
+    volume: 721-722
+    pages: 53
+    link: "http://dx.doi.org/10.1016/j.jorganchem.2012.05.037"
+    notes: "Contribution to T. P. Fehlner's 75<sup>th</sup> birthday issue.  "
+
+
+  - title: "Synthesis of 1,2,3-tripnictolide anions by reaction of group 15 Zintl ions with acetylene. Isolation of [E<sub>3</sub>C<sub>2</sub>H<sub>2</sub>]<sup>–</sup> (E = P, As) and preliminary reactivity studies"
+    author: "Turbervill, R. S. P.; Goicoechea, J. M."
+    journal: "Chem. Commun."
+    year: 2012
+    volume: 48
+    pages: 6100
+    link: "http://dx.doi.org/10.1039/C2CC32244G"
+    highlighted: true
+    image: "http://lorempixel.com/392/200"
+    date: "99th December 2014"
+
+
+  - title: "Hydrophosphination of carbodiimides using protic heptaphosphide cages: A unique effect of the bimodal activity of protonated group 15 Zintl ions"
+    author: "Turbervill, R. S. P.; Goicoechea, J. M."
+    journal: "Organometallics"
+    year: 2012
+    volume: 31
+    pages: 2452
+    link: "http://dx.doi.org/10.1021/om300072z"
+
+
+  - title: "Studies on the reactivity of group 15 Zintl ions with carbodiimides: synthesis and characterization of a heptaphosphaguanidine dianion"
+    author: "Turbervill, R. S. P.; Goicoechea, J. M."
+    journal: "Chem. Commun."
+    year: 2012
+    volume: 48
+    pages: 1470
+    link: "http://dx.doi.org/10.1039/C1CC12089A"
+
+- year: 2011
+  pubs: 
+  - title: "A highly distorted open-shell endohedral Zintl cluster: [Mn@Pb<sub>12</sub>]<sup>3–</sup>"
+    author: "Zhou, B.; Kr&auml;mer, T.; Thompson, A. L.; McGrady, J. E.; Goicoechea, J. M."
+    journal: "Inorg. Chem."
+    year: 2011
+    volume: 50
+    pages: 8028
+    link: "http://dx.doi.org/10.1021/ic200329m"
+
+
+  - title: "On the structural and electronic properties of [Zn<sub>2</sub>(4,4′-bipyridine)(mes)<sub>4</sub>]<sup>n−</sup> (n = 0–2), a homologous series of bimetallic complexes bridged by neutral, anionic, and dianionic 4,4′-bipyridine"
+    author: "Irwin, M; Kr&auml;mer, T; McGrady, J. E.; Goicoechea, J. M."
+    journal: "Inorg. Chem."
+    year: 2011
+    volume: 50
+    pages: 5006
+    link: "http://dx.doi.org/10.1021/ic200241d"
+
+
+  - title: "Heteroatomic molecular clusters derived from group 15 Zintl ion cages: Synthesis and isolation of [M<sub>2</sub>(HP<sub>7</sub>)<sub>2</sub>]<sup>2−</sup> (M = Ag, Au), two novel cluster anions exhibiting metallophilic interactions"
+    author: "Knapp, C. M.; Jackson, C. S.; Large, J. S.; Thompson, A. L.; Goicoechea, J. M."
+    journal: "Inorg. Chem."
+    year: 2011
+    volume: 50
+    pages: 4021
+    link: "http://dx.doi.org/10.1021/ic102516g"
+
+
+  - title: "The bis(hydrogenheptaphosphide)iron(II) dianion: a Zintl ion analogue of ferrocene?"
+    author: "Knapp, C. M.; Large, J. S.; Rees, N. H.; Goicoechea, J. M."
+    journal: "Chem. Commun."
+    year: 2011
+    volume: 47
+    pages: 4111
+    link: "http://dx.doi.org/10.1039/C1CC10236B"
+
+
+  - title: "A versatile salt-metathesis route to heteroatomic clusters derived from phosphorus and arsenic Zintl anions"
+    author: "Knapp, C. M.; Large, J. S.; Rees, N. H.; Goicoechea, J. M."
+    journal: "Dalton Trans."
+    year: 2011
+    volume: 40
+    pages: 735
+    link: "http://dx.doi.org/10.1039/C0DT00918K"
+
+- year: 2010
+  pubs: 
+  - title: "Studies on the reactivity of [Ge<sub>9</sub>]<sup>4–</sup> towards Fe(COT)(CO)<sub>3</sub>: Synthesis and characterization of [Ge<sub>8</sub>Fe(CO)<sub>3</sub>]<sup>3–</sup> and of the anionic organometallic species [Fe(COT)(CO)<sub>3</sub>]<sup>–</sup>"
+    author: "Zhou, B.; Goicoechea, J. M."
+    journal: "Chem. - Eur. J."
+    year: 2010
+    volume: 16
+    pages: 11145
+    link: "http://dx.doi.org/10.1002/chem.201000507"
+
+
+  - title: "Experimental and computational study of the structural and electronic properties of Fe<sup>II</sup>(2,2′-bipyridine)(mes)<sub>2</sub> and [Fe<sup>II</sup>(2,2′-bipyridine)(mes)<sub>2</sub>]<sup>−</sup>, a complex containing a 2,2′-bipyridyl radical anion"
+    author: "Irwin, M.; Jenkins, R. K.; Denning, M. S.; Kr&auml;mer, T; Grandjean, F; Long, G. J.; Herchel, R; McGrady, J. E.; Goicoechea, J. M."
+    journal: "Inorg. Chem."
+    year: 2010
+    volume: 49
+    pages: 6160
+    link: "http://dx.doi.org/10.1021/ic100817s"
+
+
+  - title: "Reactivity studies of group 15 Zintl ions towards homoleptic post-transition metal organometallics: a 'bottom-up' approach to bimetallic molecular clusters"
+    author: "Knapp, C.; Zhou, B.; Denning, M. S.; Rees, N. H.; Goicoechea, J. M."
+    journal: "Dalton Trans."
+    year: 2010
+    volume: 39
+    pages: 426
+    link: "http://dx.doi.org/10.1039/b911544g"
+
+
+  - title: "Generation of Cationic Two-Coordinate Group-13 Ligand Systems by Spontaneous Halide Ejection: Remarkably Nucleophile-Resistant (Dimethylamino)borylene Complexes"
+    author: "Addy, D. A.; Pierce, G. A.; Vidovic, D.; Mallick, D.; Jemmis, E. D.; Goicoechea, J. M.; Aldridge, S."
+    journal: "J. Am. Chem. Soc."
+    year: 2010
+    volume: 132
+    pages: 4586
+    link: "http://pubs.acs.org/doi/abs/10.1021/ja101192e"
+
+
+  - title: "Bis(permethylpentalene)uranium"
+    author: "Chadwick, F. M.; Ashley, A.; Wildgoose, G.; Goicoechea, J. M.; Randall, S.; O'Hare, D."
+    journal: "Dalton Trans."
+    year: 2010
+    volume: 39
+    pages: 6789
+    link: "http://pubs.acs.org/doi/abs/10.1021/ja101192e"
+
+- year: 2009
+  pubs: 
+  - title: "[Pb<sub>9</sub>CdCdPb<sub>9</sub>]<sup>6-</sup>: A Zintl cluster anion with an unsupported cadmium-cadmium bond"
+    author: "Zhou, B.; Denning, M. S.; Chapman, T. A. D.; McGrady, J. E.; Goicoechea, J. M."
+    journal: "Chem. Commun."
+    year: 2009
+    pages: 7221
+    link: "http://dx.doi.org/10.1039/b917185a"
+    notes: "Highlighted by: <em>CrystEngSelects</em>, 05 November 2009."
+
+
+  - title: "Synthesis and isolation of [Fe@Ge<sub>10</sub>]<sup>3-</sup>: A pentagonal prismatic Zintl ion cage encapsulating an interstitial iron atom"
+    author: "Zhou, B.; Denning, M. S.; Kays, D. L.; Goicoechea, J. M."
+    journal: "J. Am. Chem. Soc."
+    year: 2009
+    volume: 131
+    pages: 2802
+    link: "http://dx.doi.org/10.1021/ja900055j"
+
+  - title: "Synthesis and characterization of alkali-metal salts of 2,2' and 2,4'-bipyridyl radicals and dianions"
+    author: "Gore-Randall, E.; Irwin, M.; Denning, M. S.; Goicoechea, J. M."
+    journal: "Inorg. Chem."
+    year: 2009
+    volume: 48
+    pages: 8304
+    link: "http://dx.doi.org/10.1021/ic9009459"
+
+
+  - title: "Reductive cleavage of Zn-C bonds by group 14 Zintl anions: Synthesis and characterisation of [E<sub>9</sub>ZnR]<sup>3−</sup> (E = Ge, Sn, Pb; R = Mes, <sup>i</sup>Pr)&rdquo;."
+    author: "Zhou, B.; Denning, M. S.; Jones, C.; Goicoechea, J. M."
+    journal: "Dalton Trans."
+    year: 2009
+    pages: 1571
+    link: "http://dx.doi.org/10.1039/B815122A"
+
+
+  - title: "Coupling Reactions of functionalized Zintl ions [E<sub>9</sub>Cd(C<sub>6</sub>H<sub>5</sub>)]<sup>3-</sup> (E = Sn, Pb) with tributyltinhydride: Synthesis and isolation of {Sn<sub>9</sub>CdSn[(CH<sub>2</sub>)<sub>3</sub>CH<sub>3</sub>]<sub>3</sub>}<sup>3-</sup>"
+    author: "Zhou, B.; Denning, M. S.; Chapman, T. A. D.; Goicoechea, J. M."
+    journal: "Inorg. Chem."
+    year: 2009
+    volume: 48
+    pages: 2899
+    link: "http://dx.doi.org/10.1021/ic8022826"
+
+- year: 2008
+  pubs: 
+  - title: "[Hg<sub>3</sub>(Ge<sub>9</sub>)<sub>4</sub>]<sup>10-</sup>: A nanometric molecular rod precursor to polymeric mercury-linked cluster chains"
+    author: "Denning, M. S.; Goicoechea J. M."
+    journal: "Dalton Trans."
+    year: 2008
+    pages: 5882
+    link: "http://dx.doi.org/10.1039/b810990g"
+
+
+  - title: "Synthesis and characterization of the 4,4'-bipyridyl dianion and radical monoanion. A structural study"
+    author: "Denning, M. S.; Irwin, M.; Goicoechea J. M."
+    journal: "Inorg. Chem."
+    year: 2008
+    volume: 47
+    pages: 6118
+    link: "http://dx.doi.org/10.1021/ic800726p"
+
+- year: 2007
+  pubs: 
+  - title: "Heteroatomic deltahedral clusters: Synthesis of closo-[Bi<sub>3</sub>Ni<sub>4</sub>(CO)<sub>6</sub>]<sup>3−</sup>, closo-[Bi<sub>4</sub>Ni<sub>4</sub>(CO)<sub>6</sub>]<sup>2−</sup>, the Open Cluster [Bi<sub>3</sub>Ni<sub>6</sub>(CO)<sub>9</sub>]<sup>3−</sup>, and the intermetalloid closo-[Ni<sub>x</sub>@{Bi<sub>6</sub>Ni<sub>6</sub>(CO)<sub>8</sub>}]<sup>4−</sup>"
+    author: "Goicoechea, J. M.; Hull, M. K.; Sevov, S. C."
+    journal: "J. Am. Chem. Soc."
+    year: 2007
+    volume: 129
+    pages: 7885
+    link: "http://dx.doi.org/10.1021/ja071044b"
+
+- year: 2006
+  pubs: 
+  - title: "Chemistry of deltahedral Zintl ions"
+    author: "Goicoechea, J. M.; Sevov, S. C."
+    journal: "Organometallics"
+    year: 2006
+    volume: 25
+    pages: 5678
+    link: "http://dx.doi.org/10.1021/om060480o"
+
+
+  - title: "Organozinc derivatives of deltahedral Zintl ions: Synthesis and characterization of closo-[E<sub>9</sub>Zn(C<sub>6</sub>H<sub>5</sub>)]<sup>3−</sup> (E = Si, Ge, Sn, Pb)"
+    author: "Goicoechea, J. M.; Sevov, S. C."
+    journal: "Organometallics"
+    year: 2006
+    volume: 25
+    pages: 4530
+    link: "http://dx.doi.org/10.1021/om060481g"
+
+
+  - title: "[Zn<sub>9</sub>Bi<sub>11</sub>]<sup>5−</sup>: A ligand-free intermetalloid cluster"
+    author: "Goicoechea, J. M.; Sevov, S. C."
+    journal: "Angew. Chem. Int. Ed."
+    year: 2006
+    volume: 45
+    pages: 5147
+    link: "http://dx.doi.org/10.1002/anie.200601805"
+    notes: "Highlighted as a VIP paper.<br>Highlighted in: <em>Chemical and Engineering News</em>, 10 July <strong>2006</strong>, <em>84(28)</em>, 22."
+
+
+  - title: "Deltahedral germanium clusters: Insertion of transition-metal atoms and addition of organometallic fragments"
+    author: "Goicoechea, J. M.; Sevov, S. C."
+    journal: "J. Am. Chem. Soc."
+    year: 2006
+    volume: 128
+    pages: 4155
+    link: "http://dx.doi.org/10.1021/ja058652g"
+
+- year: 2005
+  pubs: 
+  - title: "[(Ni-Ni-Ni)@(Ge<sub>9</sub>)<sub>2</sub>]<sup>4−</sup>: A linear triatomic nickel filament enclosed in a dimer of nine-atom germanium clusters"
+    author: "Goicoechea, J. M.; Sevov, S. C."
+    journal: "Angew. Chem. Int. Ed."
+    year: 2005
+    volume: 44
+    pages: 4026
+    link: "http://dx.doi.org/10.1002/anie.200500600"
+    notes: "Highlighted as a VIP paper."
+
+
+  - title: "[(Pd-Pd)@Ge<sub>18</sub>]<sup>4−</sup>: A palladium dimer inside the largest single-cage deltahedron"
+    author: "Goicoechea, J. M.; Sevov, S. C."
+    journal: "J. Am. Chem. Soc."
+    year: 2005
+    volume: 127
+    pages: 7676
+    link: "http://dx.doi.org/10.1021/ja051224q"
+    notes: "Highlighted in: <em>Science</em>, 20 May <strong>2005</strong>, 1088."
+    link: "http://dx.doi.org/10.1126/science.308.5725.1088c"
+
+
+
+  - title: "Ligand-free deltahedral silicon clusters in solution: Synthesis, structure and electrochemistry of Si<sub>9</sub><sup>2−</sup>"
+    author: "Goicoechea, J. M.; Sevov, S. C."
+    journal: "Inorg. Chem."
+    year: 2005
+    volume: 44
+    pages: 2654
+    link: "http://dx.doi.org/10.1021/ic0500964"
+
+
+  - title: "Mononuclear and dinuclear ruthenium complexes with a [Ru(<sup>t</sup>Bu<sub>2</sub>PCH<sub>2</sub>CH<sub>2</sub>P<sup>t</sup>Bu<sub>2</sub>)(CO)] core"
+    author: "Goicoechea, J. M.; Mahon, M. F.; Whittlesey, M. K.; Kumar P. G. A.; Pregosin, P. S."
+    journal: "Dalton Trans."
+    year: 2005
+    pages: 588
+    link: "http://dx.doi.org/10.1039/b415812a"
+    notes: "Highlighted as one of the most cited Dalton Transaction articles published in 2005 and 2006."
+
+- year: 2004
+  pubs: 
+  - title: "The reaction of M(CO)<sub>3</sub>(Ph<sub>2</sub>PCH<sub>2</sub>CH<sub>2</sub>PPh<sub>2</sub>) (M = Fe, Ru) with parahydrogen: probing the electronic structure of reaction intermediates and the internal rearrangement mechanism for the dihydride products"
+    author: "”. Schott, D.; Callaghan, P.; Dunne, J.; Duckett, S. B.; Godard, C.; Goicoechea, J. M.; Harvey, J. N.; Lowe, J. P.; Mawby, R. J.; Müller, G.; Perutz, R. N.; Poli R.; Whittlesey, M. K"
+    journal: ". J. Chem. Soc., Dalton Trans."
+    year: 2004
+    pages: 3218
+    link: "http://dx.doi.org/10.1039/b407457b"
+
+
+  - title: "Naked deltahedral silicon clusters in solution: Synthesis and characterization of Si<sub>9</sub><sup>3−</sup> and Si<sub>5</sub><sup>2−</sup>"
+    author: "Goicoechea, J. M.; Sevov, S. C."
+    journal: "J. Am. Chem. Soc."
+    year: 2004
+    volume: 126
+    pages: 6860
+    link: "http://dx.doi.org/10.1021/ja0488075"
+    notes: "Highlighted in: Chemistry and Industry, 21 June 2004, 30."
+
+- year: 2003
+  pubs: 
+  - title: "PGSE diffusion studies on chelating phosphine complexes of Ru (II). Solvent dependence and ion pairing"
+    author: "Kumar, P. G. A.; Pregosin, P. S.; Whittlesey M. K.; Goicoechea, J. M."
+    journal: "Organometallics"
+    year: 2003
+    volume: 22
+    pages: 2956
+    link: "http://dx.doi.org/10.1021/om030145p"
