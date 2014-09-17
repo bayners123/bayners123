@@ -133,30 +133,6 @@ Modernizr.load [
             
             # If we're on the main page, do stuff to those elements:
             if checkBody("mainpage")
-                # TAB MENU GENERIC STUFF: 
-            
-                # Initiation of .tabgroups
-                Modernizr.load
-                    load: '/js/jquery.tabgroups.js'
-                    complete: ->
-                        $(".tabgroup").tabGroups()
-
-                # END TAB MENU GENERIC STUFF
-                
-                # Set research tabs to hidden on load (so they're visible if Java is disabled)
-                $('#researchDetails').hide()
-            
-                # Bind research bubbles to the appropriate sections of the tabs & make them cause the tabs to appear
-                $('.researchBubble').click ->
-                    # $('#researchDetails').removeClass("hidden")
-                    $('#researchDetails').show().addClass("animated appearZoom")
-            
-                $('#research1').click ->
-                    $('#researchLink1').click()
-                $('#research2').click ->
-                    $('#researchLink2').click()
-                $('#research3').click ->
-                    $('#researchLink3').click()
             
                 # EXPANDABLE SECTIONS
             
@@ -455,5 +431,26 @@ Modernizr.load [
                     
                 # Zoom all the highlighted research images
                 $('#publications .filledImg img').zoomImage()
+    ,   
+        test: checkBody("mainpage")
+        yep: '/js/jquery.tabgroups.js'
+        callback: ->
+            # Initiation of .tabgroups
+            $(".tabgroup").tabGroups()
+            
+            # Set research tabs to hidden on load (so they're visible if Java is disabled)
+            $('#researchDetails').hide()
+        
+            # Bind research bubbles to the appropriate sections of the tabs & make them cause the tabs to appear
+            $('.researchBubble').click ->
+                # $('#researchDetails').removeClass("hidden")
+                $('#researchDetails').show().addClass("animated appearZoom")
+        
+            $('#research1').click ->
+                $('#researchLink1').click()
+            $('#research2').click ->
+                $('#researchLink2').click()
+            $('#research3').click ->
+                $('#researchLink3').click()
 
     ]
