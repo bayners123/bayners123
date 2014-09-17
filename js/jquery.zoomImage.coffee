@@ -89,6 +89,9 @@
         # Register the function to zoom the image (or whatever) as soon as it's loaded if active
         $element.one "load.#{@_name}", =>
             $element = $(@element)
+            
+            # Show the image if it was hidden
+            $element.show()
                 
             # Get the image's dimentions. 
             #   This only needs to happen once and can only happen once,

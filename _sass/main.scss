@@ -330,10 +330,13 @@ i, em { @extend .italic; }
 }
 
 #publications {
-
+    
     .filledImg {
         width: 90%;
         margin-left: 5%;
+        img {
+            display: none;
+        }
     }
 
      .shrunk p {
