@@ -29,7 +29,7 @@ do ($ = jQuery, window, document) ->
             @settings = $.extend {}, defaults, options
             @_defaults = defaults
             @_name = pluginName
-            @data = data
+            @data = $.extend {}, data
             @init()
 
         init: ->
