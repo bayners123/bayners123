@@ -31,7 +31,7 @@
         <div id="topSlider" class="slider slidesjs-styles" data-aspectratio=2.6667 data-aspectratiomobile=1.3333>
             {% for post in site.posts limit:4 %}
             <div>
-                <span class="caption">{{ post.content }}</span>
+                <span class="caption">{{ post.content }}<span class="date">{{ post.date | date_to_long_string }}</span></span>
                 <img alt="Slideshow slide" src="{{ post.image }}">
             </div>
             {% endfor %}

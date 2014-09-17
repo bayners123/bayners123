@@ -218,6 +218,11 @@ i, em { @extend .italic; }
     	bottom: 0; right: 0; 
     	padding: 30px;
         max-width: 85%;
+        .date {
+            float: right;
+            font-style: italic;
+            font-size: 0.8em;
+        }
     }
 }
 
