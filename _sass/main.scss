@@ -217,6 +217,7 @@ i, em { @extend .italic; }
         @extend .sliderBlackBox;
     	bottom: 0; right: 0; 
     	padding: 30px;
+        max-width: 85%;
     }
 }
 

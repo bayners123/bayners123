@@ -29,13 +29,15 @@
         <!-- TODO: mouseover colour change for slider as in Goodwin -->
         <!-- Aspect ratio is width / height -->
         <div id="topSlider" class="slider slidesjs-styles" data-aspectratio=2.6667 data-aspectratiomobile=1.3333>
+            {% for post in site.posts limit:4 %}
             <div>
-                <span class="caption">There's lots and lost and lots and lots and lots of stuff in here</span>
-                <img alt="Slideshow slide" src="/images/boat1.jpg">
+                <span class="caption">{{ post.content }}</span>
+                <img alt="Slideshow slide" src="{{ post.image }}">
             </div>
-            <img alt="Slideshow slide" src="/images/boat2.jpg">
+            {% endfor %}
+            
             <a href="#" class="slidesjs-navigation moreNews">
-                More news...
+                Older news...
             </a>
             <div class="slidesjs-navigation slideNavBox">
                 <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left fa-2x"></i></a>
