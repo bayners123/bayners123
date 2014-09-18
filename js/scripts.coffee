@@ -292,10 +292,7 @@ Modernizr.load [
                                 speed: 600
                                 crossfade: true
                         lazy: true
-
-
-                
-                    
+                        
                 # END DOC READY
                         
             # Resize slider aspect ratio if the screen gets smaller (bind to window.resize event) if present
@@ -343,6 +340,7 @@ Modernizr.load [
                         fade: 
                             speed: 600
                             crossfade: true
+                    lazy: true
             
     ,
         test: checkBody("mainpage")

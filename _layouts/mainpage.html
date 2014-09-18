@@ -244,10 +244,10 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
                 
                 <!-- Start slider content -->
                 
-                {% for page in site.facilities %}
+                {% for slide in site.facilities %}
                 <div>
-                    <span class="caption">{{ page.output }}</span>
-                    <img alt="{{ page.title }}" src="{{ page.image }}" />
+                    <span class="caption">{{ slide.output }}</span>
+                    <img alt="{{ slide.title }}" data-original="{{ slide.image }}" />
                 </div>
                 {% endfor %}
                 
@@ -269,8 +269,8 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
                 <!-- Slider pagination -->
                 
 				<ul class="slidesjs-pagination slidesjs-navigation">
-                    {% for page in site.facilities %}
-					<li><a href="#"><span class="mobileOnly">{{ page.shortTitle }}</span><span class="notMobileOnly">{{ page.title }}</span></a></li>
+                    {% for slide in site.facilities %}
+					<li><a href="#"><span class="mobileOnly">{{ slide.shortTitle }}</span><span class="notMobileOnly">{{ slide.title }}</span></a></li>
                     {% endfor %}
 				</ul>
                 
