@@ -267,34 +267,29 @@ Modernizr.load [
             slideHeightMobile = $("#topSlider").data("aspectratiomobile")
             mobileThreshold = 550
 
-            # Bind to doc. ready
-            $ ->
-                
-                # Initiation of slider
-                $("#topSlider")
-                    .slidesjs
-                        width: slideWidth,
-                        height: if (screen.width < mobileThreshold ) then slideHeightMobile else slideHeight,
-                        zoom: true,
-                        navigation: 
-                            active: false,
-                        play:
-                            active: true,
-                            effect: "fade"
-                            interval: 4000,
-                            auto: true,
-                            swap: true,
-                            pauseOnHover: false,
-                            generate: false,
-                            restartDelay: 1000
-                        effect:
-                            fade: 
-                                speed: 600
-                                crossfade: true
-                        lazy: true
-                        
-                # END DOC READY
-                        
+            # Initiation of slider
+            $("#topSlider")
+                .slidesjs
+                    width: slideWidth,
+                    height: if (screen.width < mobileThreshold ) then slideHeightMobile else slideHeight,
+                    zoom: true,
+                    navigation: 
+                        active: false,
+                    play:
+                        active: true,
+                        effect: "fade"
+                        interval: 4000,
+                        auto: true,
+                        swap: true,
+                        pauseOnHover: false,
+                        generate: false,
+                        restartDelay: 1000
+                    effect:
+                        fade: 
+                            speed: 600
+                            crossfade: true
+                    lazy: true
+                    
             # Resize slider aspect ratio if the screen gets smaller (bind to window.resize event) if present
             if $("#topSlider").length != 0
                 $(window).resize ->
