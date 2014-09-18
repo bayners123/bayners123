@@ -87,17 +87,15 @@
         @_setupStyles() if @data.active
         
         # Register the function to zoom the image (or whatever) as soon as it's loaded if active
-        $element.one "load.#{@_name}", =>
+        $element.on "load.#{@_name}", =>
             $element = $(@element)
             
             # Show the image if it was hidden
             $element.show()
                 
-            # Get the image's dimentions. 
-            #   This only needs to happen once and can only happen once,
-            #   since this plugin will change these values but we want the originals
-            @data.imgWidth = @element.width
-            @data.imgHeight = @element.height
+            # Get the image's original dimentions. 
+            @data.imgWidth = @element.naturalWidth
+            @data.imgHeight = @element.naturalHeight
     
             # The aspect ratio of this image
             @data.imgRatio = @data.imgWidth / @data.imgHeight
