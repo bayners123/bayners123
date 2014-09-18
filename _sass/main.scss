@@ -452,13 +452,11 @@ a.expandSection i {
         display: none;
     }
 
-    .fullHolder > img {
-        width: 100%;
-    }
-    
     .imgHolder {
         position: absolute;
         top:0;right: 0;bottom: 0;left: 0;
+        
+        img { display: none; }
     }
     
     .yearBox {

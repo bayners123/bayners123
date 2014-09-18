@@ -118,7 +118,10 @@
                 image: $img
                 imageLoaded: false
                 
-            $img.hide() unless index == 0
+            if index == 0
+                $img.show()
+            else
+                $img.hide()
         
         if @options.descULHolder
             descULHolder = $(@options.descULHolder)
