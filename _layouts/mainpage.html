@@ -1,4 +1,6 @@
 ---
+# Placeholder image for unloaded images. A 1x1 gray square. 
+placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
 ---
 
 {% include top.html %}
@@ -142,7 +144,7 @@
                 
                 <div class="imgHolder">
                     {% for yearObj in site.data.members %}
-                    <img src="{{ yearObj.photo }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />
+                    <img src="{{ page.placeholder }}" data-original="{{ yearObj.photo }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />
                     {% endfor %}
                 </div>
                 
