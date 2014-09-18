@@ -32,7 +32,7 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
             {% for post in site.posts limit:4 %}
             <div>
                 <span class="caption">{{ post.content }}<span class="date">{{ post.date | date_to_long_string }}</span></span>
-                <img alt="Slideshow slide" src="{{ post.image }}">
+                <img alt="Slideshow slide" data-original="{{ post.image }}">
             </div>
             {% endfor %}
             

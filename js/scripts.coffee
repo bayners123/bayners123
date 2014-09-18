@@ -291,6 +291,7 @@ Modernizr.load [
                             fade: 
                                 speed: 600
                                 crossfade: true
+                        lazy: true
 
 
                 
