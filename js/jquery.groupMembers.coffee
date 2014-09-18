@@ -357,7 +357,7 @@
         # Create an img element to load the image so that the browser has it in the cache
         $('<img />')
             # When this virtual img is loaded, set the slideshow's src to the same so that we see it
-            .bind "load.#{@_name}", =>
+            .one "load.#{@_name}", =>
                 $image.attr "src", src
                 
             # Actually do the loading
