@@ -32,7 +32,8 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
             {% for post in site.posts limit:4 %}
             <div>
                 <span class="caption">{{ post.content }}<span class="date">{{ post.date | date_to_long_string }}</span></span>
-                <img alt="Slideshow slide" data-original="{{ post.image }}">
+                {% if forloop.first %}<img alt="Slideshow slide" src="{{ post.image }}">
+                {% else %}<img alt="Slideshow slide" data-original="{{ post.image }}">{% endif %}
             </div>
             {% endfor %}
             
@@ -144,7 +145,8 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
                 
                 <div class="imgHolder">
                     {% for yearObj in site.data.members %}
-                    <img src="{{ page.placeholder }}" data-original="{{ yearObj.photo }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />
+                    {% if forloop.first %}<img src="{{ yearObj.photo }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />
+                    {% else %}<img src="{{ page.placeholder }}" data-original="{{ yearObj.photo }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />{% endif %}
                     {% endfor %}
                 </div>
                 
@@ -247,7 +249,8 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
                 {% for slide in site.facilities %}
                 <div>
                     <span class="caption">{{ slide.output }}</span>
-                    <img alt="{{ slide.title }}" data-original="{{ slide.image }}" />
+                    {% if forloop.first %}<img alt="{{ slide.title }}" src="{{ slide.image }}" />
+                    {% else %}<img alt="{{ slide.title }}" data-original="{{ slide.image }}" />{% endif %}
                 </div>
                 {% endfor %}
                 
