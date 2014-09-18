@@ -26,18 +26,21 @@ scrollTo = (selector, delay) ->
     , delay
 
 # Function to check for body having a given class
-checkBody = (testClass) ->
+window.checkBody = (testClass) ->
     classes = document.body.className
     test = new RegExp("\\b" + testClass + "\\b",'g')
     
     return test.test(classes)
+        
+# Are we on the main page?
+window.isMainpage = window.checkBody("mainpage")
         
 # Are we in mobile mode? This is updated by a screen resize callback once jquery is loaded
 window.mobileMode = screen.width < 800
 
 # Load skrollr if we're not on a mobile & the body has the class "skrollrMe", but don't initialise it yet
 Modernizr.load [
-        test: checkBody("skrollrMe") and not Modernizr.touch,
+        test: window.isMainpage and not Modernizr.touch,
         yep: [window.joseURL + '/js/skrollr.min.js', window.joseURL + '/js/skrollr-stylesheets.js', window.joseURL + '/js/skrollr-menu.min.js'],
 
         callback: (url, result, key) ->
@@ -137,7 +140,7 @@ Modernizr.load [
             $(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling wheel.menuscrolling', window.scrollIntercept
             
             # If we're on the main page, do stuff to those elements:
-            if checkBody("mainpage")
+            if window.isMainpage
             
                 # EXPANDABLE SECTIONS
             
@@ -242,7 +245,7 @@ Modernizr.load [
                     
     ,
     # Touchwipe allows us to simulate a scroll event for touchscreens that wouldn't otherwise fire one
-        test: Modernizr.touch
+        test: Modernizr.touch && window.isMainpage
         yep: window.joseURL + '/js/jquery.touchwipe.min.js'
         callback: ->
             $(window).touchwipe({
@@ -255,7 +258,7 @@ Modernizr.load [
                 preventDefaultEvents: false
             });
     ,
-        test: checkBody("mainpage")
+        test: window.isMainpage
         yep: window.joseURL + '/js/jquery.slides.js'
         callback: ->
             
@@ -338,7 +341,7 @@ Modernizr.load [
                     lazy: true
             
     ,
-        test: checkBody("mainpage")
+        test: window.isMainpage
         yep: window.joseURL + '/js/jquery.fullscreen.js',
         callback: ->
             
@@ -409,21 +412,21 @@ Modernizr.load [
                         top: ($('#facilities .slider').height() - arrows.first().height()) / 2
                     
     ,
-        test: checkBody("mainpage")
+        test: window.isMainpage
         yep: [window.joseURL + '/js/jquery.zoomImage.js',window.joseURL + '/js/jquery.groupMembers.js']
         complete: ->
             # Init all the groupmembers stuff
-            if checkBody("mainpage")
+            if window.isMainpage
                 $('#groupmembers .fullHolder').groupScroller
                     first: "middle"
-                
+            
                 $('#groupmembers .fullHolder a').click ->
                     scrollTo "#groupmembers"
-                    
+                
                 # Zoom all the highlighted research images
                 $('#publications .filledImg img').zoomImage()
     ,   
-        test: checkBody("mainpage")
+        test: window.isMainpage
         yep: window.joseURL + '/js/jquery.tabgroups.js'
         callback: ->
             # Initiation of tabgroups for research
@@ -454,5 +457,10 @@ Modernizr.load [
                     forceHeight: false
                 # Init skrollr menus
                 skrollr.menu.init skrollr.get()
-
     ]
+    
+# Run any custom javascript that was passed by a page
+if window.customJS?
+    window.customJS()
+    
+    
