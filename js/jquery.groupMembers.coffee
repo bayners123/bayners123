@@ -56,6 +56,8 @@
         #       descUL: element
         #       nav: element
         #
+        #       imageLoaded: false    This is for lazy loading: false until the image is loaded. 
+        #
         #     - year: ...
         
     class Plugin
@@ -114,6 +116,7 @@
             @data.groupInfo.push 
                 year: year
                 image: $img
+                imageLoaded: false
                 
             $img.hide() unless index == 0
         
@@ -298,6 +301,9 @@
             descs.eq(year).show()
             navs.eq(year).show()
             
+            # See if the image has been loaded already and load it if not
+            @loadImage(year) if not @data.groupInfo[year].imageLoaded
+            
             # Update year display
             @data.yearHeading.html @data.groupInfo[year].year
             
@@ -340,6 +346,10 @@
         xMargin = 0 + farRight * slide / (@data.noSlides - 1)
         
         return xMargin
+    
+    # Load and display the image for the given year
+    Plugin::loadImage = (year) ->
+        false
         
         
     # Plugin constructor
