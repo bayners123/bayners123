@@ -566,8 +566,28 @@ a.expandSection i {
     a { color: $textContrast-color; @extend .bold; }
 }
 
-#footer .unit:nth-child(2) {
-    text-align: right;
+#footer, #copyright {
+    .unit:nth-child(2) {
+        text-align: right;
+    }
+}
+
+#copyright {
+    font-size: 0.75em;
+    background: $oxford-color;
+    border-top: 2px solid $contrast-color;
+    padding: 1.5em 0 0.75em;
+    color: $textContrast-color;
+    a { color: $textContrast-color; text-decoration: none;}
+    a:hover { text-decoration: underline; }
+    .baynham {
+        a { position: relative; padding-right: 3em; }
+        img {
+            position: absolute;
+            right: 0; bottom: 0;
+            width: 3em;
+        }
+    }
 }
 
 #newsPage {
