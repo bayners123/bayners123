@@ -55,14 +55,14 @@
 
 }
 
-@media only screen
-and (max-device-width : 799px) {
+@media screen and (max-width : 799px) {
     
 body{
 /*    Nerf the iPhone's text resizing  */
 -webkit-text-size-adjust: none;
 }
 
+#headerarea h1 { font-size: 2.188em; }
 
 body, #menubar { min-width: 0; }
 
