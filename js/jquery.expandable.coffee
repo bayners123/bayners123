@@ -21,7 +21,7 @@ do ($ = jQuery, window, document) ->
     class Plugin
         constructor: (@element, options) ->
             
-            @init = ->
+            init = =>
                 $element = $(@element)
 
                 # Find the controlling link if not given. Look first for a child of the .expandable section
@@ -100,7 +100,7 @@ do ($ = jQuery, window, document) ->
             scrollTo = (selector, delay) ->
                 # Default 200ms delay
                 delay = 200 unless delay?
-    
+                
                 # Do the scroll
                 $('html, body').animate
                     scrollTop: $(selector).offset().top
@@ -111,7 +111,7 @@ do ($ = jQuery, window, document) ->
             @_defaults = defaults
             @_name = pluginName
             @data = $.extend {}, data
-            @init()
+            init()
 
     # A really lightweight plugin wrapper around the constructor,
     # preventing against multiple instantiations
