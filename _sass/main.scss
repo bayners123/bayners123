@@ -360,15 +360,41 @@ i, em { @extend .italic; }
     }
 
      .expanded {
-        .prose li {
-            margin-bottom: 1em;
-        }
-        
         .pub {
+            margin-bottom: 1em;
+            div { margin: 0; }
             
-            .title, .journal, .volume { @extend .italic; }
-            .year { @extend .bold; }
+            // remove link styling
+            color: $text-color;
+            text-decoration: none;
             
+            .author {
+                @extend .italic;
+                float: right;
+                text-align: right;
+            }
+            .author:before { content: "- "; }
+            .journal {
+                @extend .bold;
+                float: left;
+            }
+            
+            .journal, .author { font-size: 0.8em; }
+            
+            clear: both;
+        }
+        .pub:hover {
+            text-decoration: underline;
+            sub, sup { text-decoration: none; }
+        }
+        // Clearfix
+        .pub:after {
+          display: table;
+          content: "";
+          line-height: 0;
+        }
+        .pub:after {
+          clear: both;
         }
     }
 }
