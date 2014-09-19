@@ -1,0 +1,7 @@
+news:
+	slider -> just images of the lab, etc
+	add text-scroller across top with latest news. Just text & date
+	
+Pubs: 
+	Use mark's formatting
+	
