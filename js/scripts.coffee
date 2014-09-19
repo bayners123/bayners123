@@ -142,97 +142,6 @@ Modernizr.load [
             # If we're on the main page, do stuff to those elements:
             if window.isMainpage
             
-                # EXPANDABLE SECTIONS
-            
-                # Find all .expandable sections
-                $expandableSections = $('.expandable')
-            
-                # For each of them, initialise the controlling link to show / hide appropriately
-                $expandableSections.each ->
-                
-                    # Find the controlling link. Look first for a child of the .expandable section
-                    # If not found, look at the siblings
-                    $expandControl = $(this).children('.expandSection')
-                    if $expandControl.length == 0
-                        $expandControl = $(this).siblings('.expandSection')
-                
-                    # If we found a controlling link...
-                    if $expandControl.length != 0
-                    
-                        # Look for the two divs containing the shrunk and the expanded display & the parent
-                        # Also find the arrow if present
-                        $shortSection = $(this).children('.shrunk')
-                        $longSection = $(this).children('.expanded')
-                        $container= $shortSection.parent()
-                        $arrow = $expandControl.children('.fa.fa-arrow-down')
-                    
-                        $longSection
-                            .addClass 'hidden'
-                            .hide()
-                    
-                        # Save the jQuery objects for these with the link
-                        eventData = 
-                            "container" : $container
-                            "shortSection": $shortSection
-                            "longSection": $longSection
-                            "arrow": $arrow
-                    
-                        # Register a click handler to toggle their visibility
-                        $expandControl.on "click.expansion", eventData, (e) ->
-                        
-                            # Get the sections which it controls (set earlier in the initialisation)
-                            container = e.data.container
-                            short = e.data.shortSection
-                            long = e.data.longSection
-                            arrow = e.data.arrow
-                        
-                            # Toggle their visibilities
-                            if long.hasClass("hidden")
-                                # Mark it as hidden for this script
-                                short.addClass 'hidden'
-                                long.removeClass 'hidden'
-                            
-                                # Hide / show them
-                                short.slideUp
-                                    duration: 500
-                                    complete: refreshSkrollr
-                                long.slideDown
-                                    duration: 500
-                                    complete: refreshSkrollr
-                                
-                                # Put the view back to the section top
-                                scrollTo container, 500
-                            
-                                # Change the arrow
-                                arrow
-                                    .addClass "fa-arrow-up"
-                                    .removeClass "fa-arrow-down"
-                            else
-                                short.removeClass 'hidden'
-                                long.addClass 'hidden'
-                                short.slideDown
-                                    duration: 500
-                                    complete: refreshSkrollr
-                                long.slideUp
-                                    duration: 500
-                                    complete: refreshSkrollr
-                            
-                                # Put the view back to the section top
-                                scrollTo container, 500
-                            
-                                arrow
-                                    .addClass "fa-arrow-down"
-                                    .removeClass "fa-arrow-up"
-                            
-                            # Prevent default link action 
-                            e.preventDefault()
-                    else
-                        # No controlling element found
-                        console.log "No .expandSection control found for section:"
-                        console.log this
-                        console.log "This should be either a child or sibling of the .expandable element"
-             
-
                 # Animate .hoverPulse elements when hovered using 'Animate.css'
                 # Also, reduce duration to 0.5s
                 $('.hoverPulse')
@@ -457,6 +366,12 @@ Modernizr.load [
                     forceHeight: false
                 # Init skrollr menus
                 skrollr.menu.init skrollr.get()
+        ,
+        # Expandable sections
+            test: window.isMainpage
+            yep: window.joseURL + '/js/jquery.expandable.js'
+            callback: ->
+                $('.expandable').expandable()
     ]
     
 # Run any custom javascript that was passed by a page
