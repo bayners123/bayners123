@@ -213,11 +213,11 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
                          in this div. -->
                     
                     <div class="shrunk">
-                        {{ site.frontpage | where:"section","publicationsShrunk" }}
+                        {% include publications-shrunk.html %}
                     </div>
                     
                     <div class="expanded">
-                        {{ site.frontpage | where:"section","publicationsExpanded" }}
+                        {% include publications-expanded.html %}
                     </div>
                     
                 </div>
