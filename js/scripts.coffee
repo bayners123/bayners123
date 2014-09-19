@@ -32,11 +32,12 @@ window.checkBody = (testClass) ->
     
     return test.test(classes)
         
+# Are we on a mobile?
+window.mobileMode = -> 
+    screen.width < 800
+        
 # Are we on the main page?
 window.isMainpage = window.checkBody("mainpage")
-        
-# Are we in mobile mode? This is updated by a screen resize callback once jquery is loaded
-window.mobileMode = screen.width < 800
 
 # Load skrollr if we're not on a mobile & the body has the class "skrollrMe", but don't initialise it yet
 Modernizr.load [
@@ -61,10 +62,6 @@ Modernizr.load [
             if !window.jQuery
                 Modernizr.load
                     load: window.joseURL + '/js/jquery.min.js'
-                    
-            # Keep mobilemode up-to-date
-            $(window).resize ->
-                (window.mobileMode = screen.width < 800)
                     
             # function to toggle menubar visibility & change mobilebar morebutton icon
             toggleMenu = (menubar, moreButtonI) ->
@@ -92,17 +89,17 @@ Modernizr.load [
                 
             # Set the menubar to hidden if we're mobile & remove the CSS hiding it from view
             # This means it's hidden by the margin rather than display: none
-            if window.mobileMode
-                $menubar
-                    .addClass "hidden"
-                    .css "display", "block"
-                
+            $(window).resize ->
+                if window.mobileMode()
+                    $menubar
+                        .addClass "hidden"
+                        .css "display", "block"
                 
             # Hide the menubar if we click it on a mobile (since the mobilebar is also present)
             # N.B. we do not preventDefault so the click will still cause navigation as expected
             $($menubar).click ->
                 # If we're in mobile mode:
-                if window.mobileMode
+                if window.mobileMode()
                 # then hide the menubar
                     toggleMenu $menubar, $moreButtonI
             
@@ -124,7 +121,7 @@ Modernizr.load [
                 else if delta < -appearanceThreshold 
                     delta = -appearanceThreshold
                 
-                if window.mobileMode
+                if window.mobileMode()
                     if delta == 0
                         $mobilebar.addClass("hidden")
                         if not $menubar.hasClass("hidden")
@@ -206,18 +203,15 @@ Modernizr.load [
             if $("#topSlider").length != 0
                 $(window).resize ->
                             
-                    # Are we already in mobile mode? Check by looking at the slider's current dimentions
-                    window.mobileMode = $("#topSlider").data("plugin_slidesjs").options.width / $("#topSlider").data("plugin_slidesjs").options.height == slideWidth / slideHeightMobile
-
                     # If it's currently in mobile mode & we changed to normal mode:
-                    if window.mobileMode && $(@).width() > mobileThreshold
+                    if window.mobileMode() && $(@).width() > mobileThreshold
                         $("#topSlider").data("plugin_slidesjs").resize slideWidth, slideHeight
                     
                         # Refresh skrollr if present
                         refreshSkrollr()
 
                     # Else if it's currently in normal and we changed to mobile:
-                    else if $(@).width() < mobileThreshold  && !window.mobileMode
+                    else if $(@).width() < mobileThreshold  && !window.mobileMode()
                         $("#topSlider").data("plugin_slidesjs").resize slideWidth, slideHeightMobile
                     
                         # Refresh skrollr if present
@@ -283,10 +277,10 @@ Modernizr.load [
                 # animationDuration: "1s"
                 # parentElement: $('#skrollr-body')
                 # offset: -50
-                scrollCaptureRange: if window.mobileMode then 75 else 150
+                scrollCaptureRange: if window.mobileMode() then 75 else 150
                     # Distance from element within which the window will lock to it
                     #    Smaller for mobiles
-                lostFocusRange: if window.mobileMode then 51 else 151 # Distance at which to trigger the lostFocusCallback
+                lostFocusRange: if window.mobileMode() then 51 else 151 # Distance at which to trigger the lostFocusCallback
                 resizeCallback: ->
                     # Refresh skrollr if present
                     refreshSkrollr()
@@ -299,10 +293,10 @@ Modernizr.load [
                 active: true
                 scrollCallback: ->
                     $('#menubar, #mobilebar').addClass("hidden")
-                scrollCaptureRange: if window.mobileMode then 75 else 150
+                scrollCaptureRange: if window.mobileMode() then 75 else 150
                     # Distance from element within which the window will lock to it
                     #    Smaller for mobiles
-                lostFocusRange: if window.mobileMode then 51 else 151 # Distance at which to trigger the lostFocusCallback
+                lostFocusRange: if window.mobileMode() then 51 else 151 # Distance at which to trigger the lostFocusCallback
                 resizeCallback: ->
                     # Refresh skrollr if present
                     refreshSkrollr()
