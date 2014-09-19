@@ -6,6 +6,8 @@
 	.mobileOnly { display: initial; }
     .notMobileOnly { display: none; }
     
+    h2 { font-size: 1.3em }
+    
     #researchDetails {
         .tabmenu {
             background: #CCC;
@@ -65,8 +67,6 @@ body{
 #headerarea h1 { font-size: 2.188em; }
 
 body, #menubar { min-width: 0; }
-
-h2 { font-size: 1.5em }
 
 .alpha60bgBlackMob {
     /* Fallback for web browsers that doesn't support RGBa */
