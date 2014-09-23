@@ -1,5 +1,4 @@
----
----
+
 do ($ = jQuery, window, document) ->
 
     # Create the defaults once

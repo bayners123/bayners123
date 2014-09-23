@@ -1,5 +1,3 @@
----
----
 # SlidesJS 3.0.4
 
 # Documentation and examples http://slidesjs.com

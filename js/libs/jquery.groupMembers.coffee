@@ -1,5 +1,3 @@
----
----
 # Jose group members scroller
 
 # Not for release ever

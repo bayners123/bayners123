@@ -1,5 +1,3 @@
----
----
 # ZoomImage 0.1
 
 # Not for release as yet
