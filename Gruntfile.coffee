@@ -20,9 +20,12 @@ module.exports = (grunt) ->
         
         concat:
             # 2. Configuration for concatinating files goes here.
-            rawLibs: 
-                src: ['_js/libs/*.js', '!_js/libs/skrollr*.js']
+            rawLibs: # not skrollr or jquery
+                src: ['_js/libs/*.js', '!_js/libs/skrollr*.js', '!_js/libs/jquery.min.js']
                 dest: "_js/build/libs_raw.js"
+            jquery: 
+                src: '_js/libs/jquery.min.js'
+                dest: 'js/jquery.min.js'
             skrollr:
                 src: ['_js/libs/skrollr.min.js', '_js/libs/skrollr*.js']
                 dest: "_js/build/libs_skrollr.js"
