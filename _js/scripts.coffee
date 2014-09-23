@@ -1,5 +1,3 @@
----
----
 
 # MAYBE: Turn plugins into proper Grunt plugins & extract more code as plugins where possible
 
@@ -41,7 +39,7 @@ window.isMainpage = window.checkBody("mainpage")
 
 # Load skrollr if we're not on a mobile & the body has the class "skrollrMe", but don't initialise it yet
 Modernizr.load [
-        test: window.isMainpage and not Modernizr.touch,
+        test: window.isMainpage and not Modernizr.touch and typeof IElt9 == 'undefined',
         yep: [window.joseURL + '/js/skrollr.min.js', window.joseURL + '/js/skrollr-stylesheets.js', window.joseURL + '/js/skrollr-menu.min.js'],
 
         callback: (url, result, key) ->
@@ -51,10 +49,7 @@ Modernizr.load [
                 if screen.width > 799
                     menubar = document.getElementById('menubar')
                     menubar.style.top = "100%"
-
-                # Are we running IE 8 or less? Well bugger, but let's try to patch some holes
-                if typeof IElt9 != 'undefined'
-                    Modernizr.load window.joseURL + '/js/skrollr.ie.min.js'
+                    
     ,
     # Load jquery with a local fallback 
         load: 'timeout=2000!//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'

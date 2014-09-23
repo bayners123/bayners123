@@ -7,8 +7,8 @@ module.exports = (grunt) ->
         coffee:
             build:
                 files: 
-                    'js/build/coffeed/scripts.js': 'js/*.coffee'
-                    'js/build/coffeed/jquery_plugins.js': 'js/jquery_plugins/*.coffee'
+                    '_js/build/scripts_coffee.js': '_js/*.coffee'
+                    '_js/build/libs_coffee.js': '_js/libs/*.coffee'
 
         # copy:
         #     build:
@@ -20,17 +20,17 @@ module.exports = (grunt) ->
         
         concat:
             # 2. Configuration for concatinating files goes here.
-            rawJS: 
-                src: ['js/*.js', 'js/jquery_plugins/*.js']
-                dest: "js/build/coffeed/raw.js"
+            rawLibs: 
+                src: '_js/libs/*.js'
+                dest: "_js/build/libs_raw.js"
             final:
-                src: "js/build/coffeed/*.js"
-                dest: "js/build/output.js"
+                src: ["_js/build/libs_raw.js", "_js/build/libs_coffee.js", "_js/build/scripts_coffee.js"]
+                dest: "_js/build/output.js"
                 
         uglify:
             build: 
-                src: 'js/build/output.js'
-                dest: 'js/build/output.min.js'
+                src: '_js/build/output.js'
+                dest: 'js/output.min.js'
                 
     # 3. Where we tell Grunt we plan to use this plug-in.
     grunt.loadNpmTasks('grunt-contrib-concat');
