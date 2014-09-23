@@ -207,8 +207,7 @@
                         @getXMargin(@data.currentSlide)
                 
             # Re-scroll skrollr if needed
-            if (skrollr && skrollr.menu)
-                skrollr.menu.jumpToInitialPos()
+            skrollr?.menu?.jumpToInitialPos()
             
             # Goto first slide with no animation
             @_gotoYear(0, false)

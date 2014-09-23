@@ -20,22 +20,25 @@ module.exports = (grunt) ->
         
         concat:
             # 2. Configuration for concatinating files goes here.
-            rawLibs: # not skrollr or jquery
-                src: ['_js/libs/*.js', '!_js/libs/skrollr*.js', '!_js/libs/jquery.min.js']
+            rawLibs: # not skrollr or jquery or Modernizr
+                src: ['_js/libs/*.js', '!_js/libs/skrollr*.js', '!_js/libs/jquery.min.js', '!_js/libs/Modernizr.js']
                 dest: "_js/build/libs_raw.js"
             jquery: 
                 src: '_js/libs/jquery.min.js'
                 dest: 'js/jquery.min.js'
+            modernizr: 
+                src : '_js/libs/Modernizr.js'
+                dest : 'js/Modernizr.js'
             skrollr:
                 src: ['_js/libs/skrollr.min.js', '_js/libs/skrollr*.js']
                 dest: "_js/build/libs_skrollr.js"
             final:
                 src: ["_js/build/libs_raw.js", "_js/build/libs_coffee.js", "_js/build/scripts_coffee.js"]
-                dest: "_js/build/output.js"
+                dest: "js/output.js"
                 
         uglify:
             build: 
-                src: '_js/build/output.js'
+                src: 'js/output.js'
                 dest: 'js/output.min.js'
             skrollr:
                 src: '_js/build/libs_skrollr.js'
