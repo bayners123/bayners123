@@ -21,8 +21,11 @@ module.exports = (grunt) ->
         concat:
             # 2. Configuration for concatinating files goes here.
             rawLibs: 
-                src: '_js/libs/*.js'
+                src: ['_js/libs/*.js', '!_js/libs/skrollr*.js']
                 dest: "_js/build/libs_raw.js"
+            skrollr:
+                src: ['_js/libs/skrollr.min.js', '_js/libs/skrollr*.js']
+                dest: "_js/build/libs_skrollr.js"
             final:
                 src: ["_js/build/libs_raw.js", "_js/build/libs_coffee.js", "_js/build/scripts_coffee.js"]
                 dest: "_js/build/output.js"
@@ -31,6 +34,9 @@ module.exports = (grunt) ->
             build: 
                 src: '_js/build/output.js'
                 dest: 'js/output.min.js'
+            skrollr:
+                src: '_js/build/libs_skrollr.js'
+                dest: 'js/skrollr.min.js'
                 
     # 3. Where we tell Grunt we plan to use this plug-in.
     grunt.loadNpmTasks('grunt-contrib-concat');
