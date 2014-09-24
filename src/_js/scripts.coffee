@@ -1,6 +1,4 @@
 
-# MAYBE: Turn plugins into proper Grunt plugins & extract more code as plugins where possible
-
 # Load scripts depending on browser capabilities
 
 # Store url for all scripts. This should be done by Liquid tags, as it also should in SCSS,
