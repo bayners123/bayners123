@@ -31,8 +31,9 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
             {% for post in site.posts limit:4 %}
             <div>
                 <span class="caption">{{ post.content }}<span class="date">{{ post.date | date_to_long_string }}</span></span>
-                {% if forloop.first %}<img alt="Slideshow slide" src="{{ post.image }}">
-                {% else %}<img alt="Slideshow slide" data-original="{{ post.image }}">{% endif %}
+                {% if post.image | truncate: 1, '' == "/" %}{% capture imgURL %}{{ site.url }}{{ post.image }}{% endcapture %}{% else %}{% capture imgURL %}{{ post.image }}{% endcapture %}{% endif %}
+                {% if forloop.first %}<img alt="Slideshow slide" src="{{ imgURL }}">
+                {% else %}<img alt="Slideshow slide" data-original="{{ imgURL }}">{% endif %}
             </div>
             {% endfor %}
             
@@ -144,8 +145,9 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
                 
                 <div class="imgHolder">
                     {% for yearObj in site.data.members %}
-                    {% if forloop.first %}<img src="{{ yearObj.photo }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />
-                    {% else %}<img src="{{ page.placeholder }}" data-original="{{ yearObj.photo }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />{% endif %}
+                    {% if yearObj.photo | truncate: 1, '' == "/" %}{% capture imgURL %}{{ site.url }}{{ yearObj.photo }}{% endcapture %}{% else %}{% capture imgURL %}{{ yearObj.photo }}{% endcapture %}{% endif %}
+                    {% if forloop.first %}<img src="{{ imgURL }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />
+                    {% else %}<img src="{{ page.placeholder }}" data-original="{{ imgURL }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />{% endif %}
                     {% endfor %}
                 </div>
                 
@@ -248,8 +250,9 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
                 {% for slide in site.facilities %}
                 <div>
                     <span class="caption">{{ slide.output }}</span>
-                    {% if forloop.first %}<img alt="{{ slide.title }}" src="{{ slide.image }}" />
-                    {% else %}<img alt="{{ slide.title }}" data-original="{{ slide.image }}" />{% endif %}
+                    {% if slide.image | truncate: 1, '' == "/" %}{% capture imgURL %}{{ site.url }}{{ slide.image }}{% endcapture %}{% else %}{% capture imgURL %}{{ slide.image }}{% endcapture %}{% endif %}
+                    {% if forloop.first %}<img alt="{{ slide.title }}" src="{{ imgURL }}" />
+                    {% else %}<img alt="{{ slide.title }}" data-original="{{ imgURL }}" />{% endif %}
                 </div>
                 {% endfor %}
                 

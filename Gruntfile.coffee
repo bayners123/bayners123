@@ -38,7 +38,7 @@ module.exports = (grunt) ->
                 src: ['src/_js/libs/skrollr.min.js', 'src/_js/libs/skrollr*.js']
                 dest: ".build/libs_skrollr.js"
             final:
-                src: ["src/_js/build/libs_raw.js", "src/_js/build/libs_coffee.js", "src/_js/build/scripts_coffee.js"]
+                src: ["src/_js/build/libs_raw.js", ".build/libs_coffee.js", ".build/scripts_coffee.js"]
                 dest: "src/js/output.js"
                 
         uglify:
@@ -99,13 +99,23 @@ module.exports = (grunt) ->
                     ['build']
                     
                 
-        # open:
-        #     all:
-        #     # Gets the port from the connect configuration
-        #         path: 'http://localhost:<%= connect.options.port%>'
+        'sftp-deploy': 
+          build: 
+            auth: 
+              host: 'linux.ox.ac.uk'
+              port: 22
+              authKey: 'oxford'
+            
+            cache: '.sftpCache.json'
+            src: 'site'
+            dest: 'public_html'
+            exclusions: ['site/**/.DS_Store', 'site/**/Thumbs.db']
+            serverSep: '/'
+            concurrency: 4
+            progress: true
         
                 
-    # 3. Where we tell Grunt we plan to use this plug-in.
+    grunt.loadNpmTasks('grunt-sftp-deploy');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     # grunt.loadNpmTasks('grunt-contrib-copy');
@@ -119,3 +129,4 @@ module.exports = (grunt) ->
     grunt.registerTask('default', ['build', 'serve']);
     grunt.registerTask('build', ['coffee', 'concat', 'uglify', 'jekyll']);
     grunt.registerTask('serve', ['connect:livereload', 'watch'])
+    grunt.registerTask('deploy', ['build', 'sftp-deploy'])
