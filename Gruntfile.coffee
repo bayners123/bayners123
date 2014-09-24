@@ -1,9 +1,14 @@
 module.exports = (grunt) ->
 
+    require('load-grunt-tasks')(grunt)
+    
     # 1. All configuration goes here 
     grunt.initConfig
         pkg: grunt.file.readJSON('package.json')
         
+        config:
+            app: '.'
+            
         coffee:
             build:
                 files: 
@@ -43,14 +48,74 @@ module.exports = (grunt) ->
             skrollr:
                 src: '_js/build/libs_skrollr.js'
                 dest: 'js/skrollr.min.js'
+        
+        jekyll:
+            options:                           # Universal options
+                bundleExec: true
+                src : '<%= config.app %>'
+                
+            dist:                             # Target
+                options:                         # Target options
+                    dest: '<%= config.app %>/_site',
+                    config: '_config.yml'
+            
+        # The actual grunt server settings
+        # See http://www.thecrumb.com/2014/03/16/using-grunt-for-live-reload-revisited/
+        connect: 
+            options: 
+                port: 9000,
+                livereload: 35729,
+                hostname: 'localhost'
+            
+            livereload: 
+                options: 
+                    open: true,
+                    base: [
+                        '.tmp',
+                        '<%= config.app %>/_site'
+                    ]
+                        
+        watch: 
+            livereload: 
+                options: 
+                    livereload: '<%= connect.options.livereload %>'
+                
+                files: [
+                    '<%= config.app %>/_site/{,*/}*.html',
+                    '.tmp/styles/{,*/}*.css',
+                    '<%= config.app %>/_site/images/{,*/}*'
+                ]
+            jekyll:
+                files: [
+                    '<%= config.app %>/_js/*',
+                    
+                    # '<%= config.app %>/**',
+                    # '!<%= config.app %>/node_modules/**',
+                    # '!<%= config.app %>/.*/**',
+                    # '!<%= config.app %>/site/**',
+                    # '!<%= config.app %>/js/**'
+                ]
+                tasks:
+                    ['build']
+                    
+                
+        # open:
+        #     all:
+        #     # Gets the port from the connect configuration
+        #         path: 'http://localhost:<%= connect.options.port%>'
+        
                 
     # 3. Where we tell Grunt we plan to use this plug-in.
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     # grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    
+    grunt.loadNpmTasks('grunt-open');
 
     # 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['coffee', 'concat', 'uglify']);
-    grunt.registerTask('compile', ['coffee'])
-    grunt.registerTask('min', ['uglify']);
+    grunt.registerTask('default', ['build', 'serve']);
+    grunt.registerTask('build', ['coffee', 'concat', 'uglify', 'jekyll']);
+    grunt.registerTask('serve', ['connect:livereload', 'watch'])
