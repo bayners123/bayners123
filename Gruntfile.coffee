@@ -56,8 +56,8 @@ module.exports = (grunt) ->
                 
             dist:                             # Target
                 options:                         # Target options
-                    dest: '<%= config.app %>/site',
-                    config: '<%= config.app %>/src/_config.yml'
+                    dest: '<%= config.app %>/.site',
+                    config: '<%= config.app %>/Jekyll-config.yml'
             
         # The actual grunt server settings
         # See http://www.thecrumb.com/2014/03/16/using-grunt-for-live-reload-revisited/
@@ -72,7 +72,7 @@ module.exports = (grunt) ->
                     open: true,
                     base: [
                         '.tmp',
-                        '<%= config.app %>/site'
+                        '<%= config.app %>/.site'
                     ]
                         
         watch: 
@@ -81,9 +81,9 @@ module.exports = (grunt) ->
                     livereload: '<%= connect.options.livereload %>'
                 
                 files: [
-                    '<%= config.app %>/site/{,*/}*.html',
+                    '<%= config.app %>/.site/{,*/}*.html',
                     '.tmp/styles/{,*/}*.css',
-                    '<%= config.app %>/site/images/{,*/}*'
+                    '<%= config.app %>/.site/images/{,*/}*'
                 ]
             jekyll:
                 files: [
@@ -92,7 +92,7 @@ module.exports = (grunt) ->
                     # '<%= config.app %>/**',
                     # '!<%= config.app %>/node_modules/**',
                     # '!<%= config.app %>/.*/**',
-                    # '!<%= config.app %>/site/**',
+                    # '!<%= config.app %>/.site/**',
                     # '!<%= config.app %>/js/**'
                 ]
                 tasks:
