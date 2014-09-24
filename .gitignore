@@ -1,4 +1,4 @@
-_site/
-.sass-cache/
-js/
-_js/build/
+.*/
+node_modules/
+src/js/
+site/
