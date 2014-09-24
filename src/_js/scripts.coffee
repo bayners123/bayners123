@@ -38,7 +38,7 @@ window.checkBody = (testClass) ->
         
 # Are we on a mobile?
 window.mobileMode = -> 
-    screen.width < 800
+    window.innerWidth < 800
         
 # Are we on the main page?
 window.isMainpage = window.checkBody("mainpage")
@@ -173,7 +173,7 @@ if window.isMainpage
     $("#topSlider")
         .slidesjs
             width: slideWidth,
-            height: if (screen.width < mobileThreshold ) then slideHeightMobile else slideHeight,
+            height: if (window.innerWidth < mobileThreshold ) then slideHeightMobile else slideHeight,
             zoom: true,
             navigation: 
                 active: false,
@@ -213,8 +213,8 @@ if window.isMainpage
     # Initiation of second slider
     $("#facilities .slider")
         .slidesjs
-            width: screen.width
-            height: screen.height
+            width: window.innerWidth
+            height: window.innerHeight
             zoom: true
             navigation:
                 active: false
@@ -235,6 +235,37 @@ if window.isMainpage
                     speed: 600
                     crossfade: true
             lazy: true
+            
+    # This will stay fullscreened because of later code, calling jquery.fullscreen plugin
+    
+    
+    newsHeight = 30
+    
+    $('#newsMarquee').slidesjs
+        width: window.innerWidth
+        height: newsHeight
+        navigation:
+            active: false
+            rollover: true
+        play:
+            active: true
+            effect: "slide"
+            interval: 4000
+            auto: true
+            swap: true
+            pauseOnHover: true
+            generate: false
+        pagination:
+            active: false
+            generate: false
+        effect:
+            slide: 
+                speed: 600
+                crossfade: true
+                
+    # Keep the marquee filling the whole screen
+    $(window).on "resize.slider", ->
+        $("#newsMarquee").data("plugin_slidesjs").resize window.innerWidth, newsHeight
 
     # FULLSCREEN
 

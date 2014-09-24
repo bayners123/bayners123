@@ -2,6 +2,7 @@ $oxford-color: #002147;
 $contrast-color: #FFF;
 $text-color: #002147;
 $textContrast-color: #FFF;
+$box-bg-color: #FFF;
 
 $thickBorder: 5px;
 $thickBorder-styles: solid white;
@@ -48,7 +49,7 @@ i, em { @extend .italic; }
 	color: $text-color;
 	box-shadow: 0 0 20px #000;
     border: 3px solid $oxford-color;
-    background: #EEE;
+    background: $box-bg-color;
 }
 
 // Styles for standard html elements in a prose section (i.e. user-controllable text)
@@ -201,6 +202,16 @@ i, em { @extend .italic; }
     }
     .caption {
         max-width: 85%;
+    }
+}
+
+#newsMarquee {
+    background: $box-bg-color;
+    color: $text-color;
+    text-align: center;
+    
+    .slidesjs-slide {
+        padding-top: (30 - 22 / 2) px;
     }
 }
 
@@ -433,7 +444,7 @@ a.expandSection i {
         border-right: none;
         margin-right: -3px;
         border-radius: 8px 0 0 8px;
-        background: #EEE;
+        background: $box-bg-color;
         box-shadow: -10px 0 6px #444;
     }
 }
