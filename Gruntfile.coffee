@@ -87,7 +87,7 @@ module.exports = (grunt) ->
                 ]
             jekyll:
                 files: [
-                    '<%= config.app %>/_js/*',
+                    '<%= config.app %>/src/**',
                     
                     # '<%= config.app %>/**',
                     # '!<%= config.app %>/node_modules/**',
