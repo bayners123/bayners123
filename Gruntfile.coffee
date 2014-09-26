@@ -36,7 +36,7 @@ module.exports = (grunt) ->
                 dest : 'src/js/Modernizr.js'
             skrollr:
                 src: ['src/_js/libs/skrollr.min.js', 'src/_js/libs/skrollr*.js']
-                dest: ".build/libs_skrollr.js"
+                dest: "src/js//skrollr.js"
             final:
                 src: ["src/_js/build/libs_raw.js", ".build/libs_coffee.js", ".build/scripts_coffee.js"]
                 dest: "src/js/output.js"
@@ -46,7 +46,7 @@ module.exports = (grunt) ->
                 src: 'src/js/output.js'
                 dest: 'src/js/output.min.js'
             skrollr:
-                src: '.build/libs_skrollr.js'
+                src: 'src/js/skrollr.js'
                 dest: 'src/js/skrollr.min.js'
         
         jekyll:

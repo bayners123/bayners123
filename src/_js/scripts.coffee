@@ -12,7 +12,8 @@ initSkrollr = ->
         smoothScrolling: false,
         forceHeight: false
     # Init skrollr menus
-    skrollr.menu.init skrollr.get()
+    skrollr.menu.init skrollr.get(),
+        acceptLinks: true
     
 # Function to refresh skrollr
 refreshSkrollr = ->
