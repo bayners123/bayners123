@@ -250,7 +250,7 @@ if window.isMainpage
         play:
             active: true
             effect: "slide"
-            interval: 4000
+            interval: 0
             auto: true
             swap: true
             pauseOnHover: true
@@ -260,7 +260,7 @@ if window.isMainpage
             generate: false
         effect:
             slide: 
-                speed: 600
+                speed: 4000
                 crossfade: true
                 
     # Keep the marquee filling the whole screen

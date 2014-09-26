@@ -211,7 +211,7 @@ i, em { @extend .italic; }
     text-align: center;
     
     .slidesjs-slide {
-        padding-top: (30 - 22 / 2) px;
+        padding-top: ((30px - 22px) / 2);
     }
 }
 
