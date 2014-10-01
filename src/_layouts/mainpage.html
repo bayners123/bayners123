@@ -35,12 +35,9 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
         <!-- Aspect ratio is width / height -->
         <div id="topSlider" class="slider slidesjs-styles" data-aspectratio=2.6667 data-aspectratiomobile=1.3333>
             {% for post in site.posts limit:4 %}
-            <div>
-                <span class="caption">{{ post.content }}<span class="date">{{ post.date | date_to_long_string }}</span></span>
-                {% if post.image | truncate: 1, '' == "/" %}{% capture imgURL %}{{ site.url }}{{ post.image }}{% endcapture %}{% else %}{% capture imgURL %}{{ post.image }}{% endcapture %}{% endif %}
-                {% if forloop.first %}<img alt="Slideshow slide" src="{{ imgURL }}">
-                {% else %}<img alt="Slideshow slide" data-original="{{ imgURL }}">{% endif %}
-            </div>
+            {% if post.image | truncate: 1, '' == "/" %}{% capture imgURL %}{{ site.url }}{{ post.image }}{% endcapture %}{% else %}{% capture imgURL %}{{ post.image }}{% endcapture %}{% endif %}
+            {% if forloop.first %}<img alt="Slideshow slide" src="{{ imgURL }}">
+            {% else %}<img alt="Slideshow slide" data-original="{{ imgURL }}">{% endif %}
             {% endfor %}
             
             <a href="{{site.url}}/news" class="slidesjs-navigation moreNews">
