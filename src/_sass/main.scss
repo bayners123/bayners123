@@ -16,8 +16,8 @@ body {
 }
 
 #skrollr-body {
-    background: transparent repeat-x url($url + '/images/bg.png');
-    overflow: hidden;
+	background: transparent repeat-x url($url + '/images/bg.png');
+	overflow: hidden;
 }
 
 section { color: $text-color; }
@@ -48,126 +48,126 @@ i, em { @extend .italic; }
 .box, .expandSection {
 	color: $text-color;
 	box-shadow: 0 0 20px #000;
-    border: 3px solid $oxford-color;
-    background: $box-bg-color;
+	border: 3px solid $oxford-color;
+	background: $box-bg-color;
 }
 
 // Styles for standard html elements in a prose section (i.e. user-controllable text)
 .prose {
-    a { 
-        color: #519548;
-        font-size: 1.1em;
-    }
-    .heading {
-        margin: 0.3em 0 0.6em;
-    }
-    h1 { @extend .heading; font-size: 2.5em; }
-    h2 { @extend .heading; font-size: 2.0em; }
-    h3 { @extend .heading; font-size: 1.5em; }
-    h4 { @extend .heading; font-size: 1em; text-decoration: underline; }
-    h5 { @extend .heading; font-size: 1em; @extend .italic; }
-    h6 { @extend .heading; margin-left: 1em; }
-    
-    img {
-        float: right;
-        margin: 0.5em;
-    }
-    
-    .blockElement, p, div { margin-bottom: 0.625em; }
-    
-    ul, ol, menu, dir {
-        @extend .blockElement;
-        padding-left: 60px/16px * 1em;
-    }
-    ul { list-style-type: square; }
-    ol {
-        list-style-type: upper-roman;
-        ol { list-style-type: lower-roman; }
-    }
-    li { margin-bottom: 0.3em; }
-    li:last-child { margin-bottom: 0; }
-    
-    blockquote {
-        margin-left: 1em;
-        @extend .italic;
-    }
-    
-    abbr, acronym { border-bottom: 1px $text-color dotted; }
-    
-    cite { @extend .italic; }
-    
-    big { font-size: 2em; }
-    small { font-size: 0.5em; }
-    
-    sup, sub { font-size: 13px/16px * 1em; }
-    sup { vertical-align: super; }
-    sub { vertical-align: sub; }
-    
-    tt, code, kbd, samp { font-family: "Courier New", Courier, monospace }
-    
-    table {
-//        border-left: 1px $text-color solid;
-        caption { @extend .italic; }
-        td, th {
-            border-right: 1px $text-color solid;
-            padding: 0.5em;
-        }
-        td:last-child, th:last-child {
-            border-right: none;
-        }
-        tr:first-child > th {
-            border-bottom: 3px $text-color double;
-        }
-        th { @extend .bold; }
-        margin-bottom: 1em;
-    }
+	a { 
+		color: #519548;
+		font-size: 1.1em;
+	}
+	.heading {
+		margin: 0.3em 0 0.6em;
+	}
+	h1 { @extend .heading; font-size: 2.5em; }
+	h2 { @extend .heading; font-size: 2.0em; }
+	h3 { @extend .heading; font-size: 1.5em; }
+	h4 { @extend .heading; font-size: 1em; text-decoration: underline; }
+	h5 { @extend .heading; font-size: 1em; @extend .italic; }
+	h6 { @extend .heading; margin-left: 1em; }
+	
+	img {
+		float: right;
+		margin: 0.5em;
+	}
+	
+	.blockElement, p, div { margin-bottom: 0.625em; }
+	
+	ul, ol, menu, dir {
+		@extend .blockElement;
+		padding-left: 60px/16px * 1em;
+	}
+	ul { list-style-type: square; }
+	ol {
+		list-style-type: upper-roman;
+		ol { list-style-type: lower-roman; }
+	}
+	li { margin-bottom: 0.3em; }
+	li:last-child { margin-bottom: 0; }
+	
+	blockquote {
+		margin-left: 1em;
+		@extend .italic;
+	}
+	
+	abbr, acronym { border-bottom: 1px $text-color dotted; }
+	
+	cite { @extend .italic; }
+	
+	big { font-size: 2em; }
+	small { font-size: 0.5em; }
+	
+	sup, sub { font-size: 13px/16px * 1em; }
+	sup { vertical-align: super; }
+	sub { vertical-align: sub; }
+	
+	tt, code, kbd, samp { font-family: "Courier New", Courier, monospace }
+	
+	table {
+//		border-left: 1px $text-color solid;
+		caption { @extend .italic; }
+		td, th {
+			border-right: 1px $text-color solid;
+			padding: 0.5em;
+		}
+		td:last-child, th:last-child {
+			border-right: none;
+		}
+		tr:first-child > th {
+			border-bottom: 3px $text-color double;
+		}
+		th { @extend .bold; }
+		margin-bottom: 1em;
+	}
 }
 
 .expandable {
-    position: relative;
-    z-index: 1;
+	position: relative;
+	z-index: 1;
 }
 .expandSection {
-    z-index: 0;
-    border-top: none;
+	z-index: 0;
+	border-top: none;
 }
 
 #menubar {
-    @extend .alpha90bgWhite;
-    position: fixed;
-    z-index: 20;
-    top: 0;
-    padding-top: 1em;
-    height: 2.1875em;
-    width: 100%;
-    min-width: 750px;
-    display: block;
-    text-align: center;
-    
-    /* To hide the bar when scrolling down */
-    -webkit-transition: margin-top 0.25s ease-in-out;
-    -moz-transition: margin-top 0.25s ease-in-out;
-    -o-transition: margin-top 0.25s ease-in-out;
-    transition: margin-top 0.25s ease-in-out;
+	@extend .alpha90bgWhite;
+	position: fixed;
+	z-index: 20;
+	top: 0;
+	padding-top: 1em;
+	height: 2.1875em;
+	width: 100%;
+	min-width: 750px;
+	display: block;
+	text-align: center;
+	
+	/* To hide the bar when scrolling down */
+	-webkit-transition: margin-top 0.25s ease-in-out;
+	-moz-transition: margin-top 0.25s ease-in-out;
+	-o-transition: margin-top 0.25s ease-in-out;
+	transition: margin-top 0.25s ease-in-out;
 }
 
 #menubar.hidden {
-    margin-top: -50px !important;
+	margin-top: -50px !important;
 }
 
 #menubar a {
-    text-decoration: none;
-    color: $text-color;
-    font-size: 0.875em;
-    padding: 0 10px;
+	text-decoration: none;
+	color: $text-color;
+	font-size: 0.875em;
+	padding: 0 10px;
 }
 
 #headerarea {
-    padding: 7.1% 7.1% 4.1%;
+	padding: 7.1% 7.1% 4.1%;
 }
 
 #headerarea img {
-    float: right;
+	float: right;
 }
 
 #oxLogoMob { display: none; }
@@ -177,116 +177,119 @@ i, em { @extend .italic; }
 #headerarea h2 { font-size: 22px; text-align: right;}
 
 .slider {
-    width: 100%;
+	width: 100%;
 	display: none;
 	position: relative;
 }
 
 .sliderBlackBox {
-    @extend .alpha60bgBlack;
+	@extend .alpha60bgBlack;
 	color: $textContrast-color;
 	position: absolute;
-    z-index: 15;
+	z-index: 15;
 }
 
 #topSlider {
-    .moreNews {
-        @extend .sliderBlackBox;
-        display: block;
-        top: $thickBorder; right: 0;
-        padding: 15px 30px;
-    }
-    .slidesjs-container {
-    	border-top: $thickBorder $thickBorder-styles;
-    	border-bottom: $thickBorder $thickBorder-styles;
-    }
-    .caption {
-        max-width: 85%;
-    }
+	.moreNews {
+		@extend .sliderBlackBox;
+		display: block;
+		top: $thickBorder; right: 0;
+		padding: 15px 30px;
+	}
+	.slidesjs-container {
+		border-top: $thickBorder $thickBorder-styles;
+		border-bottom: $thickBorder $thickBorder-styles;
+	}
+	.caption {
+		max-width: 85%;
+	}
 }
 
 #newsMarquee {
-    background: $box-bg-color;
-    color: $text-color;
-    text-align: center;
-    
-    .slidesjs-slide {
-        padding-top: ((30px - 22px) / 2);
-    }
+	background: $box-bg-color;
+	color: $text-color;
+	text-align: center;
+	
+	.slidesjs-slide {
+		padding-top: ((30px - 22px) / 2);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 }
 
 .slider {
-    a {
-    	text-decoration: none;
-    	color: $textContrast-color;
-    }
+	a {
+		text-decoration: none;
+		color: $textContrast-color;
+	}
 
-    .slideNavBox {
-        @extend .sliderBlackBox;
-    	bottom: 24px; left: 0;
-        padding: 15px/16px*1em 10px/16px*1em 10px/16px*1em; // 15px 10px 10px (10px)
-    }
+	.slideNavBox {
+		@extend .sliderBlackBox;
+		bottom: 24px; left: 0;
+		padding: 15px/16px*1em 10px/16px*1em 10px/16px*1em; // 15px 10px 10px (10px)
+	}
 
-    .caption {
-        @extend .sliderBlackBox;
-    	bottom: 0; right: 0; 
-    	padding: 30px;
-        .date {
-            float: right;
-            font-style: italic;
-            font-size: 0.8em;
-        }
-    }
+	.caption {
+		@extend .sliderBlackBox;
+		bottom: 0; right: 0; 
+		padding: 30px;
+		.date {
+			float: right;
+			font-style: italic;
+			font-size: 0.8em;
+		}
+	}
 }
 
 #facilities {
-    .slidesjs-overlay {
-        position: absolute;
-    //  Height of left & right buttons is positioned by javascript
-        z-index: 15;
-        font-size: 30px;
-    }
-    .slidesjs-next {
-        @extend .slidesjs-overlay;
-        right: 10px;
-    } 
-    .slidesjs-previous {
-        @extend .slidesjs-overlay;
-        left: 10px;
-    }
-    .slidesjs-pagination {
-        @extend .sliderBlackBox;
-        top: 0;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        padding: 0.5em 0;
-        li {
-            display: inline;
-            margin: 0 1em;
-            a {
-                color: #ddd;
-            }
-            a.active {
-                text-decoration: underline;
-            }
-        }
-    }
-    
+	.slidesjs-overlay {
+		position: absolute;
+	//  Height of left & right buttons is positioned by javascript
+		z-index: 15;
+		font-size: 30px;
+	}
+	.slidesjs-next {
+		@extend .slidesjs-overlay;
+		right: 10px;
+	} 
+	.slidesjs-previous {
+		@extend .slidesjs-overlay;
+		left: 10px;
+	}
+	.slidesjs-pagination {
+		@extend .sliderBlackBox;
+		top: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		padding: 0.5em 0;
+		li {
+			display: inline;
+			margin: 0 1em;
+			a {
+				color: #ddd;
+			}
+			a.active {
+				text-decoration: underline;
+			}
+		}
+	}
+	
 }
 
 #welcome > .content > h2 { 
-    color: $textContrast-color;
-    text-shadow: 0.04em 0.05em #000;
+	color: $textContrast-color;
+	text-shadow: 0.04em 0.05em #000;
 }
 
 .content > .right, .content > .left {
 	position: absolute;
-    display: block;
+	display: block;
 }
 
 .content > i {
-    font-size: 160px;
+	font-size: 160px;
 }
 
 .content > .right, .content > .left { top: -196px; }
@@ -296,21 +299,21 @@ i, em { @extend .italic; }
 .content > .left { left: 0; }
 
 .content {
-    position: relative;
-    margin-top: 250px !important;
+	position: relative;
+	margin-top: 250px !important;
 }
 
 .researchBubble img, .researchBubble h3 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 }
 
 #researchBubbles a { text-decoration: none; color: $text-color; }
 
 #research2 {
-    padding-top: 3em;
+	padding-top: 3em;
 }
 
 
@@ -318,109 +321,109 @@ i, em { @extend .italic; }
 // This allows my zoomImage plugin to fill the div with the image
 // See http://stackoverflow.com/questions/12121090/responsively-change-div-size-keeping-aspect-ratio
 .filledImg {
-    width: 100%;
-    display: inline-block;
-    position: relative;
+	width: 100%;
+	display: inline-block;
+	position: relative;
 }
 .filledImg:after {
-    display: block;
-    content: '';
-    padding-top: (142/392 * 100%);
+	display: block;
+	content: '';
+	padding-top: (142/392 * 100%);
 }
 .filledImg div {
-    position: absolute;
-    top: 0; bottom: 0; right: 0; left: 0;
-    border: 1px solid black;
-    overflow: hidden;
+	position: absolute;
+	top: 0; bottom: 0; right: 0; left: 0;
+	border: 1px solid black;
+	overflow: hidden;
 }
 .filledImg div img {
-    width: 100%;
-    display: block;
-    margin: 0;
-    float: none;
+	width: 100%;
+	display: block;
+	margin: 0;
+	float: none;
 }
 
 #publications {
-    
-    .filledImg {
-        width: 90%;
-        margin-left: 5%;
-        img {
-            display: none;
-        }
-    }
+	
+	.filledImg {
+		width: 90%;
+		margin-left: 5%;
+		img {
+			display: none;
+		}
+	}
 
-     .shrunk p {
-        @extend .italic;
-        font-size: 0.75em;
-        margin: 0;
-    }
+	 .shrunk p {
+		@extend .italic;
+		font-size: 0.75em;
+		margin: 0;
+	}
 
-     .shrunk a {
-        color: $text-color;
-        text-decoration: none;
-    }
-    
-     .shrunk .pubtitle {
-        @extend .bold;
-        text-align: justify;
-    }
+	 .shrunk a {
+		color: $text-color;
+		text-decoration: none;
+	}
+	
+	 .shrunk .pubtitle {
+		@extend .bold;
+		text-align: justify;
+	}
 
-     .shrunk .pubdate {
-        float: right;
-    }
+	 .shrunk .pubdate {
+		float: right;
+	}
 
-     .expanded {
-        .pub {
-            margin-bottom: 1em;
-            div { margin: 0; }
-            
-            // remove link styling
-            color: $text-color;
-            text-decoration: none;
-            
-            .author {
-                @extend .italic;
-                float: right;
-                text-align: right;
-            }
-            .author:before { content: "- "; }
-            .journal {
-                @extend .bold;
-                float: left;
-            }
-            
-            .journal, .author { font-size: 0.8em; }
-            
-            clear: both;
-        }
-        .pub:hover {
-            text-decoration: underline;
-            sub, sup { text-decoration: none; }
-        }
-        // Clearfix
-        .pub:after {
-          display: table;
-          content: "";
-          line-height: 0;
-        }
-        .pub:after {
-          clear: both;
-        }
-    }
+	 .expanded {
+		.pub {
+			margin-bottom: 1em;
+			div { margin: 0; }
+			
+			// remove link styling
+			color: $text-color;
+			text-decoration: none;
+			
+			.author {
+				@extend .italic;
+				float: right;
+				text-align: right;
+			}
+			.author:before { content: "- "; }
+			.journal {
+				@extend .bold;
+				float: left;
+			}
+			
+			.journal, .author { font-size: 0.8em; }
+			
+			clear: both;
+		}
+		.pub:hover {
+			text-decoration: underline;
+			sub, sup { text-decoration: none; }
+		}
+		// Clearfix
+		.pub:after {
+		  display: table;
+		  content: "";
+		  line-height: 0;
+		}
+		.pub:after {
+		  clear: both;
+		}
+	}
 }
 
 a.expandSection {
-    display: table;
-    overflow: hidden;
-    
+	display: table;
+	overflow: hidden;
+	
 	text-align: center;
 	position: relative;
 	height: 4em;
 }
 a.expandSection span {
-    display: table-cell;
-    vertical-align: middle;
+	display: table-cell;
+	vertical-align: middle;
 }
 a.expandSection i {
 	position: absolute;
@@ -428,208 +431,208 @@ a.expandSection i {
 }
 
 .tabmenu > li > a {
-    display: block;
-    padding: 10px;
-    color: $text-color;
+	display: block;
+	padding: 10px;
+	color: $text-color;
 }
 
 .tabmenu > li > a.active {
-    z-index: 10;
-    position: relative;
+	z-index: 10;
+	position: relative;
 }
 
 #researchDetails {
-    .tabmenu > li > a.active {
-        border: 3px solid $oxford-color;
-        border-right: none;
-        margin-right: -3px;
-        border-radius: 8px 0 0 8px;
-        background: $box-bg-color;
-        box-shadow: -10px 0 6px #444;
-    }
+	.tabmenu > li > a.active {
+		border: 3px solid $oxford-color;
+		border-right: none;
+		margin-right: -3px;
+		border-radius: 8px 0 0 8px;
+		background: $box-bg-color;
+		box-shadow: -10px 0 6px #444;
+	}
 }
 
 #publications {
-    .tabGroup {
-        margin-bottom: 2em;
-    }
-    .tabmenu {
-//        border-right: 3px solid $oxford-color;
-        text-align: center;
-    }
-    .tabmenu > li > a {
-        padding: 5px;
-        border-right: 3px solid $oxford-color;
-    }
+	.tabGroup {
+		margin-bottom: 2em;
+	}
+	.tabmenu {
+//		border-right: 3px solid $oxford-color;
+		text-align: center;
+	}
+	.tabmenu > li > a {
+		padding: 5px;
+		border-right: 3px solid $oxford-color;
+	}
 
-    .tabmenu > li > a.active {
-        border: 3px solid $oxford-color;
-        border-right: none;
-        border-left: none;
-    }
-    .tabmenu > li:first-child a.active {
-        border-top: 1px solid $oxford-color;;
-    }
-    .tabmenu > li:last-child a.active {
-        border-bottom: 1px solid $oxford-color;;
-    }
+	.tabmenu > li > a.active {
+		border: 3px solid $oxford-color;
+		border-right: none;
+		border-left: none;
+	}
+	.tabmenu > li:first-child a.active {
+		border-top: 1px solid $oxford-color;;
+	}
+	.tabmenu > li:last-child a.active {
+		border-bottom: 1px solid $oxford-color;;
+	}
 }
 
 .tabs > .tab { display: none; }
 .tabs > .tab.active { display: block; }
 
 #researchDetails.hidden {
-    height: 0px;
-    overflow: hidden;
+	height: 0px;
+	overflow: hidden;
 }
 
 #groupmembers {
 
-    .fullHolderContent {
-        display: none;
-    }
+	.fullHolderContent {
+		display: none;
+	}
 
-    .imgHolder {
-        position: absolute;
-        top:0;right: 0;bottom: 0;left: 0;
-        
-        img { display: none; }
-    }
-    
-    .yearBox {
-        @extend .alpha60bgBlack;
-        color: $textContrast-color;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        $yearboxTop : 0.7em;
-        padding: $yearboxTop 0 1.0em;
-        
-        a { color: $textContrast-color }
-        
-        .arrow {
-            position: absolute;
-            display: block;
-            font-size: 2em;
-            top: $yearboxTop/2;
-        }
+	.imgHolder {
+		position: absolute;
+		top:0;right: 0;bottom: 0;left: 0;
+		
+		img { display: none; }
+	}
+	
+	.yearBox {
+		@extend .alpha60bgBlack;
+		color: $textContrast-color;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		$yearboxTop : 0.7em;
+		padding: $yearboxTop 0 1.0em;
+		
+		a { color: $textContrast-color }
+		
+		.arrow {
+			position: absolute;
+			display: block;
+			font-size: 2em;
+			top: $yearboxTop/2;
+		}
 
-        .arrow.left {
-            left: 20%;
-        }
+		.arrow.left {
+			left: 20%;
+		}
 
-        .arrow.right {
-            right: 20%;
-        }
-    }
-    
-    h3 {
-        display: block;
-        text-align: center;
-        margin: 0;
-    }
+		.arrow.right {
+			right: 20%;
+		}
+	}
+	
+	h3 {
+		display: block;
+		text-align: center;
+		margin: 0;
+	}
 
-    .groupDesc {
-        @extend .alpha60bgBlack;
-        color: $textContrast-color;
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        padding: 1em 0 1.8em;
+	.groupDesc {
+		@extend .alpha60bgBlack;
+		color: $textContrast-color;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		padding: 1em 0 1.8em;
 
-        a { color: $textContrast-color }
+		a { color: $textContrast-color }
 
-        .arrow {
-            position: absolute;
-            display: block;
-            font-size: 4em;
-        }
+		.arrow {
+			position: absolute;
+			display: block;
+			font-size: 4em;
+		}
 
-        .arrow.left {
-            left: 2%;
-        }
+		.arrow.left {
+			left: 2%;
+		}
 
-        .arrow.right {
-            right: 2%;
-        }
+		.arrow.right {
+			right: 2%;
+		}
 
-        .groupList {
-            text-align: center;
-            font-size: 0.75em;
-        }
-        .groupList a {
-            color: #AAA;
-            padding: 0 0.5em;
-        }
-        .groupList a.active {
-            text-decoration: underline;
-        }
-    }
+		.groupList {
+			text-align: center;
+			font-size: 0.75em;
+		}
+		.groupList a {
+			color: #AAA;
+			padding: 0 0.5em;
+		}
+		.groupList a.active {
+			text-decoration: underline;
+		}
+	}
 }
 
 #footer {
-    margin-top: 5em;
-    padding-top: 3em;
-    padding-bottom: 1.5em;
-    border-top: 4px solid $contrast-color;
-    background: $oxford-color;
-    color: $textContrast-color;
-    a { color: $textContrast-color; @extend .bold; }
+	margin-top: 5em;
+	padding-top: 3em;
+	padding-bottom: 1.5em;
+	border-top: 4px solid $contrast-color;
+	background: $oxford-color;
+	color: $textContrast-color;
+	a { color: $textContrast-color; @extend .bold; }
 }
 
 #footer, #copyright {
-    .unit:nth-child(2) {
-        text-align: right;
-    }
+	.unit:nth-child(2) {
+		text-align: right;
+	}
 }
 
 #copyright {
-    font-size: 0.75em;
-    background: $oxford-color;
-    border-top: 2px solid $contrast-color;
-    padding: 1.5em 0 0.75em;
-    color: $textContrast-color;
-    a { color: $textContrast-color; text-decoration: none;}
-    a:hover { text-decoration: underline; }
-    .baynham {
-        a { position: relative; padding-right: 3em; }
-        img {
-            position: absolute;
-            right: 0; bottom: 0;
-            width: 3em;
-        }
-    }
+	font-size: 0.75em;
+	background: $oxford-color;
+	border-top: 2px solid $contrast-color;
+	padding: 1.5em 0 0.75em;
+	color: $textContrast-color;
+	a { color: $textContrast-color; text-decoration: none;}
+	a:hover { text-decoration: underline; }
+	.baynham {
+		a { position: relative; padding-right: 3em; }
+		img {
+			position: absolute;
+			right: 0; bottom: 0;
+			width: 3em;
+		}
+	}
 }
 
 #newsPage {
-    .newsDate {
-        float: right;
-        margin-top: -0.625em;
-        font-style: italic;
-    }
-    .newsDate:before {
-        content: '- ';
-    }
+	.newsDate {
+		float: right;
+		margin-top: -0.625em;
+		font-style: italic;
+	}
+	.newsDate:before {
+		content: '- ';
+	}
 }
 
 .alpha60bgBlack {
-    /* Fallback for web browsers that doesn't support RGBa */
-    background: rgb(0, 0, 0) transparent;
-    /* RGBa with 0.6 opacity */
-    background: rgba(0, 0, 0, 0.6);
-    /* For IE 5.5 - 7*/
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000, endColorstr=#E5000000);
-    /* For IE 8*/
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000, endColorstr=#E5000000)";
+	/* Fallback for web browsers that doesn't support RGBa */
+	background: rgb(0, 0, 0) transparent;
+	/* RGBa with 0.6 opacity */
+	background: rgba(0, 0, 0, 0.6);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000, endColorstr=#E5000000);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000, endColorstr=#E5000000)";
 }
 
 .alpha90bgWhite {
-    /* Fallback for web browsers that doesn't support RGBa */
-    background: rgb(255, 255, 255) transparent;
-    /* RGBa with 0.6 opacity */
-    background: rgba(255, 255, 255, 0.9);
-    /* For IE 5.5 - 7*/
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff);
-    /* For IE 8*/
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff)";
+	/* Fallback for web browsers that doesn't support RGBa */
+	background: rgb(255, 255, 255) transparent;
+	/* RGBa with 0.6 opacity */
+	background: rgba(255, 255, 255, 0.9);
+	/* For IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff);
+	/* For IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff)";
 }
