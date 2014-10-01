@@ -214,6 +214,8 @@ i, em { @extend .italic; }
 #newsMarquee {
 	background: $box-bg-color;
 	color: $text-color;
+	a { color: $text-color; }
+	a:hover { text-decoration: underline; }
 	text-align: center;
 	
 	.slidesjs-slide {

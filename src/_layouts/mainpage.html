@@ -28,7 +28,7 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
         
         <div id="newsMarquee" class="slider">
             {% for news in site.data.news limit:4 %}
-            <div>{{ news }}</div>
+            {% if news.link %}<a href="{{ news.link }}">{{ news.text }}</a>{% else %}<div>{{ news.text }}</div>{% endif %}
             {% endfor %}
         </div>
         

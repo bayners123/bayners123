@@ -259,7 +259,7 @@ if window.isMainpage
             interval: 0
             auto: true
             swap: true
-            pauseOnHover: true
+            pauseOnHover: false
             generate: false
         pagination:
             active: false
