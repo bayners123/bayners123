@@ -104,7 +104,7 @@ $($menubar).click ->
     # then hide the menubar
         toggleMenu $menubar, $moreButtonI
 
-# Hide menubar when scrolling downwards (not mobile as yet)
+# Hide menubar when scrolling downwards
 delta = 0
 window.scrollIntercept = (e, override) ->
     appearanceThreshold = 5
@@ -121,21 +121,21 @@ window.scrollIntercept = (e, override) ->
         delta = 0
     else if delta < -appearanceThreshold 
         delta = -appearanceThreshold
-
+    
     if window.mobileMode()
-        if delta == 0
+        if delta == -appearanceThreshold or $(window).scrollTop() < 200
+            $mobilebar.removeClass("hidden")
+        else if delta == 0
             $mobilebar.addClass("hidden")
             if not $menubar.hasClass("hidden")
                 toggleMenu $menubar, $moreButtonI
-        else if delta == -appearanceThreshold
-            $mobilebar.removeClass("hidden")
     else
-        if delta == 0
-            $menubar.addClass("hidden")
-        else if delta == -appearanceThreshold
+        if delta == -appearanceThreshold or $(window).scrollTop() < 200
             $menubar.removeClass("hidden")
+        else if delta == 0
+            $menubar.addClass("hidden")
 
-$(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling wheel.menuscrolling', window.scrollIntercept
+$(window).on 'DOMMouseScroll.menuscrolling mousewheel.menuscrolling wheel.menuscrolling scroll.menuscrolling', window.scrollIntercept
 
 # If we're on the main page, do stuff to those elements:
 if window.isMainpage
