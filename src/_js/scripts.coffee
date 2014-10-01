@@ -85,11 +85,16 @@ $($moreButtonA).click (event) ->
 
 # Set the menubar to hidden if we're mobile & remove the CSS hiding it from view
 # This means it's hidden by the margin rather than display: none
-$(window).resize ->
-    if window.mobileMode()
-        $menubar
-            .addClass "hidden"
-            .css "display", "block"
+# This function is bound to window resize and then triggered
+$(window).on "resize.menubar", ->
+        if window.mobileMode()
+            $menubar
+                .addClass "hidden"
+                .css "display", "block"
+        else
+            $menubar.removeClass "hidden"
+    # Now trigger it for the first load
+    .trigger "resize.menubar"
 
 # Hide the menubar if we click it on a mobile (since the mobilebar is also present)
 # N.B. we do not preventDefault so the click will still cause navigation as expected
