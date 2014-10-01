@@ -614,12 +614,25 @@ a.expandSection i {
 }
 
 #newsPage {
-	.newsDate {
-		float: right;
-		margin-top: -0.625em;
-		font-style: italic;
+	a { color: $text-color; }
+	.newsText {
+		margin-bottom: 0.75em;
 	}
-	.newsDate:before {
+	.newsDate, .newsLink {
+		font-size: 0.75em;
+		font-style: italic;
+		width: 49%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.newsDate {
+		float: left;
+	}
+	.newsLink {
+		float: right;
+	}
+	.newsLink:before {
 		content: '- ';
 	}
 }

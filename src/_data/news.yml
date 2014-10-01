@@ -1,10 +1,14 @@
 # Add news to the top of this file, prefixed with a "- text: ". Links can be added with a a "- link: " option. 
 # The news scroller will show the 4 most recent entries, the More News page will show them all. 
 
-- text: Something happened
-  link: "http://www.google.com"
+- text: Website finished!
+  link: "http://www.baynhamdesign.co.uk"
+  date: 1/10/14
   
 - text: Something else happened!
+  date: 1/9/14
+  # link: no link on this one
   
 - text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, vitae nobis assumenda explicabo voluptatum amet.
-  link: "http://www.ox.ac.uk"
+  link: "http://www.ox.ac.uk/welcome"
+  # date: no date on this one

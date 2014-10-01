@@ -1,0 +1,28 @@
+---
+layout: raw
+title: News
+---
+
+<div id="newsPage" class="box grid">
+	<div class="unit whole">
+    
+    <h2>News</h2>
+
+    <div class="grid">
+    {% for post in site.data.news %}
+
+        {% if post.link %}<a href="{{ post.link }}" class="unit half">{% else %}<div class="unit half">{% endif %}
+        
+            <div class="newsText">{{ post.text }}</div>
+            {% if post.date %}<div class="newsDate">{{ post.date | date_to_long_string }}</div>{% endif %}
+            {% if post.link %}<div class="newsLink">{{ post.link | replace: 'http://','' | replace: 'www.','' }}</div>{% endif %}
+    
+        {% if post.link %}</a>{% else %}</div>{% endif %}
+    
+    {% cycle '', '</div><div class="grid">' %}    
+    {% endfor %}
+    </div>
+
+    </div>
+</div>
+
