@@ -13,7 +13,7 @@ module.exports = (grunt) ->
             build:
                 files: 
                     '.build/scripts_coffee.js': 'src/_js/*.coffee'
-                    '.build/libs_coffee.js': 'src/_js/libs/*.coffee'
+                    '.build/libs_coffee.js': ['src/_js/libs/load_jquery.coffee', 'src/_js/libs/*.coffee']
 
         # copy:
         #     build:
