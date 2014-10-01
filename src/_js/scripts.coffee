@@ -266,12 +266,22 @@ if window.isMainpage
             generate: false
         effect:
             slide: 
-                speed: 4000
+                # Travel the news at 1/6 px per ms or 1/9 if on a mobile
+                speed: if window.mobileMode() then (window.innerWidth * 9) else (window.innerWidth * 6)
                 crossfade: true
-                
+                easing: "linear"
+                jsEasing: "linear"
+        
     # Keep the marquee filling the whole screen
+    # and
+    # Keep the speed of the marquee's transition constant even when the window resizes
     $(window).on "resize.slider", ->
-        $("#newsMarquee").data("plugin_slidesjs").resize window.innerWidth, newsHeight
+        $("#newsMarquee").data("plugin_slidesjs")
+            .changeOptions
+                effect:
+                    slide: 
+                        speed: if window.mobileMode() then (window.innerWidth * 9) else (window.innerWidth * 6)
+            .resize window.innerWidth, newsHeight
 
     # FULLSCREEN
 

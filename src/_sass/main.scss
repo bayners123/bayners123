@@ -7,6 +7,12 @@ $box-bg-color: #FFF;
 $thickBorder: 5px;
 $thickBorder-styles: solid white;
 
+@mixin border-box() {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
    font: normal 100% "Geneva", Helvetica, sans-serif;
    color: $textContrast-color;
@@ -211,7 +217,8 @@ i, em { @extend .italic; }
 	text-align: center;
 	
 	.slidesjs-slide {
-		padding-top: ((30px - 22px) / 2);
+		@include border-box;
+		padding: ((30px - 22px) / 2) 1em 0;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;

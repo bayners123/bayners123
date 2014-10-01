@@ -84,6 +84,11 @@
         # Slide effect settings.
         speed: 500
           # [number] Speed in milliseconds of the slide animation.
+        easing: "ease"
+          # [string] The CSS3 easing to use, if supported. 
+          # Choose: ease|linear|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n)|initial|inherit
+        jsEasing: "swing"
+          # [string] The fallback jquery easing, used when CSS3 is not supported
       fade:
         speed: 300
           # [number] Speed in milliseconds of the fade animation.
@@ -438,6 +443,14 @@
     @update()
     if @options.zoom
       @_zoom()
+    
+    @
+      
+  # @changeOptions(newOptions)
+  # Merge an options object, altering the currently set options. 
+  Plugin::changeOptions = (newOptions) ->
+    @options = $.extend true, {}, @options, newOptions
+    @
   
   # @update()
   # Update the slideshow size on browser resize
@@ -777,6 +790,7 @@
         # Set CSS3 styles
         slidesControl[0].style[transform] = "translateX(" + direction + "px)"
         slidesControl[0].style[duration] = @options.effect.slide.speed + "ms"
+        slidesControl[0].style[timing] = @options.effect.slide.easing
 
         slidesControl.on "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", =>
           # Clear styles
@@ -818,7 +832,7 @@
         # If CSS3 isn't support use JavaScript for the animation
         slidesControl.stop().animate
           left: direction
-        , @options.effect.slide.speed, (=>
+        , @options.effect.slide.speed, @options.effect.slide.jsEasing, (=>
           slidesControl.css left: 0
           slidesControl.children(":eq(" + next + ")").css left: 0
           slidesControl.children(":eq(" + currentSlide + ")").css
