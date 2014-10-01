@@ -1,0 +1,6 @@
+# Add images to the "images" folder and then put their path here, as shown.
+# All images listed in this file will be displayed
+
+- "/images/boat1.jpg"
+- "/images/boat2.jpg"
+- "http://www.lorempixel.com/1500/500"

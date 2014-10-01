@@ -27,15 +27,15 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
         </div>
         
         <div id="newsMarquee" class="slider">
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, iure!</div>
-            <div>Deleniti, molestiae alias laudantium omnis magnam! Consequuntur, similique sint delectus.</div>
-            <div>Recusandae, magni accusantium laudantium nihil sed excepturi voluptatum dolore itaque.</div>
+            {% for news in site.data.news limit:4 %}
+            <div>{{ news }}</div>
+            {% endfor %}
         </div>
         
         <!-- Aspect ratio is width / height -->
         <div id="topSlider" class="slider slidesjs-styles" data-aspectratio=2.6667 data-aspectratiomobile=1.3333>
-            {% for post in site.posts limit:4 %}
-            {% if post.image | truncate: 1, '' == "/" %}{% capture imgURL %}{{ site.url }}{{ post.image }}{% endcapture %}{% else %}{% capture imgURL %}{{ post.image }}{% endcapture %}{% endif %}
+            {% for image in site.data.slider %}
+            {% if image | truncate: 1, '' == "/" %}{% capture imgURL %}{{ site.url }}{{ image }}{% endcapture %}{% else %}{% capture imgURL %}{{ image }}{% endcapture %}{% endif %}
             {% if forloop.first %}<img alt="Slideshow slide" src="{{ imgURL }}">
             {% else %}<img alt="Slideshow slide" data-original="{{ imgURL }}">{% endif %}
             {% endfor %}
