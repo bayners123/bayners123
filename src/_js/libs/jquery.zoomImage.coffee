@@ -37,6 +37,7 @@
                      # N.B. these are percentages of the container's WIDTH
         animation: true # Animate margin changes
         initialAnimation: false # Animate margin changes on the first, initial resize
+        revealImages: true # Show hidden images once they're zoomed
         
     data =
         active: null
@@ -89,7 +90,7 @@
             $element = $(@element)
             
             # Show the image if it was hidden
-            $element.show()
+            $element.show() if @options.revealImages
                 
             # Get the image's original dimentions. 
             @data.imgWidth = @element.naturalWidth

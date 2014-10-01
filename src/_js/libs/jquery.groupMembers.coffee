@@ -114,7 +114,7 @@
             @data.groupInfo.push 
                 year: year
                 image: $img
-                imageLoaded: false
+                imageLoaded: index == 0
                 
             if index == 0
                 $img.show()
@@ -205,6 +205,7 @@
                     initialAnimation: false
                     getXOverride: =>
                         @getXMargin(@data.currentSlide)
+                    revealImages: false    
                 
             # Re-scroll skrollr if needed
             skrollr?.menu?.jumpToInitialPos()
