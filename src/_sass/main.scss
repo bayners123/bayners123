@@ -496,6 +496,14 @@ a.expandSection i {
 }
 
 #groupmembers {
+	
+	.adviceBox {
+		position: absolute;
+		@extend .alpha90bgWhite;
+		padding: 2em;
+		display: none;
+	}
+	
 
 	.fullHolderContent {
 		display: none;

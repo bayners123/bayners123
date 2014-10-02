@@ -146,6 +146,10 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
             
             <div class="box fullHolder">
                 
+                <div class="adviceBox">
+                    This is a test
+                </div>
+                
                 <div class="imgHolder">
                     {% for yearObj in site.data.members %}
                     {% if yearObj.photo | truncate: 1, '' == "/" %}{% capture imgURL %}{{ site.url }}{{ yearObj.photo }}{% endcapture %}{% else %}{% capture imgURL %}{{ yearObj.photo }}{% endcapture %}{% endif %}

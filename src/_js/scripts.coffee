@@ -309,7 +309,31 @@ if window.isMainpage
                 .one "animationend webkitAnimationEnd oAnimationEnd oanimationend MSAnimationEnd", ->
                     $(this).removeClass "pulseRight"
                 .addClass "pulseRight"
-        
+                
+            # If it's the first time we've got focus, show then hide the advice box
+            if not window.adviceBoxShown
+                
+                box = $('#groupmembers .adviceBox')
+                
+                box
+                    .css
+                        display: "block"
+                        "z-index": 0
+                setTimeout ->
+                    box        
+                        .css
+                            left: (window.innerWidth - box.get(0).offsetWidth) / 2
+                            top: (window.innerHeight - box.get(0).offsetHeight) / 2
+                            "z-index": 20
+                            display: "none"
+                        .fadeIn 500, ->
+                            setTimeout (->
+                                box.fadeOut 500, ->
+                                    box.remove()
+                                ), 1000
+                                
+                window.adviceBoxShown = true
+            
         # lostFocusCallback: (element) ->
         #     toggleSection $(element)
             # console.log $(element).find('.slideImg')
