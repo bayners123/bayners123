@@ -328,7 +328,7 @@ if window.isMainpage
                             display: "none"
                         .fadeIn 500, ->
                             setTimeout (->
-                                box.fadeOut 500, ->
+                                box.fadeOut 1500, ->
                                     box.remove()
                                 ), 1000
                                 
