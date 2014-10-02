@@ -297,7 +297,10 @@ if window.isMainpage
     $('#groupmembers').fullscreen
         active: true
         scrollCallback: ->
+            # Hide mobilebar
             $('#menubar, #mobilebar').addClass "hidden"
+            
+            # Pulse the arrows
             $('#groupmembers .arrow.left')
                 .one "animationend webkitAnimationEnd oAnimationEnd oanimationend MSAnimationEnd", ->
                     $(this).removeClass "pulseLeft"
