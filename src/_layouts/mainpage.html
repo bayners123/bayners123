@@ -193,7 +193,7 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
                             {% for yearObj in site.data.members %}
                             <nav class="groupList" data-year="{{ yearObj.year }}">
                                 {% for member in yearObj.members %}
-                                <a href="#">{{ member.name }}</a>
+                                <a href="#"><span class="notMobileOnly">{{ member.name }}</span><span class="mobileOnly">{{ member.shortName }}</span></a>
                                 {% endfor %}
                             </nav>
                             {% endfor %}

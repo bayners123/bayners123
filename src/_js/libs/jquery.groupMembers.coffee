@@ -179,7 +179,8 @@
             @data.groupInfo[index].nav.children("a").click (e) =>
             
                 # Get the clicked link
-                clickedLink = e.target
+                clickedLink = $(e.target)
+                if clickedLink.is("span") then clickedLink = clickedLink.parent()
             
                 # Disable the hyperlink
                 e.preventDefault()
@@ -284,49 +285,57 @@
         # Check the argument is valid
         if 0 <= year < @data.groupInfo.length
             
-            # Get all images, description uls and navs
-            images = $()
-            descs = $()
-            navs = $()
+            # Rest of this method, to be passed as callback to the image loader
+            continuation = =>
+                
+                # Get all images, description uls and navs
+                images = $()
+                descs = $()
+                navs = $()
             
-            $.each @data.groupInfo, (i) =>
-                images = images.add @data.groupInfo[i].image
-                descs = descs.add @data.groupInfo[i].descUL
-                navs = navs.add @data.groupInfo[i].nav
+                $.each @data.groupInfo, (i) =>
+                    images = images.add @data.groupInfo[i].image
+                    descs = descs.add @data.groupInfo[i].descUL
+                    navs = navs.add @data.groupInfo[i].nav
             
-            # Hide all of these
-            images.add(descs).add(navs).hide()
+                # Hide all of these
+                images.add(descs).add(navs).hide()
             
-            # Show just the requested one
-            images.eq(year).show()
-            descs.eq(year).show()
-            navs.eq(year).show()
+                # Show just the requested one
+                images.eq(year).show()
+                descs.eq(year).show()
+                navs.eq(year).show()
+                
+                # Update year display
+                @data.yearHeading.html @data.groupInfo[year].year
             
-            # See if the image has been loaded already and load it if not
-            @loadImage(year) if not @data.groupInfo[year].imageLoaded
+                # Update year
+                @data.currentYear = year
             
-            # Update year display
-            @data.yearHeading.html @data.groupInfo[year].year
+                # Update noSlides
+                @data.noSlides = @data.groupInfo[year].descUL.children("li").length
             
-            # Update year
-            @data.currentYear = year
+                # Hide the arrow if we've reached far left/right
+                if year == 0
+                  @data.minusArrow.hide()
+                  @data.plusArrow.show()
+                else if year == @data.noYears - 1
+                  @data.minusArrow.show()
+                  @data.plusArrow.hide()
+                else
+                  @data.minusArrow.show()
+                  @data.plusArrow.show()
             
-            # Update noSlides
-            @data.noSlides = @data.groupInfo[year].descUL.children("li").length
+                # Calculate initial slide & goto it
+                @_goto Math.floor((@data.noSlides - 1) / 2), animation
             
-            # Hide the arrow if we've reached far left/right
-            if year == 0
-              @data.minusArrow.hide()
-              @data.plusArrow.show()
-            else if year == @data.noYears - 1
-              @data.minusArrow.show()
-              @data.plusArrow.hide()
+            # See if the next image has been loaded already and load it if not
+            if not @data.groupInfo[year].imageLoaded
+                @loadImage(year, continuation)
             else
-              @data.minusArrow.show()
-              @data.plusArrow.show()
+                continuation()
             
-            # Calculate initial slide & goto it
-            @_goto Math.floor((@data.noSlides - 1) / 2), animation
+            @
             
     Plugin::getXMargin = (slide) ->
         
@@ -348,8 +357,11 @@
         
         return xMargin
     
+    # loadimage(year, callback) 
+    # year: 0-based index of the year needed in groupInfo
+    # callback: function to execute after image is loaded
     # Load and display the image for the given year
-    Plugin::loadImage = (year) ->
+    Plugin::loadImage = (year, callback) ->
         
         # Get the element and the image src
         $image = @data.groupInfo[year].image
@@ -359,6 +371,12 @@
         $('<img />')
             # When this virtual img is loaded, set the slideshow's src to the same so that we see it
             .one "load.#{@_name}", =>
+                                
+                # Set the callback to execute after new load
+                $image.one "load", ->
+                    callback()
+                    
+                # Then trigger the image update
                 $image.attr "src", src
                 
             # Actually do the loading
