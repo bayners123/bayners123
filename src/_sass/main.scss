@@ -18,11 +18,11 @@ body {
    color: $textContrast-color;
    min-width: 750px;
    -webkit-font-smoothing: antialiased;
-   background: url($url + '/images/bgtile.png');
+   background: url($url + '/images/assets/bgtile.png');
 }
 
 #skrollr-body {
-	background: transparent repeat-x url($url + '/images/bg.png');
+	background: transparent repeat-x url($url + '/images/assets/bg.png');
 	overflow: hidden;
 }
 
