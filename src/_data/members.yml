@@ -10,6 +10,7 @@
 #           That's because the line before this one ended with two spaces: "  " then a blank line. 
 
 - year: 2013
+  photo: /images/groupphoto2013.jpg
   members:
     - name: Gaby Espinoza-Quintero
       desc: >
@@ -56,6 +57,7 @@
 
 
 - year: 2012
+  photo: /images/groupphoto2012.jpg
   members:
     - name: Bethan Westcott
       desc: Bethan is a Part II from St Peter's College who is investigating the formation and reactivity of 1,2,3-triphospholide anions, amongst other things that don't work. One of her keen passions in life is delaying making carrot cake for the longest time possible. Predictions are estimated at one year.
@@ -97,6 +99,7 @@
 
 
 - year: 2011
+  photo: /images/groupphoto2011.jpg
   members:
     - name: Binbin Zhou
       desc: Binbin entered Selwyn College, Cambridge in 2003 and completed her undergrad degree in Natural Sciences in 2007. She is now a fifth year D.Phil student researching the solution reactivity of group 14 Zintl anions towards a series of organometallic complexes. When not thinking about science she enjoys reading, watching films, listening to music, cooking and renaissance agricultural farming.
@@ -139,6 +142,7 @@
 
 
 - year: 2010
+  photo: /images/groupphoto2010.jpg
   members:
     - name: Laurence Doyle
       desc: Laurence is working under Mark on transition metal complexes with reduced hetero-aromatic ligands. Though a man of few words, he is positively debaucherous when it comes to dry ice/ acetone baths. Other indulgences include classical music, guitar, and underground gangsta rap.
@@ -181,6 +185,7 @@
 
 
 - year: 2009
+  photo: /images/groupphoto2009.jpg
   members:
     - name: Charlotte Jackson
       desc: Charlotte ‘CJ’ Jackson has joined the Goicoechea group as a Part II from St Johns this year. Despite demonstrating bowling prowess, her lab talents include bin fires and celite showers. She can otherwise be found playing hockey, cricket, netball or as the ‘token’ girl in the football team.
@@ -223,6 +228,7 @@
 
 
 - year: 2008
+  photo: /images/groupphoto2008.jpg
   members:
     - name: MarkD Denning
       desc: Mark completed a D.Phil on the intercalation chemistry of fullerenes under the supervision of Professor M. J. Rosseinsky. Outside interests include cricket, swimming, running, ice skating and amateur dramatics.
