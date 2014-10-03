@@ -299,20 +299,21 @@ if window.isMainpage
         scrollCallback: ->
             # Hide mobilebar
             $('#menubar, #mobilebar').addClass "hidden"
-            
-            # Pulse the arrows
-            $('#groupmembers .arrow.left')
-                .one "animationend webkitAnimationEnd oAnimationEnd oanimationend MSAnimationEnd", ->
-                    $(this).removeClass "pulseLeft"
-                .addClass "pulseLeft"
-            $('#groupmembers .arrow.right')
-                .one "animationend webkitAnimationEnd oAnimationEnd oanimationend MSAnimationEnd", ->
-                    $(this).removeClass "pulseRight"
-                .addClass "pulseRight"
                 
-            # If it's the first time we've got focus, show then hide the advice box
+            # If it's the first time we've got focus, show then hide the advice box & pulse the arrows
             if not window.adviceBoxShown
                 
+                # Pulse the arrows
+                $('#groupmembers .arrow.left')
+                    .one "animationend webkitAnimationEnd oAnimationEnd oanimationend MSAnimationEnd", ->
+                        $(this).removeClass "pulseLeft"
+                    .addClass "pulseLeft"
+                $('#groupmembers .arrow.right')
+                    .one "animationend webkitAnimationEnd oAnimationEnd oanimationend MSAnimationEnd", ->
+                        $(this).removeClass "pulseRight"
+                    .addClass "pulseRight"
+                    
+                # Show the advice-box
                 box = $('#groupmembers .adviceBox')
                 
                 box
