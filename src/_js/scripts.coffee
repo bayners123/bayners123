@@ -321,14 +321,18 @@ if window.isMainpage
                         display: "block"
                         "z-index": 0
                 setTimeout ->
-                    box        
+                    box
+                    # Position it then hide it (previously it was hidden by a low z-index)
                         .css
                             left: (window.innerWidth - box.get(0).offsetWidth) / 2
                             top: (window.innerHeight - box.get(0).offsetHeight) / 2
                             "z-index": 20
                             display: "none"
+                    # Fade it in for 500ms
                         .fadeIn 500, ->
+                    # After fadeIn is complete, wait 1500ms
                             setTimeout (->
+                    # Then fade it out and remove the DOM element
                                 box.fadeOut 1500, ->
                                     box.remove()
                                 ), 1000
