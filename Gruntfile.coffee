@@ -14,28 +14,28 @@ module.exports = (grunt) ->
         coffee:
             build:
                 files: 
-                    '.build/scripts_coffee.js': 'src/_js/*.coffee'
-                    '.build/libs_coffee.js': ['src/_js/libs/load_jquery.coffee', 'src/_js/libs/*.coffee']
+                    '<%= config.app %>/.build/scripts_coffee.js': '<%= config.app %>/src/_js/*.coffee'
+                    '<%= config.app %>/.build/libs_coffee.js': ['<%= config.app %>/src/_js/libs/load_jquery.coffee', '<%= config.app %>/src/_js/libs/*.coffee']
 
         # copy:
         #     build:
         #         files: [
         #             expand: true
         #             src: ['js/*.js', 'js/jquery_plugins/*.js']
-        #             dest: 'js/build/coffeed/raw.js'
+        #             dest: '<%= config.app %>/js/build/coffeed/raw.js'
         #         ]
         
         concat:
             # 2. Configuration for concatinating files goes here.
             rawLibs: # not skrollr or jquery or Modernizr
-                src: ['src/_js/libs/*.js', '!src/_js/libs/skrollr*.js', '!src/_js/libs/jquery.min.js', '!src/_js/libs/Modernizr.js']
-                dest: ".build/libs_raw.js"
+                src: ['<%= config.app %>/src/_js/libs/*.js', '!<%= config.app %>/src/_js/libs/skrollr*.js', '!<%= config.app %>/src/_js/libs/jquery.min.js', '!<%= config.app %>/src/_js/libs/Modernizr.js']
+                dest: "<%= config.app %>/.build/libs_raw.js"
             jquery: 
-                src: 'src/_js/libs/jquery.min.js'
-                dest: 'src/js/jquery.min.js'
+                src: '<%= config.app %>/src/_js/libs/jquery.min.js'
+                dest: '<%= config.app %>/src/js/jquery.min.js'
             modernizr: 
-                src : 'src/_js/libs/Modernizr.js'
-                dest : 'src/js/Modernizr.js'
+                src : '<%= config.app %>/src/_js/libs/Modernizr.js'
+                dest : '<%= config.app %>/src/js/Modernizr.js'
             skrollr:
                 src: ['src/_js/libs/skrollr.min.js', 'src/_js/libs/skrollr*.js']
                 dest: "src/js/skrollr.js"
@@ -45,11 +45,11 @@ module.exports = (grunt) ->
                 
         uglify:
             build: 
-                src: 'src/js/output.js'
-                dest: 'src/js/output.min.js'
+                src: '<%= config.app %>/src/js/output.js'
+                dest: '<%= config.app %>/src/js/output.min.js'
             skrollr:
-                src: 'src/js/skrollr.js'
-                dest: 'src/js/skrollr.min.js'
+                src: '<%= config.app %>/src/js/skrollr.js'
+                dest: '<%= config.app %>/src/js/skrollr.min.js'
         
         jekyll:
             options:                           # Universal options
@@ -99,22 +99,6 @@ module.exports = (grunt) ->
                 ]
                 tasks:
                     ['build']
-                    
-                
-        'sftp-deploy': 
-          build: 
-            auth: 
-              host: 'linux.ox.ac.uk'
-              port: 22
-              authKey: 'oxford'
-            
-            cache: '.sftpCache.json'
-            src: '.site'
-            dest: 'public_html'
-            exclusions: ['site/**/.DS_Store', 'site/**/Thumbs.db']
-            serverSep: '/'
-            concurrency: 4
-            progress: true
             
         rsync: 
                     options: 
@@ -127,7 +111,7 @@ module.exports = (grunt) ->
                     prod: 
                         options: 
                             # the dir you want to sync, in this case the current dir
-                            src: './.site/'
+                            src: '<%= config.app %>/.site/'
                             # user pregenerated ssh keypairs
                             ssh: true
                             privateKey: ".key"
@@ -135,8 +119,7 @@ module.exports = (grunt) ->
                             # where should it be synced to on the remote host?
                             dest: "<%= rsync_options.user %>@<%= rsync_options.server %>:<%= rsync_options.path %>"
         
-                
-    grunt.loadNpmTasks('grunt-sftp-deploy');
+                            
     grunt.loadNpmTasks('grunt-rsync');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-coffee');
