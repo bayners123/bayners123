@@ -6,6 +6,8 @@ module.exports = (grunt) ->
     grunt.initConfig
         pkg: grunt.file.readJSON('package.json')
         
+        rsync_options: grunt.file.readJSON('.settings.json')
+        
         config:
             app: '.'
             
@@ -113,9 +115,29 @@ module.exports = (grunt) ->
             serverSep: '/'
             concurrency: 4
             progress: true
+            
+        rsync: 
+                    options: 
+                        # these are my preferred arguments when using rsync
+                        args: ['-xzP', '--verbose', '--delete']
+                        # an array of files you'd like to exclude; usual suspects...
+                        exclude: ['.*']
+                        recursive: true
+                    
+                    prod: 
+                        options: 
+                            # the dir you want to sync, in this case the current dir
+                            src: './.site/'
+                            # user pregenerated ssh keypairs
+                            ssh: true
+                            privateKey: ".key"
+                            
+                            # where should it be synced to on the remote host?
+                            dest: "<%= rsync_options.user %>@<%= rsync_options.server %>:<%= rsync_options.path %>"
         
                 
     grunt.loadNpmTasks('grunt-sftp-deploy');
+    grunt.loadNpmTasks('grunt-rsync');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     # grunt.loadNpmTasks('grunt-contrib-copy');
@@ -129,4 +151,4 @@ module.exports = (grunt) ->
     grunt.registerTask('default', ['build', 'serve']);
     grunt.registerTask('build', ['coffee', 'concat', 'uglify', 'jekyll']);
     grunt.registerTask('serve', ['connect:livereload', 'watch'])
-    grunt.registerTask('deploy', ['build', 'sftp-deploy'])
+    grunt.registerTask('deploy', ['build', 'rsync'])
