@@ -35,7 +35,7 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
         <!-- Aspect ratio is width / height -->
         <div id="topSlider" class="slider slidesjs-styles" data-aspectratio=2.6667 data-aspectratiomobile=1.3333>
             {% for image in site.data.slider %}
-            {% if image | truncate: 1, '' == "/" %}{% capture imgURL %}{{ site.url }}{{ image }}{% endcapture %}{% else %}{% capture imgURL %}{{ image }}{% endcapture %}{% endif %}
+            {% assign test=(image | truncate: 1, '') %}{% if test == "/" %}{% capture imgURL %}{{ site.url }}{{ image }}{% endcapture %}{% else %}{% capture imgURL %}{{ image }}{% endcapture %}{% endif %}
             {% if forloop.first %}<img alt="Slideshow slide" src="{{ imgURL }}">
             {% else %}<img alt="Slideshow slide" data-original="{{ imgURL }}">{% endif %}
             {% endfor %}
@@ -152,7 +152,7 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
                 
                 <div class="imgHolder">
                     {% for yearObj in site.data.members %}
-                    {% if yearObj.photo | truncate: 1, '' == "/" %}{% capture imgURL %}{{ site.url }}{{ yearObj.photo }}{% endcapture %}{% else %}{% capture imgURL %}{{ yearObj.photo }}{% endcapture %}{% endif %}
+                    {% assign test=(yearObj.photo | truncate: 1, '') %}{% if test == "/" %}{% capture imgURL %}{{ site.url }}{{ yearObj.photo }}{% endcapture %}{% else %}{% capture imgURL %}{{ yearObj.photo }}{% endcapture %}{% endif %}
                     {% if forloop.first %}<img src="{{ imgURL }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />
                     {% else %}<img src="{{ page.placeholder }}" data-original="{{ imgURL }}" alt="The group in {{ yearObj.year }}" class="slideImg"  data-year="{{ yearObj.year }}" />{% endif %}
                     {% endfor %}
@@ -257,7 +257,7 @@ placeholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ
                 {% for slide in site.facilities %}
                 <div>
                     <span class="caption">{{ slide.output }}</span>
-                    {% if slide.image | truncate: 1, '' == "/" %}{% capture imgURL %}{{ site.url }}{{ slide.image }}{% endcapture %}{% else %}{% capture imgURL %}{{ slide.image }}{% endcapture %}{% endif %}
+                    {% assign test=(slide.image | truncate: 1, '') %}{% if test == "/" %}{% capture imgURL %}{{ site.url }}{{ slide.image }}{% endcapture %}{% else %}{% capture imgURL %}{{ slide.image }}{% endcapture %}{% endif %}
                     {% if forloop.first %}<img alt="{{ slide.title }}" src="{{ imgURL }}" />
                     {% else %}<img alt="{{ slide.title }}" data-original="{{ imgURL }}" />{% endif %}
                 </div>
