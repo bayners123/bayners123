@@ -13,6 +13,19 @@ else
   exit 0
 fi
 
+echo Checking for Jekyll...
+if jekyll --version
+then
+  echo Jekyll installed. 
+else
+  echo jekyll not detected
+  echo
+  echo Installing Jekyll:
+  echo
+  gem install jekyll
+fi
+  
+
 echo Installing grunt packages...
 npm install
 
