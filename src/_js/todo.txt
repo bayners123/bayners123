@@ -1,7 +1,0 @@
-news:
-	TODO: slider -> just images of the lab, etc
-	TODO: add text-scroller across top with latest news. Just text & date
-	
-Pubs: 
-	TODO: Use mark's formatting
-	
