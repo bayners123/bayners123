@@ -30,6 +30,7 @@ else
   else
     echo Error: Please rerun this script using \"sudo\".
     echo I.e. \"sudo ./setup.sh\"
+    echo
     exit -1
   fi
 fi
@@ -37,7 +38,7 @@ echo Done
 echo
 
 echo Installing grunt packages...
-npm install || (echo Error installing packages. Please run \"npm install\" manually to debug, then run this script again. && exit -2)
+npm install || (echo "Error installing packages. Please run \"npm install\" manually to debug, then run this script again." && exit -2)
 echo Done
 echo
 
