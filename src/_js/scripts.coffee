@@ -388,7 +388,7 @@ if window.isMainpage
     # Init all the groupmembers stuff
     if window.isMainpage
         $('#groupmembers .fullHolder').groupScroller
-            first: "middle"
+            first: "Jose Goicoechea"
 
         $('#groupmembers .fullHolder a').click ->
             scrollTo "#groupmembers"

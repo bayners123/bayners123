@@ -34,6 +34,7 @@
         slideImgHolder: null
         descULHolder: null
         groupListHolder: null
+        first: null
     
     data = 
         leftArrow: null
@@ -51,6 +52,7 @@
         # groupInfo = array
         #     - year: string
         #       image: element
+        #       firstSlide: int
         #       descUL: element
         #       nav: element
         #
@@ -151,6 +153,24 @@
             
             $nav.hide() unless index == 0
         
+        # Search for the primary group member, to start the slides on this index
+        # Loop through years...
+        $.each @data.groupInfo, (index) =>
+            
+            if @options.first?
+                # and through all of the nav's children (the actual links)...
+                $.each @data.groupInfo[index].nav.children(), (childIndex) =>
+                    link = @data.groupInfo[index].nav.children().eq(childIndex)
+                    # Search for the string "jose goicoechea"
+                    if link.children(".notMobileOnly").html().trim().toLowerCase() == @options.first.toLowerCase()
+                        
+                        # Save this as the first slide for this year
+                        @data.groupInfo[index].firstSlide = childIndex
+                
+            # If we didn't find the primary group member or none was provided, goto the middle slide first
+            if not @data.groupInfo[index].firstSlide?
+                @data.groupInfo[index].firstSlide = Math.floor((@data.groupInfo[index].nav.children().length - 1) / 2)
+                    
         # Number of years
         @data.noYears = @data.groupInfo.length
         
@@ -326,8 +346,8 @@
                   @data.minusArrow.show()
                   @data.plusArrow.show()
             
-                # Calculate initial slide & goto it
-                @_goto Math.floor((@data.noSlides - 1) / 2), animation
+                # Goto initial slide
+                @_goto @data.groupInfo[year].firstSlide, animation
             
             # See if the next image has been loaded already and load it if not
             if not @data.groupInfo[year].imageLoaded
