@@ -25,5 +25,5 @@ then
   echo
   echo Done. 
   echo
-  echo Run \"npm publish\" to upload any changes to the website. 
+  echo Run \"npm run publish\" to upload any changes to the website. 
 fi
