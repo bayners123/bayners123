@@ -12,13 +12,17 @@
                 {% for yearObj in site.data.pubs %}
                 <ol class="tab">
                     {% for paper in yearObj.pubs %}
-                    <a class="pub" href="{{ paper.link }}">
-                        <li>    
-                            <div class="title">{{ paper.title }}</div>
-                            <div class="journal">{{ paper.journal }}</div>
-                            <div class="author">{{ paper.author }}</div>
-                        </li>
-                    </a>
+                    <a class="pub" href="{{ paper.link }}"><li>
+                        <div class="title">{{ paper.title }}</div>
+                        <div class="author">{{ paper.author }}</div>
+                        <div class="referenceInfo">
+                            <span class="journal">{{ paper.journal }}</span>
+                            <span class="year">{{ paper.year }}</span>
+                            <span class="volume">{{ paper.volume }}</span>
+                            <span class="pages">{{ paper.pages }}</span>
+                        </div>
+                        {% if paper.notes %}<div class="notes">{{ paper.notes }}</div>{%endif%}
+                    </li></a>
                     {% endfor %}
                 </ol>
                 {% endfor %}

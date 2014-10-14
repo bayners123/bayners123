@@ -392,17 +392,38 @@ i, em { @extend .italic; }
 			text-decoration: none;
 			
 			.author {
-				@extend .italic;
-				float: right;
-				text-align: right;
-			}
-			.author:before { content: "- "; }
-			.journal {
 				@extend .bold;
 				float: left;
+				text-align: right;
+			}
+			.journal:before { content: "- "; }
+			.journal {
+				@extend .italic;
 			}
 			
-			.journal, .author { font-size: 0.8em; }
+			.notes:before, .notes:after {
+			  display: table;
+			  content: "";
+			  line-height: 0;
+			}
+			.notes {
+				clear: both;
+				font-size: 0.8em;
+			}
+			
+			.referenceInfo {
+				float: right;
+			}
+			
+			.year {
+				@extend .bold;
+			}
+			
+			.pages {
+				@extend .italic;
+			}
+			
+			.journal, .author, .year, .pages, .volume { font-size: 0.8em; }
 			
 			clear: both;
 		}
