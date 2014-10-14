@@ -14,20 +14,32 @@ else
 fi
 
 echo Checking for Jekyll...
-if jekyll --version
+if jekyll --version &> /dev/null
 then
   echo Jekyll installed. 
 else
-  echo jekyll not detected
+  echo
+  echo Jekyll not detected
   echo
   echo Installing Jekyll:
-  echo
-  gem install jekyll
+  # If sudoed
+  if [ "$(id -u)" == "0" ]
+  then
+    echo
+    gem install jekyll || (echo "Error installing Jekyll" && exit -1)
+  else
+    echo Error: Please rerun this script using \"sudo\".
+    echo I.e. \"sudo ./setup.sh\"
+    exit -1
+  fi
 fi
-  
+echo Done
+echo
 
 echo Installing grunt packages...
-npm install
+npm install || (echo Error installing packages. Please run \"npm install\" manually to debug, then run this script again. && exit -2)
+echo Done
+echo
 
 echo Setting up server details...
 echo
