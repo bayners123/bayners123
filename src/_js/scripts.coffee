@@ -1,10 +1,9 @@
-
 # Load scripts depending on browser capabilities
 
 # Store url for all scripts. This should be done by Liquid tags, as it also should in SCSS,
 #  but for bizarre reasons it was disabled in the build of Jekyll that github now uses.
 #  This will have to do until they update to 2.4. 
-window.joseURL = ""
+window.joseURL = "{{ site.url }}"
 
 # Function to init skrollr
 initSkrollr = ->

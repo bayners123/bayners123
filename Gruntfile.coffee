@@ -16,20 +16,15 @@ module.exports = (grunt) ->
                 files: 
                     '<%= config.app %>/.build/scripts_coffee.js': '<%= config.app %>/src/_js/*.coffee'
                     '<%= config.app %>/.build/libs_coffee.js': ['<%= config.app %>/src/_js/libs/load_jquery.coffee', '<%= config.app %>/src/_js/libs/*.coffee']
-
-        # copy:
-        #     build:
-        #         files: [
-        #             expand: true
-        #             src: ['js/*.js', 'js/jquery_plugins/*.js']
-        #             dest: '<%= config.app %>/js/build/coffeed/raw.js'
-        #         ]
         
         concat:
             # 2. Configuration for concatinating files goes here.
             rawLibs: # not skrollr or jquery or Modernizr
                 src: ['<%= config.app %>/src/_js/libs/*.js', '!<%= config.app %>/src/_js/libs/skrollr*.js', '!<%= config.app %>/src/_js/libs/jquery.min.js', '!<%= config.app %>/src/_js/libs/Modernizr.js']
                 dest: "<%= config.app %>/.build/libs_raw.js"
+            rawScripts: # Script files not in coffee format
+                src: '<%= config.app %>/src/_js/*.js'
+                dest: '<%= config.app %>/.build/scripts_raw.js'
             jquery: 
                 src: '<%= config.app %>/src/_js/libs/jquery.min.js'
                 dest: '<%= config.app %>/src/js/jquery.min.js'
@@ -37,19 +32,38 @@ module.exports = (grunt) ->
                 src : '<%= config.app %>/src/_js/libs/Modernizr.js'
                 dest : '<%= config.app %>/src/js/Modernizr.js'
             skrollr:
-                src: ['src/_js/libs/skrollr.min.js', 'src/_js/libs/skrollr*.js']
-                dest: "src/js/skrollr.js"
+                src: ['<%= config.app %>/src/_js/libs/skrollr.min.js', '<%= config.app %>/src/_js/libs/skrollr*.js']
+                dest: "<%= config.app %>/src/js/skrollr.js"
             final:
-                src: ["src/_js/build/libs_raw.js", ".build/libs_coffee.js", ".build/scripts_coffee.js"]
-                dest: "src/js/output.js"
+                src: ["<%= config.app %>/.build/libs_raw.js", "<%= config.app %>/.build/libs_coffee.js", "<%= config.app %>/.build/scripts_raw.js", "<%= config.app %>/.build/scripts_coffee.js"]
+                dest: "<%= config.app %>/.build/output.js"
+            # Prepend YAML frontmatter
+            YAML:
+                src: ["<%= config.app %>/src/_js/YAML-frontmatter.txt", "<%= config.app %>/.build/output.js"]
+                dest: "<%= config.app %>/src/js/output.js"
+            YAMLmin:
+                src: ["<%= config.app %>/src/_js/YAML-frontmatter.txt", "<%= config.app %>/.build/output.min.js"]
+                dest: "<%= config.app %>/src/js/output.min.js"
                 
         uglify:
             build: 
-                src: '<%= config.app %>/src/js/output.js'
-                dest: '<%= config.app %>/src/js/output.min.js'
+                src: '<%= config.app %>/.build/output.js'
+                dest: '<%= config.app %>/.build/output.min.js'
             skrollr:
                 src: '<%= config.app %>/src/js/skrollr.js'
                 dest: '<%= config.app %>/src/js/skrollr.min.js'
+        
+        # Prepend YAML frontmatter
+        file_append: 
+            default_options:
+                files:
+                    '<%= config.app %>/src/js/output.js':
+                        input: '<%= config.app %>/.build/output.js'
+                        prepend: "---\n---\n"
+                    '<%= config.app %>/src/js/output.min.js':
+                        input: '<%= config.app %>/.build/output.min.js'
+                        prepend: "---\n---\n"
+                    
         
         jekyll:
             options:                           # Universal options
@@ -131,7 +145,9 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks('grunt-open');
 
     # 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
+    grunt.registerTask('concatting', ['concat:rawLibs', 'concat:rawScripts', 'concat:jquery', 'concat:modernizr', 'concat:skrollr', 'concat:final']);
+        
     grunt.registerTask('default', ['build', 'serve']);
-    grunt.registerTask('build', ['coffee', 'concat', 'uglify', 'jekyll']);
+    grunt.registerTask('build', ['coffee', 'concatting', 'uglify', 'concat:YAML', 'concat:YAMLmin', 'jekyll']);
     grunt.registerTask('serve', ['connect:livereload', 'watch'])
     grunt.registerTask('deploy', ['build', 'rsync'])
