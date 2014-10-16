@@ -8,8 +8,10 @@ module.exports = (grunt) ->
         
         rsync_options: grunt.file.readJSON('.settings.json')
         
-        config:
+        settings:
             app: '.'
+            devURL: 'http://localhost:9000'
+            releaseURL: 'http://users.ox.ac.uk/~quee2327'
             
         coffee:
             build:
@@ -73,7 +75,7 @@ module.exports = (grunt) ->
             dist:                             # Target
                 options:                         # Target options
                     dest: '<%= settings.app %>/.site',
-                    config: '<%= settings.app %>/Jekyll-settings.yml,<%= settings.app %>/.build/JekyllURL.yml'
+                    config: '<%= settings.app %>/Jekyll-config.yml,<%= settings.app %>/.build/JekyllURL.yml'
             
         # The actual grunt server settings
         # See http://www.thecrumb.com/2014/03/16/using-grunt-for-live-reload-revisited/
@@ -147,7 +149,18 @@ module.exports = (grunt) ->
     # 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('concatting', ['concat:rawLibs', 'concat:rawScripts', 'concat:jquery', 'concat:modernizr', 'concat:skrollr', 'concat:final']);
         
-    grunt.registerTask('default', ['build', 'serve']);
+    grunt.registerTask('default', ['setTarget:dev', 'build', 'serve']);
     grunt.registerTask('build', ['coffee', 'concatting', 'uglify', 'concat:YAML', 'concat:YAMLmin', 'jekyll']);
     grunt.registerTask('serve', ['connect:livereload', 'watch'])
-    grunt.registerTask('deploy', ['build', 'rsync'])
+    grunt.registerTask('deploy', ['setTarget:release', 'build', 'rsync'])
+    
+    grunt.registerTask 'setTarget', "Setup Jekyll for remote or local hosting", (target) ->
+        # Output a YAML file for jekyll to use as config, specifying the URL
+        switch target
+            when "dev"
+                content = "url: #{grunt.config("settings.devURL")}"
+            when "release"
+                content = "url: #{grunt.config("settings.releaseURL")}"
+            
+        grunt.file.write("#{grunt.config("settings.app")}/.build/JekyllURL.yml", content)
+        console.log content
