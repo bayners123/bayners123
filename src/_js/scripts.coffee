@@ -1,10 +1,5 @@
 # Load scripts depending on browser capabilities
 
-# Store url for all scripts. This should be done by Liquid tags, as it also should in SCSS,
-#  but for bizarre reasons it was disabled in the build of Jekyll that github now uses.
-#  This will have to do until they update to 2.4. 
-window.joseURL = "{{ site.url }}"
-
 # Function to init skrollr
 initSkrollr = ->
     skrollr.init
@@ -46,7 +41,7 @@ window.isMainpage = window.checkBody("mainpage")
 # Load skrollr if we're not on a mobile or IE < 8
 Modernizr.load [
         test: window.isMainpage and not Modernizr.touch and typeof IElt9 == 'undefined',
-        yep: window.joseURL + '/js/skrollr.min.js'
+        yep: '{{ site.url }}/js/skrollr.min.js'
 
         callback: (url, result, key) ->
             # If we loaded Skrollr & aren't on a small screen, immediately move the menubar off the page since it will otherwise bounce around when skrollr loads
