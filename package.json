@@ -19,5 +19,8 @@
     "type": "git",
     "url": "http://www.github.com/charlesbaynham/charlesbaynham.git"
   },
-  "scripts": { "publish": "grunt deploy" }
+  "scripts": {
+    "publish": "grunt deploy",
+    "test": "grunt"
+  }
 }
