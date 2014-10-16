@@ -124,13 +124,13 @@
                     
                         # Set flag
                         @data.hasFocus = false
-                        $element.removeClass @options.focusClass
+                        $(@element).removeClass @options.focusClass
                 
                 # Else, check if we are now in the range and previously weren't in it
                 else if not @data.hasFocus
                     
                     @data.hasFocus = true
-                    $element.addClass @options.focusClass
+                    $(@element).addClass @options.focusClass
                     # Scroll capture is handled elsewhere but set the flag here in case scroll capturing is disabled
                     
                     @options.lostFocusCallback(@element)
@@ -327,7 +327,7 @@
         $element = $(@element)
         
         @data.hasFocus = false
-        $element.removeClass @options.focusClass
+        $(@element).removeClass @options.focusClass
         
         # Is animation enabled?
         if not @options.animation
@@ -433,7 +433,7 @@
             
         # set flags
         @data.hasFocus = true
-        $element.addClass @options.focusClass
+        $(@element).addClass @options.focusClass
         
         # Trigger callback
         @options.gainFocusCallback @element
