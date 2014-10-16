@@ -25,6 +25,7 @@
     pluginName = "fullscreen"
     defaults = 
         activeClass: "jqueryfullscreen_active"
+        focusClass: "jqueryfullscreen_focussed"
         animation: true
         animationDuration: "0.25s"
         scrollCapture: true # Enable locking the window to the element when close
@@ -123,11 +124,13 @@
                     
                         # Set flag
                         @data.hasFocus = false
+                        $element.removeClass @options.focusClass
                 
                 # Else, check if we are now in the range and previously weren't in it
                 else if not @data.hasFocus
                     
                     @data.hasFocus = true
+                    $element.addClass @options.focusClass
                     # Scroll capture is handled elsewhere but set the flag here in case scroll capturing is disabled
                     
                     @options.lostFocusCallback(@element)
@@ -324,6 +327,7 @@
         $element = $(@element)
         
         @data.hasFocus = false
+        $element.removeClass @options.focusClass
         
         # Is animation enabled?
         if not @options.animation
@@ -427,8 +431,9 @@
                 $(@options.parentElement).scrollTop(elementPos + @options.offset)
         
             
-        # set flag
+        # set flags
         @data.hasFocus = true
+        $element.addClass @options.focusClass
         
         # Trigger callback
         @options.gainFocusCallback @element
