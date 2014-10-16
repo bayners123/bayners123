@@ -14,66 +14,66 @@ module.exports = (grunt) ->
         coffee:
             build:
                 files: 
-                    '<%= config.app %>/.build/scripts_coffee.js': '<%= config.app %>/src/_js/*.coffee'
-                    '<%= config.app %>/.build/libs_coffee.js': ['<%= config.app %>/src/_js/libs/load_jquery.coffee', '<%= config.app %>/src/_js/libs/*.coffee']
+                    '<%= settings.app %>/.build/scripts_coffee.js': '<%= settings.app %>/src/_js/*.coffee'
+                    '<%= settings.app %>/.build/libs_coffee.js': ['<%= settings.app %>/src/_js/libs/load_jquery.coffee', '<%= settings.app %>/src/_js/libs/*.coffee']
         
         concat:
             # 2. Configuration for concatinating files goes here.
             rawLibs: # not skrollr or jquery or Modernizr
-                src: ['<%= config.app %>/src/_js/libs/*.js', '!<%= config.app %>/src/_js/libs/skrollr*.js', '!<%= config.app %>/src/_js/libs/jquery.min.js', '!<%= config.app %>/src/_js/libs/Modernizr.js']
-                dest: "<%= config.app %>/.build/libs_raw.js"
+                src: ['<%= settings.app %>/src/_js/libs/*.js', '!<%= settings.app %>/src/_js/libs/skrollr*.js', '!<%= settings.app %>/src/_js/libs/jquery.min.js', '!<%= settings.app %>/src/_js/libs/Modernizr.js']
+                dest: "<%= settings.app %>/.build/libs_raw.js"
             rawScripts: # Script files not in coffee format
-                src: '<%= config.app %>/src/_js/*.js'
-                dest: '<%= config.app %>/.build/scripts_raw.js'
+                src: '<%= settings.app %>/src/_js/*.js'
+                dest: '<%= settings.app %>/.build/scripts_raw.js'
             jquery: 
-                src: '<%= config.app %>/src/_js/libs/jquery.min.js'
-                dest: '<%= config.app %>/src/js/jquery.min.js'
+                src: '<%= settings.app %>/src/_js/libs/jquery.min.js'
+                dest: '<%= settings.app %>/src/js/jquery.min.js'
             modernizr: 
-                src : '<%= config.app %>/src/_js/libs/Modernizr.js'
-                dest : '<%= config.app %>/src/js/Modernizr.js'
+                src : '<%= settings.app %>/src/_js/libs/Modernizr.js'
+                dest : '<%= settings.app %>/src/js/Modernizr.js'
             skrollr:
-                src: ['<%= config.app %>/src/_js/libs/skrollr.min.js', '<%= config.app %>/src/_js/libs/skrollr*.js']
-                dest: "<%= config.app %>/src/js/skrollr.js"
+                src: ['<%= settings.app %>/src/_js/libs/skrollr.min.js', '<%= settings.app %>/src/_js/libs/skrollr*.js']
+                dest: "<%= settings.app %>/src/js/skrollr.js"
             final:
-                src: ["<%= config.app %>/.build/libs_raw.js", "<%= config.app %>/.build/libs_coffee.js", "<%= config.app %>/.build/scripts_raw.js", "<%= config.app %>/.build/scripts_coffee.js"]
-                dest: "<%= config.app %>/.build/output.js"
+                src: ["<%= settings.app %>/.build/libs_raw.js", "<%= settings.app %>/.build/libs_coffee.js", "<%= settings.app %>/.build/scripts_raw.js", "<%= settings.app %>/.build/scripts_coffee.js"]
+                dest: "<%= settings.app %>/.build/output.js"
             # Prepend YAML frontmatter
             YAML:
-                src: ["<%= config.app %>/src/_js/YAML-frontmatter.txt", "<%= config.app %>/.build/output.js"]
-                dest: "<%= config.app %>/src/js/output.js"
+                src: ["<%= settings.app %>/src/_js/YAML-frontmatter.txt", "<%= settings.app %>/.build/output.js"]
+                dest: "<%= settings.app %>/src/js/output.js"
             YAMLmin:
-                src: ["<%= config.app %>/src/_js/YAML-frontmatter.txt", "<%= config.app %>/.build/output.min.js"]
-                dest: "<%= config.app %>/src/js/output.min.js"
+                src: ["<%= settings.app %>/src/_js/YAML-frontmatter.txt", "<%= settings.app %>/.build/output.min.js"]
+                dest: "<%= settings.app %>/src/js/output.min.js"
                 
         uglify:
             build: 
-                src: '<%= config.app %>/.build/output.js'
-                dest: '<%= config.app %>/.build/output.min.js'
+                src: '<%= settings.app %>/.build/output.js'
+                dest: '<%= settings.app %>/.build/output.min.js'
             skrollr:
-                src: '<%= config.app %>/src/js/skrollr.js'
-                dest: '<%= config.app %>/src/js/skrollr.min.js'
+                src: '<%= settings.app %>/src/js/skrollr.js'
+                dest: '<%= settings.app %>/src/js/skrollr.min.js'
         
         # Prepend YAML frontmatter
         file_append: 
             default_options:
                 files:
-                    '<%= config.app %>/src/js/output.js':
-                        input: '<%= config.app %>/.build/output.js'
+                    '<%= settings.app %>/src/js/output.js':
+                        input: '<%= settings.app %>/.build/output.js'
                         prepend: "---\n---\n"
-                    '<%= config.app %>/src/js/output.min.js':
-                        input: '<%= config.app %>/.build/output.min.js'
+                    '<%= settings.app %>/src/js/output.min.js':
+                        input: '<%= settings.app %>/.build/output.min.js'
                         prepend: "---\n---\n"
                     
         
         jekyll:
             options:                           # Universal options
                 # bundleExec: true
-                src : '<%= config.app %>/src'
+                src : '<%= settings.app %>/src'
                 
             dist:                             # Target
                 options:                         # Target options
-                    dest: '<%= config.app %>/.site',
-                    config: '<%= config.app %>/Jekyll-config.yml'
+                    dest: '<%= settings.app %>/.site',
+                    config: '<%= settings.app %>/Jekyll-settings.yml,<%= settings.app %>/.build/JekyllURL.yml'
             
         # The actual grunt server settings
         # See http://www.thecrumb.com/2014/03/16/using-grunt-for-live-reload-revisited/
@@ -88,7 +88,7 @@ module.exports = (grunt) ->
                     open: true,
                     base: [
                         '.tmp',
-                        '<%= config.app %>/.site'
+                        '<%= settings.app %>/.site'
                     ]
                         
         watch: 
@@ -97,19 +97,19 @@ module.exports = (grunt) ->
                     livereload: '<%= connect.options.livereload %>'
                 
                 files: [
-                    '<%= config.app %>/.site/{,*/}*.html',
+                    '<%= settings.app %>/.site/{,*/}*.html',
                     '.tmp/styles/{,*/}*.css',
-                    '<%= config.app %>/.site/images/{,*/}*'
+                    '<%= settings.app %>/.site/images/{,*/}*'
                 ]
             jekyll:
                 files: [
-                    '<%= config.app %>/src/**',
+                    '<%= settings.app %>/src/**',
                     
-                    # '<%= config.app %>/**',
-                    # '!<%= config.app %>/node_modules/**',
-                    # '!<%= config.app %>/.*/**',
-                    # '!<%= config.app %>/.site/**',
-                    # '!<%= config.app %>/js/**'
+                    # '<%= settings.app %>/**',
+                    # '!<%= settings.app %>/node_modules/**',
+                    # '!<%= settings.app %>/.*/**',
+                    # '!<%= settings.app %>/.site/**',
+                    # '!<%= settings.app %>/js/**'
                 ]
                 tasks:
                     ['build']
@@ -125,7 +125,7 @@ module.exports = (grunt) ->
                     prod: 
                         options: 
                             # the dir you want to sync, in this case the current dir
-                            src: '<%= config.app %>/.site/'
+                            src: '<%= settings.app %>/.site/'
                             # user pregenerated ssh keypairs
                             ssh: true
                             privateKey: ".key"
