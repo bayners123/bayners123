@@ -296,7 +296,7 @@ if window.isMainpage
 
     $('#groupmembers').fullscreen
         active: true
-        scrollCallback: ->
+        gainFocusCallback: ->
             # Hide mobilebar
             $('#menubar, #mobilebar').addClass "hidden"
                 
@@ -360,7 +360,7 @@ if window.isMainpage
     # Fullscreen the facilities section
     $('#facilities').fullscreen
         active: true
-        scrollCallback: ->
+        gainFocusCallback: ->
             $('#menubar, #mobilebar').addClass("hidden")
         scrollCaptureRange: if window.mobileMode() then 75 else 150
             # Distance from element within which the window will lock to it

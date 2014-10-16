@@ -30,7 +30,7 @@
         scrollCapture: true # Enable locking the window to the element when close
         scrollCaptureRange: 100 # Distance from element within which the window will lock to it
         offset: 0 # Consider the top of the element to be offset by this much
-        scrollCallback: $.noop # Function (theElement)
+        gainFocusCallback: $.noop # Function (theElement)
         lostFocusCallback: $.noop # Function (theElement)
         lostFocusRange: 200 # Distance at which to trigger the lostFocusCallback
         shrinkOnLostFocus: false # Collapse the element if it's expanded and the user scrolls out of the lostFocus range
@@ -431,7 +431,7 @@
         @data.hasFocus = true
         
         # Trigger callback
-        @options.scrollCallback @element
+        @options.gainFocusCallback @element
         
         @
         
