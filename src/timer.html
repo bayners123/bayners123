@@ -1,31 +1,57 @@
 ---
 title: COUNTDOWN
-layout: default
 ---
-
+<html>
+<head>
+    <style>
+    body {
+        height: 100%;
+        width: 100%;
+    }
+    </style>
+</head>
+<body>
 
 <h2>Part II Thesis submission deadline for 2014</h2>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, voluptatibus, hic, sint, magni nihil id repellendus veritatis cumque quisquam quasi architecto saepe est illum ad eius sapiente nesciunt maxime enim molestiae expedita. Aspernatur, veritatis, tenetur, esse corporis dignissimos minus tempore cupiditate odio earum ex minima a impedit sint voluptatum voluptas praesentium rem illo fugit in laboriosam dolores laudantium fuga perferendis. Aspernatur, unde ipsam expedita at alias. Eos molestiae aut dolore amet vero molestias deleniti. Accusantium, officiis dolore ab placeat itaque nam eos reprehenderit necessitatibus consectetur consequuntur corporis quibusdam dolorem quia explicabo modi accusamus odio distinctio porro hic laboriosam tempora quam.</p>
-
 <div class="flipclock"></div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="{{site.url}}/js/Modernizr.js"></script>
 
 <script>
     
-    window.customJS = function() {
+    // window.customJS = function() {
         
         Modernizr.load({
             load: ["{{ site.url }}/js/flipclock.min.js", "{{ site.url }}/flipclock.css"] ,
             callback: function(key, result) {
                 
-                console.log("Complete with key = " + key);
-                console.log(result);
-                
                 if (key === "{{ site.url }}/flipclock.css") {
+                    
                     var clock = $('.flipclock').FlipClock({});
+                    
+                    var element = $('.flipclock');
+                
+                    setTimeout(function(){
+                        element.css({
+                            position: "absolute",
+                            top: ((window.innerHeight - element.height() )/2).toString().concat("px"),
+                            "margin-left": ((window.innerWidth - element.width() )/2).toString().concat("px")
+                        });
+                        
+                        console.log( ((window.innerWidth - element.width() )/2).toString().concat("px") );
+                        console.log(element);
+                    });
                 }
+                
+                
             }
         });
-    };
+
+        // return true;
+    // };
     
 </script>
+
+</body></html>
