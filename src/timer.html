@@ -1,0 +1,31 @@
+---
+title: COUNTDOWN
+layout: default
+---
+
+
+<h2>Part II Thesis submission deadline for 2014</h2>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, voluptatibus, hic, sint, magni nihil id repellendus veritatis cumque quisquam quasi architecto saepe est illum ad eius sapiente nesciunt maxime enim molestiae expedita. Aspernatur, veritatis, tenetur, esse corporis dignissimos minus tempore cupiditate odio earum ex minima a impedit sint voluptatum voluptas praesentium rem illo fugit in laboriosam dolores laudantium fuga perferendis. Aspernatur, unde ipsam expedita at alias. Eos molestiae aut dolore amet vero molestias deleniti. Accusantium, officiis dolore ab placeat itaque nam eos reprehenderit necessitatibus consectetur consequuntur corporis quibusdam dolorem quia explicabo modi accusamus odio distinctio porro hic laboriosam tempora quam.</p>
+
+<div class="flipclock"></div>
+
+<script>
+    
+    window.customJS = function() {
+        
+        Modernizr.load({
+            load: ["{{ site.url }}/js/flipclock.min.js", "{{ site.url }}/flipclock.css"] ,
+            callback: function(key, result) {
+                
+                console.log("Complete with key = " + key);
+                console.log(result);
+                
+                if (key === "{{ site.url }}/flipclock.css") {
+                    var clock = $('.flipclock').FlipClock({});
+                }
+            }
+        });
+    };
+    
+</script>
