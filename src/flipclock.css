@@ -412,8 +412,10 @@
 /* Charles' CSS: */
     
 body {
-    height: 100%;
-    width: 100%;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background: skyblue;
 }
 
 .Center-Container {
@@ -440,4 +442,8 @@ body {
 .is-Inline .Center-Block {
   max-width: 99%; /* Prevents issues with long content causes the content block to be pushed to the top */
   /* max-width: calc(100% - 0.25em) /* Only for IE9+ */ 
+}
+
+.Center-Container h2 {
+  margin: 2em;
 }
