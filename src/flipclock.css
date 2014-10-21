@@ -24,17 +24,6 @@
 .flip-clock-wrapper ul {
   list-style: none; }
 
-.flip-clock-wrapper.clearfix:before,
-.flip-clock-wrapper.clearfix:after {
-  content: " ";
-  display: table; }
-
-.flip-clock-wrapper.clearfix:after {
-  clear: both; }
-
-.flip-clock-wrapper.clearfix {
-  *zoom: 1; }
-
 /* Main */
 .flip-clock-wrapper {
   font: normal 11px "Helvetica Neue", Helvetica, sans-serif;
@@ -49,19 +38,8 @@
 
 .flip-clock-wrapper {
   text-align: center;
-  position: relative;
-  width: 100%;
-  margin: 1em;
 }
 
-.flip-clock-wrapper:before,
-.flip-clock-wrapper:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
-.flip-clock-wrapper:after {
-    clear: both;
-}
 
 /* Skeleton */
 .flip-clock-wrapper ul {

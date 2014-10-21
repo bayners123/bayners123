@@ -8,50 +8,42 @@ title: COUNTDOWN
         height: 100%;
         width: 100%;
     }
+    
+    .Center-Container {
+      position: relative;
+    }
+    
+    .Center-Container.is-Inline { 
+      text-align: center;
+      overflow: auto;
+    }
+
+    .Center-Container.is-Inline:after,
+    .is-Inline .Center-Block {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .Center-Container.is-Inline:after {
+      content: '';
+      height: 100%;
+      margin-left: -0.25em; /* To offset spacing. May vary by font */
+    }
+
+    .is-Inline .Center-Block {
+      max-width: 99%; /* Prevents issues with long content causes the content block to be pushed to the top */
+      /* max-width: calc(100% - 0.25em) /* Only for IE9+ */ 
+    }
     </style>
 </head>
 <body>
 
-<h2>Part II Thesis submission deadline for 2014</h2>
-
-<div class="flipclock"></div>
+    <div class="Center-Container is-Inline">
+      <div class="Center-Block flipclock"></div>
+    </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="{{site.url}}/js/Modernizr.js"></script>
-
-<script>
-    
-    // window.customJS = function() {
-        
-        Modernizr.load({
-            load: ["{{ site.url }}/js/flipclock.min.js", "{{ site.url }}/flipclock.css"] ,
-            callback: function(key, result) {
-                
-                if (key === "{{ site.url }}/flipclock.css") {
-                    
-                    var clock = $('.flipclock').FlipClock({});
-                    
-                    var element = $('.flipclock');
-                
-                    setTimeout(function(){
-                        element.css({
-                            position: "absolute",
-                            top: ((window.innerHeight - element.height() )/2).toString().concat("px"),
-                            "margin-left": ((window.innerWidth - element.width() )/2).toString().concat("px")
-                        });
-                        
-                        console.log( ((window.innerWidth - element.width() )/2).toString().concat("px") );
-                        console.log(element);
-                    });
-                }
-                
-                
-            }
-        });
-
-        // return true;
-    // };
-    
-</script>
+<script src="{{site.url}}/js/timer.js"></script>
 
 </body></html>
