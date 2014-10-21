@@ -1,41 +1,9 @@
 ---
-title: COUNTDOWN
 ---
 <html>
-<head>
-    <style>
-    body {
-        height: 100%;
-        width: 100%;
-    }
-    
-    .Center-Container {
-      position: relative;
-    }
-    
-    .Center-Container.is-Inline { 
-      text-align: center;
-      overflow: auto;
-    }
-
-    .Center-Container.is-Inline:after,
-    .is-Inline .Center-Block {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    .Center-Container.is-Inline:after {
-      content: '';
-      height: 100%;
-      margin-left: -0.25em; /* To offset spacing. May vary by font */
-    }
-
-    .is-Inline .Center-Block {
-      max-width: 99%; /* Prevents issues with long content causes the content block to be pushed to the top */
-      /* max-width: calc(100% - 0.25em) /* Only for IE9+ */ 
-    }
-    </style>
-</head>
+    <head>
+        <title>COUNTDOWN</title>
+    </head>
 <body>
 
     <div class="Center-Container is-Inline">
@@ -44,6 +12,7 @@ title: COUNTDOWN
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="{{site.url}}/js/Modernizr.js"></script>
-<script src="{{site.url}}/js/timer.js"></script>
+<script src="{{site.url}}/js/output.js"></script>
+<script src="{{site.url}}/timer.js"></script>
 
 </body></html>
