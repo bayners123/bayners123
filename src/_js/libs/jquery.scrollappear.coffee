@@ -27,11 +27,8 @@
       duration: 500
       hidden:
         opacity: 0
-        "margin-left": "-5%"
       showing:
         opacity: 1
-        "margin-left": "0%"
-        
     
     data = 
       UID : 0
