@@ -350,7 +350,7 @@
     $(".active", $element).removeClass "active"
     $(".slidesjs-pagination li:eq(" + current + ") a", $element).addClass "active"
     
-    # Lazy loading:
+    # Lazy load this image and the next one if enabled
     if @options.lazy
         
         # Get the slide's image
@@ -358,6 +358,25 @@
         $img = if $slide.is("img") then $slide else $slide.find("img:first")
         
         if not $img.data("loaded")
+            # Actual src
+            src = $img.data("original")
+            
+            # Create an img element to load the image so that the browser has it in the cache
+            $('<img />')
+                # When this virtual img is loaded, set the slideshow's src to the same so that we see it
+                .one "load.#{@_name}", =>
+                    $img.attr "src", src
+                # Actually do the loading
+                .attr "src", src
+            
+            # Flag as loaded
+            $img.data("loaded", true)
+            
+        # Get the next slide's image
+        $slide = $(".slidesjs-control", $element).children().eq(current+1)
+        $img = if $slide.is("img") then $slide else $slide.find("img:first")
+        
+        if $img.length != 0 and not $img.data("loaded")
             # Actual src
             src = $img.data("original")
             
