@@ -276,7 +276,35 @@ if window.isMainpage
                     slide: 
                         speed: if window.mobileMode() then (window.innerWidth * 9) else (window.innerWidth * 6)
             .resize window.innerWidth, newsHeight
+    
+    # FADE IN OF .LEFT AND .RIGHT ELEMENTS
+    # USING SCROLLAPPREAR
+    
+    $('.left').scrollappear
+    # CSS styles for "hidden" mode
+      hidden: 
+        opacity:0
+        "margin-left":"-5%"
+    # CSS styles for "visible" mode
+      showing: 
+        opacity:1
+        "margin-left":"0%"
+    # Duration of animation
+      duration: 1500
 
+    $('.right').scrollappear
+      hidden: 
+        opacity:0
+        "margin-right":"-5%"
+      showing: 
+        opacity:1
+        "margin-right":"0%"
+      duration: 3000
+      
+    # Fade everything else in gently
+    $('section > *:not(.left, .right)').scrollappear
+      duration: 750
+    
     # FULLSCREEN
 
     # Setup animation for arrows

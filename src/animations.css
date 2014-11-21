@@ -5,12 +5,6 @@
     -skrollr-anchor-target: '#topSlider';
     -skrollr-animation-name: sliderParallax;
 }
-.content > .left {
-    -skrollr-animation-name: leftAppear;
-}
-.content > .right {
-    -skrollr-animation-name: rightAppear;
-}
 #mobilebar { -skrollr-animation-name: mobilebar; }
 
 @-skrollr-keyframes header {
