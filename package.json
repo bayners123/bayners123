@@ -21,6 +21,7 @@
   },
   "scripts": {
     "publish": "grunt deploy",
+    "deploy": "grunt deploy",
     "test": "grunt"
   }
 }
