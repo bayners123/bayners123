@@ -1,7 +1,7 @@
 #headerarea {
     -skrollr-animation-name: header;
     }
-#topSlider > img, #topSlider > div > img {
+#topSlider .slidesjs-control > img, #topSlider .slidesjs-control > div > img {
     -skrollr-anchor-target: '#topSlider';
     -skrollr-animation-name: sliderParallax;
 }
