@@ -2,12 +2,27 @@
 section: join-the-group
 ---
 
-Come join the group! It's great.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quos, nostrum, sapiente aut fugiat assumenda laborum perferendis natus quasi quibusdam odit aliquam cum debitis dolores nesciunt. Nulla, voluptas, odit, nihil, reiciendis repudiandae culpa doloribus nobis sint magnam dolorum ratione enim quidem natus ut soluta quos aperiam quia voluptatum fugiat excepturi vero minima quaerat mollitia illum pariatur. Reiciendis aliquid laudantium ullam accusamus nemo ex doloremque asperiores nisi quae expedita! Hic, labore, aperiam aliquam sunt facere asperiores? Numquam, dicta, illum, voluptatibus, quasi reprehenderit maxime cupiditate aliquid mollitia saepe laborum cumque perferendis tempora quas delectus ut sequi voluptas doloremque molestias eligendi ipsum debitis nam sit molestiae odit velit facilis veritatis unde dolorum nulla aspernatur! Ducimus, suscipit, asperiores, quisquam illum officia dolor neque laborum molestias repellat tenetur exercitationem commodi nesciunt natus hic cum velit explicabo corporis incidunt deleniti accusantium voluptate veritatis quae obcaecati temporibus nam odio tempore. Adipisci, unde, quas, illo ea architecto nulla tenetur consequatur distinctio quos harum voluptatem laboriosam magni. Quis, ducimus, voluptatum, quos rerum fugiat quaerat ipsa delectus rem temporibus eveniet ratione eaque error aspernatur eius natus porro voluptas! Adipisci, veritatis soluta dolores id labore delectus ipsa cumque sed sunt saepe! Sunt, voluptas, alias, non dolor quae laboriosam consectetur commodi quia pariatur sint illum obcaecati consequuntur quidem temporibus rerum nihil perferendis iure! Obcaecati, magni, illo, qui pariatur ut accusamus hic soluta dolor quam ab consequuntur tempore omnis quo placeat repellendus ipsum cum suscipit quae? ![Testing](http://placehold.it/300x300)
+Applications to join our team are always extremely welcome. We are always excited to hear from talented and enthusiastic Part II, DPhil and postdoctoral candidates. Please contact Jose directly by phone, fax or email if you would like further information.
 
-Ab, libero, ad, in quibusdam aliquam sit necessitatibus eius repellat veritatis dolorum magni labore corrupti debitis atque error velit iusto ullam! 
 
-Ipsum, vitae, quia, ipsa repellat ratione excepturi aliquam laboriosam rem impedit eum at incidunt sequi iste assumenda sit sapiente suscipit quod laudantium quas expedita quis illo illum inventore repudiandae harum eius nobis possimus accusantium consectetur. Deserunt, mollitia quidem voluptatibus numquam quam eveniet beatae ab vel delectus pariatur rerum provident sed id autem quo veritatis est aliquam ducimus nisi laborum in voluptatem repellat quod quae nobis libero velit sunt voluptates amet nesciunt quasi ipsum at recusandae quos sit quibusdam voluptatum accusamus. 
+###  Part II Studentships
 
-Nobis, quia expedita temporibus. Ipsam, dolorum, possimus, facilis quos omnis suscipit nesciunt nisi sit aut laborum debitis eum nihil officia explicabo recusandae ipsa adipisci vero illum quibusdam eos? Maxime, excepturi, harum aliquam asperiores dignissimos quas inventore eos eaque cum saepe quasi facilis repudiandae doloremque rerum unde illo ratione aut necessitatibus nobis temporibus. Iusto, placeat, nostrum repudiandae id praesentium eaque dolor perferendis necessitatibus ullam corporis molestias quibusdam.
+Jose Goicoechea supervises four Part II students each year. These projects involve a wide range of topics and generally include the synthesis and characterisation of new inorganic compounds. Contact Jose by email to discuss available research areas.
+
+###  D.Phil Studentships
+
+Studentships are typically advertised on the departmental webpage. Applications from overseas PhD candidates are very welcome. These applicants generally need to secure scholarships to fund their studies in Oxford. Information on Graduate Admissions, Studentships and sources of funding can be found in the Oxford University Graduate Prospectus, which is on-line [here](http://www.admin.ox.ac.uk/gsp/).
+
+###  Postdoctoral Fellowships
+
+Funded vacancies for postdoctoral research fellows in the Goicoechea group are advertised through normal channels. The links below provide details of other potential sources of funding:
+
+* [Newton Fellowships](http://www.newtonfellowships.org/)
+* [Marie Curie Fellowships](http://ec.europa.eu/research/fp6/mariecurie-actions/indexhtm_en.html)
+* [Violet and Samuel Glasstone Research Fellowships](http://www.ox.ac.uk/about_the_university/jobs/fp/)
+* [Max Planck Society Fellowships Fellowships](http://www.mpg.de/english/portal/index.html)
+* [Alexander Von Humboldt](http://www.humboldt-foundation.de/web/home.html)
+* [EPSRC Postdoctoral fellowships (research area specific)](http://www.epsrc.ac.uk/funding/fellows/Pages/postdoctoral.aspx)
+* [NATO Science for Peace Program](http://www.nato.int/science/index.html)
+* [Fulbright Scholar Awards (for UK nationals going to the US)](http://www.fulbright.co.uk/fulbright-awards/for-uk-citizens/scholars-and-fellows-awards/all-disciplines-scholar-awards)
