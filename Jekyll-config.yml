@@ -4,6 +4,8 @@ kramdown:
   parse_block_html: false
 permalink: pretty
 
+countdown: "Date(2015, 6, 7, 12, 0, 0)"
+
 collections:
   - frontpage
   - facilities

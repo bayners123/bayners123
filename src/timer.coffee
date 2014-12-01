@@ -6,7 +6,7 @@
 # CHANGE THIS!
 # ******************** 
 
-deadline = new Date(2015, 6, 7, 12, 0, 0)
+deadline = new {{ site.countdown }}
 
 # ********************
 # THE PART II DEADLINE  ^
