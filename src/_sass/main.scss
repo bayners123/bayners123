@@ -77,6 +77,12 @@ i, em { @extend .italic; }
 	img {
 		float: right;
 		margin: 0.5em;
+		max-width: 100%;
+	}
+
+	figcaption {
+		margin-bottom: 1em;
+		font-style: italic;
 	}
 	
 	.blockElement, p, div { margin-bottom: 0.625em; }
