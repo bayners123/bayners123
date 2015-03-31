@@ -51,7 +51,7 @@
       
       # If already in view, this plugin is unneeded
       if @isScrolledIntoView()
-        console.log "Already visible  with #{@data.UID}"
+        #console.log "Already visible  with #{@data.UID}"
         
         return 0
         
@@ -78,7 +78,7 @@
       
       $elem.css @options.hidden
     
-      console.log "Disappeared with #{@data.UID}"
+      #console.log "Disappeared with #{@data.UID}"
       
       @
     
@@ -91,7 +91,7 @@
       else
         $elem.css @options.showing
           
-      console.log "Appeared with #{@data.UID}"
+      #console.log "Appeared with #{@data.UID}"
           
       @
         
@@ -110,7 +110,7 @@
     
     Plugin::destroy = () ->
       
-      console.log "Destroying #{@data.UID}"
+      #console.log "Destroying #{@data.UID}"
       
       # Unbind the scroll handler from window (identified by the UID we generated)
       $(window).off ".#{@_name}#{@data.UID}"
