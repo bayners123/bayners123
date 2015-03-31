@@ -428,7 +428,8 @@ if window.isMainpage
     $("#publications .expanded .tabGroup").tabGroups()
 
     # Set research tabs to hidden on load (so they're visible if Java is disabled)
-    $('#researchDetails').hide()
+    # This is disabled as people were not realising that the bubbles are clickable
+    #$('#researchDetails').hide()
 
     # Bind research bubbles to the appropriate sections of the tabs & make them cause the tabs to appear
     $('.researchBubble').click ->
