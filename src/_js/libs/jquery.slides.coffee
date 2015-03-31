@@ -105,18 +105,25 @@
       # [boolean] Don't load the images until they're needed. To use this, set the
       #           img element's src as "" or a placeholder, and add the actual src
       #           as a data-original="..." attribute
+      
+    # [string] Data to use instead of an image if the image isn't loaded. A gray square by default
+    lazyPlaceholder: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
 
   class Plugin
     constructor: (@element, options) ->
       @options = $.extend true, {}, defaults, options
       @_defaults = defaults
       @_name = pluginName
+      @_random = Math.random()
       @init()
 
   Plugin::init = ->
     $element = $(@element)
     @data = $.data this
-
+    
+    # Save placeholder into window data
+    window["lazyPlaceholder_#{@_name}#{@_random}"] = @options.lazyPlaceholder
+    
     # Set data
     $.data this, "animating", false
     $.data this, "total", $element.children().not(".slidesjs-navigation", $element).length
@@ -316,7 +323,7 @@
         $("img.slidesjs-slide, .slidesjs-slide img:first-of-type", $element).each ->
             
             if @src == ""
-                @src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
+                @src = window["lazyPlaceholder_#{@_name}#{@_random}"]
     
     # Bind update on browser resize
     $(window).bind("resize", () =>
@@ -358,38 +365,35 @@
         $img = if $slide.is("img") then $slide else $slide.find("img:first")
         
         if not $img.data("loaded")
-            # Actual src
-            src = $img.data("original")
-            
-            # Create an img element to load the image so that the browser has it in the cache
-            $('<img />')
-                # When this virtual img is loaded, set the slideshow's src to the same so that we see it
-                .one "load.#{@_name}", =>
-                    $img.attr "src", src
-                # Actually do the loading
-                .attr "src", src
-            
-            # Flag as loaded
-            $img.data("loaded", true)
+          @_lazyLoad($img)
             
         # Get the next slide's image
         $slide = $(".slidesjs-control", $element).children().eq(current+1)
         $img = if $slide.is("img") then $slide else $slide.find("img:first")
         
         if $img.length != 0 and not $img.data("loaded")
-            # Actual src
-            src = $img.data("original")
-            
-            # Create an img element to load the image so that the browser has it in the cache
-            $('<img />')
-                # When this virtual img is loaded, set the slideshow's src to the same so that we see it
-                .one "load.#{@_name}", =>
-                    $img.attr "src", src
-                # Actually do the loading
-                .attr "src", src
-            
-            # Flag as loaded
-            $img.data("loaded", true)
+          @_lazyLoad($img)
+  
+  # @_lazyLoad(img_element)
+  # Loads the original image for the given element and then replaces the currently shown placeholder
+  # with the newly loaded image
+  Plugin::_lazyLoad = (img) ->
+    
+    $img = $(img)
+    
+    # Actual src
+    src = $img.data("original")
+  
+    # Create an img element to load the image so that the browser has it in the cache
+    $('<img />')
+        # When this virtual img is loaded, set the slideshow's src to the same so that we see it
+        .one "load.#{@_name}", =>
+            $img.attr "src", src
+        # Actually do the loading
+        .attr "src", src
+  
+    # Flag as loaded
+    $img.data("loaded", true)
 
   # @_zoom()
   # Resizes the children images of the slider so that they fill the slider without being distorted
